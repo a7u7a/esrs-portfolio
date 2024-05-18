@@ -1,23 +1,8 @@
 "use client"
 import React, { useEffect } from 'react'
 import Image from 'next/image';
-
-interface IGalleryItem {
-  type: "image" | "video";
-  alt: string
-  src: string
-  dims: { height: number, width: number }
-}
-
-interface IProjectData {
-  title: string,
-  url: string,
-  caption: string,
-  client: string
-  year: string
-  stack: string[]
-  gallery: IGalleryItem[]
-}
+import { IProjectData } from '@/lib/types';
+import Carousel from './carousel';
 
 interface ProjectViewerProps {
   projectData: IProjectData
@@ -57,17 +42,9 @@ const ProjectViewer = ({ projectData }: ProjectViewerProps) => {
           </div>
         </div>
 
-        <div className=' '>
-          {projectData.gallery.map((item, i) => (
-            <div key={i}>{item.type === "image" ? (
-              <Image
-                src={item.src}
-                alt=''
-                height={item.dims.height}
-                width={item.dims.width}
-              />) : (<div>video</div>)}</div>
-          ))}
-        </div>
+        <Carousel gallery={projectData.gallery} />
+
+        
       </div>
     </div>
   )
