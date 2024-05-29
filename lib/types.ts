@@ -6,11 +6,11 @@ export interface IGalleryItem {
 }
 
 export interface IProjectData {
-  title: string,
-  url: string,
-  caption: string,
-  client: string
-  year: string
-  stack: string[]
-  gallery: IGalleryItem[]
+  title: string;
+  link: { url: string, label: string };
+  caption: string;
+  client: string;
+  year: string;
+  stack: string[];
+  gallery: IGalleryItem[];
 }

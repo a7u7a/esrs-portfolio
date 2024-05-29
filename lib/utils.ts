@@ -17,7 +17,10 @@ export const works = [
   },
   {
     title: "Catalina Andonie Portfolio",
-    url: "https://catalinaandonie.com/",
+    link: {
+      url: "https://catalinaandonie.com/",
+      label: "catalinaandonie.com"
+    },
     caption: "Curabitur sed porttitor sem, a feugiat tellus. Suspendisse leo tellus, auctor vitae venenatis nec, sodales id neque.",
     client: "Catalina Andonie",
     year: "2024",
