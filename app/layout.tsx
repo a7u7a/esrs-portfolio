@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Public_Sans } from "next/font/google";
 import "./globals.css";
 
-const publicSans = Public_Sans({ subsets: ["latin"], weight: ["400","700"] });
+const interFont = Inter({ subsets: ["latin"], weight: ["400","700"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={publicSans.className}>{children}</body>
+      <body className={interFont.className}>{children}</body>
     </html>
   );
 }

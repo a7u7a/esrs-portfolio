@@ -1,17 +1,14 @@
-import Image from "next/image";
-import { IProjectData } from "@/lib/types";
-import { works, plays } from "@/lib/utils";
-import ProjectViewer from "@/components/project-viewer";
+import { getAllProjects } from "@/lib/utils";
+import RenderProject from "@/components/render-project";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getAllProjects();
+
   return (
     <main>
-      {works.map((work, i) => (
-        <ProjectViewer key={i} projectData={work as IProjectData} />
-      ))}
-      {plays.map((play, i) => (
-        <ProjectViewer key={i} projectData={play as IProjectData} />
-      ))}
+      {projects.map((project, i) => (
+        <RenderProject key={i} project={project} />
+        ))}
     </main>
   );
 }
