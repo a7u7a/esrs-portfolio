@@ -14,3 +14,14 @@ export interface IProjectData {
   stack: string[];
   gallery: IGalleryItem[];
 }
+
+export interface IProject {
+  title: string; // md
+  client: string; // md
+  year: string; // not md
+  stack: string; // md
+  url: string; // md
+  description: string; // md
+  category: "client" | "experimental"
+  gallery: IGalleryItem[];
+}
