@@ -5,23 +5,14 @@ export interface IGalleryItem {
   dims: { height: number, width: number }
 }
 
-export interface IProjectData {
+export interface IProject {
   title: string;
-  link: { url: string, label: string };
-  caption: string;
   client: string;
   year: string;
-  stack: string[];
-  gallery: IGalleryItem[];
-}
-
-export interface IProject {
-  title: string; // md
-  client: string; // md
-  year: string; // not md
-  stack: string; // md
-  url: string; // md
-  description: string; // md
+  stack: string;
+  visit?: { title: string, url: string };
+  descriptionOne?: string;
+  descriptionTwo: string;
   category: "client" | "experimental"
   gallery: IGalleryItem[];
 }

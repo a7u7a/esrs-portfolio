@@ -3,7 +3,7 @@ const Header = () => {
   return (
     <header className='h-[300px] text-white overflow-hidden relative'>
       <div className='absolute inset-0 flex flex-col justify-center'>
-        <div className='max-w-[800px] py-[40px] mx-20'>
+        <div className='max-w-[800px] py-[40px] mx-[160px]'>
           <h1 className='font-bold'>Esteban Serrano</h1>
           <div className='max-w-[600px] mt-8' >
             <p>I code and design digital experiences across a range of media. Mostly web.</p>

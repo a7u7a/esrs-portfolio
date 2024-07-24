@@ -2,32 +2,11 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "Interactive Ticker scroller",
-  client: `**Ignacio Gatica** - *Artist*`,
+  client: `Ignacio Gatica`,
   category: "client",
   year: "2024",
-  stack: `
-- Next.js
-- TypeScript
-- Tailwind CSS
-- WebGl
-  `,
-  url: "https://pese.works/",
-  description: `
-This project involved a complete overhaul of Client X's portfolio website. The main goals were to:
-
-1. Improve performance
-2. Enhance user experience
-3. Showcase their latest work
-
-We implemented a *responsive design* using Tailwind CSS, ensuring the site looks great on all devices. The use of **Next.js** and TypeScript provided a robust foundation for building a fast, SEO-friendly site.
-
-Key features include:
-- Animated transitions using Framer Motion
-- Server-side rendering for improved SEO
-- Lazy loading of images for faster initial load times
-
-Overall, the redesign resulted in a **40% increase** in user engagement and a *25% boost* in conversion rates.
-  `,
+  stack: `Python, H. Zeller's RPi-rgb-led-matrix, Raspberry Pi`,
+  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [
     {
       type: "image",
