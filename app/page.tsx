@@ -7,18 +7,21 @@ export default async function Home() {
   const projects = await getAllProjects();
 
   return (
-    <main className="text-[12px]">
+    <main className="text-[12px] flex flex-col items-center">
       <Header />
-      <div className='py-[40px] mx-[160px]'>
-        <nav className="flex gap-2">
-          <section>Selected projects</section>
+      <div className='pt-12 pb-[400px] max-w-5xl mx-8'>
+        <nav className="flex gap-8 w-max" >
+          <section>Selected Projects</section>
+          <section>Experimental Work</section>
           <section>Publications</section>
           <section>Clients</section>
           <section>Services</section>
           <section>Contact</section>
         </nav>
         {projects.map((project, i) => (
-          <RenderProject key={i} project={project} />
+          <div key={i} className='pt-12'>
+            <RenderProject key={i} project={project} />
+          </div>
         ))}
       </div >
     </main>

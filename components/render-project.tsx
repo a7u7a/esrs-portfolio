@@ -1,16 +1,17 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 import { IProject } from '@/lib/types'
-import Carousel from './carousel'
+import MyCarousel from './carousel'
+import { EmblaOptionsType } from 'embla-carousel'
+
 interface RenderProjectProps {
   project: IProject
 }
 
 const RenderProject = ({ project }: RenderProjectProps) => {
-
   return (
     <section className='flex flex-col' >
-      <div className='py-6 flex gap-2'>
+      <div className='flex gap-2'>
 
         <div className='w-1/4'>
           <h1 className='font-bold'>{project.title}</h1>
@@ -32,7 +33,7 @@ const RenderProject = ({ project }: RenderProjectProps) => {
         </div>
       </div>
 
-      <Carousel />
+      <MyCarousel slides={project.gallery} />
 
     </section>
   )

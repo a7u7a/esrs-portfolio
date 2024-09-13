@@ -22,7 +22,19 @@ const project: IProject = {
       type: "image",
       alt: "alt",
       src: "/assets/1.jpg",
-      dims: { width: 750, height: 562 }
+      dims: { width: 2412, height: 1452 }
+    },
+    {
+      type: "image",
+      alt: "alt",
+      src: "/assets/2.jpg",
+      dims: { width: 2412, height: 1452 }
+    },
+    {
+      type: "image",
+      alt: "alt",
+      src: "/assets/3.jpg",
+      dims: { width: 2412, height: 1452 }
     }
   ]
 };
