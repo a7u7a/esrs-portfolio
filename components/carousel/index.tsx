@@ -18,7 +18,6 @@ type PropType = {
 
 const MyCarousel: React.FC<PropType> = (props) => {
   const { slides } = props
-  console.log("slides.length", slides.length);
   const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, watchDrag: (slides.length - 1) != 0 })
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
 
@@ -35,18 +34,18 @@ const MyCarousel: React.FC<PropType> = (props) => {
   return (
     <section>
       {slides.length > 1 ? (
-        <div className="w-full flex justify-between items-center">
+        <div className="w-full flex justify-between items-end pb-1">
 
           <div className="grid grid-cols-2 gap-1 items-center">
             <PrevButton
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}
-              className='p-0.5 cursor-pointer'
+              className='p-0.5 cursor-pointer rounded hover:bg-gray-200'
             />
             <NextButton
               onClick={onNextButtonClick}
               disabled={nextBtnDisabled}
-              className='p-0.5 cursor-pointer'
+              className='p-0.5 cursor-pointer rounded hover:bg-gray-200'
             />
           </div>
 
@@ -72,7 +71,7 @@ const MyCarousel: React.FC<PropType> = (props) => {
         <div className="overflow-hidden h-full" ref={emblaRef}>
           <div className="flex h-full  -ml-2">
             {slides.map((slide, index) => (
-              <div className="shrink-0 basis-full max-w-full flex items-start justify-center pl-2" key={index}>
+              <div className="shrink-0 basis-full max-w-full flex items-center justify-center pl-2" key={index}>
                 {slide.type === "video" ? (
                   <VideoSlide slide={slide} />
                 ) : (

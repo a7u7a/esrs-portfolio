@@ -24,7 +24,7 @@ export const project: IProject = {
       src: "/assets/beigepill/beigepill.mp4",
       dims: { width: 1920, height: 1080 }
     }
-  ]
+  ],
 };
 
 export default project;

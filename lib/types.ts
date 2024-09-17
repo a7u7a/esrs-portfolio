@@ -15,4 +15,5 @@ export interface IProject {
   descriptionTwo: string;
   category: "client" | "experimental"
   gallery: IGalleryItem[];
+  accordeonOpen?: boolean
 }
