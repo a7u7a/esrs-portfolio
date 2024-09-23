@@ -2,15 +2,10 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "Elemental Chile",
-  client: `**Elemental Chile** - *Architects*`,
-  category: "client",
+  client: `Elemental Chile`,
+  category: "Selected",
   year: "2024",
-  stack: `
-- Next.js
-- TypeScript
-- Tailwind CSS
-- WebGl
-  `,
+  stack: ['Next.js', 'TypeScript', 'Sanity'],
   visit: {
     title: "elementalchile.cl",
     url: "https://elementalchile.cl/",

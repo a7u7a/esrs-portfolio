@@ -2,7 +2,8 @@ import Project from "@/components/project";
 import Header from "@/components/header";
 import { projects } from '@/content'
 import NavMenu from "@/components/navmenu";
-import SampleAccordion from "@/components/sample-accordion";
+import AccordeonWrapper from "@/components/sample-accordion";
+import beigePill from '@/content/beige-bill'
 
 export default async function Home() {
   return (
@@ -16,7 +17,7 @@ export default async function Home() {
           </div>
         ))}
 
-        <SampleAccordion />
+        <AccordeonWrapper />
       </div >
     </main>
   );

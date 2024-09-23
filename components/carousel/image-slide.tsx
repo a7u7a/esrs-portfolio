@@ -2,7 +2,8 @@ import React from 'react'
 import { IGalleryItem } from '@/lib/types'
 
 interface ImageSlideProps {
-  slide: IGalleryItem
+  // slide: IGalleryItem
+  slide: any
 }
 
 const ImageSlide = ({ slide }: ImageSlideProps) => {

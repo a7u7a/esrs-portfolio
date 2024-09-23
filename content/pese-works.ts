@@ -2,15 +2,10 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "Pese.works",
-  client: `**Pedro Serrano** - *Architect*`,
-  category: "client",
+  client: `Pedro Serrano - Architect`,
+  category: "Selected",
   year: "2024",
-  stack: `
-- Next.js
-- TypeScript
-- Tailwind CSS
-- WebGl
-  `,
+  stack: ['Next.js', 'TypeScript', 'React Three Fiber'],
   visit: {
     title: "pese.works",
     url: "https://pese.works/",

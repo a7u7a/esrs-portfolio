@@ -3,9 +3,9 @@ import { IProject } from "@/lib/types";
 export const project: IProject = {
   title: "Catalina Andonie Portfolio",
   client: `Catalina Andonie`,
-  category: "client",
+  category: "Selected",
   year: "2022",
-  stack: `Next.js, TypeScript,Tailwind CSS, WebGL`,
+  stack: ['Next.js', 'TypeScript', 'Sanity', 'WebGL'],
   visit: {
     title: "catalinaandonie.com",
     url: "https://catalinaandonie.com/",

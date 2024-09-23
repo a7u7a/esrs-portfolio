@@ -6,14 +6,14 @@ export interface IGalleryItem {
 }
 
 export interface IProject {
+  category: "Selected" | "Experimental"
   title: string;
   client: string;
   year: string;
-  stack: string;
+  stack: string[];
   visit?: { title: string, url: string };
   descriptionOne?: string;
   descriptionTwo: string;
-  category: "client" | "experimental"
   gallery: IGalleryItem[];
-  accordeonOpen?: boolean
+  collapsed?: boolean
 }

@@ -3,9 +3,10 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Interactive Ticker scroller",
   client: `Ignacio Gatica`,
-  category: "client",
+  category: "Experimental",
+  collapsed: false,
   year: "2024",
-  stack: `Python, H. Zeller's RPi-rgb-led-matrix, Raspberry Pi`,
+  stack: ['Raspberry Pi', 'Python', 'rgb-led-matrix'],
   descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [
     {

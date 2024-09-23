@@ -1,67 +1,82 @@
 "use client"
 import React, { useState } from 'react';
+import ImageSlide from './carousel/image-slide';
+import useMeasure from 'react-use-measure'
+import beigePill from '@/content/beige-bill'
+import blokisScroller from '@/content/blokis-scroller'
+import Project from './project';
+interface AccordionItemProps {
+  // title: string
+  // content: string
+  // src: string
+  children: any
+  collapsed?: boolean
+}
 
-const AccordionItem = ({ title, content, isOpen, onClick }) => (
-  <div className="border-b border-gray-200">
-    <button
-      className="flex justify-between items-center w-full p-4 text-left bg-white hover:bg-gray-50 focus:outline-none"
-      onClick={onClick}
-    >
-      <span className="font-medium">{title}</span>
-      <svg
-        className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''
-          }`}
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+const AccordionItem = ({ children, collapsed = false }: AccordionItemProps) => {
+  const [isCollapsed, setIsCollapsed] = useState(collapsed);
+  const handleClick = () => setIsCollapsed((prev) => !prev)
+  const [ref, refBounds] = useMeasure()
+  return (
+    <div>
+      <button
+        className="grid grid-cols-3 w-full p-4 text-left bg-white hover:bg-gray-50"
+        onClick={handleClick}
       >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    <div
-      className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-40' : 'max-h-0'
-        }`}
-    >
-      <div className="p-4 bg-gray-50">{content}</div>
-    </div>
-  </div>
-);
+        <span className="font-medium">{"Title"}</span>
 
-const SampleAccordion = () => {
-  const [openItems, setOpenItems] = useState([0]);
+        <div className='flex justify-center'>
+          <span>Year</span>
+        </div>
 
-  const toggleItem = (index) => {
-    setOpenItems((prevOpenItems) =>
-      prevOpenItems.includes(index)
-        ? prevOpenItems.filter((item) => item !== index)
-        : [...prevOpenItems, index]
-    );
-  };
+        <div className='flex justify-end'>
+          <svg
+            className={`w-4 h-4 transition-transform duration-700 ${!isCollapsed ? 'transform rotate-180' : ''
+              }`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
 
-  const items = [
-    {
-      title: 'Checkbox',
-      content: 'Pure CSS accordion based on the "input:checked + label" style trick.',
-    },
-    {
-      title: 'Open multiple',
-      content: 'Using React state allows to have several tabs open at the same time.',
-    },
-  ];
+      </button>
+
+      <div
+        className={`transition-all duration-700 ease-in-out overflow-hidden`}
+        style={{ maxHeight: !isCollapsed ? refBounds.height + 'px' : '0px' }}
+      >
+        <div ref={ref}>
+          {/* <div className="p-4">{content}</div>
+          <ImageSlide slide={{ src, alt: "henlo" }} /> */}
+          {children}
+        </div>
+      </div>
+
+    </div>)
+}
+
+const AccordeonWrapper = () => {
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-      {items.map((item, index) => (
+    <div className='flex flex-col space-y-1'>
+
+      {/* {items.map((item, index) => (
         <AccordionItem
           key={index}
           title={item.title}
           content={item.content}
-          isOpen={openItems.includes(index)}
-          onClick={() => toggleItem(index)}
+          src={item.image.src}
         />
-      ))}
+      ))} */}
+
+      <AccordionItem collapsed={blokisScroller.collapsed}>
+        <Project project={blokisScroller} />
+      </AccordionItem>
+
     </div>
   );
 };
 
-export default SampleAccordion;
+export default AccordeonWrapper;

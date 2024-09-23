@@ -1,6 +1,7 @@
 import React from 'react'
 import { IProject } from '@/lib/types'
 import Markdown from 'react-markdown'
+// import { CaretDown, CaretRight } from '@phosphor-icons/react'
 
 interface ProjectHeaderProps {
   project: IProject
@@ -12,6 +13,8 @@ const ProjectHeader = ({ project }: ProjectHeaderProps) => {
 
       <div className='w-1/4'>
         <h1 className='font-bold'>{project.title}</h1>
+        {/* <CaretDown size={32} />
+        <CaretRight size={32} /> */}
       </div>
 
       <div className='w-1/4'>
