@@ -4,11 +4,22 @@ import cataAndonie from './cata-andonie'
 import peseWorks from './pese-works'
 import blokisScroller from './blokis-scroller'
 import elementalChile from './elemental-chile'
+import boids from './boids'
+import floatingPoint from './floating-point'
+import energyInterface from './energy-interface'
+import fringeless from './fringeless'
 
-export const projects: IProject[] = [
+export const selectedProjects: IProject[] = [
   beigePill,
-  cataAndonie,
+  elementalChile,
   peseWorks,
+  cataAndonie,
+]
+
+export const experimentalProjects: IProject[] = [
   blokisScroller,
-  elementalChile
+  boids,
+  floatingPoint,
+  energyInterface,
+  fringeless
 ]

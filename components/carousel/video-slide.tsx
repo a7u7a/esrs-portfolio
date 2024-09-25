@@ -8,8 +8,8 @@ interface VideoSlideProps {
 const VideoSlide = ({ slide }: VideoSlideProps) => {
   const play = false;
   return (
-    <div className="h-full">
-      <video autoPlay={play} playsInline muted loop className='w-full object-contain' src={slide.src}></video>
+    <div className="w-full">
+      <video autoPlay={play} playsInline muted loop className='' src={slide.src}></video>
     </div>
   )
 }

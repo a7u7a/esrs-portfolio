@@ -6,7 +6,6 @@ export interface IGalleryItem {
 }
 
 export interface IProject {
-  category: "Selected" | "Experimental"
   title: string;
   client: string;
   year: string;

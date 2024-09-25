@@ -1,11 +1,11 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
-  title: "Interactive Ticker scroller",
-  client: `Ignacio Gatica`,
+  title: "Energy Interface",
+  client: `MSc project`,
   collapsed: true,
-  year: "2024",
-  stack: ['Raspberry Pi', 'Python', 'rgb-led-matrix'],
+  year: "2019",
+  stack: ['Raspberry Pi', 'Python', 'Grasshopper 3D'],
   descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [
     {

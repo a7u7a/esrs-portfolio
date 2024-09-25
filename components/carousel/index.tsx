@@ -16,7 +16,7 @@ type PropType = {
   slides: IGalleryItem[]
 }
 
-const MyCarousel: React.FC<PropType> = (props) => {
+const ProjectCarousel: React.FC<PropType> = (props) => {
   const { slides } = props
   const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, watchDrag: (slides.length - 1) != 0 })
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
@@ -69,7 +69,7 @@ const MyCarousel: React.FC<PropType> = (props) => {
 
       <div className='h-[400px]] flex flex-col items-center justify-between overflow-hidden'>
         <div className="overflow-hidden h-full" ref={emblaRef}>
-          <div className="flex h-full  -ml-2">
+          <div className="flex h-full -ml-2">
             {slides.map((slide, index) => (
               <div className="shrink-0 basis-full max-w-full flex items-center justify-center pl-2" key={index}>
                 {slide.type === "video" ? (
@@ -86,4 +86,4 @@ const MyCarousel: React.FC<PropType> = (props) => {
   )
 }
 
-export default MyCarousel
+export default ProjectCarousel

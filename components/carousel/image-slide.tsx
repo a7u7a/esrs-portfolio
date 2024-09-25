@@ -8,9 +8,9 @@ interface ImageSlideProps {
 
 const ImageSlide = ({ slide }: ImageSlideProps) => {
   return (
-    <div className="h-full">
+    <div className="w-full">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className='object-contain h-full' src={slide.src} alt={slide.alt} />
+      <img className='' src={slide.src} alt={slide.alt} />
     </div>
   )
 }

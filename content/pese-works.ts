@@ -3,7 +3,6 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Pese.works",
   client: `Pedro Serrano - Architect`,
-  category: "Selected",
   year: "2024",
   stack: ['Next.js', 'TypeScript', 'React Three Fiber'],
   visit: {
@@ -18,18 +17,6 @@ const project: IProject = {
       alt: "alt",
       src: "/assets/peseworks/peseworks.mp4",
       dims: { width: 1920, height: 1080 }
-    },
-    {
-      type: "image",
-      alt: "alt",
-      src: "/assets/2.jpg",
-      dims: { width: 2412, height: 1452 }
-    },
-    {
-      type: "image",
-      alt: "alt",
-      src: "/assets/3.jpg",
-      dims: { width: 2412, height: 1452 }
     }
   ]
 };

@@ -1,8 +1,7 @@
 import React from 'react'
-import Markdown from 'react-markdown'
 import { IProject } from '@/lib/types'
-import MyCarousel from './carousel'
-import ProjectHeader from './project-header'
+import ProjectCarousel from './carousel'
+import AccordionWrapper from './accordion-wrapper'
 
 interface RenderProjectProps {
   project: IProject
@@ -10,10 +9,9 @@ interface RenderProjectProps {
 
 const Project = ({ project }: RenderProjectProps) => {
   return (
-    <section className='flex flex-col' >
-      <ProjectHeader project={project} />
-      <MyCarousel slides={project.gallery} />
-    </section>
+    <AccordionWrapper project={project}>
+          <ProjectCarousel slides={project.gallery} />     
+    </AccordionWrapper>
   )
 }
 

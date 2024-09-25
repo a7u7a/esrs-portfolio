@@ -3,7 +3,6 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Elemental Chile",
   client: `Elemental Chile`,
-  category: "Selected",
   year: "2024",
   stack: ['Next.js', 'TypeScript', 'Sanity'],
   visit: {
