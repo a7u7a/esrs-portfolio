@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import { DotButton, useDotButton } from './dot-button'
 import { usePrevNextButtons } from './arrow-buttons'
@@ -7,6 +7,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { IGalleryItem } from '@/lib/types'
 import ImageSlide from './image-slide'
 import VideoSlide from './video-slide'
+import { ArrowLeft, ArrowRight } from '@phosphor-icons/react'
 
 type PropType = {
   slides: IGalleryItem[]
@@ -16,6 +17,19 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
   const { slides } = props
   const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, watchDrag: (slides.length - 1) != 0 })
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
+  const [showCustomCursor, setShowCustomCursor] = useState(false)
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi)
@@ -59,8 +73,12 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
         <div className='pt-6'></div>
       )}
 
-      <div className='h-[400px]] flex flex-col items-center justify-between overflow-hidden'>
-        <div className="overflow-hidden h-full" ref={emblaRef}>
+      <div
+        className='h-[400px]] flex flex-col items-center justify-between overflow-hidden'
+        onMouseEnter={() => setShowCustomCursor(true)}
+        onMouseLeave={() => setShowCustomCursor(false)}
+      >
+        <div className="overflow-hidden h-full cursor-none" ref={emblaRef}>
           <div className="flex h-full -ml-2">
             {slides.map((slide, index) => (
               <div key={index}
@@ -76,6 +94,18 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
             ))}
           </div>
         </div>
+        {showCustomCursor && (
+          <div 
+            className="fixed pointer-events-none z-50 mix-blend-difference"
+            style={{
+              left: `${cursorPosition.x}px`,
+              top: `${cursorPosition.y}px`,
+              transform: 'translate(-50%, -50%)'
+            }}
+          >
+            <ArrowRight size={32} color="#ffffff" weight="bold" />
+          </div>
+        )}
       </div>
     </section>
   )

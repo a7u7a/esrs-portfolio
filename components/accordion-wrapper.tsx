@@ -14,7 +14,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
   const canToggle = project.canToggle ?? false;
   const startsCollapsed = project.collapsed ?? false;
   const [animate, setAnimate] = useState(false);
-  // const canToggle = startsCollapsed
+  const [hover, setHover] = useState(false);
   const [collapsed, setCollapsed] = useState(startsCollapsed);
   const [delayedCollapsed, setDelayedCollapsed] = useState(startsCollapsed)
   const [childrenRef, childrenBounds] = useMeasure()
@@ -53,19 +53,24 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
 
   return (
     <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
-      style={{ height: !collapsed ? totalHeight + 'px' : '20px' }}
+      style={{ height: !collapsed ? totalHeight + 'px' : '30px' }}
     >
 
       {/* view as row */}
-      {canToggle && <div
+      {canToggle && <button
+        onClick={onClick}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
         className={`
-          grid grid-cols-4 w-full pb-4
+          grid grid-cols-4 w-full mb-4 transition-colors ${!delayedCollapsed ? 'bg-gray-100' : ''}
+          ${hover ? 'bg-gray-100' : ''}
         `}>
 
-        <button
-          onClick={onClick}
-          className={`text-left font-bold ${canToggle ? 'hover:text-gray-500' : 'cursor-default'}`}>{project.title}
-        </button>
+        <div
+          className={`text-left font-bold`}
+        >
+          {project.title}
+        </div>
 
         <div className='text-left col-span-2'>
           <h3><span >{project.what}</span></h3>
@@ -76,7 +81,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           <h3> <span>{project.date}</span></h3>
         </div>
 
-      </div>}
+      </button>}
 
 
       {/* project details */}
@@ -112,7 +117,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           ))}
         </div>
 
-        <div className={`flex gap-2 w-1/2 transition-opacity ${delayedCollapsed ? 'opacity-0' : 'opacity-100'}`}>
+        <div className={`flex gap-2 w-1/2`}>
           <div className='w-1/2'>
             <Markdown>{project.descriptionOne}</Markdown>
           </div>

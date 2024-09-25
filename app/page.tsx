@@ -6,7 +6,7 @@ import Logo from "@/components/logo";
 
 export default async function Home() {
   return (
-    <main className="text-[12px] flex flex-col items-center">
+    <main className="text-[12px] flex flex-col items-center ">
 
       {/* <div className="fixed w-full flex items-center justify-end" >
         <div className="w-[100px] h-[100px]">
