@@ -2,11 +2,15 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "Floating Point",
-  client: `Self started`,
   collapsed: true,
-  year: "2016",
-  stack: ['Raspberry Pi', 'Arduino', 'Grasshopper 3D'],
-  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
+  what: "Public solar clock",
+  date: "2016",
+  canToggle: true,
+  fields: [
+    { title: "Type", value: "Self-initiated research project" },
+    { title: "Tools", value: "Arduino, Grasshopper3D" },
+  ],
+  descriptionTwo: `A solar clock that uses the position of the sun to tell the time. It is powered by an Arduino and a Grasshopper3D.`,
   gallery: [
     {
       type: "image",

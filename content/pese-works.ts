@@ -2,13 +2,12 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "Pese.works",
-  client: `Pedro Serrano - Architect`,
-  year: "2024",
-  stack: ['Next.js', 'TypeScript', 'React Three Fiber'],
-  visit: {
-    title: "pese.works",
-    url: "https://pese.works/",
-  },
+  date: "2024",
+  fields: [
+    { title: "Type", value: "Portfolio website" },
+    { title: "Stack", value: "React-Three-Fiber, TypeScript, WebGL,Next.js" },
+    { title: "Visit", url: "https://peseworks.com" },
+  ],
   descriptionOne: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula dui sed sem porta facilisis. Sed non pretium sem. Aenean ultricies nulla eu justo fermentum, ut tempor risus viverra. Nulla blandit ligula eget mi pharetra tempus. Praesent justo mi, fermentum ut elit eget.`,
   descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [

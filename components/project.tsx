@@ -10,7 +10,7 @@ interface RenderProjectProps {
 const Project = ({ project }: RenderProjectProps) => {
   return (
     <AccordionWrapper project={project}>
-          <ProjectCarousel slides={project.gallery} />     
+      <ProjectCarousel slides={project.gallery} />
     </AccordionWrapper>
   )
 }

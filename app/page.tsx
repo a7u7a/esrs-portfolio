@@ -19,7 +19,7 @@ export default async function Home() {
         <div className="pt-24">
           <NavMenu />
         </div>
-        <div className="pt-36">
+        <div className="pt-36 flex flex-col">
           {selectedProjects.map((project, i) => (
             <div key={i} className=''>
               <Project key={i} project={project} />
@@ -27,14 +27,13 @@ export default async function Home() {
           ))}
         </div>
 
-        <div className="flex gap-2 pt-24 font-bold">
-          <h2 className='w-1/4'>Experimental Works</h2>
-          <h2 className='w-1/4'>Stack</h2>
-          <div className='w-1/4' />
-          <h2 className='w-1/4 text-right'>Date</h2>
+        <div className="grid grid-cols-4 w-full font-bold">
+          <h2>Experimental Work</h2>
+          <h2 className='col-span-2'>What</h2>
+          <h2 className=' text-right'>Date</h2>
         </div>
 
-        <div className="pt-12">
+        <div className="pt-12 flex flex-col gap-1">
           {experimentalProjects.map((project, i) => (
             <div key={i} className=''>
               <Project key={i} project={project} />

@@ -2,13 +2,12 @@ import { IProject } from "@/lib/types";
 
 export const project: IProject = {
   title: "Catalina Andonie Portfolio",
-  client: `Catalina Andonie`,
-  year: "2022",
-  stack: ['Next.js', 'TypeScript', 'Sanity', 'WebGL'],
-  visit: {
-    title: "catalinaandonie.com",
-    url: "https://catalinaandonie.com/",
-  },
+  fields: [
+    { title: "Type", value: "Portfolio website" },
+    { title: "Stack", value: "Next.js, TypeScript, Sanity, WebGL" },
+    { title: "Visit", url: "https://catalinaandonie.com/" },
+  ],
+  date: "2022",
   descriptionOne: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula dui sed sem porta facilisis. Sed non pretium sem. Aenean ultricies nulla eu justo fermentum, ut tempor risus viverra. Nulla blandit ligula eget mi pharetra tempus. Praesent justo mi, fermentum ut elit eget.`,
   descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [

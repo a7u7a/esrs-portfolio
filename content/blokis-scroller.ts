@@ -2,10 +2,25 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "Interactive Ticker scroller",
-  client: `Ignacio Gatica`,
+  what: "Finance-art display",
+  canToggle: true,
   collapsed: true,
-  year: "2024",
-  stack: ['Raspberry Pi', 'Python', 'rgb-led-matrix'],
+  fields: [
+    {
+      title: "Type",
+      value: "Custom software",
+    },
+    {
+      title: "Comissioned by",
+      value: "Ignacio Gatica",
+      url: "https://www.blokis.com",
+    },
+    {
+      title: "More info",
+      url: "https://github.com/a7u7a/bloko",
+    }
+  ],
+  date: "2024",
   descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [
     {

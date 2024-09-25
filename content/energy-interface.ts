@@ -2,10 +2,14 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "Energy Interface",
-  client: `MSc project`,
   collapsed: true,
-  year: "2019",
-  stack: ['Raspberry Pi', 'Python', 'Grasshopper 3D'],
+  canToggle: true,
+  what: "A prototype for adaptive heating controls",
+  fields: [
+    { title: "Type", value: "Research project" },
+    { title: "Tools", value: "E-paper display, Raspberry Pi, Python" },
+  ],
+  date: "2019",
   descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [
     {

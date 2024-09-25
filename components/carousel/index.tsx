@@ -2,11 +2,7 @@
 import React, { useState } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import { DotButton, useDotButton } from './dot-button'
-import {
-  PrevButton,
-  NextButton,
-  usePrevNextButtons
-} from './arrow-buttons'
+import { usePrevNextButtons } from './arrow-buttons'
 import useEmblaCarousel from 'embla-carousel-react'
 import { IGalleryItem } from '@/lib/types'
 import ImageSlide from './image-slide'
@@ -24,19 +20,14 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi)
 
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick
-  } = usePrevNextButtons(emblaApi)
+  const { onNextButtonClick } = usePrevNextButtons(emblaApi)
 
   return (
     <section>
       {slides.length > 1 ? (
-        <div className="w-full flex justify-between items-end pb-1">
+        <div className="w-full flex justify-start pb-1 pt-4">
 
-          <div className="grid grid-cols-2 gap-1 items-center">
+          {/* <div className="grid grid-cols-2 gap-1 items-center">
             <PrevButton
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}
@@ -47,9 +38,9 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
               disabled={nextBtnDisabled}
               className='p-0.5 cursor-pointer rounded hover:bg-gray-200'
             />
-          </div>
+          </div> */}
 
-          <div className="flex flex-wrap justify-end items-center space-x-1">
+          <div className="flex items-center space-x-1">
             {scrollSnaps.map((_, index) => (
               <DotButton
                 key={index}
@@ -62,6 +53,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
               </DotButton>
             ))}
           </div>
+
         </div>
       ) : (
         <div className='pt-6'></div>
@@ -71,7 +63,10 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
         <div className="overflow-hidden h-full" ref={emblaRef}>
           <div className="flex h-full -ml-2">
             {slides.map((slide, index) => (
-              <div className="shrink-0 basis-full max-w-full flex items-center justify-center pl-2" key={index}>
+              <div key={index}
+                onClick={onNextButtonClick}
+                className="shrink-0 basis-full max-w-full flex items-center justify-center pl-2"
+              >
                 {slide.type === "video" ? (
                   <VideoSlide slide={slide} />
                 ) : (
