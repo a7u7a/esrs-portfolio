@@ -69,12 +69,10 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
           </div>
 
         </div>
-      ) : (
-        <div className='pt-6'></div>
-      )}
+      ) : (null)}
 
       <div
-        className='h-[400px]] flex flex-col items-center justify-between overflow-hidden'
+        className='h-[400px]] flex flex-col items-center justify-between overflow-hidden bg-white'
         onMouseEnter={() => setShowCustomCursor(true)}
         onMouseLeave={() => setShowCustomCursor(false)}
       >
@@ -95,7 +93,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
           </div>
         </div>
         {showCustomCursor && (
-          <div 
+          <div
             className="fixed pointer-events-none z-50 mix-blend-difference"
             style={{
               left: `${cursorPosition.x}px`,
@@ -103,7 +101,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
               transform: 'translate(-50%, -50%)'
             }}
           >
-            <ArrowRight size={32} color="#ffffff" weight="bold" />
+            <ArrowRight size={32} color="white" />
           </div>
         )}
       </div>

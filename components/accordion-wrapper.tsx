@@ -133,7 +133,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
         style={{ maxHeight: !collapsed ? totalHeight + 'px' : '0px' }}
       >
         <div ref={childrenRef}>
-          <div className={canToggle ? 'pb-10' : 'pb-48'}>
+          <div className={`pt-12 ${canToggle ? 'pb-16' : 'pb-48'}`}>
             {children} {/* project carousel */}
           </div>
         </div>

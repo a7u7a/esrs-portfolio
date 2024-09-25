@@ -1,7 +1,7 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
-  title: "Interactive Ticker scroller",
+  title: "Ticker scroller",
   what: "Finance-art display",
   canToggle: true,
   collapsed: true,
