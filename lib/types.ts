@@ -22,3 +22,8 @@ export interface IProjectField {
   value?: string // If value empty, the title will act as link, otherwise the value will act as link
   url?: string // https://beigepill.com, etc
 }
+
+export interface ICollaborators {
+  name: string
+  url?: string
+}

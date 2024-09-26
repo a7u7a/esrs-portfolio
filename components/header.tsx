@@ -1,7 +1,7 @@
 import React from 'react'
 const Header = () => {
   return (
-    <header className='h-[600px] text-black overflow-hidden relative w-full'>
+    <header className='h-[600px] text-black overflow-hidden relative w-full bg-gray-400'>
       <div className='absolute inset-x-0 bottom-0 mx-8 flex flex-col justify-center items-center' >
         <div className='max-w-5xl pt-[40px] pb-[80px] w-full'>
           <h1 className='font-bold w-max'>Esteban Serrano</h1>
@@ -14,7 +14,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <img className='object-cover' src="/assets/image.png" alt="" />
+      {/* <img className='object-cover' src="/assets/image.png" alt="" /> */}
     </header>
   )
 }

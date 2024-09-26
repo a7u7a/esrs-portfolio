@@ -6,7 +6,7 @@ interface VideoSlideProps {
 }
 
 const VideoSlide = ({ slide }: VideoSlideProps) => {
-  const play = false;
+  const play = true;
   return (
     <div className="w-full">
       <video autoPlay={play} playsInline muted loop className='' src={slide.src}></video>

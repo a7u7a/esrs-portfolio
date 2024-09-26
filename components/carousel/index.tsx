@@ -73,10 +73,13 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
 
       <div
         className='h-[400px]] flex flex-col items-center justify-between overflow-hidden bg-white'
-        onMouseEnter={() => setShowCustomCursor(true)}
+        onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? true : false)}
         onMouseLeave={() => setShowCustomCursor(false)}
       >
-        <div className="overflow-hidden h-full cursor-none" ref={emblaRef}>
+        <div
+          ref={emblaRef}
+          className={`overflow-hidden h-full ${showCustomCursor ? 'cursor-none' : ''}`}
+        >
           <div className="flex h-full -ml-2">
             {slides.map((slide, index) => (
               <div key={index}
