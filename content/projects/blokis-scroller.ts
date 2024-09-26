@@ -1,8 +1,8 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
-  title: "Ticker scroller",
-  what: "Finance-art display",
+  title: "Blokis Scroller Series",
+  what: "A scale in which money loses meaning",
   canToggle: true,
   collapsed: true,
   fields: [

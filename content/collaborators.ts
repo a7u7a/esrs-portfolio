@@ -6,7 +6,7 @@ const collaborators: ICollaborators[] = [
     url: "https://futurecorp.paris/"
   },
   {
-    name: "Saatchi & Saatchi, Uk",
+    name: "Saatchi & Saatchi, UK",
     url: "https://saatchi.co.uk/"
   },
   {
@@ -18,24 +18,28 @@ const collaborators: ICollaborators[] = [
     url: "https://newtendency.com/"
   },
   {
+    name: "JDS Development Group, NYC",
+    url: "https://jdsdevelopment.com/"
+  },
+  {
+    name: "Viapontica AI, UK",
+    url: "https://viapontica.ai/"
+  },
+  {
+    name: "TrainFES, Chile",
+    url: "https://trainfes.com/"
+  },
+  {
     name: "Escuela de Ingeniería PUC",
     url: "https://www.ing.uc.cl/"
   },
   {
-    name: "The Brooklyn Tower",
-    url: "https://thebrooklyntower.com/"
-  },
-  {
-    name: "Cardiff University - School of computer science",
-    url: "https://www.cardiff.ac.uk/computer-science"
-  },
-  {
-    name: "Viapontica AI",
-    url: "https://viapontica.ai/"
-  },
-  {
-    name: "University of Edinburgh, School of Informatics",
+    name: "U. of Edinburgh, School of Informatics",
     url: "https://informatics.ed.ac.uk/"
+  },
+  {
+    name: "Cardiff U., School of computer science",
+    url: "https://www.cardiff.ac.uk/computer-science"
   }
 ]
 

@@ -94,8 +94,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
                 {/* Different field variations */}
                 {field.url && field.value ? (
                   <div>
-                    <span className='font-bold'>{field.title}</span>
-                    &nbsp;
+                    <span className='font-bold pr-1.5'>{field.title}</span>
                     <a className='hover:underline' href={field.url} target="_blank" rel="noopener noreferrer">{field.value}</a>
                   </div>
                 ) : (null)}
@@ -104,8 +103,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
                 ) : null}
                 {!field.url && field.value ? (
                   <div>
-                    <span className='font-bold'>{field.title}</span>
-                    &nbsp;
+                    <span className='font-bold pr-1.5'>{field.title}</span>
                     <span>{field.value}</span>
                   </div>
                 ) : null}

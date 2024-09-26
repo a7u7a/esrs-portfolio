@@ -6,7 +6,7 @@ const project: IProject = {
   fields: [
     { title: "Type", value: "Web app" },
     { title: "Design", value: "Client co-design" },
-    { title: "Stack", value: "TypeScript, Tailwind, Next.js, Sanity CMS, Vercel" },
+    { title: "Stack", value: "TypeScript, Tailwind, Next.js, Sanity CMS, Vercel." },
     { title: "Visit", url: "https://elementalchile.cl" },
   ],
   descriptionOne: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula dui sed sem porta facilisis. Sed non pretium sem. Aenean ultricies nulla eu justo fermentum, ut tempor risus viverra. Nulla blandit ligula eget mi pharetra tempus. Praesent justo mi, fermentum ut elit eget.`,

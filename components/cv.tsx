@@ -37,7 +37,7 @@ const CV = () => {
           <div className="pt-12">
             <ul className="list-none flex flex-col gap-1 max-w-[600px]">
               <li key={1}>
-                <a href="mailto:esteban@esrs.co">esteban@esrs.co</a>
+                <a className="hover:underline" href="mailto:esteban@esrs.co">esteban@esrs.co</a>
               </li>
             </ul>
             <ul className="list-none flex gap-3 pt-2 ">
@@ -54,8 +54,7 @@ const CV = () => {
           <p>{"© 2024"}</p>
           <p>{"All rights reserved."}</p>
           <p>{"This website shows a selected view of my work."}</p>
-          <p>{"Work licensed under CC BY-NC-SA 4.0."}</p>
-          <p>{"Further information and images can be requested via email."}</p>
+          <p>{"Licensed under CC BY-NC-SA 4.0."}</p>
           <p className="pt-2">{"Last update: "}{process.env.NEXT_PUBLIC_BUILD_DATE}</p>
         </footer>
 

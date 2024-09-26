@@ -3,7 +3,7 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Floating Point",
   collapsed: true,
-  what: "Public solar clock",
+  what: "A summer playing with stepper motors and mirrors in the sun",
   date: "2016",
   canToggle: true,
   fields: [

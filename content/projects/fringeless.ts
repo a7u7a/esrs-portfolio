@@ -5,7 +5,7 @@ const project: IProject = {
   collapsed: true,
   date: "2019",
   canToggle: true,
-  what: "Crowd avoidance system",
+  what: "Generative tourism for introverts",
   fields: [
     { title: "Type", value: "Research project" },
     { title: "Tools", value: "Python, Google Maps API, thermal printer" },

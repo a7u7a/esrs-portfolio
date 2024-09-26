@@ -1,10 +1,10 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
-  title: "Energy Interface",
+  title: "Comfortable Interactions",
   collapsed: true,
   canToggle: true,
-  what: "A prototype for adaptive heating controls",
+  what: "Can buildings even persuade you?",
   fields: [
     { title: "Type", value: "Research project" },
     { title: "Tools", value: "E-paper display, Raspberry Pi, Python" },

@@ -5,7 +5,7 @@ const project: IProject = {
   date: "2024",
   fields: [
     { title: "Type", value: "Portfolio website" },
-    { title: "Stack", value: "React-Three-Fiber, TypeScript, WebGL,Next.js" },
+    { title: "Stack", value: "React-Three-Fiber, TypeScript, WebGL, Next.js." },
     { title: "Visit", url: "https://peseworks.com" },
   ],
   descriptionOne: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula dui sed sem porta facilisis. Sed non pretium sem. Aenean ultricies nulla eu justo fermentum, ut tempor risus viverra. Nulla blandit ligula eget mi pharetra tempus. Praesent justo mi, fermentum ut elit eget.`,
