@@ -2,7 +2,7 @@ import React from 'react'
 const Header = () => {
   return (
     // <header className='h-[600px] overflow-hidden relative w-full bg-gradient-to-b from-[#C2C2C2] to-[#FF2B00] text-white'>
-    <header className='h-[600px] text-black overflow-hidden relative w-full bg-gray-200'>
+    <header className='h-[600px] text-black overflow-hidden relative w-full bg-esrs-gray'>
       <div className='absolute inset-x-0 bottom-0 mx-8 flex flex-col justify-center items-center' >
         <div className='max-w-5xl pt-[40px] pb-[80px] w-full'>
           <h1 className='w-max'>Esteban Serrano</h1>

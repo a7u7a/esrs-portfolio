@@ -3,16 +3,16 @@ const services = [
     title: "Design Engineering",
   },
   {
-    title: "Web Development",
+    title: "Fullstack Development",
   },
   {
-    title: "Creative Development",
+    title: "Creative Coding",
   },
   {
-    title: "Interaction design",
+    title: "Interaction Design",
   },
   {
-    title: "Data visualization",
+    title: "Data Visualization",
   }
 ]
 

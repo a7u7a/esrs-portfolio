@@ -14,7 +14,6 @@ export interface IProject {
   collapsed?: boolean
   fields?: IProjectField[]
   what?: string
-  canToggle?: boolean // default false
 }
 
 export interface IProjectField {

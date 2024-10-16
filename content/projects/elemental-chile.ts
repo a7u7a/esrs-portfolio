@@ -3,7 +3,6 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Elemental Chile",
   date: "2024",
-  canToggle: true,
   collapsed: false,
   fields: [
     { title: "Type", value: "Web App" },
@@ -25,12 +24,6 @@ const project: IProject = {
       alt: "alt",
       src: "/assets/elemental/elemental-mobile.mp4",
       dims: { width: 1920, height: 1080 }
-    },
-    {
-      type: "image",
-      alt: "alt",
-      src: "/assets/3.jpg",
-      dims: { width: 2412, height: 1452 }
     }
   ]
 };

@@ -3,7 +3,6 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Blokis Scroller Series",
   what: "A scale in which money loses meaning",
-  canToggle: true,
   collapsed: true,
   fields: [
     {
@@ -20,7 +19,7 @@ const project: IProject = {
       url: "https://github.com/a7u7a/bloko",
     }
   ],
-  date: "2024",
+  date: "2022-24",
   descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
   gallery: [
     {

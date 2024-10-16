@@ -13,10 +13,10 @@ const collaborators: ICollaborators[] = [
     name: "Elemental Chile",
     url: "https://elemental-chile.cl/"
   },
-  {
-    name: "New Tendency, Berlin",
-    url: "https://newtendency.com/"
-  },
+  // {
+  //   name: "New Tendency, Berlin",
+  //   url: "https://newtendency.com/"
+  // },
   {
     name: "JDS Development Group, NYC",
     url: "https://jdsdevelopment.com/"
@@ -38,7 +38,7 @@ const collaborators: ICollaborators[] = [
     url: "https://informatics.ed.ac.uk/"
   },
   {
-    name: "Cardiff U., School of Computer Science",
+    name: "Cardiff U. School of Computer Science",
     url: "https://www.cardiff.ac.uk/computer-science"
   }
 ]

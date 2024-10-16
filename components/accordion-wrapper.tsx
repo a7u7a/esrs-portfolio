@@ -10,7 +10,6 @@ interface AccordionItemProps {
 }
 
 const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
-  const canToggle = project.canToggle ?? false;
   const startsCollapsed = project.collapsed ?? false;
   const [animate, setAnimate] = useState(false);
   const [hover, setHover] = useState(false);
@@ -21,7 +20,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
   const isAnimating = useRef(false);
 
   const onClick = () => {
-    if (!isAnimating.current && canToggle) {
+    if (!isAnimating.current) {
       setCollapsed((prev) => !prev);
       isAnimating.current = true;
     }
@@ -52,42 +51,41 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
 
   return (
     <div className="relative">
-      {canToggle && <div
+      <div
         style={{ height: '21px' }}
         className={`
-            absolute m-auto bg-gray-100 transition-opacity -left-1.5 -right-1.5 -top-[2px] rounded
-            ${delayedCollapsed ? 'opacity-0' : 'opacity-100'}
-            ${hover ? 'opacity-100' : 'opacity-0'}
+            absolute m-auto -left-1.5 -right-1.5  rounded transition-colors
+            ${hover ? 'bg-esrs-gray' : 'bg-white'}
           `}
-      />}
+      />
       <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
         style={{ height: !collapsed ? totalHeight + 'px' : '19px' }}
       >
         {/* view as row */}
-        {canToggle && (
-          <button
-            onClick={onClick}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            className={`
+
+        <button
+          onClick={onClick}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className={`
               relative z-10 grid grid-cols-4 w-full mb-8 transition-colors
-              ${!delayedCollapsed ? 'bg-gray-100' : ''}
-            `}>
-            <div className={`text-left font-bold`}>
-              {project.title}
-            </div>
-            <div className='text-left col-span-2'>
-              <h3><span>{project.what}</span></h3>
-            </div>
-            <div className='text-right'>
-              <h3><span>{project.date}</span></h3>
-            </div>
-          </button>
-        )}
+              
+            `}
+        >
+          <div className={`text-left font-bold`}>
+            {project.title}
+          </div>
+          <div className='text-left col-span-2'>
+            <h3><span>{project.what}</span></h3>
+          </div>
+          <div className='text-right'>
+            <h3><span>{project.date}</span></h3>
+          </div>
+        </button>
+
         {/* project details */}
         <div ref={headerRef} className='flex gap-2'>
           <div className='w-1/2 flex flex-col space-y-0.5'>
-            {!canToggle && <h1 className={`pb-4 text-left font-bold`}>{project.title}</h1>}
             {project.fields && project.fields.map((field, index) => (
               <div key={index}>
                 {/* Different field variations */}
@@ -123,7 +121,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           style={{ maxHeight: !collapsed ? totalHeight + 'px' : '0px' }}
         >
           <div ref={childrenRef}>
-            <div className={`pt-12 ${canToggle ? 'pb-16' : 'pb-48'}`}>
+            <div className={'pt-12 pb-20'}>
               {children} {/* project carousel */}
             </div>
           </div>

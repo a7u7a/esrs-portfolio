@@ -2,11 +2,11 @@ import { IProject } from "@/lib/types";
 
 export const project: IProject = {
   title: "Catalina Andonie Portfolio",
-  canToggle: true,
   collapsed: true,
+  what: "Fullscreen fragment shaders for a portfolio site",
   fields: [
-    { title: "Type", value: "Portfolio website" },
-    { title: "Stack", value: "Next.js, TypeScript, Sanity, WebGL." },
+    { title: "Type", value: "Portfolio site" },
+    { title: "Stack", value: "Next.js, TypeScript, Sanity, WebGL" },
     { title: "Visit", url: "https://catalinaandonie.com/" },
   ],
   date: "2022",

@@ -2,11 +2,11 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   title: "PESE.works",
-  date: "2024",
-  canToggle: true,
+  what: "Scroll-based 3D interactions",
+  date: "2022",
   collapsed: true,
   fields: [
-    { title: "Type", value: "Portfolio website" },
+    { title: "Type", value: "Portfolio site" },
     { title: "Stack", value: "React-Three-Fiber, TypeScript, WebGL, Next.js." },
     { title: "Visit", url: "https://peseworks.com" },
   ],

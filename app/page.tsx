@@ -6,6 +6,21 @@ import Logo from "@/components/logo";
 import collaborators from "@/content/collaborators"
 import CV from "@/components/cv"
 
+interface DividerProps {
+  title: string
+  subtitle?: string
+}
+
+const Divider = ({ title, subtitle = "" }: DividerProps) => {
+  return (
+    <div className="grid grid-cols-4 w-full font-bold">
+      <h2>{title}</h2>
+      <h2 className='col-span-2'>{subtitle}</h2>
+      <h2 className=' text-right'>Date</h2>
+    </div>
+  )
+}
+
 export default async function Home() {
   return (
     <main className="text-[14px] flex flex-col items-center ">
@@ -16,17 +31,17 @@ export default async function Home() {
         </div>
       </div> */}
 
+        <NavMenu />
       <Header />
 
-      <div className='pb-[400px] max-w-5xl mx-8'>
-        <div className="h-[30px] w-full"/>
-
-        <NavMenu />
+      <div className='pb-[200px] max-w-5xl mx-8'>
+        <div className="h-[30px] w-full" />
 
 
+        <section className="pt-12" id="selected">
+          <Divider title="Selected Work" />
 
-        <section id="selected">
-          <ul className="pt-36 list-none flex flex-col">
+          <ul className="pt-12 list-none flex flex-col gap-2">
             {selectedProjects.map((project, i) => (
               <li key={i} className=''>
                 <Project key={i} project={project} />
@@ -35,14 +50,10 @@ export default async function Home() {
           </ul>
         </section>
 
-        <section id="experimental">
-          <div className="grid grid-cols-4 w-full font-bold">
-            <h2>Experimental Work</h2>
-            <h2 className='col-span-2'>What</h2>
-            <h2 className=' text-right'>Date</h2>
-          </div>
+        <section className="pt-36" id="experimental">
+          <Divider title="Experimental Work" subtitle="What" />
 
-          <ul className="pt-12 list-none flex flex-col gap-1">
+          <ul className="pt-12 list-none flex flex-col gap-2">
             {experimentalProjects.map((project, i) => (
               <li key={i}>
                 <Project key={i} project={project} />
@@ -51,7 +62,7 @@ export default async function Home() {
           </ul>
         </section>
 
-        <div className="pt-48">
+        <div className="pt-36">
           <CV />
         </div>
 
