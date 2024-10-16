@@ -4,7 +4,6 @@ const project: IProject = {
   title: "Fringeless",
   collapsed: true,
   date: "2019",
-  canToggle: true,
   what: "Generative tourism for introverts",
   fields: [
     { title: "Type", value: "Research project" },

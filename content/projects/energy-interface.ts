@@ -3,7 +3,6 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Comfortable Interactions",
   collapsed: true,
-  canToggle: true,
   what: "Can buildings even persuade you?",
   fields: [
     { title: "Type", value: "Research project" },

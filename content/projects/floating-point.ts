@@ -1,16 +1,15 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
-  title: "Floating Point",
+  title: "Punto Flotante",
   collapsed: true,
   what: "A summer playing with stepper motors and mirrors in the sun",
   date: "2016",
-  canToggle: true,
   fields: [
     { title: "Type", value: "Self-initiated research project" },
     { title: "Tools", value: "Arduino, Grasshopper3D" },
   ],
-  descriptionTwo: `A solar clock that uses the position of the sun to tell the time. It is powered by an Arduino and a Grasshopper3D.`,
+  descriptionTwo: `A solar clock that uses the position of the sun to tell the time. It is powered by an Arduino and a Grasshopper3D. Kudos to xx for his help with the Firefly plugin for Grasshopper.`,
   gallery: [
     {
       type: "video",
