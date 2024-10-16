@@ -51,15 +51,8 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
 
   return (
     <div className="relative">
-      <div
-        style={{ height: '21px' }}
-        className={`
-            absolute m-auto -left-1.5 -right-1.5  rounded transition-colors
-            ${hover ? 'bg-esrs-gray' : 'bg-white'}
-          `}
-      />
       <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
-        style={{ height: !collapsed ? totalHeight + 'px' : '19px' }}
+        style={{ height: !collapsed ? totalHeight + 'px' : '22px' }}
       >
         {/* view as row */}
 
@@ -68,11 +61,11 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className={`
-              relative z-10 grid grid-cols-4 w-full mb-8 transition-colors
-              
+              relative z-10 grid grid-cols-4 w-full mb-8
+              ${hover ? 'text-blue-500' : 'text-black'}
             `}
         >
-          <div className={`text-left font-bold`}>
+          <div className={`text-left`}>
             {project.title}
           </div>
           <div className='text-left col-span-2'>
