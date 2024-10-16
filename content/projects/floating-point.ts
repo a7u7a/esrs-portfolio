@@ -13,23 +13,43 @@ const project: IProject = {
   descriptionTwo: `A solar clock that uses the position of the sun to tell the time. It is powered by an Arduino and a Grasshopper3D.`,
   gallery: [
     {
-      type: "image",
+      type: "video",
       alt: "alt",
-      src: "/assets/1.jpg",
-      dims: { width: 2412, height: 1452 }
+      src: "/assets/floatingpoint/fp-video.mp4",
+      dims: { width: 1920, height: 1080 }
+    },
+    {
+      type: "video",
+      alt: "alt",
+      src: "/assets/floatingpoint/fp-animation.mp4",
+      dims: { width: 1920, height: 1080 }
     },
     {
       type: "image",
       alt: "alt",
-      src: "/assets/2.jpg",
-      dims: { width: 2412, height: 1452 }
+      src: "/assets/floatingpoint/fp-pano.jpg",
+      dims: { width: 3500, height: 1968 }
     },
     {
       type: "image",
       alt: "alt",
-      src: "/assets/3.jpg",
-      dims: { width: 2412, height: 1452 }
-    }
+      src: "/assets/floatingpoint/fp-cad.jpg",
+      dims: { width: 3500, height: 1968 }
+    },
+    {
+      type: "image",
+      alt: "alt",
+      src: "/assets/floatingpoint/fp-double1.jpg",
+      dims: { width: 3500, height: 1968 }
+    },
+    {
+      type: "image",
+      alt: "alt",
+      src: "/assets/floatingpoint/fp-double2.jpg",
+      dims: { width: 3500, height: 1968 }
+    },
+    
+    
   ]
 };
 

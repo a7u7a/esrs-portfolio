@@ -38,7 +38,7 @@ const collaborators: ICollaborators[] = [
     url: "https://informatics.ed.ac.uk/"
   },
   {
-    name: "Cardiff U., School of computer science",
+    name: "Cardiff U., School of Computer Science",
     url: "https://www.cardiff.ac.uk/computer-science"
   }
 ]

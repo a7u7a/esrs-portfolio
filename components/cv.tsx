@@ -60,7 +60,7 @@ const CV = () => {
 
       </div>
 
-      <div className="col-span-1">
+      <div className="col-span-1 text-right">
 
         <section id="collaborators">
           <h2 className="font-bold">{"People I've worked with"}</h2>

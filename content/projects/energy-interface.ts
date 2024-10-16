@@ -15,21 +15,21 @@ const project: IProject = {
     {
       type: "image",
       alt: "alt",
-      src: "/assets/1.jpg",
-      dims: { width: 2412, height: 1452 }
+      src: "/assets/comfortable-interactions/ci-cover.jpg",
+      dims: { width: 3500, height: 1968 }
     },
     {
       type: "image",
       alt: "alt",
-      src: "/assets/2.jpg",
-      dims: { width: 2412, height: 1452 }
+      src: "/assets/comfortable-interactions/ci-render.jpg",
+      dims: { width: 3500, height: 1968 }
     },
     {
       type: "image",
       alt: "alt",
-      src: "/assets/3.jpg",
-      dims: { width: 2412, height: 1452 }
-    }
+      src: "/assets/comfortable-interactions/ci-perspective.jpg",
+      dims: { width: 3500, height: 1968 }
+    },
   ]
 };
 

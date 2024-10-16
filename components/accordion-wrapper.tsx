@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import useMeasure from 'react-use-measure'
 import { IProject } from '@/lib/types';
 import Markdown from 'react-markdown'
-import { a } from 'framer-motion/client';
 
 interface AccordionItemProps {
   children: any

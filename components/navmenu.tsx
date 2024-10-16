@@ -1,24 +1,29 @@
+"use client"
 import React from 'react'
+import { useRouter } from 'next/navigation'
+
 const NavMenu = () => {
+  const router = useRouter()
+
   return (
     <nav className="sticky top-2 mt-2 w-full flex justify-center z-50 ">
-      <ul className="list-none flex gap-14 bg-gray-200 p-0.5 rounded-md bg-opacity-50">
+      <ul className="list-none flex gap-14 bg-gray-200 p-0.5 rounded-md">
 
-        <a className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white" href="/#selected">
+        <div className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white cursor-pointer" onClick={() => router.push('/#selected')}>
           {"Selected Projects"}
-        </a>
+        </div>
 
-        <a className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white" href="/#experimental">
+        <div className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white cursor-pointer" onClick={() => router.push('/#experimental')}>
           {"Experimental Work"}
-        </a>
+        </div>
 
-        <a className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white" href="/#publications">
+        <div className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white cursor-pointer" onClick={() => router.push('/#publications')}>
           {"Publications"}
-        </a>
+        </div>
 
-        <a className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white" href="/#contact">
+        <div className="font-bold bg-gray-200 px-1.5 rounded text-gray-600 hover:text-black hover:bg-white cursor-pointer" onClick={() => router.push('/#contact')}>
           {"Contact"}
-        </a>
+        </div>
 
       </ul>
     </nav>
