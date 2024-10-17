@@ -7,11 +7,11 @@ const project: IProject = {
   fields: [
     { title: "Type", value: "Web App" },
     { title: "Design", value: "Client co-design" },
-    { title: "Stack", value: "TypeScript, Tailwind, Next.js, Sanity CMS, Vercel." },
+    { title: "Stack", value: "Next.js, Tailwind, Sanity CMS, Vercel, TypeScript" },
     { title: "Visit", url: "https://elementalchile.cl" },
   ],
-  descriptionOne: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula dui sed sem porta facilisis. Sed non pretium sem. Aenean ultricies nulla eu justo fermentum, ut tempor risus viverra. Nulla blandit ligula eget mi pharetra tempus. Praesent justo mi, fermentum ut elit eget.`,
-  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
+  descriptionOne: `A super minimal site for Elemental Chile, led by [Pritzker](https://www.pritzkerprize.com/jury) prize winning architect Alejandro Aravena. They wanted something that felt like an internal tool - brutalist and early-internet inspired. The challenge was to showcase 200+ projects in a way that worked for stakeholder meetings.`,
+  descriptionTwo: `The result is a custom app which syncs content from their internal database to a [Sanity](https://www.sanity.io/) backend, making it easy for them to keep the site updated. Coupled with a global search feature. Helping people discover connections across their diverse body of work.`,
   gallery: [
     {
       type: "video",

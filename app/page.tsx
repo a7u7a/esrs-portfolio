@@ -3,7 +3,6 @@ import Header from "@/components/header";
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import NavMenu from "@/components/navmenu";
 import Logo from "@/components/logo";
-import collaborators from "@/content/collaborators"
 import CV from "@/components/cv"
 
 interface DividerProps {
@@ -23,7 +22,7 @@ const Divider = ({ title, subtitle = "" }: DividerProps) => {
 
 export default async function Home() {
   return (
-    <main className="text-[14px] flex flex-col items-center ">
+    <main className="flex flex-col items-center ">
 
       {/* <div className="fixed w-full flex items-center justify-end" >
         <div className="w-[100px] h-[100px]">
@@ -41,7 +40,7 @@ export default async function Home() {
         <section className="pt-12" id="selected">
           <Divider title="Selected Work" />
 
-          <ul className="pt-12 list-none flex flex-col gap-2">
+          <ul className="pt-12 list-none flex flex-col gap-3">
             {selectedProjects.map((project, i) => (
               <li key={i} className=''>
                 <Project key={i} project={project} />
@@ -53,7 +52,7 @@ export default async function Home() {
         <section className="pt-36" id="experimental">
           <Divider title="Experimental Work" subtitle="What" />
 
-          <ul className="pt-12 list-none flex flex-col gap-2">
+          <ul className="pt-12 list-none flex flex-col gap-3">
             {experimentalProjects.map((project, i) => (
               <li key={i}>
                 <Project key={i} project={project} />

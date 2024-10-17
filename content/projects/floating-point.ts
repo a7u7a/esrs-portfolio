@@ -3,20 +3,16 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   title: "Punto Flotante",
   collapsed: true,
-  what: "A summer playing with stepper motors and mirrors in the sun",
-  date: "2016",
+  what: "A summer working with mirrors and stepper motors",
+  date: "2017",
   fields: [
     { title: "Type", value: "Self-initiated research project" },
-    { title: "Tools", value: "Arduino, Grasshopper3D" },
+    { title: "Tools", value: "Arduino, Grasshopper3D, Firefly Plugin" },
+    { title: "Video", url: "https://youtu.be/SHnhzbCWRn8" },
   ],
-  descriptionTwo: `A solar clock that uses the position of the sun to tell the time. It is powered by an Arduino and a Grasshopper3D. Kudos to xx for his help with the Firefly plugin for Grasshopper.`,
+  descriptionOne: `At the time, I was very interested in forms of screenless tech; I had the opportunity to explore this during a residency at [Eigengrau Lab](https://sebastianrodriguez.ch/projects/eigengrau-laboratory-by-javier-toro-blum/), where I built these computer-controlled mirrors.`,
+  descriptionTwo: `Hidden from pedestrian's view, they would reflect the light to a nearby facade, drawing an elliptical pattern each hour through the day. The project was exhibited during the [12th Media Art Biennale 2017](https://www.dropbox.com/scl/fi/d6zl4wa43xf2ybtok1f18/catalogo_bienal_12.pdf?rlkey=2fnm7euy0hmx2fwkpqhymwbao&st=uaz8glj4&dl=0), Santiago.`,
   gallery: [
-    {
-      type: "video",
-      alt: "alt",
-      src: "/assets/floatingpoint/fp-video.mp4",
-      dims: { width: 1920, height: 1080 }
-    },
     {
       type: "video",
       alt: "alt",
@@ -28,6 +24,12 @@ const project: IProject = {
       alt: "alt",
       src: "/assets/floatingpoint/fp-pano.jpg",
       dims: { width: 3500, height: 1968 }
+    },
+    {
+      type: "video",
+      alt: "alt",
+      src: "/assets/floatingpoint/fp-video.mp4",
+      dims: { width: 1920, height: 1080 }
     },
     {
       type: "image",
@@ -47,8 +49,8 @@ const project: IProject = {
       src: "/assets/floatingpoint/fp-double2.jpg",
       dims: { width: 3500, height: 1968 }
     },
-    
-    
+
+
   ]
 };
 

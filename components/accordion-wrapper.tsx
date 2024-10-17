@@ -62,7 +62,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           onMouseLeave={() => setHover(false)}
           className={`
               relative z-10 grid grid-cols-4 w-full mb-8
-              ${hover ? 'text-blue-500' : 'text-black'}
+              ${hover ? 'text-blue-500' : ''}
             `}
         >
           <div className={`text-left`}>
@@ -85,11 +85,11 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
                 {field.url && field.value ? (
                   <div>
                     <span className='font-bold pr-1.5'>{field.title}</span>
-                    <a className='hover:underline' href={field.url} target="_blank" rel="noopener noreferrer">{field.value}</a>
+                    <a className='hover:underline hover:text-blue-500' href={field.url} target="_blank" rel="noopener noreferrer">{field.value}</a>
                   </div>
                 ) : (null)}
                 {field.url && !field.value ? (
-                  <a className='font-bold hover:underline' href={field.url} target="_blank" rel="noopener noreferrer">{field.title}</a>
+                  <a className='font-bold hover:underline hover:text-blue-500' href={field.url} target="_blank" rel="noopener noreferrer">{field.title}</a>
                 ) : null}
                 {!field.url && field.value ? (
                   <div>
@@ -100,7 +100,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
               </div>
             ))}
           </div>
-          <div className={`flex gap-2 w-1/2`}>
+          <div className={`flex gap-2 w-1/2 text-pretty prose-a:underline hover:prose-a:text-blue-500`}>
             <div className='w-1/2'>
               <Markdown>{project.descriptionOne}</Markdown>
             </div>

@@ -5,11 +5,12 @@ const project: IProject = {
   collapsed: true,
   what: "Can buildings even persuade you?",
   fields: [
-    { title: "Type", value: "Research project" },
+    { title: "Type", value: "MSc dissertation project" },
     { title: "Tools", value: "E-paper display, Raspberry Pi, Python" },
   ],
   date: "2019",
-  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
+  descriptionOne: `Can a building use natural language to explain what it's doing to keep you warm during winter? Can it tell you what kind of strategies you have to make yourself comfortable without increasing energy use?`,
+  descriptionTwo: `In this project I used [HCI research methods](https://www.interaction-design.org/literature/topics/human-computer-interaction) to develop and evaluate an interface which lets users communicate with buildings with the goal of improving comfort and lowering energy use. Referencing the interesting work of Stewart Brand, Adrian Clear and Elizabeth Shove.`,
   gallery: [
     {
       type: "image",

@@ -2,36 +2,36 @@ import { ICollaborators } from "@/lib/types"
 
 const collaborators: ICollaborators[] = [
   {
-    name: "FutureCorp, Paris",
+    name: "FutureCorp",
     url: "https://futurecorp.paris/"
   },
   {
-    name: "Saatchi & Saatchi, UK",
+    name: "Saatchi & Saatchi",
     url: "https://saatchi.co.uk/"
   },
   {
-    name: "Elemental Chile",
-    url: "https://elemental-chile.cl/"
-  },
-  // {
-  //   name: "New Tendency, Berlin",
-  //   url: "https://newtendency.com/"
-  // },
-  {
-    name: "JDS Development Group, NYC",
+    name: "JDS Development Group",
     url: "https://jdsdevelopment.com/"
   },
   {
-    name: "Viapontica AI, UK",
+    name: "Elemental",
+    url: "https://elemental-chile.cl/"
+  },
+  {
+    name: "Asimov Consulting",
+    url: "https://www.asimov.cl/"
+  },
+  {
+    name: "Viapontica AI",
     url: "https://viapontica.ai/"
   },
   {
-    name: "TrainFES, Chile",
-    url: "https://trainfes.com/"
+    name: "The Egg Assembly",
+    url: "https://x.com/assemblyegg?lang=gu"
   },
   {
-    name: "Escuela de Ingeniería PUC",
-    url: "https://www.ing.uc.cl/"
+    name: "TrainFES",
+    url: "https://trainfes.com/"
   },
   {
     name: "U. of Edinburgh, School of Informatics",
@@ -40,6 +40,10 @@ const collaborators: ICollaborators[] = [
   {
     name: "Cardiff U. School of Computer Science",
     url: "https://www.cardiff.ac.uk/computer-science"
+  },
+  {
+    name: "Escuela de Ingeniería PUC",
+    url: "https://www.ing.uc.cl/"
   }
 ]
 

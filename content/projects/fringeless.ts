@@ -9,7 +9,8 @@ const project: IProject = {
     { title: "Type", value: "Research project" },
     { title: "Tools", value: "Python, Google Maps API, thermal printer" },
   ],
-  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
+  descriptionOne: 'A fun experiment during DwD week: While living in Edinburgh you realize how much locals dislike when the city gets overrun by tourists during the [Fringe Festival](https://www.edfringe.com/). ',
+  descriptionTwo: 'As response, we built this tool using Google Maps API, a thermal printer and a handcrafted dataset of interesting locations. It generated unique navigation instructions in puzzle form to get to the least-crowded-but-still-fun place.',
   gallery: [
     {
       type: "image",

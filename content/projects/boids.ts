@@ -4,14 +4,14 @@ export const project: IProject = {
   title: "Plasma birds",
   what: "Geeking out with Three.js, GLSL and Observable notebooks",
   fields: [
-    { title: "Type", value: "Fun code experiment" },
+    { title: "Type", value: "Interactive particle simulation" },
     { title: "Tools", value: "Three.js + Observable" },
     { title: "Visit", url: 'https://observablehq.com/@esrs/plasma-boids-may-2022-update?collection=@esrs/boids' },
   ],
-  date: "2024",
+  date: "2021",
   collapsed: true,
-  descriptionOne: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula dui sed sem porta facilisis. Sed non pretium sem. Aenean ultricies nulla eu justo fermentum, ut tempor risus viverra. Nulla blandit ligula eget mi pharetra tempus. Praesent justo mi, fermentum ut elit eget.`,
-  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
+  descriptionOne: `I implemented this [boids simulation](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) as part of my journey of learning graphics programming for the web. I was kind of obsessed with code notebooks at the time and ended up using Observable.`,
+  descriptionTwo: `As bonus, I added my take on wind effect using 3D perlin noise vector fields. During the process I also made a lot of [smaller notebooks](https://observablehq.com/@esrs/plasma-boids-may-2022-update?tab=collections&collection=@esrs/boids) with tests, adapted mostly from [The Nature of Code](https://natureofcode.com/) book.`,
   gallery: [
     {
       type: "video",

@@ -18,8 +18,8 @@ export const selectedProjects: IProject[] = [
 
 export const experimentalProjects: IProject[] = [
   blokisScroller,
-  floatingPoint,
+  boids,
   energyInterface,
   fringeless,
-  boids,
+  floatingPoint,
 ]

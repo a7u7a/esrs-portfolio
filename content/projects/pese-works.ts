@@ -8,10 +8,10 @@ const project: IProject = {
   fields: [
     { title: "Type", value: "Portfolio site" },
     { title: "Stack", value: "React-Three-Fiber, TypeScript, WebGL, Next.js." },
-    { title: "Visit", url: "https://peseworks.com" },
+    { title: "Visit", url: "https://pese.works/" },
   ],
-  descriptionOne: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula dui sed sem porta facilisis. Sed non pretium sem. Aenean ultricies nulla eu justo fermentum, ut tempor risus viverra. Nulla blandit ligula eget mi pharetra tempus. Praesent justo mi, fermentum ut elit eget.`,
-  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
+  descriptionOne: `For this site we repurposed a model Pedro created for an exhibition project in Berlin. There was something interesting between the sterile view of the simulation and the photos of the real world objects he wanted to show.`,
+  descriptionTwo: `I had to make this [little tool](https://pese.works/?debug=true) to help me find the right animation parameters for making the little scroll-dance between lights, camera and 🌷.`,
   gallery: [
     {
       type: "video",

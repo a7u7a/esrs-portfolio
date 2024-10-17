@@ -18,13 +18,13 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-antique-regular)"],
+        sans: ["var(--font-akz-roman)"],
       },
       colors: {
         'esrs-gray': '#EFEFEF',
       }
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
 export default config;

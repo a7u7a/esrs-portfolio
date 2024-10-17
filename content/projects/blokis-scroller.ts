@@ -1,8 +1,8 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
-  title: "Blokis Scroller Series",
-  what: "A scale in which money loses meaning",
+  title: "Scroller Series",
+  what: "Screens that show big numbers",
   collapsed: true,
   fields: [
     {
@@ -12,16 +12,28 @@ const project: IProject = {
     {
       title: "Comissioned by",
       value: "Ignacio Gatica",
-      url: "https://www.blokis.com",
+      url: "https://www.instagram.com/ignaciogatica",
+    },
+    {
+      title: "Stack",
+      value: "Python, Pandas, World Bank API, Yahoo Finance API, Raspberry Pi",
     },
     {
       title: "More info",
       url: "https://github.com/a7u7a/bloko",
     }
   ],
-  date: "2022-24",
-  descriptionTwo: `Blandit aliquam libero. Integer maximus, augue eget posuere pretium, ipsum lectus porttitor lectus, eu blandit quam nisl ac nibh. Vivamus ac ipsum id augue molestie semper et faucibus dolor. Donec placerat commodo posuere. Nulla feugiat lacinia ex tempus varius. Nunc imperdiet quis lorem in scelerisque.`,
+  date: "2022",
+  
+  descriptionOne: `I was commissioned to create the software responsible for controlling LED displays of variable length. The idea was to create a financial [Ticker](https://corporatefinanceinstitute.com/resources/wealth-management/what-is-ticker) Scroller display.`,
+  descriptionTwo: `It was later extended to work with country data, such as [international debt](https://databank.worldbank.org/metadataglossary/international-debt-statistics/series/DT.DOD.DECT.CD.CG) and GDP. The piece explores the significance of money on a planetary scale and has been featured by [The Washington Post](https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/) and [Frieze](https://www.frieze.com/article/ignacio-gatica-sujeto-cuantificado-quantified-subject-2023-review).`,
   gallery: [
+    {
+      type: "image",
+      alt: "alt",
+      src: "/assets/bloko/perspective.jpg",
+      dims: { width: 3500, height: 1968 }
+    },
     {
       type: "video",
       alt: "alt",
@@ -37,15 +49,16 @@ const project: IProject = {
     {
       type: "image",
       alt: "alt",
-      src: "/assets/bloko/gallery2.jpg",
+      src: "/assets/bloko/interrupt.png",
       dims: { width: 3500, height: 1968 }
     },
     {
       type: "image",
       alt: "alt",
-      src: "/assets/bloko/perspective.jpg",
+      src: "/assets/bloko/gallery2.jpg",
       dims: { width: 3500, height: 1968 }
-    } 
+    },
+
   ]
 };
 
