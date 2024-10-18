@@ -54,21 +54,21 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
       <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
         style={{ height: !collapsed ? totalHeight + 'px' : '22px' }}
       >
-        {/* view as row */}
+        {/* Click title to expand */}
 
         <button
           onClick={onClick}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className={`
-              relative z-10 grid grid-cols-4 w-full mb-8
+              relative z-10 flex justify-between sm:grid sm:grid-cols-4 w-full mb-8
               ${hover ? 'text-blue-500' : ''}
             `}
         >
-          <div className={`text-left`}>
+          <div className={`text-left w-1/2 sm:w-full`}>
             {project.title}
           </div>
-          <div className='text-left col-span-2'>
+          <div className='hidden sm:block text-left col-span-2'>
             <h3><span>{project.what}</span></h3>
           </div>
           <div className='text-right'>
@@ -77,7 +77,8 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
         </button>
 
         {/* project details */}
-        <div ref={headerRef} className='flex gap-2'>
+        <div ref={headerRef} className='flex gap-3 justify-between'>
+
           <div className='w-1/2 flex flex-col space-y-0.5'>
             {project.fields && project.fields.map((field, index) => (
               <div key={index}>
@@ -100,11 +101,12 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
               </div>
             ))}
           </div>
-          <div className={`flex gap-2 w-1/2 text-pretty prose-a:underline hover:prose-a:text-blue-500`}>
-            <div className='w-1/2'>
+
+          <div className={`flex flex-col sm:flex-row w-1/2 sm:w-2/3 gap-3 text-pretty prose-a:underline hover:prose-a:text-blue-500`}>
+            <div className='w-auto sm:w-1/2'>
               <Markdown>{project.descriptionOne}</Markdown>
             </div>
-            <div className='w-1/2'>
+            <div className='w-auto sm:w-1/2'>
               <Markdown>{project.descriptionTwo}</Markdown>
             </div>
           </div>
@@ -114,7 +116,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           style={{ maxHeight: !collapsed ? totalHeight + 'px' : '0px' }}
         >
           <div ref={childrenRef}>
-            <div className={'pt-12 pb-20'}>
+            <div className={'sm:pt-4 pb-28'}>
               {children} {/* project carousel */}
             </div>
           </div>

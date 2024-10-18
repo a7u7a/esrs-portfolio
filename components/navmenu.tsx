@@ -6,24 +6,16 @@ const NavMenu = () => {
   const router = useRouter()
 
   return (
-    <nav className="fixed top-2 w-full flex justify-center z-50 ">
-      <ul className="list-none flex items-center gap-14 bg-gray-200 p-0.5 rounded-md font-bold">
+    <nav className="sticky top-2 mt-2 w-full z-50 ">
+      <ul className="list-none flex items-center gap-8 justify-between sm:justify-start ">
 
-        <div className="bg-gray-200 px-2 rounded hover:bg-white cursor-pointer hover:text-blue-500 pt-[2px]" onClick={() => router.push('/#selected')}>
-          {"Selected"}
-        </div>
+        <NavButton title="Selected" href="/#selected" />
 
-        <div className="bg-gray-200 px-2 rounded hover:bg-white cursor-pointer hover:text-blue-500 pt-[2px]" onClick={() => router.push('/#experimental')}>
-          {"Experimental"}
-        </div>
+        <NavButton title="Experimental" href="/#experimental" />
+       
+        <NavButton title="Publications" href="/#publications" />
 
-        <div className="bg-gray-200 px-2 rounded hover:bg-white cursor-pointer hover:text-blue-500 pt-[2px]" onClick={() => router.push('/#publications')}>
-          {"Publications"}
-        </div>
-
-        <div className="bg-gray-200 px-2 rounded hover:bg-white cursor-pointer hover:text-blue-500 pt-[2px]" onClick={() => router.push('/#contact')}>
-          {"Contact"}
-        </div>
+        <NavButton title="Contact" href="/#contact" />
 
       </ul>
     </nav>
@@ -31,3 +23,13 @@ const NavMenu = () => {
 }
 
 export default NavMenu
+
+
+const NavButton = ({ title, href }: { title: string, href: string }) => {
+  const router = useRouter()
+  return (
+    <div className="cursor-pointer hover:text-blue-500 pt-[2px] font-bold" onClick={() => router.push(href)}>
+      {title}
+    </div>
+  )
+}

@@ -52,13 +52,6 @@ const project: IProject = {
       src: "/assets/bloko/interrupt.png",
       dims: { width: 3500, height: 1968 }
     },
-    {
-      type: "image",
-      alt: "alt",
-      src: "/assets/bloko/gallery2.jpg",
-      dims: { width: 3500, height: 1968 }
-    },
-
   ]
 };
 

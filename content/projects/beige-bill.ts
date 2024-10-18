@@ -10,7 +10,7 @@ export const project: IProject = {
     { title: "Visit", url: "https://beigepill.com" },
   ],
   descriptionOne: `A custom dot mask effect was developed for BeigePill's new website, evolving from a simple concept into a high-performance, full-screen animation. Multiple iterations were necessary to achieve the desired smoothness.`,
-  descriptionTwo: `The final solution uses WebGL's stencil buffer to create the mask and GSAP to control it. Enabling Beige Pill to present their work in line with their premium brand identity. Special thanks to Jack Wild for his invaluable technical guidance.`,
+  descriptionTwo: `The final solution uses WebGL's [stencil buffer](https://en.wikipedia.org/wiki/Stencil_buffer) to create the mask and [GSAP](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) to control it. Enabling Beige Pill to present their work in line with their premium brand identity. Special thanks to [Jack Wild](https://isjackwild.com/) for his technical guidance.`,
   gallery: [
     {
       type: "video",
