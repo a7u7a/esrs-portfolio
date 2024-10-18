@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from 'next/font/local'
+import Head from 'next/head'
 
 export const metadata: Metadata = {
   title: "Esteban Serrano",
@@ -17,6 +18,8 @@ const akzidenzBold = localFont({
   variable: '--font-akz-bold',
 })
 
+const canonicalUrl = process.env.NEXT_PUBLIC_CANONICAL_URL
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,6 +27,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <title>{'Esteban Serrano'}</title>
+        <meta name="description" content={"Design Engineering"} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content={"website"} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={"Esteban Serrano"} />
+        <meta property="og:description" content={"Design Engineering"} />
+        <meta property="og:locale" content={"en"} />
+      </Head>
+
       <body
         className={`
         ${akzidenzRoman.variable}

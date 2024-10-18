@@ -38,7 +38,9 @@ const CVDesktop = () => {
 
       <div className="col-span-1">
         <CVCollaborators />
-        <CVServices />
+        <div className='pt-16'>
+          <CVServices />
+        </div>
       </div>
     </div>
   )
