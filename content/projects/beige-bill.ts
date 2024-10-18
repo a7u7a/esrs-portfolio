@@ -9,8 +9,8 @@ export const project: IProject = {
     { title: "Stack", value: "WebGL, GSAP, Next.js, TypeScript, Mux API, Sanity CMS" },
     { title: "Visit", url: "https://beigepill.com" },
   ],
-  descriptionOne: `Created this dynamic dot mask animation for BeigePill Production's new site. While it started as a simple concept, achieving smooth, high-performance, full screen animations across devices required ton of optimization.`,
-  descriptionTwo: `Eventually, we settled for a low-level solution based on WebGL's stencil buffer. The result helps Beige Pill showcase their work in a way that resonates with their premium brand positioning. Thanks to [Jack Wild](https://www.isjackwild.com/) for his technical advice.`,
+  descriptionOne: `A custom dot mask effect was developed for BeigePill's new website, evolving from a simple concept into a high-performance, full-screen animation. Multiple iterations were necessary to achieve the desired smoothness.`,
+  descriptionTwo: `The final solution uses WebGL's stencil buffer to create the mask and GSAP to control it. Enabling Beige Pill to present their work in line with their premium brand identity. Special thanks to Jack Wild for his invaluable technical guidance.`,
   gallery: [
     {
       type: "video",
