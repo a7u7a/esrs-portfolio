@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={interFont.className} >{children}</body> */}
-      <body className={`${akzidenzRoman.variable} ${akzidenzBold.variable} font-sans antialiased selection:bg-gray-200 selection:text-blue-500 text-[16px] text-[#686868]`} >{children}</body>
+      <body className={`${akzidenzRoman.variable} ${akzidenzBold.variable} font-sans antialiased selection:bg-gray-200 selection:text-blue-500 text-[15px] text-[#686868]`} >{children}</body>
     </html>
   );
 }
