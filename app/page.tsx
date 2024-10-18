@@ -4,16 +4,17 @@ import { selectedProjects, experimentalProjects } from '@/content/projects'
 import NavMenu from "@/components/navmenu";
 import CV from "@/components/cv"
 import Divider from "@/components/divider"
+import Logo from "@/components/logo";
 
 export default async function Home() {
   return (
     <main className="flex flex-col items-center">
 
-      {/* <div className="fixed w-full flex items-center justify-end" >
-        <div className="w-[100px] h-[100px]">
-          <Logo />
-        </div>
-      </div> */}
+          <div className="fixed w-full flex items-center justify-end z-50" >
+            <div className="w-16 pt-4 pr-4 z-50">
+              <Logo />
+            </div>
+          </div>
 
       <Header />
 
