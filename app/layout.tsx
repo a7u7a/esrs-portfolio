@@ -18,6 +18,11 @@ const akzidenzBold = localFont({
   variable: '--font-akz-bold',
 })
 
+const mediumRegular = localFont({
+  src: '../public/fonts/MediumLLTrialWeb-Regular.woff2',
+  variable: '--font-medium-regular',
+})
+
 const canonicalUrl = process.env.NEXT_PUBLIC_CANONICAL_URL
 
 export default function RootLayout({
@@ -38,10 +43,12 @@ export default function RootLayout({
         <meta property="og:locale" content={"en"} />
       </Head>
 
+      {/* ${akzidenzRoman.variable}
+      ${akzidenzBold.variable} */}
+
       <body
         className={`
-        ${akzidenzRoman.variable}
-        ${akzidenzBold.variable}
+        ${mediumRegular.variable}
         font-sans antialiased 
         selection:bg-gray-200 selection:text-blue-500 text-[13px] sm:text-[15px]
         text-[#686868]
