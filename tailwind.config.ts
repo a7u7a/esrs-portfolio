@@ -18,7 +18,8 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-akz-roman)"],
+        // sans: ["var(--font-akz-roman)"],
+        sans: ["var(--font-medium-regular)"],
       },
       colors: {
         'esrs-gray': '#EFEFEF',
