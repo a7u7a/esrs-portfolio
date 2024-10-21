@@ -36,6 +36,7 @@ export default function RootLayout({
         <meta property="og:title" content={"Esteban Serrano"} />
         <meta property="og:description" content={"Design Engineering"} />
         <meta property="og:locale" content={"en"} />
+        <meta property="og:image" content={`${canonicalUrl}/esrs-og.jpg`} />
       </Head>
 
       <body
