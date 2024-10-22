@@ -7,7 +7,7 @@ const NavMenu = () => {
 
   return (
     <nav className="sticky top-3 mt-2 w-full z-50 ">
-      <ul className="list-none flex items-center gap-8 justify-between sm:justify-start ">
+      <ul className="list-none flex items-center justify-between sm:justify-start sm:gap-8 ">
         <NavButton title="Selected" href="/#selected" />
         <NavButton title="Experimental" href="/#experimental" />
         <NavButton title="Publications" href="/#publications" />

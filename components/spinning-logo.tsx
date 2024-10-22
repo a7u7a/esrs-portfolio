@@ -79,11 +79,9 @@ const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
       className={`
         fixed 
         ml-2 mb-2
-        
         top-0 right-0 
-        
         mt-10 md:mt-4
-        mr-3 sm:mr-4 lg:mr-4 xl:mr-8 2xl:mr-12
+        mr-3 md:mr-8 2xl:mr-12
         z-50 hover:cursor-pointer
       `}
     >
