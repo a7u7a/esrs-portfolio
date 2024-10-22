@@ -3,10 +3,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import useMeasure from 'react-use-measure'
 import { IProject } from '@/lib/types';
 import Markdown from 'react-markdown'
-
+import ArrowUpRight from './arrow-up-right';
 interface AccordionItemProps {
   children: any
   project: IProject
+}
+
+function LinkRenderer(props: any) {
+  return (
+    <a href={props.href} target="_blank" rel="noreferrer">
+      {props.children}
+    </a>
+  );
 }
 
 const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
@@ -62,7 +70,7 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           onMouseLeave={() => setHover(false)}
           className={`
               relative z-10 flex justify-between sm:grid sm:grid-cols-4 w-full mb-8
-              ${hover ? 'text-blue-500' : ''}
+              ${hover ? 'text-esrs-blue' : ''}
             `}
         >
           <div className={`text-left w-1/2 sm:w-full`}>
@@ -77,24 +85,27 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
         </button>
 
         {/* project details */}
-        <div ref={headerRef} className='flex gap-3 justify-between'>
+        <div ref={headerRef} className='flex flex-col sm:flex-row gap-3 justify-between'>
 
-          <div className='w-1/2 flex flex-col space-y-0.5'>
+          <div className='w-1/2 flex flex-col'>
             {project.fields && project.fields.map((field, index) => (
               <div key={index}>
                 {/* Different field variations */}
                 {field.url && field.value ? (
                   <div>
-                    <span className='font-bold pr-1.5'>{field.title}</span>
-                    <a className='hover:underline hover:text-blue-500' href={field.url} target="_blank" rel="noopener noreferrer">{field.value}</a>
+                    <span className='font-bold tracking-wide pr-1.5'>{field.title}</span>
+                    <a className='hover:underline hover:text-esrs-blue' href={field.url} target="_blank" rel="noopener noreferrer">{field.value}</a>
                   </div>
                 ) : (null)}
                 {field.url && !field.value ? (
-                  <a className='font-bold hover:underline hover:text-blue-500' href={field.url} target="_blank" rel="noopener noreferrer">{field.title}</a>
+                  <div className='flex gap-0'>
+                    <a className='font-bold tracking-wide hover:underline hover:text-esrs-blue' href={field.url} target="_blank" rel="noopener noreferrer">{field.title}</a>
+                    <ArrowUpRight size={19} />
+                  </div>
                 ) : null}
                 {!field.url && field.value ? (
                   <div>
-                    <span className='font-bold pr-1.5'>{field.title}</span>
+                    <span className='font-bold tracking-wide pr-1.5'>{field.title}</span>
                     <span>{field.value}</span>
                   </div>
                 ) : null}
@@ -102,22 +113,17 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
             ))}
           </div>
 
-          <div className={`flex flex-col sm:flex-row w-1/2 sm:w-2/3 gap-3 text-pretty prose-a:underline hover:prose-a:text-blue-500`}>
-            <div className='w-auto sm:w-1/2'>
-              <Markdown>{project.descriptionOne}</Markdown>
-            </div>
-            <div className='w-auto sm:w-1/2'>
-              <Markdown>{project.descriptionTwo}</Markdown>
-            </div>
-          </div>
+          <CopyTwoCols project={project} />
+
         </div>
         <div
           className={`${animate ? 'transition-all' : 'transition-none'} duration-1000 ease-in-out overflow-hidden`}
           style={{ maxHeight: !collapsed ? totalHeight + 'px' : '0px' }}
         >
           <div ref={childrenRef}>
-            <div className={'sm:pt-4 pb-28'}>
+            <div className={'pb-28'}>
               {children} {/* project carousel */}
+              <CopyOneCol project={project} />
             </div>
           </div>
         </div>
@@ -126,5 +132,30 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
   )
 }
 
-
 export default AccordionWrapper;
+
+interface CopyProps {
+  project: IProject
+}
+
+const CopyTwoCols = ({ project }: CopyProps) => {
+  return (
+    <div className={`hidden sm:flex flex-row w-2/3 gap-3 text-pretty prose-a:underline hover:prose-a:text-esrs-blue`}>
+      <div className='w-1/2'>
+        <Markdown components={{ a: LinkRenderer }}>{project.descriptionOne}</Markdown>
+      </div>
+      <div className='w-1/2'>
+        <Markdown components={{ a: LinkRenderer }}>{project.descriptionTwo}</Markdown>
+      </div>
+    </div>
+  )
+}
+
+const CopyOneCol = ({ project }: CopyProps) => {
+  const copy = project.descriptionOne + " " + project.descriptionTwo
+  return (
+    <div className={`block sm:hidden pt-3 w-full gap-3 text-pretty prose-a:underline hover:prose-a:text-esrs-blue`}>
+      <Markdown components={{ a: LinkRenderer }}>{copy}</Markdown>
+    </div>
+  )
+} 

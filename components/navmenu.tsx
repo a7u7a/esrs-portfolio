@@ -28,7 +28,7 @@ export default NavMenu
 const NavButton = ({ title, href }: { title: string, href: string }) => {
   const router = useRouter()
   return (
-    <div className="cursor-pointer hover:text-blue-500 pt-[2px] font-bold" onClick={() => router.push(href)}>
+    <div className="cursor-pointer hover:text-esrs-blue pt-[2px] font-bold tracking-wide" onClick={() => router.push(href)}>
       {title}
     </div>
   )

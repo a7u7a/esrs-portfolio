@@ -1,23 +1,22 @@
+import React, { useState, useRef, useEffect } from 'react'
 import Project from "@/components/project";
 import Header from "@/components/header";
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import NavMenu from "@/components/navmenu";
 import CV from "@/components/cv"
 import Divider from "@/components/divider"
+import SpinningLogo from "@/components/spinning-logo";
 
 export default async function Home() {
   return (
     <main className="flex flex-col items-center">
 
-      {/* <div className="fixed w-full flex items-center justify-end" >
-        <div className="w-[100px] h-[100px]">
-          <Logo />
-        </div>
-      </div> */}
+      <SpinningLogo />
 
       <Header />
 
-      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-2'>
+      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-2 md:mx-8'>
+
         <div className="h-[10px] md:h-[30px] w-full" />
 
         <NavMenu />

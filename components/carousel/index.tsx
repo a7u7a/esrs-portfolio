@@ -39,7 +39,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
   return (
     <section>
       {slides.length > 1 ? (
-        <div className="w-full flex justify-start pb-1 pt-4">
+        <div className="w-full flex justify-start pb-1 ">
 
           {/* <div className="grid grid-cols-2 gap-1 items-center">
             <PrevButton
