@@ -27,21 +27,18 @@ const Main = () => {
     function getTurns() {
       // Calculate the number of turns the icon must make from scrollstart to end
       const bodyHeight = document.documentElement.scrollHeight - window.innerHeight
-      console.log("bodyHeight", bodyHeight);
       const segments = Math.round(bodyHeight / desiredSegmentLength)
       return Math.max(1, segments);
     }
 
     const setupScrollTrigger = () => {
       const turns = getTurns();
-      console.log("turns", turns);
       if (!container.current) return;
       const proxy = { progress: 0 };
       gsap.to(proxy, {
         ease: "none",
         progress: 1,
         onUpdate: () => {
-          console.log("proxy.progress * turns", proxy.progress * turns);
           setScrollProgress(proxy.progress * turns)
         },
         scrollTrigger: {
