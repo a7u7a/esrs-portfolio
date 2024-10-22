@@ -1,14 +1,13 @@
 "use client"
 import React, { useMemo } from 'react'
 
-const progressFactor = 4
 const vbDims = { h: 88, w: 65 }
 const maxSquareHeight = 50
 const startingAngle = 0.27
 const m = 2
 
 function getAngle(value: number) {
-  return ((2 * Math.PI * value) / progressFactor) + startingAngle
+  return ((2 * Math.PI * value) ) + startingAngle
 }
 
 function getEllipseParams(value: number) {

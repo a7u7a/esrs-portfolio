@@ -11,7 +11,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from "@gsap/react";
 
-const desiredSegmentLength = 700
+const desiredSegmentLength = 2000
 
 const Main = () => {
 
@@ -26,19 +26,22 @@ const Main = () => {
 
     function getTurns() {
       // Calculate the number of turns the icon must make from scrollstart to end
-      const bodyHeight = document.documentElement.scrollHeight
+      const bodyHeight = document.documentElement.scrollHeight - window.innerHeight
+      console.log("bodyHeight", bodyHeight);
       const segments = Math.round(bodyHeight / desiredSegmentLength)
       return Math.max(1, segments);
     }
 
     const setupScrollTrigger = () => {
       const turns = getTurns();
+      console.log("turns", turns);
       if (!container.current) return;
       const proxy = { progress: 0 };
       gsap.to(proxy, {
         ease: "none",
         progress: 1,
         onUpdate: () => {
+          console.log("proxy.progress * turns", proxy.progress * turns);
           setScrollProgress(proxy.progress * turns)
         },
         scrollTrigger: {
@@ -64,10 +67,7 @@ const Main = () => {
   };
 
   return (
-    <main
-      ref={container}
-      className="flex flex-col items-center"
-    >
+    <main ref={container} className="flex flex-col items-center">
 
       <SpinningLogo scrollProgress={scrollProgress} />
       <Header />
@@ -88,7 +88,6 @@ const Main = () => {
 
         <section className="pt-12 sm:pt-36" id="experimental">
           <Divider title="Experimental Work" subtitle="What" />
-
           <ul className="pt-6 sm:pt-12 list-none flex flex-col gap-1 sm:gap-3">
             {experimentalProjects.map((project, i) => (
               <li key={i}>
