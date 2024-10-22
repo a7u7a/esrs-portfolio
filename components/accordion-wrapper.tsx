@@ -7,6 +7,7 @@ import ArrowUpRight from './arrow-up-right';
 interface AccordionItemProps {
   children: any
   project: IProject
+  onStateChange?: () => void;
 }
 
 function LinkRenderer(props: any) {
@@ -17,43 +18,23 @@ function LinkRenderer(props: any) {
   );
 }
 
-const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
+const AccordionWrapper = ({ children, project, onStateChange }: AccordionItemProps) => {
   const startsCollapsed = project.collapsed ?? false;
   const [animate, setAnimate] = useState(false);
   const [hover, setHover] = useState(false);
   const [collapsed, setCollapsed] = useState(startsCollapsed);
-  const [delayedCollapsed, setDelayedCollapsed] = useState(startsCollapsed)
   const [childrenRef, childrenBounds] = useMeasure()
-  const [headerRef, headerBounds] = useMeasure()
-  const isAnimating = useRef(false);
+  const [headerRef, headerBounds] = useMeasure();
 
   const onClick = () => {
-    if (!isAnimating.current) {
-      setCollapsed((prev) => !prev);
-      isAnimating.current = true;
-    }
+    setCollapsed((prev) => !prev);
+    onStateChange?.();
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => setAnimate(true), 250)
+    const timer = setTimeout(() => setAnimate(true), 300)
     return () => clearTimeout(timer)
   }, [])
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (collapsed) {
-      timer = setTimeout(() => {
-        setDelayedCollapsed(true);
-        isAnimating.current = false;
-      }, 750);
-    } else {
-      setDelayedCollapsed(false);
-      timer = setTimeout(() => {
-        isAnimating.current = false;
-      }, 750);
-    }
-    return () => clearTimeout(timer);
-  }, [collapsed])
 
   const totalHeight = headerBounds.height + childrenBounds.height
 
@@ -116,17 +97,14 @@ const AccordionWrapper = ({ children, project }: AccordionItemProps) => {
           <CopyTwoCols project={project} />
 
         </div>
-        <div
-          className={`${animate ? 'transition-all' : 'transition-none'} duration-1000 ease-in-out overflow-hidden`}
-          style={{ maxHeight: !collapsed ? totalHeight + 'px' : '0px' }}
-        >
-          <div ref={childrenRef}>
-            <div className={'pb-28'}>
-              {children} {/* project carousel */}
-              <CopyOneCol project={project} />
-            </div>
+
+        <div ref={childrenRef}>
+          <div className={'pb-28'}>
+            {children} {/* project carousel */}
+            <CopyOneCol project={project} />
           </div>
         </div>
+
       </div>
     </div>
   )
@@ -152,10 +130,10 @@ const CopyTwoCols = ({ project }: CopyProps) => {
 }
 
 const CopyOneCol = ({ project }: CopyProps) => {
-  const copy = project.descriptionOne + " " + project.descriptionTwo
   return (
     <div className={`block sm:hidden pt-3 w-full gap-3 text-pretty prose-a:underline hover:prose-a:text-esrs-blue`}>
-      <Markdown components={{ a: LinkRenderer }}>{copy}</Markdown>
+      <Markdown components={{ a: LinkRenderer }}>{project.descriptionOne}</Markdown>
+      <Markdown components={{ a: LinkRenderer }}>{project.descriptionTwo}</Markdown>
     </div>
   )
 } 
