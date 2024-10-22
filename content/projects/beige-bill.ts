@@ -9,8 +9,9 @@ export const project: IProject = {
     { title: "Stack", value: "WebGL, GSAP, Next.js, TypeScript, Mux API, Sanity CMS" },
     { title: "Go", url: "https://beigepill.com" },
   ],
-  descriptionOne: `A custom dot mask effect I developed for BeigePill's new website, evolving from a simple concept into a performant, full-screen animation. Multiple iterations were necessary to achieve the desired smoothness.`,
+  descriptionOne: `Implemented the design system for BeigePill's new website, designed by [FutureCorp](https://futurecorp.paris/). Starting from a simple concept and developing it into a performant, full-screen animation.`,
   descriptionTwo: `The current approach uses WebGL's [stencil buffer](https://en.wikipedia.org/wiki/Stencil_buffer) to create the mask and [GSAP](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) to control it. Enabling Beige Pill to present their work in line with their premium brand identity. Special thanks to [Jack Wild](https://isjackwild.com/) for his technical guidance.`,
+
   gallery: [
     {
       type: "video",

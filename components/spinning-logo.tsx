@@ -1,17 +1,11 @@
 "use client"
-import React, { useEffect, useMemo, useState } from 'react'
-import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import React, { useMemo } from 'react'
 
 const progressFactor = 4
-const vbDims = { h: 100, w: 65 }
+const vbDims = { h: 88, w: 65 }
 const maxSquareHeight = 50
 const startingAngle = 0.27
 const m = 2
-const turns = 6
 
 function getAngle(value: number) {
   return ((2 * Math.PI * value) / progressFactor) + startingAngle
@@ -31,34 +25,11 @@ function getY(value: number) {
   return [y1, y2];
 }
 
-const SpinningLogo = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
+interface SpinningLogoProps {
+  scrollProgress: number
+}
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useGSAP(() => {
-    const setupScrollTrigger = () => {
-      const container = document.body;
-      if (!container) return;
-      const proxy = { progress: 0 };
-      gsap.to(proxy, {
-        ease: "none",
-        progress: 1,
-        onUpdate: () => setScrollProgress(proxy.progress * turns),
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.9,
-        }
-      });
-    };
-    // Wait for the body to be ready
-    setTimeout(setupScrollTrigger, 100);
-  }, { scope: document.body })
+const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
 
   const lines = useMemo(() => {
     const [y1, y2] = getY(scrollProgress);
@@ -102,15 +73,22 @@ const SpinningLogo = () => {
     )
   }, [scrollProgress])
 
-  if (!isMounted) return null;
-
   return (
     <div
-      className="fixed right-0 mt-4 mr-12 z-50 hover:cursor-pointer"
       style={{ width: `${vbDims.w}px` }}
+      className={`
+        fixed 
+        ml-2 mb-2
+        
+        top-0 right-0 
+        
+        mt-10 md:mt-4
+        mr-3 sm:mr-4 lg:mr-4 xl:mr-8 2xl:mr-12
+        z-50 hover:cursor-pointer
+      `}
     >
       <svg
-        className='stroke-esrs-dark-gray stroke-[3px] hover:stroke-esrs-blue transition-colors duration-200 stroke-'
+        className='stroke-esrs-dark-gray stroke-[3px] hover:stroke-esrs-blue transition-colors duration-200'
         viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
