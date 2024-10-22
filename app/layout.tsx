@@ -44,8 +44,8 @@ export default function RootLayout({
         ${akzidenzRoman.variable}
         ${akzidenzBold.variable}
         font-sans antialiased 
-        selection:bg-gray-200 selection:text-blue-500 text-[13px] sm:text-[15px]
-        text-[#686868]
+        selection:bg-gray-200 selection:text-esrs-blue text-[14px] sm:text-[16px]
+        text-esrs-dark-gray
         `}
       >
         {children}

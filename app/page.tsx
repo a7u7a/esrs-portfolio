@@ -1,3 +1,4 @@
+import React, { useState, useRef, useEffect } from 'react'
 import Project from "@/components/project";
 import Header from "@/components/header";
 import { selectedProjects, experimentalProjects } from '@/content/projects'
@@ -10,12 +11,12 @@ export default async function Home() {
   return (
     <main className="flex flex-col items-center">
 
-
       <SpinningLogo />
 
       <Header />
 
-      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-2'>
+      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-2 md:mx-8'>
+
         <div className="h-[10px] md:h-[30px] w-full" />
 
         <NavMenu />

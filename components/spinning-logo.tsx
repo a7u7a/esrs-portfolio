@@ -1,14 +1,17 @@
 "use client"
 import React, { useEffect, useMemo, useState } from 'react'
+import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useGSAP } from "@gsap/react";
 
-const progressFactor = 1200
-const vbDims = { h: 110, w: 85 }
-const maxSquareHeight = 65
-const strokeWidth = 3.5
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+const progressFactor = 4
+const vbDims = { h: 100, w: 65 }
+const maxSquareHeight = 50
 const startingAngle = 0.27
-// const strokeColor = "black"
-const strokeColor = "#686868"
 const m = 2
+const turns = 6
 
 function getAngle(value: number) {
   return ((2 * Math.PI * value) / progressFactor) + startingAngle
@@ -29,23 +32,36 @@ function getY(value: number) {
 }
 
 const SpinningLogo = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    setIsMounted(true);
   }, []);
 
-  useEffect(() => {
-    console.log("scrollY", scrollY);
-  }, [scrollY])
+  useGSAP(() => {
+    const setupScrollTrigger = () => {
+      const container = document.body;
+      if (!container) return;
+      const proxy = { progress: 0 };
+      gsap.to(proxy, {
+        ease: "none",
+        progress: 1,
+        onUpdate: () => setScrollProgress(proxy.progress * turns),
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.9,
+        }
+      });
+    };
+    // Wait for the body to be ready
+    setTimeout(setupScrollTrigger, 100);
+  }, { scope: document.body })
 
   const lines = useMemo(() => {
-    const [y1, y2] = getY(scrollY);
+    const [y1, y2] = getY(scrollProgress);
     return (
       <>
         <line
@@ -53,27 +69,21 @@ const SpinningLogo = () => {
           y1={y1}
           x2={m}
           y2={y2}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          strokeLinecap="round"
         />
         <line
           x1={vbDims.w - m}
           y1={y1}
           x2={vbDims.w - m}
           y2={y2}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          strokeLinecap="round"
         />
       </>
     );
-  }, [scrollY]);
+  }, [scrollProgress]);
 
   const ellipses = useMemo(() => {
-    const [y1, y2] = getY(scrollY);
+    const [y1, y2] = getY(scrollProgress);
     const center = vbDims.w / 2
-    const { rx, ry } = getEllipseParams(scrollY);
+    const { rx, ry } = getEllipseParams(scrollProgress);
     return (
       <>
         <ellipse
@@ -81,27 +91,31 @@ const SpinningLogo = () => {
           cy={y1}
           rx={rx}
           ry={ry}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
         />
         <ellipse
           cx={center}
           cy={y2}
           rx={rx}
           ry={ry}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
         />
       </>
     )
-  }, [scrollY])
+  }, [scrollProgress])
+
+  if (!isMounted) return null;
 
   return (
     <div
+      className="fixed right-0 mt-4 mr-12 z-50 hover:cursor-pointer"
       style={{ width: `${vbDims.w}px` }}
-      className="fixed right-0 mt-4 mr-12 z-50"
     >
-      <svg viewBox={`0 0 ${vbDims.w} ${vbDims.h}`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        className='stroke-esrs-dark-gray stroke-[3px] hover:stroke-esrs-blue transition-colors duration-200 stroke-'
+        viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        strokeLinecap="round"
+      >
         {ellipses}
         {lines}
       </svg>
