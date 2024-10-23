@@ -24,6 +24,7 @@ const config: Config = {
         'esrs-gray': '#EFEFEF',
         'esrs-blue': 'rgb(59 130 246)',
         'esrs-dark-gray': '#686868',
+        'esrs-black': '#151515',
       }
     },
   },

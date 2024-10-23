@@ -64,7 +64,7 @@ const Main = () => {
   };
 
   return (
-    <main ref={container} className="flex flex-col items-center">
+    <main ref={container} className="flex flex-col items-center bg-white">
 
       <SpinningLogo scrollProgress={scrollProgress} />
       <Header />
