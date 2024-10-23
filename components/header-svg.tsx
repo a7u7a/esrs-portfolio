@@ -1,11 +1,12 @@
 'use client'
 import React from 'react'
 import { useControls } from 'leva'
-
+import HeaderCopy from './header-copy'
 const HeaderSvg = () => {
   return (
     <header className='h-[600px] overflow-hidden relative w-full bg-esrs-black text-esrs-gray'>
       <HeaderSVGArt />
+      {/* <HeaderCopy /> */}
     </header>
   )
 }
@@ -13,25 +14,31 @@ const HeaderSvg = () => {
 export default HeaderSvg
 
 const HeaderSVGArt = () => {
-  const { radius, glow, shift } = useControls({
+  const { radius, glow, shift, deviation } = useControls({
     radius: {
-      value: 10,
+      value: 88.06,
       min: 0,
       max: 100,
       step: 0.001,
     },
+    deviation: {
+      value: 6.80,
+      min: 0,
+      max: 20,
+      step: 0.001,
+    },
     glow: {
-      value: 30,
+      value: 18.83,
       min: 0,
       max: 30,
       step: 0.001,
     },
     shift: {
-      value: -1,
+      value: -0.13,
       min: -2,
       max: 2,
       step: 0.001,
-    }
+    },
   })
   return (
     <svg
@@ -43,8 +50,22 @@ const HeaderSVGArt = () => {
     >
       <defs>
         <filter id="filter">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-          <feColorMatrix in="blur" mode="matrix" values={`1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${glow} ${shift}`} result="filter" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation={deviation} result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            // values="
+            //   1 0 0 0 0
+            //   0 1 0 0 0
+            //   0 0 1 0 0
+            //   0 0 0 1 0"
+            values={`
+              1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              0 0 0 ${glow} ${shift}`}
+            result="filter"
+          />
         </filter>
       </defs>
 
