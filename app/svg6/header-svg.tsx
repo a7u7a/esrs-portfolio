@@ -17,7 +17,7 @@ const HeaderSvg = () => {
 export default HeaderSvg
 
 const HeaderSVGArt = () => {
-  const { stdDev, azimuth, elevation, fontSize, specConst1, specExp1, specConst2, specExp2, operator1, operator2, glow, shift } = Controls()
+  const { stdDev, azimuth, elevation, fontSize, specConst1, specExp1, specConst2, specExp2, operator1, glow, shift, text } = Controls()
   return (
     <svg
       viewBox="0 0 500 500"
@@ -73,7 +73,7 @@ const HeaderSVGArt = () => {
       <rect x="0" y="0" width="100%" height="100%" fill="#D9D9D9" />
 
       <text x="50%" y="50%" fontSize={fontSize} textAnchor="middle" fill="#D9D9D9" filter="url(#filter)">
-        {"Summer"}
+        {text}
       </text>
 
     </svg>

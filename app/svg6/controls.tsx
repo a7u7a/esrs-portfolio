@@ -3,6 +3,7 @@ import { useControls } from 'leva'
 const step = 0.01
 
 const Controls = () => useControls({
+  text: 'hola',
   stdDev: {
     value: 0.95,
     min: 0,
