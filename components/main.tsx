@@ -39,7 +39,10 @@ const Main = () => {
         ease: "none",
         progress: 1,
         onUpdate: () => {
-          setScrollProgress(proxy.progress * turns)
+          // lower the floating point precision
+          const p = Math.round(proxy.progress * turns * 100) / 100
+          console.log('p',p)
+          setScrollProgress(p)
         },
         scrollTrigger: {
           trigger: container.current,

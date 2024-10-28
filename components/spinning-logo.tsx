@@ -7,7 +7,7 @@ const startingAngle = 0.27
 const m = 2
 
 function getAngle(value: number) {
-  return ((2 * Math.PI * value) ) + startingAngle
+  return ((2 * Math.PI * value)) + startingAngle
 }
 
 function getEllipseParams(value: number) {
@@ -86,6 +86,7 @@ const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
     >
       <svg
         className='stroke-esrs-dark-gray stroke-[3px] hover:stroke-esrs-blue transition-colors duration-200'
+        style={{ willChange: "transform" }}
         viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

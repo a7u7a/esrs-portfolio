@@ -1,12 +1,15 @@
 'use client'
 import React from 'react'
-import { useControls } from 'leva'
-import HeaderCopy from './header-copy'
+import Controls from './controls'
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+// Trying animating other properties of the filter like guassian blur applied to a text element
+
 const HeaderSvg = () => {
   return (
     <header className='h-[600px] overflow-hidden relative w-full bg-esrs-black text-esrs-gray'>
       <HeaderSVGArt />
-      {/* <HeaderCopy /> */}
     </header>
   )
 }
@@ -14,32 +17,7 @@ const HeaderSvg = () => {
 export default HeaderSvg
 
 const HeaderSVGArt = () => {
-  const { radius, glow, shift, deviation } = useControls({
-    radius: {
-      value: 88.06,
-      min: 0,
-      max: 100,
-      step: 0.001,
-    },
-    deviation: {
-      value: 6.80,
-      min: 0,
-      max: 20,
-      step: 0.001,
-    },
-    glow: {
-      value: 18.83,
-      min: 0,
-      max: 30,
-      step: 0.001,
-    },
-    shift: {
-      value: -0.13,
-      min: -2,
-      max: 2,
-      step: 0.001,
-    },
-  })
+  const { deviation, glow, shift, radius, stroke } = Controls()
   return (
     <svg
       viewBox="0 0 500 500"
@@ -50,15 +28,10 @@ const HeaderSVGArt = () => {
     >
       <defs>
         <filter id="filter">
-          <feGaussianBlur in="SourceGraphic" stdDeviation={deviation} result="blur" />
+          <feGaussianBlur edgeMode="duplicate" in="SourceGraphic" stdDeviation={deviation} result="blur" />
           <feColorMatrix
             in="blur"
             mode="matrix"
-            // values="
-            //   1 0 0 0 0
-            //   0 1 0 0 0
-            //   0 0 1 0 0
-            //   0 0 0 1 0"
             values={`
               1 0 0 0 0
               0 1 0 0 0
@@ -66,24 +39,33 @@ const HeaderSVGArt = () => {
               0 0 0 ${glow} ${shift}`}
             result="filter"
           />
+          
         </filter>
       </defs>
 
-      <g filter="url(#filter)">
+      <text x="50%" y="50%" textAnchor="middle" fill="white" filter="url(#filter)">
+        <tspan x="50%" y="50%" fontSize="100" fontWeight="bold">
+          Hello
+        </tspan>
+      </text>
+
+      {/* <g filter="url(#filter)">
         <circle
-          className='stroke-white stroke-3'
+          strokeWidth={stroke}
+          className={`stroke-green-500`}
           cx={"40%"}
           cy={"50%"}
           r={radius}
         />
 
         <circle
-          className='stroke-white stroke-3'
+          strokeWidth={stroke}
+          className={`stroke-red-500`}
           cx={"60%"}
           cy={"50%"}
           r={radius}
         />
-      </g>
+      </g> */}
 
     </svg>
   )

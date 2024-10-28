@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderSvg from '@/components/header-svg'
+import HeaderSvg from './header-svg'
 
 const SvgPage = () => {
   return (
