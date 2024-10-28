@@ -65,7 +65,6 @@ const HeaderSVGArt = () => {
           />
 
           <feComposite in="shadow" in2="highlight" operator={operator1} result="shadowed" />
-          <feComposite in="SourceGraphic" in2="shadowed" operator={operator2} />
 
         </filter>
       </defs>

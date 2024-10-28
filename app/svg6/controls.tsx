@@ -46,7 +46,7 @@ const Controls = () => useControls({
     step,
   },
   specExp2: {
-    value: 5.47,
+    value: 2.93,
     min: 0,
     max: 100,
     step,
@@ -66,7 +66,7 @@ const Controls = () => useControls({
     step,
   },
   shift: {
-    value: 0.55,
+    value: 1.06,
     min: -2,
     max: 2,
     step,
