@@ -74,19 +74,19 @@ const AccordionWrapper = ({ children, project, onStateChange }: AccordionItemPro
                 {/* Different field variations */}
                 {field.url && field.value ? (
                   <div>
-                    <span className='font-bold tracking-wide pr-1.5'>{field.title}</span>
+                    <span className='font-bold pr-1.5'>{field.title}</span>
                     <a className='hover:underline hover:text-esrs-blue' href={field.url} target="_blank" rel="noopener noreferrer">{field.value}</a>
                   </div>
                 ) : (null)}
                 {field.url && !field.value ? (
                   <div className='flex gap-0'>
-                    <a className='font-bold tracking-wide hover:underline hover:text-esrs-blue' href={field.url} target="_blank" rel="noopener noreferrer">{field.title}</a>
+                    <a className='font-bold hover:underline hover:text-esrs-blue' href={field.url} target="_blank" rel="noopener noreferrer">{field.title}</a>
                     <ArrowUpRight size={19} />
                   </div>
                 ) : null}
                 {!field.url && field.value ? (
                   <div>
-                    <span className='font-bold tracking-wide pr-1.5'>{field.title}</span>
+                    <span className='font-bold pr-1.5'>{field.title}</span>
                     <span>{field.value}</span>
                   </div>
                 ) : null}

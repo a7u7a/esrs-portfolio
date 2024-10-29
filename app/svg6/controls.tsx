@@ -71,7 +71,7 @@ const Controls = () => useControls({
     min: -2,
     max: 2,
     step,
-  },
+  }
 })
 
 export default Controls

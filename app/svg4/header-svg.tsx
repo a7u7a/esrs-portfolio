@@ -13,9 +13,9 @@ gsap.registerPlugin(useGSAP);
 const HeaderSvg = () => {
   return (
     <header className='h-[600px] overflow-hidden relative w-full bg-esrs-black text-esrs-gray'>
-   <AnimatedFilter 
-      imageUrl="https://i.postimg.cc/43DKn46z/colours.jpg"
-    />
+      <AnimatedFilter
+        imageUrl="https://i.postimg.cc/43DKn46z/colours.jpg"
+      />
     </header>
   )
 }
@@ -28,34 +28,32 @@ interface AnimatedFilterProps {
   height?: number;
 }
 
-const AnimatedFilter = ({ 
-  imageUrl, 
-  width = 801, 
-  height = 537 
+const AnimatedFilter = ({
+  imageUrl,
+  width = 801,
+  height = 537
 }: AnimatedFilterProps) => {
   const filterRef = useRef(null);
 
-  useEffect(() => {
-    if (filterRef.current) {
-      gsap.to(filterRef.current, {
-        duration: 1,
-        attr: { 
-          numOctaves: 0, 
-          baseFrequency: 0 
-        },
-        yoyo: true,
-        repeat: -1,
-        repeatDelay: 1,
-        snap: {
-          numOctaves: 1
-        }
-      });
-    }
-  }, []);
+  useGSAP(() => {
+    gsap.to(filterRef.current, {
+      duration: 1,
+      attr: {
+        numOctaves: 0,
+        baseFrequency: 0
+      },
+      yoyo: true,
+      repeat: -1,
+      repeatDelay: 1,
+      snap: {
+        numOctaves: 1
+      }
+    });
+  }, []); // Empty dependency array similar to useEffect
 
   return (
     <div className="flex justify-center items-center w-full h-screen overflow-hidden">
-      <svg 
+      <svg
         viewBox={`0 0 ${width} ${height}`}
         className="w-auto h-auto max-w-[90%] max-h-[90%]"
       >
@@ -63,7 +61,7 @@ const AnimatedFilter = ({
           <filter id="displacementFilter">
             <feTurbulence
               ref={filterRef}
-              type="turbulence"
+              type="fractalNoise"
               baseFrequency="0.09"
               numOctaves="8"
               result="turbulence"

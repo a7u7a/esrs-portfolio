@@ -40,7 +40,7 @@ const Main = () => {
         progress: 1,
         onUpdate: () => {
           // lower the floating point precision
-          const p = Math.round(proxy.progress * turns * 100) / 100
+          const p = (proxy.progress * turns * 100) / 100
           console.log('p',p)
           setScrollProgress(p)
         },

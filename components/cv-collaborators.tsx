@@ -4,7 +4,7 @@ import collaborators from "@/content/collaborators"
 const CVCollaborators = () => {
   return (
     <section id="collaborators">
-      <h2 className="font-bold tracking-wide">{"People I've worked with"}</h2>
+      <h2 className="font-bold">{"People I've worked with"}</h2>
       <ul className="list-none pt-6 sm:pt-12 flex flex-col gap-3">
         {collaborators.map((collab, i) => (
           <li key={i}>

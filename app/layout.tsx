@@ -8,14 +8,20 @@ export const metadata: Metadata = {
   description: "Portfolio",
 };
 
-const akzidenzRoman = localFont({
-  src: '../public/fonts/Akzidenz-grotesk-roman.ttf',
-  variable: '--font-akz-roman',
-})
-
-const akzidenzBold = localFont({
-  src: '../public/fonts/Akzidenz-grotesk-bold.ttf',
-  variable: '--font-akz-bold',
+const mediumFont = localFont({
+  src: [
+    {
+      path: '../public/fonts/MediumLLWeb-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/MediumLLWeb-SemiBold.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-medium',
 })
 
 const canonicalUrl = process.env.NEXT_PUBLIC_CANONICAL_URL
@@ -41,8 +47,8 @@ export default function RootLayout({
 
       <body
         className={`
-        ${akzidenzRoman.variable}
-        ${akzidenzBold.variable}
+        ${mediumFont.variable}
+        
         font-sans antialiased 
         selection:bg-gray-200 selection:text-esrs-blue text-[14px] sm:text-[16px]
         text-esrs-dark-gray

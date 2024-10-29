@@ -4,7 +4,7 @@ import socials from "@/content/socials"
 const CVContact = () => {
   return (
     <section id="contact">
-      <h2 className="font-bold tracking-wide">{"Contact"}</h2>
+      <h2 className="font-bold">{"Contact"}</h2>
       <div className="pt-6 sm:pt-12">
         <ul className="list-none flex flex-col max-w-[600px]">
           <li key={1}>

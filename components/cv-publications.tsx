@@ -4,7 +4,7 @@ import publications from "@/content/publications"
 const CVPublications = () => {
     return (
       <section id="publications">
-      <h2 className="font-bold tracking-wide">Publications</h2>
+      <h2 className="font-bold">Publications</h2>
       <ul className="list-none pt-6 sm:pt-12 flex flex-col gap-3 max-w-[600px] mr-4 text-pretty">
         {publications.map((pub, i) => (
           <li key={i}>

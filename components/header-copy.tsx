@@ -1,8 +1,8 @@
 const HeaderCopy = () => {
   return (
-    <div className='absolute inset-x-0 bottom-0 mx-3 md:mx-8 flex flex-col justify-center items-center' >
+    <div className='absolute inset-x-0 bottom-0 mx-3 md:mx-8 flex flex-col justify-center items-center text-white mix-blend-difference' >
       <div className='max-w-5xl pt-[40px] pb-[80px] w-full'>
-        <h1 className='w-max font-bold tracking-wide'>Esteban Serrano</h1>
+        <h1 className='w-max font-semibold'>Esteban Serrano</h1>
         <div className='max-w-[700px] mt-8 text-pretty'>
           <p>{"I code and design digital experiences across a range of media. Mostly web."}</p>
           <div className='mt-4'>
