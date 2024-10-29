@@ -5,6 +5,7 @@ import { useControls } from 'leva'
 import HeaderCopy from '../../components/header-copy'
 
 
+
 const HeaderSvg = () => {
   return (
     <header className='h-[600px] overflow-hidden relative w-full bg-esrs-black text-esrs-gray'>
@@ -52,24 +53,22 @@ const AnimatedFilter = () => {
 
             <feDisplacementMap
               in="matrix"
-              in2="turb2"
+              in2="noise2"
               scale={scale}
               xChannelSelector="R"
               yChannelSelector="G"
-              result="noise2"
+              result="baseNoise"
             />
 
             <feColorMatrix
-              in="noise2"
               type="matrix"
               values="1 0 0 0 0
                       0 1 0 0 0
                       0 0 1 0 0
                       -1 -1 -1 1 0"
-              result="baseNoise"
             />
 
-            <feGaussianBlur in="baseNoise" stdDeviation={stdDev} result="blur1" />
+            {/* <feGaussianBlur in="baseNoise" stdDeviation={stdDev} result="blur1" />
             <feSpecularLighting result="spec1" in="blur1" specularConstant={specConst1} specularExponent={specExp1} lightingColor="#ffffff">
               <feDistantLight azimuth={azimuth + 180} elevation={elevation} />
             </feSpecularLighting>
@@ -83,16 +82,16 @@ const AnimatedFilter = () => {
               0 0 1 0 0
               0 0 0 ${glow} ${shift}`}
               result="highlight"
-            />
+            /> */}
 
             {/* Shadow effect */}
-            <feGaussianBlur in="baseNoise" stdDeviation={stdDev} result="blur2" />
+            {/* <feGaussianBlur in="baseNoise" stdDeviation={stdDev} result="blur2" />
             <feSpecularLighting result="spec2" in="blur2" specularConstant={specConst2} specularExponent={specExp2} lightingColor="#ffffff">
               <feDistantLight azimuth={azimuth} elevation={elevation} />
-            </feSpecularLighting>
+            </feSpecularLighting> */}
 
             {/* Convert white to black for shadow */}
-            <feColorMatrix
+            {/* <feColorMatrix
               in="spec2"
               type="matrix"
               values={`
@@ -101,9 +100,9 @@ const AnimatedFilter = () => {
               0 0 0 0 0
               0 0 0 ${glow} ${shift}`}
               result="shadow"
-            />
+            /> */}
 
-            <feComposite in="shadow" in2="highlight" operator={"lighter"} result="shadowed" />
+            {/* <feComposite in="shadow" in2="highlight" operator={"lighter"} result="shadowed" /> */}
 
           </filter>
         </defs>
