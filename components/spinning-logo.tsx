@@ -1,10 +1,10 @@
 "use client"
 import React, { useMemo } from 'react'
 
-const vbDims = { h: 88, w: 65 }
-const maxSquareHeight = 50
+const vbDims = { h: 115, w: 80 }
+const maxSquareHeight = 58
 const startingAngle = 0.27
-const m = 2
+const m = 4
 
 function getAngle(value: number) {
   return ((2 * Math.PI * value)) + startingAngle
@@ -85,15 +85,22 @@ const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
       `}
     >
       <svg
-        className='stroke-esrs-dark-gray stroke-[3px] hover:stroke-esrs-blue transition-colors duration-200'
+        className='stroke-esrs-dark-gray stroke-[5px] hover:stroke-esrs-blue transition-colors duration-200'
         style={{ willChange: "transform" }}
         viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         strokeLinecap="round"
       >
-        {ellipses}
-        {lines}
+        <defs>
+          <filter id="blurFilter">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
+          </filter>
+        </defs>
+        <g filter="url(#embossFilter)">
+          {ellipses}
+          {lines}
+        </g>
       </svg>
     </div>
   )

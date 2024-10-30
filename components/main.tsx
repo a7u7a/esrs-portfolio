@@ -10,54 +10,12 @@ import SpinningLogo from "@/components/spinning-logo";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from "@gsap/react";
+import { useScrollProgress } from '@/lib/hooks'
 
 const desiredSegmentLength = 2000
 
 const Main = () => {
-
-  useEffect(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
-  }, [])
-  const container = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
-
-  useGSAP(() => {
-
-    function getTurns() {
-      // Calculate the number of turns the icon must make from scrollstart to end
-      const bodyHeight = document.documentElement.scrollHeight - window.innerHeight
-      const segments = Math.round(bodyHeight / desiredSegmentLength)
-      return Math.max(1, segments);
-    }
-
-    const setupScrollTrigger = () => {
-      const turns = getTurns();
-      if (!container.current) return;
-      const proxy = { progress: 0 };
-      gsap.to(proxy, {
-        ease: "none",
-        progress: 1,
-        onUpdate: () => {
-          // lower the floating point precision
-          const p = (proxy.progress * turns * 100) / 100
-          console.log('p',p)
-          setScrollProgress(p)
-        },
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.7,
-          invalidateOnRefresh: true, // Recalculate on resize/refresh
-          onUpdate: (self) => {
-            scrollTriggerRef.current = self;
-          },
-        }
-      });
-    }
-    setTimeout(setupScrollTrigger, 1000);
-  }, { scope: container })
+  const { container, scrollProgress } = useScrollProgress();
 
   const handleAccordionChange = () => {
     // Wait for the transition to complete

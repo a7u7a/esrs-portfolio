@@ -4,6 +4,10 @@ import Controls from './controls'
 import { useControls } from 'leva'
 import HeaderCopy from '../../components/header-copy'
 
+// This effect is still WIP. I cant get the emboss effect to work with the text yet.
+// Not sure I will end up using this effect after all. But its definitely possible to implement.
+// Most likely issue is marked in a comment below.
+
 
 const HeaderSvg = () => {
   return (
@@ -92,7 +96,9 @@ const AnimatedFilter = () => {
 
             <feComposite in="baseNoise" in2="text" operator="over" result="blended" />
 
-            {/* Issue is in this step! */}
+            {/* Issue is most likely in this step! 
+            Current 'textAndNoise' cant be passed as is to the highlight step. 
+            Check how its done in /svg6 */}
             <feColorMatrix
               in="blended"
               type="matrix"
