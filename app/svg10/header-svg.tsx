@@ -27,7 +27,7 @@ const AnimatedFilter = () => {
       >
         <defs>
           <filter id="filter">
-
+            {/* Base b&w noise */}
             <feTurbulence type="fractalNoise" baseFrequency={baseFreq} numOctaves={numOct} result="noise1" />
 
             <feComponentTransfer in="noise1" result="spots">
@@ -69,6 +69,8 @@ const AnimatedFilter = () => {
               result="baseNoise"
             />
 
+            {/* Emboss effect */}
+            {/* Highlight */}
             <feGaussianBlur in="baseNoise" stdDeviation={stdDev} result="blur1" />
             <feSpecularLighting result="spec1" in="blur1" specularConstant={specConst1} specularExponent={specExp1} lightingColor="#ffffff">
               <feDistantLight azimuth={azimuth + 180} elevation={elevation} />
@@ -85,7 +87,7 @@ const AnimatedFilter = () => {
               result="highlight"
             />
 
-            {/* Shadow effect */}
+            {/* Shadow */}
             <feGaussianBlur in="baseNoise" stdDeviation={stdDev} result="blur2" />
             <feSpecularLighting result="spec2" in="blur2" specularConstant={specConst2} specularExponent={specExp2} lightingColor="#ffffff">
               <feDistantLight azimuth={azimuth} elevation={elevation} />

@@ -21,7 +21,7 @@ const HeaderSvg = () => {
 export default HeaderSvg
 
 const HeaderSVGArt = () => {
-  const { stdDev, azimuth, elevation, fontSize, specConst1, specExp1, specConst2, specExp2, operator1, glow, shift, text } = Controls()
+  const { blur, azimuth, elevation, fontSize, specConstH, specExpH, specConstS, specExpS, glow, shift, text } = Controls()
   return (
     <svg
       viewBox="0 0 500 500"
@@ -35,8 +35,8 @@ const HeaderSVGArt = () => {
       <defs>
         <filter id="filter">
           {/* Highlight effect */}
-          <feGaussianBlur in="SourceGraphic" stdDeviation={stdDev} result="blur1" />
-          <feSpecularLighting result="spec1" in="blur1" specularConstant={specConst1} specularExponent={specExp1} lightingColor="#ffffff">
+          <feGaussianBlur in="SourceGraphic" stdDeviation={blur} result="blur1" />
+          <feSpecularLighting result="spec1" in="blur1" specularConstant={specConstH} specularExponent={specExpH} lightingColor="#ffffff">
             <feDistantLight azimuth={azimuth + 180} elevation={elevation} />
           </feSpecularLighting>
 
@@ -52,8 +52,8 @@ const HeaderSVGArt = () => {
           />
 
           {/* Shadow effect */}
-          <feGaussianBlur in="SourceGraphic" stdDeviation={stdDev} result="blur2" />
-          <feSpecularLighting result="spec2" in="blur2" specularConstant={specConst2} specularExponent={specExp2} lightingColor="#ffffff">
+          <feGaussianBlur in="SourceGraphic" stdDeviation={blur} result="blur2" />
+          <feSpecularLighting result="spec2" in="blur2" specularConstant={specConstS} specularExponent={specExpS} lightingColor="#ffffff">
             <feDistantLight azimuth={azimuth} elevation={elevation} />
           </feSpecularLighting>
 
@@ -69,12 +69,23 @@ const HeaderSVGArt = () => {
             result="shadow"
           />
 
-          <feComposite in="shadow" in2="highlight" operator={operator1} result="shadowed" />
+          <feComposite in="shadow" in2="highlight" operator={"lighter"} result="shadowed" />
 
         </filter>
       </defs>
 
-      <text x="50%" y="50%" fontSize={fontSize} textAnchor="middle" fill="#D9D9D9" filter="url(#filter)">
+      <g filter="url(#filter)">
+
+        <text x="50%" y="43%" fontSize={fontSize} textAnchor="middle" fill="black" className='font-semibold'>
+          {text}
+        </text>
+
+        <text x="50%" y="67%" fontSize={fontSize} textAnchor="middle" fill="black">
+          {text}
+        </text>
+      </g>
+
+      <text x="50%" y="80%" fontSize={15} textAnchor="middle" fill="#474747" >
         {text}
       </text>
 

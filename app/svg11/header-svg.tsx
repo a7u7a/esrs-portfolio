@@ -24,35 +24,44 @@ const AnimatedFilter = () => {
         <defs>
           <filter id="mainFilter" x="-50%" y="-50%" width="200%" height="200%">
             {/* Generate base noise */}
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency={baseFreq}
-              numOctaves={numOct}
-              result="noise1"
-            />
+            <feTurbulence type="fractalNoise" baseFrequency={baseFreq} numOctaves={numOct} result="noise1" />
+
             <feComponentTransfer in="noise1" result="spots">
               <feFuncA type="discrete" tableValues="0 1 0" />
             </feComponentTransfer>
+
             <feColorMatrix
               in="spots"
               result="matrix"
               values="0 0 0 1 0
-                    0 0 0 1 0
-                    0 0 0 1 0
-                    0 0 0 1 1"
+          0 0 0 1 0
+          0 0 0 1 0
+          0 0 0 1 1"
             />
+
             <feTurbulence
               type="fractalNoise"
               baseFrequency={baseFreq2}
               numOctaves={numOct2}
               result="turb2"
             />
+
             <feDisplacementMap
               in="matrix"
-              in2="noise2"
+              in2="turb2"
               scale={scale}
               xChannelSelector="R"
               yChannelSelector="G"
+              result="noise2"
+            />
+
+            <feColorMatrix
+              in="noise2"
+              type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      -1 -1 -1 1 0"
               result="baseNoise"
             />
 
@@ -70,7 +79,7 @@ const AnimatedFilter = () => {
               result="blended"
             />
 
-            {/* Apply final blur */}
+            {/* Now you can apply rest of the effects */}
             <feGaussianBlur in="blended" stdDeviation={stdDev} />
           </filter>
         </defs>
@@ -98,7 +107,7 @@ const AnimatedFilter = () => {
           >
             Give me some text
           </text>
-          
+
         </g>
         <circle
           strokeWidth={3}

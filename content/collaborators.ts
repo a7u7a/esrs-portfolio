@@ -14,6 +14,10 @@ const collaborators: ICollaborators[] = [
     url: "https://jdsdevelopment.com/"
   },
   {
+    name: "Dolce Gabanna",
+    url: "https://dolcegabanna.com/"
+  },
+  {
     name: "Elemental",
     url: "https://elemental-chile.cl/"
   },
