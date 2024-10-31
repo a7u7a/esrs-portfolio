@@ -25,8 +25,8 @@ const project: IProject = {
   ],
   date: "2022",
   
-  descriptionOne: `I was commissioned to create the software responsible for controlling LED displays of variable length. The idea was to create a financial [Ticker](https://corporatefinanceinstitute.com/resources/wealth-management/what-is-ticker) Scroller display.`,
-  descriptionTwo: `It was later extended to work with country data, such as [international debt](https://databank.worldbank.org/metadataglossary/international-debt-statistics/series/DT.DOD.DECT.CD.CG) and GDP. The piece explores the significance of money on a planetary scale and has been featured by [The Washington Post](https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/) and [Frieze](https://www.frieze.com/article/ignacio-gatica-sujeto-cuantificado-quantified-subject-2023-review).`,
+  descriptionOne: `Controller for a custom LED, infinite-scrolling, financial [ticker](https://corporatefinanceinstitute.com/resources/wealth-management/what-is-ticker) display. Later extended to work with country data, such as [international debt](https://databank.worldbank.org/metadataglossary/international-debt-statistics/series/DT.DOD.DECT.CD.CG) and GDP.`,
+  descriptionTwo: `The piece explores the significance of money on a planetary scale and has been featured by [The Washington Post](https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/) and [Frieze](https://www.frieze.com/article/ignacio-gatica-sujeto-cuantificado-quantified-subject-2023-review).`,
   gallery: [
     {
       type: "image",

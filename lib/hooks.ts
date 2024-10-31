@@ -3,6 +3,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from "@gsap/react";
 
+export const linearMap = (val: number, fromA: number, fromB: number, toA: number, toB: number) => {
+  return ((val - fromA) * (toB - toA)) / (fromB - fromA) + toA;
+}
 
 export const useMouseAngle = () => {
   const [angle, setAngle] = useState(0);
@@ -30,7 +33,7 @@ export const useMouseAngle = () => {
         angleDeg += 360;
       }
 
-      setAngle(angleDeg);
+      setAngle(Math.abs(angleDeg - 180));
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -40,7 +43,7 @@ export const useMouseAngle = () => {
     };
   }, []);
 
-  return angle;
+  return linearMap(angle, 0, 180, 15, 75);
 };
 
 const desiredSegmentLength = 2000;
@@ -89,3 +92,34 @@ export const useScrollProgress = () => {
 
   return { container, scrollProgress, scrollTriggerRef };
 };
+
+
+export const useRotationSpeed = (currentAngle: number) => {
+  const [rotationSpeed, setRotationSpeed] = useState<number>(0);
+  const lastAngle = useRef<number>(currentAngle);
+  const lastTimestamp = useRef<number>(performance.now());
+
+  useEffect(() => {
+    const currentTime = performance.now();
+    const deltaTime = (currentTime - lastTimestamp.current) / 1000;
+
+    let deltaAngle = currentAngle - lastAngle.current;
+
+    if (deltaAngle > 180) {
+      deltaAngle -= 360;
+    } else if (deltaAngle < -180) {
+      deltaAngle += 360;
+    }
+
+    const scale = 1.3
+    const newRotationSpeed = Math.abs((deltaAngle / deltaTime) * scale);
+
+    lastAngle.current = currentAngle;
+    lastTimestamp.current = currentTime;
+
+    setRotationSpeed(newRotationSpeed);
+  }, [currentAngle]);
+
+  return rotationSpeed;
+}
+

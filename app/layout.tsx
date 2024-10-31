@@ -48,8 +48,7 @@ export default function RootLayout({
       <body
         className={`
         ${mediumFont.variable}
-        
-        font-sans antialiased 
+        font-sans 
         selection:bg-gray-200 selection:text-esrs-blue text-[14px] sm:text-[16px]
         text-esrs-dark-gray
         `}

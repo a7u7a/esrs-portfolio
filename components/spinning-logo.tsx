@@ -1,5 +1,5 @@
 "use client"
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 
 const vbDims = { h: 115, w: 80 }
 const maxSquareHeight = 58
@@ -25,11 +25,12 @@ function getY(value: number) {
 }
 
 interface SpinningLogoProps {
+  rotationSpeed: number
   scrollProgress: number
 }
 
-const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
-
+const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
+  
   const lines = useMemo(() => {
     const [y1, y2] = getY(scrollProgress);
     return (
@@ -85,7 +86,7 @@ const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
       `}
     >
       <svg
-        className='stroke-esrs-dark-gray stroke-[5px] hover:stroke-esrs-blue transition-colors duration-200'
+        className='stroke-white stroke-[4px]'
         style={{ willChange: "transform" }}
         viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
         fill="none"
@@ -94,10 +95,12 @@ const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
       >
         <defs>
           <filter id="blurFilter">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation={`0 ${rotationSpeed}`} result="blur" />
           </filter>
         </defs>
-        <g filter="url(#embossFilter)">
+        <g
+          filter="url(#blurFilter)"
+        >
           {ellipses}
           {lines}
         </g>
