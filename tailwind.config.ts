@@ -25,6 +25,7 @@ const config: Config = {
         'esrs-blue': 'rgb(59 130 246)',
         'esrs-dark-gray': '#686868',
         'esrs-black': '#151515',
+        'hover': '#686868',
       }
     },
   },

@@ -30,7 +30,7 @@ interface SpinningLogoProps {
 }
 
 const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
-  
+
   const lines = useMemo(() => {
     const [y1, y2] = getY(scrollProgress);
     return (
@@ -80,13 +80,13 @@ const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
         fixed 
         ml-2 mb-2
         top-0 right-0 
-        mt-10 md:mt-4
-        mr-3 md:mr-8 2xl:mr-12
+        mt-0
+        mr-3 md:mr-8
         z-50 hover:cursor-pointer
       `}
     >
       <svg
-        className='stroke-white stroke-[4px]'
+        className='stroke-black stroke-[4px]'
         style={{ willChange: "transform" }}
         viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
         fill="none"

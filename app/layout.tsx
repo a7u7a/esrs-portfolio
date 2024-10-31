@@ -49,8 +49,9 @@ export default function RootLayout({
         className={`
         ${mediumFont.variable}
         font-sans 
-        selection:bg-gray-200 selection:text-esrs-blue text-[14px] sm:text-[16px]
-        text-esrs-dark-gray
+        selection:bg-gray-200 selection:text-esrs-blue text-[3.5rem] leading-[1.25] 
+        text-[#303030]
+        bg-[#f1f1f1]
         `}
       >
         {children}
