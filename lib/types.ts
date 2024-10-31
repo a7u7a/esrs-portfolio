@@ -3,7 +3,7 @@ export interface IGalleryItem {
   type: "image" | "video";
   alt: string
   src: string
-  // dims: { height: number, width: number }
+  dims?: { height: number, width: number }
 }
 
 export interface IProject {
