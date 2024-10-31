@@ -1,6 +1,7 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
+  id: "bloko",
   title: "Scroller Series",
   what: "Screens that show big numbers",
   collapsed: true,

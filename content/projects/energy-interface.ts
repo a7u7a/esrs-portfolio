@@ -1,6 +1,7 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
+  id: "energy",
   title: "Comfortable Interactions",
   collapsed: true,
   what: "Can buildings even persuade you?",

@@ -1,6 +1,7 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
+  id: "pese",
   title: "PESE.works",
   what: "Scroll-based 3D interactions",
   date: "2022",

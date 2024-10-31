@@ -1,6 +1,7 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
+  id: "elemental",
   title: "Elemental Chile",
   date: "2024",
   collapsed: false,

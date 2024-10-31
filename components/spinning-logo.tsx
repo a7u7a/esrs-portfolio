@@ -78,16 +78,13 @@ const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
       style={{ width: `${vbDims.w}px` }}
       className={`
         fixed 
-        ml-2 mb-2
         top-0 right-0 
-        mt-0
-        mr-3 md:mr-8
-        z-50 hover:cursor-pointer
+        mr-3
+        z-50
       `}
     >
       <svg
         className='stroke-black stroke-[4px]'
-        style={{ willChange: "transform" }}
         viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

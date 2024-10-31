@@ -1,6 +1,7 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
+  id: "fringeless",
   title: "Fringeless",
   collapsed: true,
   date: "2019",

@@ -1,6 +1,7 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
+  id: "pf",
   title: "Punto Flotante",
   collapsed: true,
   what: "A summer working with mirrors and stepper motors",

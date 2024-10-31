@@ -46,9 +46,10 @@ export const useMouseAngle = () => {
   return linearMap(angle, 0, 180, 15, 75);
 };
 
-const desiredSegmentLength = 2000;
 
 export const useScrollProgress = () => {
+  const isMd = useMediaQuery("(min-width: 768px)");
+  const desiredSegmentLength = isMd ? 2500 : 1000;
   const container = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
@@ -111,7 +112,7 @@ export const useRotationSpeed = (currentAngle: number) => {
       deltaAngle += 360;
     }
 
-    const scale = 1.3
+    const scale = 1.2
     const newRotationSpeed = Math.abs((deltaAngle / deltaTime) * scale);
 
     lastAngle.current = currentAngle;
@@ -123,3 +124,21 @@ export const useRotationSpeed = (currentAngle: number) => {
   return rotationSpeed;
 }
 
+// from https://www.netlify.com/blog/2020/12/05/building-a-custom-react-media-query-hook-for-more-responsive-apps/
+export function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    const listener = () => {
+      setMatches(media.matches);
+    };
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [query]);
+
+  return matches;
+}

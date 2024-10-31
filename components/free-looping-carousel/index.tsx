@@ -35,7 +35,7 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
               <div key={index}
                 className="shrink-0 flex pl-2"
               >
-                <ImageSlide slide={slide} />
+                {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 import { IProject } from "@/lib/types";
 
 export const project: IProject = {
+  id: "bp",
   title: "BeigePill Productions",
   date: "2024",
   fields: [
