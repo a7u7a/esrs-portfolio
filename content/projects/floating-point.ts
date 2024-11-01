@@ -12,7 +12,7 @@ const project: IProject = {
     url: "https://youtu.be/SHnhzbCWRn8"
   },
   fields: [
-    { title: "Tools", value: "Arduino, Grasshopper3D" },
+    { title: "Tools", value: "Grasshopper3D, Arduino" },
     {title:"What", value: "Computer controlled mirrors"}
   ],
   descriptionOne: `At the time, I was very interested in forms of screenless tech; I had the opportunity to explore this during a residency at [Eigengrau Lab](https://sebastianrodriguez.ch/projects/eigengrau-laboratory-by-javier-toro-blum/), where I built these computer-controlled mirrors.`,

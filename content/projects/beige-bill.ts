@@ -4,7 +4,7 @@ export const project: IProject = {
   id: "bp",
   title: "BeigePill",
   date: "2024",
-  type: "BeigePill website",
+  type: "BeigePill",
   link: {
     title: "Go",
     url: "https://beigepill.com",

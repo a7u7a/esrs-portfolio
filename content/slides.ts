@@ -26,7 +26,6 @@ const slides: IGalleryItem[] = [
     src: `${slidesPath}/boids-sim.mp4`,
   },
   {
-    
     hideMore: true,
     projectTypeOverride: "Experiment",
     id: "cata",
@@ -35,7 +34,6 @@ const slides: IGalleryItem[] = [
     src: `${slidesPath}/cata_pro.mp4`,
   },
   {
-   
     id: "cata",
     type: "video",
     projectTypeOverride: "Experiment",

@@ -7,6 +7,7 @@ export const project: IProject = {
   what: "Geeking out with Three.js, GLSL and Observable notebooks",
   fields: [
     { title: "Tools", value: "Three.js, Observable" },
+    { title: "Role", value: "Full stack", url: "https://www.google.com/" },
   ],
   link: {
     title: "Go",
