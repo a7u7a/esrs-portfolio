@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Leva } from 'leva'
 import { useMouseAngle, useRotationSpeed } from '@/lib/hooks'
 import { useScrollProgress } from '@/lib/hooks'
@@ -12,15 +12,6 @@ import { shuffledSlides } from '@/content/slides'
 import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/fade-in'
 
-// const slides = [
-//   { src: '/assets/placeholders/1.jpg', alt: 'image 1' },
-//   { src: '/assets/placeholders/2.jpg', alt: 'image 2' },
-//   { src: '/assets/placeholders/3.jpg', alt: 'image 3' },
-//   { src: '/assets/placeholders/4.jpg', alt: 'image 4' },
-//   { src: '/assets/placeholders/5.jpg', alt: 'image 5' },
-//   { src: '/assets/placeholders/6.jpg', alt: 'image 6' },
-// ]
-
 const Main = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
   const { container, scrollProgress } = useScrollProgress();
@@ -30,12 +21,13 @@ const Main = () => {
     setSlides(shuffledSlides())
   }, [])
   return (
-    <div ref={container} className='pt-32 md:pt-24 m-auto'>
+    <div ref={container} className='pt-40 md:pt-44 m-auto'>
 
-      <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
+      <FadeIn threshold={0.3}>
+        <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
+      </FadeIn>
       <EmbossFilter angle={angle} />
       <Leva hidden={true} />
-
 
       <TextWrapper>
         <div className=''>
@@ -51,12 +43,13 @@ const Main = () => {
         </div>
       </TextWrapper>
 
-      <div className='mt-16 md:mt-24 mb-16'>
-        <FreeLoopingCarousel slides={slides} />
-      </div>
+      <FadeIn threshold={0.1}>
+        <div className='mt-16 md:mt-24 mb-16'>
+          <FreeLoopingCarousel slides={slides} />
+        </div>
+      </FadeIn>
 
       <TextWrapper>
-
         <div>
           <FadeIn threshold={0.3}>
             <p>{"Mixing code and design to craft unique digital products."}</p>
@@ -67,7 +60,7 @@ const Main = () => {
           <FadeIn threshold={0.3}>
             <h1 className=''>{"People I've worked with:"}</h1>
           </FadeIn>
-          <ul className='flex flex-col gap-3 pt-3'>
+          <ul className='list-none flex flex-col gap-3 pt-3'>
             {collaborators.map((collab, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <li >
@@ -79,15 +72,7 @@ const Main = () => {
         </div>
 
         <div className='pt-20'>
-
           <ul className='list-none flex flex-col gap-3 md:flex-row md:gap-6'>
-            <FadeIn threshold={0.3}>
-              <li>
-                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
-                  {"esteban@esrs.co"}
-                </a>
-              </li>
-            </FadeIn>
             {socials.map((social, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <li>
@@ -95,12 +80,19 @@ const Main = () => {
                 </li>
               </FadeIn>
             ))}
+            <FadeIn threshold={0.3}>
+              <li>
+                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
+                  {"esteban@esrs.co"}
+                </a>
+              </li>
+            </FadeIn>
           </ul>
         </div>
 
 
         <FadeIn threshold={0.3}>
-          <footer className="pt-20 max-w-[600px] pb-40 text-[1.2rem] text-[#414141] leading-[1.4]">
+          <footer className="pt-20 max-w-[600px] pb-32 text-[1.2rem] text-[#414141] leading-[1.4]">
             <p>{"© 2024"}</p>
             <p>{"All rights reserved."}</p>
             <p>{"This website shows a selected view of my work."}</p>

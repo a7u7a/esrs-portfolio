@@ -1,4 +1,7 @@
 export interface IGalleryItem {
+  hideCaption?: boolean
+  projectTypeOverride?: string
+  hideMore?: boolean
   id?: string;
   type: "image" | "video";
   alt: string
@@ -6,7 +9,14 @@ export interface IGalleryItem {
   dims?: { height: number, width: number }
 }
 
+interface ILink {
+  title: string
+  url: string
+}
+
 export interface IProject {
+  type: string
+  link?: ILink
   id: string;
   title: string;
   date: string;

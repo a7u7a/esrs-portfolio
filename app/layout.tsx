@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from 'next/font/local'
-import Head from 'next/head'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://esrs.co'),
   title: "Esteban Serrano",
   description: "Portfolio",
+  keywords: ["design engineering", "portfolio", "creative development", "front-end developer", "full-stack developer", "interaction design", "data visualization", "creative coder", "hci"],
+  creator: "Esteban Serrano",
+  openGraph: {
+    images: '/esrs-og.jpg',
+  },
 };
 
 const mediumFont = localFont({
@@ -24,8 +29,6 @@ const mediumFont = localFont({
   variable: '--font-medium',
 })
 
-const canonicalUrl = process.env.NEXT_PUBLIC_CANONICAL_URL
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,24 +36,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <title>{'Esteban Serrano'}</title>
-        <meta name="description" content={"Design Engineering"} />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:type" content={"website"} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={"Esteban Serrano"} />
-        <meta property="og:description" content={"Design Engineering"} />
-        <meta property="og:locale" content={"en"} />
-        <meta property="og:image" content={`${canonicalUrl}/esrs-og.jpg`} />
-      </Head>
-
       <body
         className={`
         ${mediumFont.variable}
         font-sans 
         selection:bg-gray-200 selection:text-esrs-blue 
-        text-[2.5rem] md:text-[3.5rem] 
+        text-[2rem] md:text-[3.5rem] 
         leading-[1.25] 
         text-[#303030]
         bg-white

@@ -2,11 +2,11 @@ import { IProject } from "@/lib/types";
 
 const project: IProject = {
   id: "energy",
+  type: "Research project",
   title: "Comfortable Interactions",
   collapsed: true,
   what: "Can buildings even persuade you?",
   fields: [
-    { title: "Type", value: "MSc dissertation project" },
     { title: "Tools", value: "E-paper display, Raspberry Pi, Python" },
   ],
   date: "2019",

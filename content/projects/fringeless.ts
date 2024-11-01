@@ -3,11 +3,11 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   id: "fringeless",
   title: "Fringeless",
+  type: "Research project",
   collapsed: true,
   date: "2019",
   what: "Generative tourism for introverts",
   fields: [
-    { title: "Type", value: "Research project" },
     { title: "Tools", value: "Python, Google Maps API, thermal printer" },
   ],
   descriptionOne: 'A fun experiment during DwD week: While living in Edinburgh you realize how much locals dislike when the city gets overrun by tourists during the [Fringe Festival](https://www.edfringe.com/). ',

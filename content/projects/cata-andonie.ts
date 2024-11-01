@@ -3,12 +3,15 @@ import { IProject } from "@/lib/types";
 export const project: IProject = {
   id: "cata",
   title: "Catalina Andonie Portfolio",
+  type: "Portfolio website",
   collapsed: true,
   what: "Fullscreen fragment shaders for a portfolio site",
+  link: {
+    title: "Go",
+    url: "https://catalinaandonie.com/"
+  },
   fields: [
-    { title: "Type", value: "Portfolio site" },
-    { title: "Stack", value: "Next.js, TypeScript, WebGL, react-spring" },
-    { title: "Visit", url: "https://catalinaandonie.com/" },
+    { title: "Stack", value: "Next.js, TypeScript, WebGL" },
   ],
   date: "2022",
   descriptionOne: `There's a lot of glass and refracting materials in Catalina's work. It seemed like a good opportunity for exploring what could be achieved using fragment shaders on the web.`,

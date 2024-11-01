@@ -26,16 +26,34 @@ const slides: IGalleryItem[] = [
     src: `${slidesPath}/boids-sim.mp4`,
   },
   {
+    
+    hideMore: true,
+    projectTypeOverride: "Experiment",
     id: "cata",
     type: "video",
     alt: "alt",
     src: `${slidesPath}/cata_pro.mp4`,
   },
   {
+   
     id: "cata",
     type: "video",
+    projectTypeOverride: "Experiment",
+    hideMore: true,
     alt: "alt",
     src: `${slidesPath}/cata_pro2.mp4`,
+  },
+  {
+    id: "elemental",
+    type: "video",
+    alt: "alt",
+    src: `${slidesPath}/elemental_desk.mp4`,
+  },
+  {
+    id: "elemental",
+    type: "video",
+    alt: "alt",
+    src: `${slidesPath}/elemental_mob.mp4`,
   },
   {
     id: "pf",
@@ -62,7 +80,7 @@ const slides: IGalleryItem[] = [
     src: `${slidesPath}/instalacion.jpg`,
   },
   {
-    id: "fl",
+    id: "fringeless",
     type: "image",
     alt: "alt",
     src: `${slidesPath}/fl.jpg`,
@@ -87,6 +105,8 @@ const slides: IGalleryItem[] = [
   },
   {
     id: "cata",
+    projectTypeOverride: "Experiment",
+    hideMore: true,
     type: "video",
     alt: "alt",
     src: `${slidesPath}/cata-bg.mp4`,
