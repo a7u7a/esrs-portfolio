@@ -7,6 +7,7 @@ export interface IGalleryItem {
   alt: string
   src: string
   dims?: { height: number, width: number }
+  poster?: string
 }
 
 interface ILink {
@@ -34,7 +35,7 @@ export interface IProjectField {
   url?: string // https://beigepill.com, etc
 }
 
-export interface ICollaborators {
+export interface ICollaborator {
   name: string
-  url?: string
+  url: string
 }

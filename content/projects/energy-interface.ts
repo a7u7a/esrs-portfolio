@@ -8,6 +8,7 @@ const project: IProject = {
   what: "Can buildings even persuade you?",
   fields: [
     { title: "Tools", value: "E-paper display, Raspberry Pi, Python" },
+    { title: "What?", value: "Alternative interfaces for energy efficiency" }
   ],
   date: "2019",
   descriptionOne: `Can a building use natural language to explain what it's doing to keep you warm during winter? Can it tell you what kind of strategies you have to make yourself comfortable without increasing energy use?`,

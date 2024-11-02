@@ -32,7 +32,7 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
           onMouseLeave={() => setHovered(false)}
         >
           {/* Embla Container */}
-          <div className="flex h-full pt-4 pb-20 -ml-2">
+          <div className="flex h-full pt-4 pb-28 -ml-3">
             {slides.map((slide, index) => (
               <Slide key={index} slide={slide}>
                 {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}

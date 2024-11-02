@@ -4,13 +4,13 @@ const project: IProject = {
   id: "bloko",
   type: "Display controller",
   title: "Scroller Series",
-  what: "Screens that show big numbers",
   collapsed: true,
   fields: [
     {
       title: "Stack",
       value: "Python, Pandas, World Bank API, Yahoo Finance API, Raspberry Pi",
     },
+    { title: "What?",value:"More info", url: "https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/" },
     {
       title: "Comissioned by",
       value: "Ignacio Gatica",

@@ -3,11 +3,10 @@ const socials = [
     name: "Github",
     url: "https://github.com/a7u7a"
   },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/estserrano/"
-  },
-
+  // {
+  //   name: "LinkedIn",
+  //   url: "https://www.linkedin.com/in/estserrano/"
+  // },
   // {
   //   name:"Observable",
   //   url:"https://observablehq.com/@esrs?tab=collections"

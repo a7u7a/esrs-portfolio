@@ -1,21 +1,37 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { Leva } from 'leva'
-import { useMouseAngle, useRotationSpeed } from '@/lib/hooks'
+import { useRotationSpeed } from '@/lib/hooks'
 import { useScrollProgress } from '@/lib/hooks'
 import SpinningLogo from '@/components/spinning-logo'
-import EmbossFilter from '@/components/emboss-svg-filter'
 import FreeLoopingCarousel from '@/components/free-looping-carousel'
 import collaborators from '@/content/collaborators'
 import socials from "@/content/socials"
 import { shuffledSlides } from '@/content/slides'
 import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/fade-in'
+import { ICollaborator } from '@/lib/types'
+import Link from 'next/link'
+import { ArrowElbowRightUp } from '@phosphor-icons/react'
+
+const data = [
+  {
+    title: "sometitle1",
+    value: "somevalue1"
+  },
+  {
+    title: "sometitle2",
+    value: "somevalue2"
+  },
+  {
+    title: "sometitle3",
+    value: "somevalue3"
+  }
+];
 
 const Main = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
   const { container, scrollProgress } = useScrollProgress();
-  const angle = useMouseAngle()
   const rotationSpeed = useRotationSpeed(scrollProgress)
   useEffect(() => {
     setSlides(shuffledSlides())
@@ -26,25 +42,24 @@ const Main = () => {
       <FadeIn threshold={0.3}>
         <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
       </FadeIn>
-      <EmbossFilter angle={angle} />
       <Leva hidden={true} />
 
       <TextWrapper>
         <div className=''>
           <FadeIn threshold={0.3}>
-            <p>{"Esteban Serrano is a design technologist based in Berlin."}</p>
+            <span>{"Esteban Serrano is a design technologist based in Berlin."}</span>
           </FadeIn>
         </div>
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
-            <p className=''>{"He collaborates with brands, studios and startups since 2014."}</p>
+            <span className=''>{"He collaborates with brands, studios and startups since 2014."}</span>
           </FadeIn>
         </div>
       </TextWrapper>
 
       <FadeIn threshold={0.1}>
-        <div className='mt-16 md:mt-24 mb-16'>
+        <div className='mt-16 md:mt-24 mb-2'>
           <FreeLoopingCarousel slides={slides} />
         </div>
       </FadeIn>
@@ -52,20 +67,28 @@ const Main = () => {
       <TextWrapper>
         <div>
           <FadeIn threshold={0.3}>
-            <p>{"Mixing code and design to craft unique digital products."}</p>
+            <div>
+              <span>{"Mixing code and design to craft unique digital products."}</span>
+            </div>
           </FadeIn>
         </div>
 
-        <div className='pt-24'>
+        <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
-            <h1 className=''>{"People I've worked with:"}</h1>
+            <div>
+              <span>{"Specialized in front-end development and interaction design."}</span>
+            </div>
+          </FadeIn>
+        </div>
+
+        <div className='mt-16 md:mt-24'>
+          <FadeIn threshold={0.3}>
+            <span className=''>{"People I've worked with:"}</span>
           </FadeIn>
           <ul className='list-none flex flex-col gap-3 pt-3'>
             {collaborators.map((collab, i) => (
               <FadeIn key={i} threshold={0.3}>
-                <li >
-                  {collab.url ? <a className='transition-colors ease-in-out duration-150 hover:text-[#9f9f9f]' href={collab.url} target="_blank" rel="noopener noreferrer">{collab.name}</a> : collab.name}
-                </li>
+                <Collaborator collab={collab} />
               </FadeIn>
             ))}
           </ul>
@@ -90,7 +113,6 @@ const Main = () => {
           </ul>
         </div>
 
-
         <FadeIn threshold={0.3}>
           <footer className="pt-20 max-w-[600px] pb-32 text-[1.2rem] text-[#414141] leading-[1.4]">
             <p>{"© 2024"}</p>
@@ -111,4 +133,19 @@ export default Main
 
 function TextWrapper({ children }: { children: React.ReactNode }) {
   return <div className='px-4 flex flex-col max-w-[1000px]'>{children}</div>
+}
+
+const Collaborator = ({ collab }: { collab: ICollaborator }) => {
+  const [hover, setHovered] = useState(false);
+  return (
+    <li onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <Link
+        onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        className='transition-colors ease-in-out duration-150 hover:text-esrs-hover'
+        rel="noopener noreferrer" target="_blank" href={collab.url}
+      >
+        <span className={`${hover ? 'text-esrs-hover' : ''}`}>{collab.name}</span>
+      </Link>
+    </li>
+  )
 }

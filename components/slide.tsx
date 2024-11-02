@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IGalleryItem, IProject, IProjectField } from '@/lib/types'
 import { selectedProjects, experimentalProjects } from '@/content/projects'
-import useMeasure from 'react-use-measure'
 import { ArrowElbowRightUp, CaretDown, CaretUp } from '@phosphor-icons/react';
 import Link from 'next/link';
 
@@ -11,9 +10,10 @@ interface SlideProps {
 }
 
 const Slide = ({ children, slide }: SlideProps) => {
-  const [ref, bounds] = useMeasure()
   const [hover, setHovered] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [showMore, setShowMore] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const projects = [...selectedProjects, ...experimentalProjects]
   const project = projects.find(p => p.id === slide.id)
 
@@ -21,35 +21,53 @@ const Slide = ({ children, slide }: SlideProps) => {
 
   useEffect(() => {
     if (!hover) {
-      setShowMore(false)
+      setToggle(true)
+      // setCollapsed(true)
+      // const timer = setTimeout(() => setShowMore(false), 300)
+      // return () => clearTimeout(timer)
     }
   }, [hover])
 
+  useEffect(() => {
+    if (!toggle) {
+
+      setShowMore(true)
+      const timer = setTimeout(() => setCollapsed(false), 10)
+      return () => clearTimeout(timer)
+    } else {
+      console.log("out");
+      setCollapsed(true)
+      const timer = setTimeout(() => setShowMore(false), 300)
+      return () => clearTimeout(timer)
+    }
+  }, [toggle])
+
   const handleClick = () => {
-    if (!slide.hideMore) setShowMore(!showMore)
+    if (!slide.hideMore) setToggle(!toggle)
   }
 
   return (
     // Embla Slide
-    <div className="shrink-0 flex flex-col pl-2 text-[0.8rem] md:text-[0.9rem]" onMouseLeave={() => setHovered(false)}>
-      <div className={`relative ${slide.hideMore ? "cursor-auto" : "hover:cursor-pointer"}`} onClick={handleClick} onMouseEnter={() => setHovered(true)} >
-        <div ref={ref} className='h-[250px] md:h-[450px] relative'>
+    <div className="shrink-0 flex flex-col pl-3 text-[0.8rem] md:text-[0.9rem]">
+      <div className={`relative ${slide.hideMore ? "cursor-auto" : "hover:cursor-pointer"}`} onClick={handleClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
+
+        <div className=' relative rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.50)] overflow-hidden'>
+          {/* Gradient */}
           <div className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent h-[80px] z-10 rounded-b-lg transition-opacity duration-200 ${hover ? 'opacity-50' : 'opacity-0'}`} />
           {children}
         </div>
 
-        <div className={`z-20 absolute mx-1 my-1 bottom-0 inset-x-0 flex justify-between gap-9 transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`z-20 absolute mx-1 my-1 bottom-0 inset-x-0 flex justify-between gap-2 transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}>
           <HintTitle slide={slide} project={project} />
-          {!slide.hideMore && <MoreExpandIcon collapsed={!showMore} />}
+          {!slide.hideMore && <MoreExpandIcon collapsed={collapsed} />}
         </div>
 
         {!slide.hideMore &&
-          <div className='absolute inset-x-0 bottom-0 z-20 translate-y-full'>
-            <MoreCard maxWidth={bounds.width} collapsed={!showMore} project={project} />
+          <div className={`absolute inset-x-0 bottom-0 z-20 translate-y-full ${showMore ? 'block' : 'hidden'}`}>
+            <MoreCard collapsed={collapsed} project={project} />
           </div>
         }
       </div>
-
     </div>
   )
 }
@@ -59,12 +77,11 @@ export default Slide
 interface MoreProps {
   project: IProject
   collapsed: boolean
-  maxWidth: number
 }
 
-const MoreCard = ({ collapsed, project, maxWidth }: MoreProps) => {
+const MoreCard = ({ collapsed, project }: MoreProps) => {
   return (
-    <div className={`text-[#414141] flex flex-col gap-1 pt-3 p-2`}>
+    <div className={`text-[#414141] flex flex-col gap-1.5 pt-3 p-2 cursor-default`}>
       {project?.fields && project.fields.map((field, index) => (
         <MoreRow key={index} collapsed={collapsed} index={index} length={project.fields?.length || 0}>
           <div >
@@ -85,10 +102,21 @@ const MoreCard = ({ collapsed, project, maxWidth }: MoreProps) => {
 }
 
 const FieldCTALinkTitleAndSubtitle = ({ field }: MoreLinkProps) => {
+  const [hover, setHovered] = useState(false);
   return (
     <div className='flex gap-1'>
       <span className='font-bold'>{field.title}</span>
-      <Link rel="noopener noreferrer" target="_blank" href={field.url || ''}>{field.value}</Link>
+      <Link
+        className='hover:text-esrs-hover flex'
+        rel="noopener noreferrer"
+        target="_blank"
+        href={field.url || ''}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <span>{field.value}</span>
+        <ArrowElbowRightUp color={hover ? '#686868' : ''} size={16} weight='bold' />
+      </Link>
     </div>
   )
 }
@@ -102,8 +130,8 @@ const FieldCTALinkTitle = ({ field }: MoreLinkProps) => {
   return (
     <Link rel="noopener noreferrer" target="_blank" href={field.url || ''}>
       <div className='flex' onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <div className={`font-bold ${hover ? 'text-esrs-blue' : ''}`} >{field.title}</div>
-        <ArrowElbowRightUp color={hover ? '#3b83f6' : '#151515'} size={19} />
+        <span className={`font-bold ${hover ? 'text-esrs-hover' : ''}`} >{field.title}</span>
+        <ArrowElbowRightUp color={hover ? '#686868' : ''} size={16} weight='bold' />
       </div>
     </Link>
   )
@@ -127,7 +155,7 @@ interface MoreRowProps {
 
 const MoreRow = ({ collapsed, index, children, length }: MoreRowProps) => {
   const [visible, setVisible] = useState(false);
-  const baseDelay = 50
+  const baseDelay = 40
   useEffect(() => {
     if (collapsed) {
       const timer = setTimeout(() => setVisible(false), baseDelay * (length - index))
@@ -139,7 +167,7 @@ const MoreRow = ({ collapsed, index, children, length }: MoreRowProps) => {
   }, [collapsed, index, length])
 
   return (
-    <div className={`${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-0.5'} transition-all duration-300`}>
+    <div className={`${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'} transition-all duration-100`}>
       {children}
     </div>
   )
@@ -147,8 +175,10 @@ const MoreRow = ({ collapsed, index, children, length }: MoreRowProps) => {
 
 function HintTitle({ slide, project }: { slide: IGalleryItem, project?: IProject }) {
   return (
-    <span className='bg-white bg-opacity-50 px-1.5 py-0.5 rounded'>
-      {slide.projectTypeOverride || project?.type}
+    <span className='bg-white bg-opacity-50 px-1.5 py-0.5 rounded flex'>
+      <span>
+        {slide.projectTypeOverride || project?.type}
+      </span>
     </span>
   )
 }

@@ -1,6 +1,6 @@
-import { ICollaborators } from "@/lib/types"
+import { ICollaborator } from "@/lib/types"
 
-const collaborators: ICollaborators[] = [
+const collaborators: ICollaborator[] = [
   {
     name: "FutureCorp",
     url: "https://futurecorp.paris/"

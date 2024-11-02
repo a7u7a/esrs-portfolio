@@ -12,6 +12,7 @@ const project: IProject = {
   },
   fields: [
     { title: "Stack", value: "Next.js, TypeScript, Sanity" },
+    { title: "What?", value: "Web App" },
     { title: "Go", url: "https://elemental-web-prod.vercel.app/" }
   ],
   descriptionOne: `A super minimal site for Elemental Chile, led by [Pritzker](https://www.pritzkerprize.com/jury) prize winning architect Alejandro Aravena. They wanted something that felt like an internal tool - brutalist and early-internet inspired. The challenge was to showcase 200+ projects in a way that worked for stakeholder meetings.`,
