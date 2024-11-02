@@ -17,6 +17,10 @@ const config: Config = {
       '5xl': '3.052rem',
     },
     extend: {
+      dropShadow: {
+        '5': '0 5px 5px rgba(0,0,0,0.50)',
+        '10': '0 10px 10px rgba(0,0,0,0.50)',
+      },
       fontFamily: {
         sans: ["var(--font-medium)"],
       },

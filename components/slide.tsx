@@ -21,10 +21,8 @@ const Slide = ({ children, slide }: SlideProps) => {
 
   useEffect(() => {
     if (!hover) {
-      setToggle(true)
-      // setCollapsed(true)
-      // const timer = setTimeout(() => setShowMore(false), 300)
-      // return () => clearTimeout(timer)
+      const timer = setTimeout(() => setToggle(true), 2500)
+      return () => clearTimeout(timer)
     }
   }, [hover])
 
@@ -49,9 +47,9 @@ const Slide = ({ children, slide }: SlideProps) => {
     <div className="shrink-0 flex flex-col pl-3 text-[0.8rem] md:text-[0.9rem]">
       <div className={`relative ${slide.hideMore ? "cursor-auto" : "hover:cursor-pointer"}`} onClick={handleClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
 
-        <div className='relative rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.50)] overflow-hidden'>
+        <div className='relative'>
           {/* Gradient overlay */}
-          <div className={`absolute rounded-b-lg inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent h-[80px] z-10 rounded-b-lg transition-opacity duration-200 ${hover ? 'opacity-50' : 'opacity-0'}`} />
+          <div className={`absolute rounded-b-lg inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent h-[80px] z-10 transition-opacity duration-200 ${hover ? 'opacity-50' : 'opacity-0'}`} />
           {children}
         </div>
 

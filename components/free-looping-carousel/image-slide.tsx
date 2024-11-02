@@ -28,13 +28,16 @@ const ImageSlide = ({ slide }: ImageSlideProps) => {
   }
 
   return (
-    <div 
-    className={`h-[250px] md:h-[450px] bg-[#ebebeb] transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}`}
-    style={{ aspectRatio: aspectRatio }}
+    <div
+      className={`
+        h-[250px] md:h-[450px] bg-[#ebebeb] rounded-lg
+        transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}
+      `}
+      style={{ aspectRatio: aspectRatio }}
     >
       <Image
         onLoad={handleLoad}
-        className='h-full'
+        className='h-full rounded-lg drop-shadow-5'
         src={slide.src}
         alt={slide.alt}
         height={slide.dims?.height}

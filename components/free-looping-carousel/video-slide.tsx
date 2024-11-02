@@ -58,13 +58,16 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
 
   return (
     <div
-      className={`h-[250px] md:h-[450px] bg-[#ebebeb] w-full transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}`}
+      className={`
+        h-[250px] md:h-[450px] bg-[#ebebeb] rounded-lg
+        transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}
+        `}
       style={{ aspectRatio: aspectRatio }}
     >
       <video
         onCanPlay={handleCanPlay}
         ref={videoRef}
-        className='h-full'
+        className={`h-full rounded-lg drop-shadow-5`}
         playsInline
         muted
         loop
