@@ -40,10 +40,6 @@ const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
   const dims = isMd ? vbDimsMd : vbDims
   const maxSquareH = isMd ? maxSquareHeightMd : maxSquareHeight
 
-  useEffect(() => {
-    console.log("isMd", isMd);
-  }, [isMd])
-
   const lines = useMemo(() => {
     const [y1, y2] = getY(scrollProgress, maxSquareH, dims);
     return (
@@ -62,7 +58,7 @@ const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
         />
       </>
     );
-  }, [scrollProgress, isMd]);
+  }, [scrollProgress, maxSquareH, dims]);
 
   const ellipses = useMemo(() => {
     const [y1, y2] = getY(scrollProgress, maxSquareH, dims);
@@ -84,7 +80,7 @@ const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
         />
       </>
     )
-  }, [scrollProgress, isMd])
+  }, [scrollProgress, maxSquareH, dims])
 
   return (
     <div

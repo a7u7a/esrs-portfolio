@@ -30,12 +30,10 @@ const Slide = ({ children, slide }: SlideProps) => {
 
   useEffect(() => {
     if (!toggle) {
-
       setShowMore(true)
       const timer = setTimeout(() => setCollapsed(false), 10)
       return () => clearTimeout(timer)
     } else {
-      console.log("out");
       setCollapsed(true)
       const timer = setTimeout(() => setShowMore(false), 300)
       return () => clearTimeout(timer)

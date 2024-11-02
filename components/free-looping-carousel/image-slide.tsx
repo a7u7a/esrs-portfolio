@@ -34,7 +34,6 @@ const ImageSlide = ({ slide }: ImageSlideProps) => {
     >
       <Image
         onLoad={handleLoad}
-        // className="h-[250px] md:h-[450px] object-contain"
         className='h-full'
         src={slide.src}
         alt={slide.alt}

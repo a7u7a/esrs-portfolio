@@ -64,8 +64,6 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
       <video
         onCanPlay={handleCanPlay}
         ref={videoRef}
-        // className="h-[250px] md:h-[450px] object-contain"
-        // className="w-full h-full object-cover"
         className='h-full'
         playsInline
         muted
