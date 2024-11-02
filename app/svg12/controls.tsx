@@ -3,7 +3,6 @@ import { useControls } from 'leva'
 const step = 0.01
 
 const Controls = () => useControls('Turbulence Effect', {
-
   baseFreq: {
     value: 0.01,
     min: 0,
@@ -42,37 +41,37 @@ const Controls = () => useControls('Turbulence Effect', {
     step,
   },
   fontSize: {
-    value: 52.32,
+    value: 107.63,
     min: 10,
     max: 200,
     step,
   },
   specConstH: {
-    value: 0.60,
+    value: 1.81,
     min: 0,
     max: 10,
     step,
   },
   specExpH: {
-    value: 21.12,
-    min: 0,
-    max: 100,
+    value: 9.24,
+    min: -10,
+    max: 10,
     step,
   },
   specConstS: {
-    value: 0.46,
+    value: 0.54,
     min: 0,
     max: 10,
     step,
   },
   specExpS: {
-    value: 21.74,
-    min: 0,
-    max: 100,
+    value: 2.93,
+    min: -10,
+    max: 10,
     step,
   },
   glow: {
-    value: -2.33,
+    value: -3.51,
     min: -10,
     max: 10,
     step,
@@ -82,6 +81,10 @@ const Controls = () => useControls('Turbulence Effect', {
     min: -2,
     max: 2,
     step,
+  },
+  operator: {
+    value: 'lighter',
+    options: ['lighter', 'over', 'in', 'out', 'atop', 'xor', 'arithmetic']
   }
 })
 

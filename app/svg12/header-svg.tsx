@@ -21,7 +21,7 @@ const HeaderSvg = () => {
 export default HeaderSvg
 
 const AnimatedFilter = () => {
-  const { fontSize, baseFreq, baseFreq2, scale, blur, azimuth, elevation, specConstH, specExpH, specConstS, specExpS, glow, shift, text } = Controls()
+  const { fontSize, baseFreq, baseFreq2, scale, blur, azimuth, elevation, specConstH, specExpH, specConstS, specExpS, glow, shift, text, operator } = Controls()
   return (
     <div className="flex justify-center items-center w-full h-screen overflow-hidden">
       <svg
@@ -80,25 +80,18 @@ const AnimatedFilter = () => {
             />
 
             {/* Blend text over noise */}
-            {/* Create a background for the text */}
-            <feFlood floodColor="white" result="bg" />
-
             {/* Composite text over white background */}
-            <feComposite in="SourceGraphic" in2="bg" operator="over" result="text" />
+            <feComposite in="SourceGraphic" operator={"lighter"} result="text" />
 
             {/* Blend the text with noise */}
-            {/* <feBlend
+            <feBlend
               in="baseNoise"
               in2="text"
               mode="add"
               result="blended"
-            /> */}
+            />
 
-            <feComposite in="baseNoise" in2="text" operator="over" result="blended" />
-
-            {/* Issue is most likely in this step! 
-            Current 'textAndNoise' cant be passed as is to the highlight step. 
-            Check how its done in /svg6 */}
+            {/* Convert white bg to transparent*/}
             <feColorMatrix
               in="blended"
               type="matrix"
@@ -112,7 +105,7 @@ const AnimatedFilter = () => {
             {/* Emboss effect */}
             {/* Highlight */}
             <feGaussianBlur in="textAndNoise" stdDeviation={blur} result="blur1" />
-            {/* <feSpecularLighting result="spec1" in="blur1" specularConstant={specConstH} specularExponent={specExpH} lightingColor="#ffffff">
+            <feSpecularLighting result="spec1" in="blur1" specularConstant={specConstH} specularExponent={specExpH} lightingColor="#ffffff">
               <feDistantLight azimuth={azimuth + 180} elevation={elevation} />
             </feSpecularLighting>
 
@@ -125,16 +118,16 @@ const AnimatedFilter = () => {
               0 0 1 0 0
               0 0 0 ${glow} ${shift}`}
               result="highlight"
-            /> */}
+            />
 
             {/* Shadow */}
-            {/* <feGaussianBlur in="baseNoise" stdDeviation={blur} result="blur2" />
+            <feGaussianBlur in="textAndNoise" stdDeviation={blur} result="blur2" />
             <feSpecularLighting result="spec2" in="blur2" specularConstant={specConstS} specularExponent={specExpS} lightingColor="#ffffff">
               <feDistantLight azimuth={azimuth} elevation={elevation} />
-            </feSpecularLighting> */}
+            </feSpecularLighting>
 
             {/* Convert white to black for shadow */}
-            {/* <feColorMatrix
+            <feColorMatrix
               in="spec2"
               type="matrix"
               values={`
@@ -145,7 +138,8 @@ const AnimatedFilter = () => {
               result="shadow"
             />
 
-            <feComposite in="shadow" in2="highlight" operator={"lighter"} result="shadowed" /> */}
+            {/* Combine shadows and highlights */}
+            <feComposite in="shadow" in2="highlight" operator={"lighter"} result="shadowed" />
 
           </filter>
         </defs>
