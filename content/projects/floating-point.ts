@@ -3,7 +3,7 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   id: "pf",
   title: "Punto Flotante",
-  type: "Public art installation",
+  type: "Installation",
   collapsed: true,
   what: "A summer working with mirrors and stepper motors",
   date: "2017",

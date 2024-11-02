@@ -46,13 +46,14 @@ const slides: IGalleryItem[] = [
   {
     id: "boids",
     type: "video",
+    projectTypeOverride: "Process",
     alt: "alt",
     src: `${slidesPath}/boids-pro.mp4`,
     dims: { width: 600, height: 600 }
   },
   {
     hideMore: true,
-    projectTypeOverride: "Experiment",
+    projectTypeOverride: "Process",
     id: "cata",
     type: "video",
     alt: "alt",
@@ -62,7 +63,7 @@ const slides: IGalleryItem[] = [
   {
     id: "cata",
     type: "video",
-    projectTypeOverride: "Experiment",
+    projectTypeOverride: "Process",
     hideMore: true,
     alt: "alt",
     src: `${slidesPath}/cata_pro2.mp4`,
@@ -110,7 +111,6 @@ const slides: IGalleryItem[] = [
     src: `${slidesPath}/ci-render.jpg`,
     dims: { width: 3226, height: 3898 }
   },
- 
   {
     id: "bloko",
     type: "image",
@@ -134,7 +134,7 @@ const slides: IGalleryItem[] = [
   },
   {
     id: "cata",
-    projectTypeOverride: "Experiment",
+    projectTypeOverride: "Process",
     hideMore: true,
     type: "video",
     alt: "alt",
@@ -144,6 +144,7 @@ const slides: IGalleryItem[] = [
   {
     id: "pf",
     type: "image",
+    projectTypeOverride: "Documentation",
     alt: "alt",
     src: `${slidesPath}/tecnica.jpg`,
     dims: { width: 1920, height: 1280 }

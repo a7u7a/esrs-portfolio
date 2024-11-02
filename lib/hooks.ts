@@ -112,7 +112,7 @@ export const useRotationSpeed = (currentAngle: number) => {
       deltaAngle += 360;
     }
 
-    const scale = 1.2
+    const scale = 1.1
     const newRotationSpeed = Math.abs((deltaAngle / deltaTime) * scale);
 
     lastAngle.current = currentAngle;

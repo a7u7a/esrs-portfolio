@@ -3,7 +3,7 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   id: "elemental",
   title: "Elemental Chile",
-  type: "Elemental Chile",
+  type: "Elemental Website",
   date: "2024",
   collapsed: false,
   link: {

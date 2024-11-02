@@ -22,7 +22,7 @@ const config: Config = {
       },
       colors: {
         'esrs-gray': '#EFEFEF',
-        'esrs-hover': '#686868',
+        'esrs-hover': '#848484',
         'esrs-dark-gray': '#686868',
         'esrs-black': '#151515',
         'hover': '#686868',

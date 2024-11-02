@@ -4,7 +4,7 @@ export const project: IProject = {
   id: "bp",
   title: "BeigePill",
   date: "2024",
-  type: "BeigePill Productions",
+  type: "BeigePill Website",
   fields: [
     { title: "Design", value: "FutureCorp", url: "https://futurecorp.paris/" },
     { title: "Stack", value: "WebGL, GSAP, Next.js" },

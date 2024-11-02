@@ -68,7 +68,7 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
         playsInline
         muted
         loop
-        preload="true"
+        preload="false"
         src={slide.src}
       >
       </video>

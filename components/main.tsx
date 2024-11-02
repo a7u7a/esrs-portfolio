@@ -12,22 +12,6 @@ import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/fade-in'
 import { ICollaborator } from '@/lib/types'
 import Link from 'next/link'
-import { ArrowElbowRightUp } from '@phosphor-icons/react'
-
-const data = [
-  {
-    title: "sometitle1",
-    value: "somevalue1"
-  },
-  {
-    title: "sometitle2",
-    value: "somevalue2"
-  },
-  {
-    title: "sometitle3",
-    value: "somevalue3"
-  }
-];
 
 const Main = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
@@ -138,13 +122,13 @@ function TextWrapper({ children }: { children: React.ReactNode }) {
 const Collaborator = ({ collab }: { collab: ICollaborator }) => {
   const [hover, setHovered] = useState(false);
   return (
-    <li onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+    <li>
       <Link
         onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
         className='transition-colors ease-in-out duration-150 hover:text-esrs-hover'
         rel="noopener noreferrer" target="_blank" href={collab.url}
       >
-        <span className={`${hover ? 'text-esrs-hover' : ''}`}>{collab.name}</span>
+        <span>{collab.name}</span>
       </Link>
     </li>
   )
