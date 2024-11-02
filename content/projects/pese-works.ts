@@ -1,14 +1,16 @@
 import { IProject } from "@/lib/types";
 
 const project: IProject = {
+  id: "pese",
   title: "PESE.works",
   what: "Scroll-based 3D interactions",
+  type: "Portfolio website",
   date: "2022",
   collapsed: true,
   fields: [
-    { title: "Type", value: "Portfolio site" },
-    { title: "Stack", value: "React-Three-Fiber, TypeScript, WebGL, Next.js." },
-    { title: "Visit", url: "https://pese.works/" },
+    { title: "Stack", value: "R3F, TypeScript, Next.js." },
+    { title: "What?", value: "Portfolio site" },
+    { title: "Go", url: "https://pese.works/" }
   ],
   descriptionOne: `For this site we repurposed a model Pedro created for an exhibition project in Berlin. There was something interesting between the sterile view of the simulation and the photos of the real world objects he wanted to show.`,
   descriptionTwo: `I had to make this [little tool](https://pese.works/?debug=true) to help me find the right animation parameters for making the little scroll-dance between lights, camera and 🌷.`,

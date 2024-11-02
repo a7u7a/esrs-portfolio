@@ -22,9 +22,10 @@ const config: Config = {
       },
       colors: {
         'esrs-gray': '#EFEFEF',
-        'esrs-blue': 'rgb(59 130 246)',
+        'esrs-hover': '#686868',
         'esrs-dark-gray': '#686868',
         'esrs-black': '#151515',
+        'hover': '#686868',
       }
     },
   },

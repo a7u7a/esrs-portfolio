@@ -1,110 +1,151 @@
-"use client"
-import React, { useRef, useEffect, useState } from 'react'
-import Project from "@/components/project";
-import Header from "@/components/header";
-import { selectedProjects, experimentalProjects } from '@/content/projects'
-import NavMenu from "@/components/navmenu";
-import CV from "@/components/cv"
-import Divider from "@/components/divider"
-import SpinningLogo from "@/components/spinning-logo";
-import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useGSAP } from "@gsap/react";
+'use client'
+import React, { useEffect, useState } from 'react'
+import { Leva } from 'leva'
+import { useRotationSpeed } from '@/lib/hooks'
+import { useScrollProgress } from '@/lib/hooks'
+import SpinningLogo from '@/components/spinning-logo'
+import FreeLoopingCarousel from '@/components/free-looping-carousel'
+import collaborators from '@/content/collaborators'
+import socials from "@/content/socials"
+import { shuffledSlides } from '@/content/slides'
+import { IGalleryItem } from '@/lib/types'
+import FadeIn from '@/components/fade-in'
+import { ICollaborator } from '@/lib/types'
+import Link from 'next/link'
+import { ArrowElbowRightUp } from '@phosphor-icons/react'
 
-const desiredSegmentLength = 2000
+const data = [
+  {
+    title: "sometitle1",
+    value: "somevalue1"
+  },
+  {
+    title: "sometitle2",
+    value: "somevalue2"
+  },
+  {
+    title: "sometitle3",
+    value: "somevalue3"
+  }
+];
 
 const Main = () => {
-
+  const [slides, setSlides] = useState<IGalleryItem[]>([]);
+  const { container, scrollProgress } = useScrollProgress();
+  const rotationSpeed = useRotationSpeed(scrollProgress)
   useEffect(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
+    setSlides(shuffledSlides())
   }, [])
-  const container = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
-
-  useGSAP(() => {
-
-    function getTurns() {
-      // Calculate the number of turns the icon must make from scrollstart to end
-      const bodyHeight = document.documentElement.scrollHeight - window.innerHeight
-      const segments = Math.round(bodyHeight / desiredSegmentLength)
-      return Math.max(1, segments);
-    }
-
-    const setupScrollTrigger = () => {
-      const turns = getTurns();
-      if (!container.current) return;
-      const proxy = { progress: 0 };
-      gsap.to(proxy, {
-        ease: "none",
-        progress: 1,
-        onUpdate: () => {
-          // lower the floating point precision
-          const p = (proxy.progress * turns * 100) / 100
-          console.log('p',p)
-          setScrollProgress(p)
-        },
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.7,
-          invalidateOnRefresh: true, // Recalculate on resize/refresh
-          onUpdate: (self) => {
-            scrollTriggerRef.current = self;
-          },
-        }
-      });
-    }
-    setTimeout(setupScrollTrigger, 1000);
-  }, { scope: container })
-
-  const handleAccordionChange = () => {
-    // Wait for the transition to complete
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 1050);
-  };
-
   return (
-    <main ref={container} className="flex flex-col items-center bg-white">
+    <div ref={container} className='pt-40 md:pt-44 m-auto'>
 
-      <SpinningLogo scrollProgress={scrollProgress} />
-      <Header />
+      <FadeIn threshold={0.3}>
+        <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
+      </FadeIn>
+      <Leva hidden={true} />
 
-      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8'>
-        <div className="h-[10px] md:h-[25px] w-full" />
-        <NavMenu />
+      <TextWrapper>
+        <div className=''>
+          <FadeIn threshold={0.3}>
+            <span>{"Esteban Serrano is a design technologist based in Berlin."}</span>
+          </FadeIn>
+        </div>
 
-        <section className="pt-12" id="selected">
-          <ul className="pt-12 list-none flex flex-col gap-1 sm:gap-3">
-            {selectedProjects.map((project, i) => (
-              <li key={i} className=''>
-                <Project onStateChange={handleAccordionChange} key={i} project={project} />
-              </li>
+        <div className='mt-16 md:mt-24'>
+          <FadeIn threshold={0.3}>
+            <span className=''>{"He collaborates with brands, studios and startups since 2014."}</span>
+          </FadeIn>
+        </div>
+      </TextWrapper>
+
+      <FadeIn threshold={0.1}>
+        <div className='mt-16 md:mt-24 mb-2'>
+          <FreeLoopingCarousel slides={slides} />
+        </div>
+      </FadeIn>
+
+      <TextWrapper>
+        <div>
+          <FadeIn threshold={0.3}>
+            <div>
+              <span>{"Mixing code and design to craft unique digital products."}</span>
+            </div>
+          </FadeIn>
+        </div>
+
+        <div className='mt-16 md:mt-24'>
+          <FadeIn threshold={0.3}>
+            <div>
+              <span>{"Specialized in front-end development and interaction design."}</span>
+            </div>
+          </FadeIn>
+        </div>
+
+        <div className='mt-16 md:mt-24'>
+          <FadeIn threshold={0.3}>
+            <span className=''>{"People I've worked with:"}</span>
+          </FadeIn>
+          <ul className='list-none flex flex-col gap-3 pt-3'>
+            {collaborators.map((collab, i) => (
+              <FadeIn key={i} threshold={0.3}>
+                <Collaborator collab={collab} />
+              </FadeIn>
             ))}
           </ul>
-        </section>
+        </div>
 
-        <section className="pt-12 sm:pt-36" id="experimental">
-          <Divider title="Experimental Work" subtitle="What" />
-          <ul className="pt-6 sm:pt-12 list-none flex flex-col gap-1 sm:gap-3">
-            {experimentalProjects.map((project, i) => (
-              <li key={i}>
-                <Project onStateChange={handleAccordionChange} key={i} project={project} />
-              </li>
+        <div className='pt-20'>
+          <ul className='list-none flex flex-col gap-3 md:flex-row md:gap-6'>
+            {socials.map((social, i) => (
+              <FadeIn key={i} threshold={0.3}>
+                <li>
+                  <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>
+                </li>
+              </FadeIn>
             ))}
+            <FadeIn threshold={0.3}>
+              <li>
+                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
+                  {"esteban@esrs.co"}
+                </a>
+              </li>
+            </FadeIn>
           </ul>
-        </section>
+        </div>
 
-        <section className="pt-12 sm:pt-36">
-          <CV />
-        </section>
+        <FadeIn threshold={0.3}>
+          <footer className="pt-20 max-w-[600px] pb-32 text-[1.2rem] text-[#414141] leading-[1.4]">
+            <p>{"© 2024"}</p>
+            <p>{"All rights reserved."}</p>
+            <p>{"This website shows a selected view of my work."}</p>
+            <p>{"Licensed under CC BY-NC-SA 4.0."}</p>
+            <p className="pt-2">{"Last update: "}{process.env.NEXT_PUBLIC_BUILD_DATE}</p>
+          </footer>
+        </FadeIn>
 
-      </div >
-    </main>
-  );
+      </TextWrapper>
+
+    </div>
+  )
 }
 
-
 export default Main
+
+function TextWrapper({ children }: { children: React.ReactNode }) {
+  return <div className='px-4 flex flex-col max-w-[1000px]'>{children}</div>
+}
+
+const Collaborator = ({ collab }: { collab: ICollaborator }) => {
+  const [hover, setHovered] = useState(false);
+  return (
+    <li onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <Link
+        onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        className='transition-colors ease-in-out duration-150 hover:text-esrs-hover'
+        rel="noopener noreferrer" target="_blank" href={collab.url}
+      >
+        <span className={`${hover ? 'text-esrs-hover' : ''}`}>{collab.name}</span>
+      </Link>
+    </li>
+  )
+}

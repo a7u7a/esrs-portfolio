@@ -1,12 +1,14 @@
 import { IProject } from "@/lib/types";
 
 export const project: IProject = {
+  id: "boids",
   title: "Plasma birds",
+  type: "Experiment",
   what: "Geeking out with Three.js, GLSL and Observable notebooks",
   fields: [
-    { title: "Type", value: "Interactive particle simulation" },
-    { title: "Tools", value: "Three.js + Observable" },
-    { title: "Visit", url: 'https://observablehq.com/@esrs/plasma-boids-may-2022-update?collection=@esrs/boids' },
+    { title: "Stack", value: "Three.js, Observable" },
+    { title: "What?", value: "Boids particle simulation" },
+    { title: "Go", url: "https://observablehq.com/@esrs/plasma-boids-may-2022-update?collection=@esrs/boids" }
   ],
   date: "2021",
   collapsed: true,

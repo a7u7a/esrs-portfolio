@@ -1,11 +1,24 @@
 export interface IGalleryItem {
+  hideCaption?: boolean
+  projectTypeOverride?: string
+  hideMore?: boolean
+  id?: string;
   type: "image" | "video";
   alt: string
   src: string
-  dims: { height: number, width: number }
+  dims?: { height: number, width: number }
+  poster?: string
+}
+
+interface ILink {
+  title: string
+  url: string
 }
 
 export interface IProject {
+  type: string
+  link?: ILink
+  id: string;
   title: string;
   date: string;
   descriptionOne?: string;
@@ -22,7 +35,7 @@ export interface IProjectField {
   url?: string // https://beigepill.com, etc
 }
 
-export interface ICollaborators {
+export interface ICollaborator {
   name: string
-  url?: string
+  url: string
 }

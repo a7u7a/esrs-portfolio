@@ -1,37 +1,47 @@
 "use client"
-import React, { useMemo } from 'react'
-
-const vbDims = { h: 88, w: 65 }
-const maxSquareHeight = 50
+import React, { useEffect, useMemo } from 'react'
+import { useMediaQuery } from '@/lib/hooks'
+interface Dims {
+  h: number
+  w: number
+}
+const vbDims = { h: 90, w: 63 }
+const vbDimsMd = { h: 120, w: 90 }
+const maxSquareHeight = 45
+const maxSquareHeightMd = 65
 const startingAngle = 0.27
-const m = 2
+const m = 4
 
 function getAngle(value: number) {
   return ((2 * Math.PI * value)) + startingAngle
 }
 
-function getEllipseParams(value: number) {
+function getEllipseParams(value: number, dims: Dims) {
   const angle = getAngle(value);
-  const rx = vbDims.w / 2 - m;
-  const ry = (vbDims.w / 2) * Math.abs(Math.sin(angle));
+  const rx = dims.w / 2 - m;
+  const ry = (dims.w / 2) * Math.abs(Math.sin(angle));
   return { rx, ry };
 }
 
-function getY(value: number) {
+function getY(value: number, maxSquareH: number, dims: Dims) {
   const angle = getAngle(value);
-  const y1 = vbDims.h / 2 - (maxSquareHeight / 2) * Math.cos(angle);
-  const y2 = vbDims.h / 2 + (maxSquareHeight / 2) * Math.cos(angle);
+  const y1 = dims.h / 2 - (maxSquareH / 2) * Math.cos(angle);
+  const y2 = dims.h / 2 + (maxSquareH / 2) * Math.cos(angle);
   return [y1, y2];
 }
 
 interface SpinningLogoProps {
+  rotationSpeed: number
   scrollProgress: number
 }
 
-const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
+const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
+  const isMd = useMediaQuery('(min-width: 768px)')
+  const dims = isMd ? vbDimsMd : vbDims
+  const maxSquareH = isMd ? maxSquareHeightMd : maxSquareHeight
 
   const lines = useMemo(() => {
-    const [y1, y2] = getY(scrollProgress);
+    const [y1, y2] = getY(scrollProgress, maxSquareH, dims);
     return (
       <>
         <line
@@ -41,19 +51,19 @@ const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
           y2={y2}
         />
         <line
-          x1={vbDims.w - m}
+          x1={dims.w - m}
           y1={y1}
-          x2={vbDims.w - m}
+          x2={dims.w - m}
           y2={y2}
         />
       </>
     );
-  }, [scrollProgress]);
+  }, [scrollProgress, maxSquareH, dims]);
 
   const ellipses = useMemo(() => {
-    const [y1, y2] = getY(scrollProgress);
-    const center = vbDims.w / 2
-    const { rx, ry } = getEllipseParams(scrollProgress);
+    const [y1, y2] = getY(scrollProgress, maxSquareH, dims);
+    const center = dims.w / 2
+    const { rx, ry } = getEllipseParams(scrollProgress, dims);
     return (
       <>
         <ellipse
@@ -70,30 +80,37 @@ const SpinningLogo = ({ scrollProgress }: SpinningLogoProps) => {
         />
       </>
     )
-  }, [scrollProgress])
+  }, [scrollProgress, maxSquareH, dims])
 
   return (
     <div
-      style={{ width: `${vbDims.w}px` }}
+      style={{ width: `${dims.w}px` }}
       className={`
         fixed 
-        ml-2 mb-2
-        top-0 right-0 
-        mt-10 md:mt-4
-        mr-3 md:mr-8 2xl:mr-12
-        z-50 hover:cursor-pointer
+        top-0 left-0 
+        ml-3
+        pt-1
+        z-50
       `}
     >
       <svg
-        className='stroke-esrs-dark-gray stroke-[3px] hover:stroke-esrs-blue transition-colors duration-200'
-        style={{ willChange: "transform" }}
-        viewBox={`0 0 ${vbDims.w} ${vbDims.h}`}
+        className='stroke-black stroke-[3px] md:stroke-[4px]'
+        viewBox={`0 0 ${dims.w} ${dims.h}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         strokeLinecap="round"
       >
-        {ellipses}
-        {lines}
+        <defs>
+          <filter id="blurFilter">
+            <feGaussianBlur in="SourceGraphic" stdDeviation={`0 ${rotationSpeed}`} result="blur" />
+          </filter>
+        </defs>
+        <g
+          filter="url(#blurFilter)"
+        >
+          {ellipses}
+          {lines}
+        </g>
       </svg>
     </div>
   )

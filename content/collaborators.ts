@@ -1,6 +1,6 @@
-import { ICollaborators } from "@/lib/types"
+import { ICollaborator } from "@/lib/types"
 
-const collaborators: ICollaborators[] = [
+const collaborators: ICollaborator[] = [
   {
     name: "FutureCorp",
     url: "https://futurecorp.paris/"
@@ -10,15 +10,15 @@ const collaborators: ICollaborators[] = [
     url: "https://saatchi.co.uk/"
   },
   {
+    name: "Dolce & Gabanna",
+    url: "https://www.dolcegabbana.com/"
+  },
+  {
     name: "JDS Development Group",
     url: "https://jdsdevelopment.com/"
   },
   {
-    name: "Dolce Gabanna",
-    url: "https://dolcegabanna.com/"
-  },
-  {
-    name: "Elemental",
+    name: "Elemental Chile",
     url: "https://elemental-chile.cl/"
   },
   {
@@ -38,12 +38,8 @@ const collaborators: ICollaborators[] = [
     url: "https://trainfes.com/"
   },
   {
-    name: "U. of Edinburgh, School of Informatics",
+    name: "School of Informatics, U. of Edinburgh",
     url: "https://informatics.ed.ac.uk/"
-  },
-  {
-    name: "Cardiff U. School of Computer Science",
-    url: "https://www.cardiff.ac.uk/computer-science"
   },
   {
     name: "Escuela de Ingeniería PUC",
