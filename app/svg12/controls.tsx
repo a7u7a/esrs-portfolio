@@ -1,4 +1,4 @@
-import { useControls } from 'leva'
+import { useControls, folder } from 'leva'
 
 const step = 0.01
 
@@ -23,7 +23,7 @@ const Controls = () => useControls('Turbulence Effect', {
   },
   text: 'hola',
   blur: {
-    value: 1.15,
+    value: 0.51,
     min: 0,
     max: 5,
     step: 0.001
@@ -41,27 +41,30 @@ const Controls = () => useControls('Turbulence Effect', {
     step,
   },
   fontSize: {
-    value: 107.63,
+    value: 72.84,
     min: 10,
     max: 200,
     step,
   },
-  specConstH: {
-    value: 1.81,
-    min: 0,
-    max: 10,
-    step,
-  },
-  specExpH: {
-    value: 9.24,
-    min: -10,
-    max: 10,
-    step,
-  },
+  "Highlights": folder({
+    specConstH: {
+      value: 0.75,
+      min: 0,
+      max: 2,
+      step,
+    },
+    specExpH: {
+      value: 2.70,
+      min: -10,
+      max: 10,
+      step,
+    },
+  }),
+  "Shadows": folder({
   specConstS: {
-    value: 0.54,
+    value: 0.76,
     min: 0,
-    max: 10,
+    max: 2,
     step,
   },
   specExpS: {
@@ -70,21 +73,36 @@ const Controls = () => useControls('Turbulence Effect', {
     max: 10,
     step,
   },
+}),
   glow: {
-    value: -3.51,
+    value: -7.44,
     min: -10,
     max: 10,
     step,
   },
   shift: {
-    value: 1.00,
+    value: 1.46,
     min: -2,
     max: 2,
     step,
   },
-  operator: {
-    value: 'lighter',
-    options: ['lighter', 'over', 'in', 'out', 'atop', 'xor', 'arithmetic']
+  bgBlur: {
+    value: 10,
+    min: 0,
+    max: 50,
+    step: 1
+  },
+  radius: {
+    value: 56,
+    min: 0,
+    max: 500,
+    step: 1
+  },
+  strokeWidth: {
+    value: 50,
+    min: 0,
+    max: 500,
+    step: 1
   }
 })
 

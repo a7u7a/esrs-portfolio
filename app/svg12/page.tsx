@@ -1,11 +1,10 @@
 
 import React from 'react'
-import HeaderSvg from './header-svg'
+import Main from './main'
 const Svg2Page = () => {
   return (
     <div>
-      <HeaderSvg />
-      <div className='h-[1000px] bg-white'></div>
+      <Main />
     </div>
   )
 }
