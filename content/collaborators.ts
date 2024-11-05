@@ -10,7 +10,7 @@ const collaborators: ICollaborator[] = [
     url: "https://saatchi.co.uk/"
   },
   {
-    name: "Dolce & Gabanna",
+    name: "Dolce & Gabbana",
     url: "https://www.dolcegabbana.com/"
   },
   {
