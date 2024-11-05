@@ -13,7 +13,6 @@ type PropType = {
 }
 
 const FreeLoopingCarousel: React.FC<PropType> = (props) => {
-  const [hover, setHovered] = useState(false);
   const [collapsed, setCollapsed] = useState<number | null>(null);
   const { slides } = props
   const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, dragFree: true })
@@ -37,8 +36,6 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
         <div
           ref={emblaRef}
           className={`overflow-hidden`}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
         >
           {/* Embla Container */}
           <div className="flex h-full pt-4 pb-28 -ml-3">

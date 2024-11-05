@@ -8,7 +8,7 @@ const project: IProject = {
   fields: [
     {
       title: "Stack",
-      value: "Python, Pandas, World Bank API, Yahoo Finance API, Raspberry Pi",
+      value: "Python, Pandas, RPi",
     },
     { title: "What?",value:"More info", url: "https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/" },
     {
