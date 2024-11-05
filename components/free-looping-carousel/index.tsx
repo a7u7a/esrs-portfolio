@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import ImageSlide from './image-slide'
@@ -15,9 +15,9 @@ type PropType = {
 const FreeLoopingCarousel: React.FC<PropType> = (props) => {
   const [collapsed, setCollapsed] = useState<number | null>(null);
   const { slides } = props
-  const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, dragFree: true })
+  const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, dragFree: true, align: 'start' })
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    AutoScroll({ playOnInit: true, startDelay: 800, speed: 0.7 }),
+    AutoScroll({ playOnInit: true, startDelay: 1000, speed: 0.7 }),
     WheelGesturesPlugin({ forceWheelAxis: "x" })
   ])
 
@@ -38,9 +38,9 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
           className={`overflow-hidden`}
         >
           {/* Embla Container */}
-          <div className="flex h-full pt-4 pb-28 -ml-3">
+          <div className="flex h-full pt-4 pb-28">
             {slides.map((slide, index) => (
-              <Slide onClickSlide={onClickSlide} index={index} key={index} slide={slide} collapsed={index === collapsed}>
+              <Slide emblaApi={emblaApi} onClickSlide={onClickSlide} index={index} key={index} slide={slide} collapsed={index === collapsed}>
                 {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}
               </Slide>
             ))}

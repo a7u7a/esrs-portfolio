@@ -1,11 +1,10 @@
-
+import React, { useCallback, useEffect, useState } from 'react'
 import { IGalleryItem, IProject, IProjectField } from '@/lib/types'
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import { ArrowElbowRightUp, CaretDown, CaretUp } from '@phosphor-icons/react';
+import { EmblaCarouselType } from 'embla-carousel'
 import Link from 'next/link';
-
-import React, { useEffect, useState } from 'react'
-// import { FieldCTALinkTitleAndSubtitle, FieldCTALinkTitle, FieldTitleAndSubtitle, HintTitle, MoreExpandIcon, MoreRow } from '@/lib/utils'
+import useMeasure from 'react-use-measure';
 
 interface SlideProps {
   children: React.ReactNode
@@ -13,9 +12,11 @@ interface SlideProps {
   onClickSlide: (index: number) => void
   index: number
   collapsed: boolean
+  emblaApi: EmblaCarouselType | undefined
 }
 
-const Slide = ({ children, slide, onClickSlide, index, collapsed }: SlideProps) => {
+const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: SlideProps) => {
+  const [ref, bounds] = useMeasure()
   const [hover, setHovered] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [showMore, setShowMore] = useState(false);
@@ -39,9 +40,50 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed }: SlideProps) 
   const handleClick = () => {
     onClickSlide(index)
   }
+
+  const handleScroll = useCallback(() => {
+    if (!emblaApi) return
+
+    const progress = emblaApi.scrollProgress()
+    const slideNodes = emblaApi.slideNodes()
+    const numberOfSlides = slideNodes.length
+    const scrollSnapList = emblaApi.scrollSnapList()
+
+    // Get current slide's snap point
+    const currentSnapPoint = scrollSnapList[index]
+
+    // Get next slide's snap point
+    const nextSnapPoint = index === numberOfSlides - 1
+      ? scrollSnapList[0]  // Loop back to first slide if at end
+      : scrollSnapList[index + 1]
+
+    // Calculate distances
+    const leftDistance = progress - currentSnapPoint
+    const rightDistance = nextSnapPoint - progress
+
+    if (index === 2) {
+      console.log("Left distance:", leftDistance)
+      console.log("Right distance:", rightDistance)
+    }
+  }, [emblaApi, bounds.width, index])
+
+  // Attach the scroll event listener
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.on('scroll', handleScroll)
+      // Initial calculation
+      handleScroll()
+    }
+    return () => {
+      if (emblaApi) {
+        emblaApi.off('scroll', handleScroll)
+      }
+    }
+  }, [emblaApi, handleScroll])
+
   return (
     // Embla Slide
-    <div className="shrink-0 flex flex-col pl-3 text-[0.8rem] md:text-[0.9rem]">
+    <div ref={ref} className="shrink-0 flex flex-col pl-3 text-[0.8rem] md:text-[0.9rem]">
       <div className={`relative ${slide.hideMore ? "cursor-auto" : "hover:cursor-pointer"}`} onClick={handleClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
 
         <div className='relative'>
