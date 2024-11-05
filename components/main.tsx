@@ -69,7 +69,7 @@ const Main = () => {
           <FadeIn threshold={0.3}>
             <span className=''>{"People I've worked with:"}</span>
           </FadeIn>
-          <ul className='list-none flex flex-col gap-3 pt-3'>
+          <ul className='list-none flex flex-col gap-3 pt-3 ml-3 md:ml-6 '>
             {collaborators.map((collab, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <Collaborator collab={collab} />
@@ -79,7 +79,14 @@ const Main = () => {
         </div>
 
         <div className='pt-20'>
-          <ul className='list-none flex flex-col gap-3 md:flex-row md:gap-6'>
+          <ul className='list-none flex flex-col gap-3 md:gap-6'>
+          <FadeIn threshold={0.3}>
+              <li>
+                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
+                  {"esteban@esrs.co"}
+                </a>
+              </li>
+            </FadeIn>
             {socials.map((social, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <li>
@@ -87,13 +94,6 @@ const Main = () => {
                 </li>
               </FadeIn>
             ))}
-            <FadeIn threshold={0.3}>
-              <li>
-                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
-                  {"esteban@esrs.co"}
-                </a>
-              </li>
-            </FadeIn>
           </ul>
         </div>
 
