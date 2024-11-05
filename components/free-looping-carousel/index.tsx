@@ -23,8 +23,11 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
   ])
 
   const onClickSlide = (index: number) => {
-    if (collapsed === index) setCollapsed(null)
-    else setCollapsed(index)
+    if (collapsed === index) {
+      setCollapsed(null)
+    } else if (!slides[index].hideMore) {
+      setCollapsed(index)
+    }
   }
 
   return (
