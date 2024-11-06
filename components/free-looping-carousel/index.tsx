@@ -17,7 +17,7 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
   const { slides } = props
   const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, dragFree: true, align: 'start' })
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    AutoScroll({ playOnInit: true, startDelay: 1000, speed: 0.7 }),
+    AutoScroll({ playOnInit: false, startDelay: 1000, speed: 0.7 }),
     WheelGesturesPlugin({ forceWheelAxis: "x" })
   ])
 

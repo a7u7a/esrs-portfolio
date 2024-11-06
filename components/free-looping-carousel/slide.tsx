@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { IGalleryItem, IProject, IProjectField } from '@/lib/types'
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import { ArrowElbowRightUp, CaretDown, CaretUp } from '@phosphor-icons/react';
@@ -19,6 +19,9 @@ interface SlideProps {
 const colors = ["red", "green", "blue", "yellow", "purple", "orange", "pink", "brown", "gray", "black", "white"]
 
 const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: SlideProps) => {
+  const prevProgress = useRef(0)
+  const loopCount = useRef(0)
+  const debugIndex = 19;
   const [lateralProgress, setLateralProgress] = useState({ left: 0, right: 0 });
   const [color, setColor] = useState(colors[Math.floor(Math.random() * colors.length)]);
   const [ref, bounds] = useMeasure()
@@ -53,8 +56,20 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
     const scrollSnapList = emblaApi.scrollSnapList()
     const currentSnapPoint = scrollSnapList[index]
     const nextSnapPoint = index === slideNodes.length - 1
-      ? scrollSnapList[0]  // Loop back to first slide if at end
+      ? 1
       : scrollSnapList[index + 1]
+
+    // Detect if we crossed the loop boundary
+    const isLoopingForward = prevProgress.current > 0.8 && progress < 0.2
+    const isLoopingBackward = prevProgress.current < 0.2 && progress > 0.8
+
+    // Update loop count
+    if (isLoopingForward) loopCount.current++
+    if (isLoopingBackward) loopCount.current--
+
+    // Calculate continuous progress
+    const continuousProgress = progress + loopCount.current
+
     const slideNormalizedWidth = nextSnapPoint - currentSnapPoint
     const viewportPixelWidth = emblaApi.containerNode().clientWidth
     const scrollPixelWidth = slideNodes.reduce((acc, node) => acc + node.clientWidth, 0)
@@ -64,17 +79,19 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
     const leftProgress = Math.max(0, Math.min(1, leftOffset / slideNormalizedWidth))
     const rightProgress = Math.max(0, Math.min(1, rightOffset / slideNormalizedWidth))
     setLateralProgress({ left: leftProgress, right: rightProgress })
-    // if (index === 2) {
-    //   console.log("rightProgress", rightProgress);
-    //   console.log("leftProgress", leftProgress);
-    // }
+    // Update previous progress for next frame
+    prevProgress.current = progress
+
+    if (index === debugIndex) {
+      console.log("leftOffset before", leftOffset / slideNormalizedWidth);
+      console.log("continuousProgress", continuousProgress);
+    }
+    // console.log({ currentSnapPoint, nextSnapPoint })
   }, [emblaApi, index])
 
-  // Attach the scroll event listener
   useEffect(() => {
     if (emblaApi) {
       emblaApi.on('scroll', handleScroll)
-      // Initial calculation
       handleScroll()
     }
     return () => {
@@ -84,12 +101,12 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
     }
   }, [emblaApi, handleScroll])
 
-  useEffect(() => {
-    if (index === 2) {
-      console.log("left", `${lateralProgress.left * bounds.width}px`);
-      console.log("right", `${lateralProgress.right * bounds.width}px`);
-    }
-  }, [lateralProgress, bounds.width, index])
+  // useEffect(() => {
+  //   if (index === 1) {
+  //     console.log("left", `${lateralProgress.left * bounds.width}px`);
+  //     console.log("right", `${lateralProgress.right * bounds.width}px`);
+  //   }
+  // }, [lateralProgress, bounds.width, index])
 
   return (
     // Embla Slide
@@ -113,18 +130,18 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
           </div>
         } */}
         {/* //draw random background color from a list of colors */}
-        {index === 2 && <>
+        {index === debugIndex && <>
           <div
             style={{ left: `${lateralProgress.left * bounds.width}px`, backgroundColor: color }}
             className='absolute'
           >
-            {"START"}
+            {"LEFT"}
           </div>
           <div
             style={{ right: `${lateralProgress.right * bounds.width}px`, backgroundColor: color }}
             className='absolute'
           >
-            {"END"}
+            {"RIGHT"}
           </div>
         </>}
       </div>
