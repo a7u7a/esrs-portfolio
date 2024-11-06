@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import ImageSlide from './image-slide'
@@ -40,7 +40,14 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
           {/* Embla Container */}
           <div className="flex h-full pt-4 pb-28">
             {slides.map((slide, index) => (
-              <Slide emblaApi={emblaApi} onClickSlide={onClickSlide} index={index} key={index} slide={slide} collapsed={index === collapsed}>
+              <Slide
+                emblaApi={emblaApi}
+                onClickSlide={onClickSlide}
+                index={index}
+                key={index}
+                slide={slide}
+                collapsed={index === collapsed}
+              >
                 {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}
               </Slide>
             ))}

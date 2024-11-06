@@ -13,6 +13,7 @@ interface SlideProps {
   index: number
   collapsed: boolean
   emblaApi: EmblaCarouselType | undefined
+  // viewportWidth: number
 }
 
 const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: SlideProps) => {
@@ -43,29 +44,30 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
 
   const handleScroll = useCallback(() => {
     if (!emblaApi) return
-
     const progress = emblaApi.scrollProgress()
     const slideNodes = emblaApi.slideNodes()
-    const numberOfSlides = slideNodes.length
     const scrollSnapList = emblaApi.scrollSnapList()
-
-    // Get current slide's snap point
     const currentSnapPoint = scrollSnapList[index]
-
-    // Get next slide's snap point
-    const nextSnapPoint = index === numberOfSlides - 1
+    const nextSnapPoint = index === slideNodes.length - 1
       ? scrollSnapList[0]  // Loop back to first slide if at end
       : scrollSnapList[index + 1]
-
-    // Calculate distances
-    const leftDistance = progress - currentSnapPoint
-    const rightDistance = nextSnapPoint - progress
+    const slideNormalizedWidth = nextSnapPoint - currentSnapPoint
+    const viewportPixelWidth = emblaApi.containerNode().clientWidth
+    const scrollPixelWidth = slideNodes.reduce(
+      (acc, node) => acc + node.clientWidth, 
+      0
+    )
+    const viewportNormalizedWidth = viewportPixelWidth / scrollPixelWidth
+    const leftOffset = (progress - currentSnapPoint)
+    const rightOffset = -1 * (leftOffset - (slideNormalizedWidth - viewportNormalizedWidth))
+    const leftProgress = Math.max(0, Math.min(1, leftOffset / slideNormalizedWidth))
+    const rightProgress = Math.max(0, Math.min(1, rightOffset / slideNormalizedWidth))
 
     if (index === 2) {
-      console.log("Left distance:", leftDistance)
-      console.log("Right distance:", rightDistance)
+      console.log("rightProgress", rightProgress);
+      console.log("leftProgress", leftProgress);
     }
-  }, [emblaApi, bounds.width, index])
+  }, [emblaApi, index])
 
   // Attach the scroll event listener
   useEffect(() => {
