@@ -16,7 +16,11 @@ interface SlideProps {
   // viewportWidth: number
 }
 
+const colors = ["red", "green", "blue", "yellow", "purple", "orange", "pink", "brown", "gray", "black", "white"]
+
 const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: SlideProps) => {
+  const [lateralProgress, setLateralProgress] = useState({ left: 0, right: 0 });
+  const [color, setColor] = useState(colors[Math.floor(Math.random() * colors.length)]);
   const [ref, bounds] = useMeasure()
   const [hover, setHovered] = useState(false);
   const [toggle, setToggle] = useState(true);
@@ -53,20 +57,17 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
       : scrollSnapList[index + 1]
     const slideNormalizedWidth = nextSnapPoint - currentSnapPoint
     const viewportPixelWidth = emblaApi.containerNode().clientWidth
-    const scrollPixelWidth = slideNodes.reduce(
-      (acc, node) => acc + node.clientWidth, 
-      0
-    )
+    const scrollPixelWidth = slideNodes.reduce((acc, node) => acc + node.clientWidth, 0)
     const viewportNormalizedWidth = viewportPixelWidth / scrollPixelWidth
     const leftOffset = (progress - currentSnapPoint)
     const rightOffset = -1 * (leftOffset - (slideNormalizedWidth - viewportNormalizedWidth))
     const leftProgress = Math.max(0, Math.min(1, leftOffset / slideNormalizedWidth))
     const rightProgress = Math.max(0, Math.min(1, rightOffset / slideNormalizedWidth))
-
-    if (index === 2) {
-      console.log("rightProgress", rightProgress);
-      console.log("leftProgress", leftProgress);
-    }
+    setLateralProgress({ left: leftProgress, right: rightProgress })
+    // if (index === 2) {
+    //   console.log("rightProgress", rightProgress);
+    //   console.log("leftProgress", leftProgress);
+    // }
   }, [emblaApi, index])
 
   // Attach the scroll event listener
@@ -82,6 +83,13 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
       }
     }
   }, [emblaApi, handleScroll])
+
+  useEffect(() => {
+    if (index === 2) {
+      console.log("left", `${lateralProgress.left * bounds.width}px`);
+      console.log("right", `${lateralProgress.right * bounds.width}px`);
+    }
+  }, [lateralProgress, bounds.width, index])
 
   return (
     // Embla Slide
@@ -99,11 +107,26 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
           {!slide.hideMore && <MoreExpandIcon collapsed={toggle} />}
         </div>
 
-        {!slide.hideMore &&
+        {/* {!slide.hideMore &&
           <div className={`absolute inset-x-0 bottom-0 z-20 translate-y-full ${showMore ? 'block' : 'hidden'}`}>
             <MoreCard collapsed={toggle} project={project} />
           </div>
-        }
+        } */}
+        {/* //draw random background color from a list of colors */}
+        {index === 2 && <>
+          <div
+            style={{ left: `${lateralProgress.left * bounds.width}px`, backgroundColor: color }}
+            className='absolute'
+          >
+            {"START"}
+          </div>
+          <div
+            style={{ right: `${lateralProgress.right * bounds.width}px`, backgroundColor: color }}
+            className='absolute'
+          >
+            {"END"}
+          </div>
+        </>}
       </div>
     </div>
   )
