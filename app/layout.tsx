@@ -40,7 +40,7 @@ export default function RootLayout({
         className={`
         ${mediumFont.variable}
         font-sans 
-        selection:bg-gray-200 selection:text-esrs-hover 
+        selection:bg-[#7F9DFF] selection:text-white
         text-[2rem] md:text-[3.5rem] 
         leading-[1.20] 
         text-[#303030]

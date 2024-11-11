@@ -1,149 +1,49 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IGalleryItem, IProject, IProjectField } from '@/lib/types'
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import { ArrowElbowRightUp, CaretDown, CaretUp } from '@phosphor-icons/react';
-import { EmblaCarouselType } from 'embla-carousel'
 import Link from 'next/link';
+import { useMediaQuery } from '@/lib/hooks';
 import useMeasure from 'react-use-measure';
 
 interface SlideProps {
   children: React.ReactNode
   slide: IGalleryItem
-  onClickSlide: (index: number) => void
-  index: number
-  collapsed: boolean
-  emblaApi: EmblaCarouselType | undefined
-  // viewportWidth: number
 }
 
-const colors = ["red", "green", "blue", "yellow", "purple", "orange", "pink", "brown", "gray", "black", "white"]
-
-const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: SlideProps) => {
-  const prevProgress = useRef(0)
-  const loopCount = useRef(0)
-  const debugIndex = 19;
-  const [lateralProgress, setLateralProgress] = useState({ left: 0, right: 0 });
-  const [color, setColor] = useState(colors[Math.floor(Math.random() * colors.length)]);
-  const [ref, bounds] = useMeasure()
+const Slide = ({ children, slide }: SlideProps) => {
+  const isMd = useMediaQuery('(min-width: 768px)')
   const [hover, setHovered] = useState(false);
-  const [toggle, setToggle] = useState(true);
-  const [showMore, setShowMore] = useState(false);
   const projects = [...selectedProjects, ...experimentalProjects]
   const project = projects.find(p => p.id === slide.id)
+  const [hideText, setHideText] = useState(false);
+  const [ref, bounds] = useMeasure()
 
   if (!project) throw new Error("Project not found in slide")
 
   useEffect(() => {
-    if (collapsed) {
-      setShowMore(true)
-      const timer = setTimeout(() => setToggle(false), 10)
-      return () => clearTimeout(timer)
-    } else {
-      setToggle(true)
-      const timer = setTimeout(() => setShowMore(false), 300)
-      return () => clearTimeout(timer)
-    }
-  }, [collapsed])
-
-  const handleClick = () => {
-    onClickSlide(index)
-  }
-
-  const handleScroll = useCallback(() => {
-    if (!emblaApi) return
-    const progress = emblaApi.scrollProgress()
-    const slideNodes = emblaApi.slideNodes()
-    const scrollSnapList = emblaApi.scrollSnapList()
-    const currentSnapPoint = scrollSnapList[index]
-    const nextSnapPoint = index === slideNodes.length - 1
-      ? 1
-      : scrollSnapList[index + 1]
-
-    // Detect if we crossed the loop boundary
-    const isLoopingForward = prevProgress.current > 0.8 && progress < 0.2
-    const isLoopingBackward = prevProgress.current < 0.2 && progress > 0.8
-
-    // Update loop count
-    if (isLoopingForward) loopCount.current++
-    if (isLoopingBackward) loopCount.current--
-
-    // Calculate continuous progress
-    const continuousProgress = progress + loopCount.current
-
-    const slideNormalizedWidth = nextSnapPoint - currentSnapPoint
-    const viewportPixelWidth = emblaApi.containerNode().clientWidth
-    const scrollPixelWidth = slideNodes.reduce((acc, node) => acc + node.clientWidth, 0)
-    const viewportNormalizedWidth = viewportPixelWidth / scrollPixelWidth
-    const leftOffset = (progress - currentSnapPoint)
-    const rightOffset = -1 * (leftOffset - (slideNormalizedWidth - viewportNormalizedWidth))
-    const leftProgress = Math.max(0, Math.min(1, leftOffset / slideNormalizedWidth))
-    const rightProgress = Math.max(0, Math.min(1, rightOffset / slideNormalizedWidth))
-    setLateralProgress({ left: leftProgress, right: rightProgress })
-    // Update previous progress for next frame
-    prevProgress.current = progress
-
-    if (index === debugIndex) {
-      console.log("leftOffset before", leftOffset / slideNormalizedWidth);
-      console.log("continuousProgress", continuousProgress);
-    }
-    // console.log({ currentSnapPoint, nextSnapPoint })
-  }, [emblaApi, index])
-
-  useEffect(() => {
-    if (emblaApi) {
-      emblaApi.on('scroll', handleScroll)
-      handleScroll()
-    }
-    return () => {
-      if (emblaApi) {
-        emblaApi.off('scroll', handleScroll)
-      }
-    }
-  }, [emblaApi, handleScroll])
-
-  // useEffect(() => {
-  //   if (index === 1) {
-  //     console.log("left", `${lateralProgress.left * bounds.width}px`);
-  //     console.log("right", `${lateralProgress.right * bounds.width}px`);
-  //   }
-  // }, [lateralProgress, bounds.width, index])
+    setHideText(bounds.width < 200)
+  }, [bounds])
 
   return (
     // Embla Slide
-    <div ref={ref} className="shrink-0 flex flex-col pl-3 text-[0.8rem] md:text-[0.9rem]">
-      <div className={`relative ${slide.hideMore ? "cursor-auto" : "hover:cursor-pointer"}`} onClick={handleClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
+    <div ref={ref} className="shrink-0 flex flex-col pl-4 text-[0.8rem] md:text-[0.9rem] text-esrs-dark-gray">
 
-        <div className='relative'>
-          {/* Gradient overlay */}
-          <div className={`absolute rounded-b-lg inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent h-[80px] z-10 transition-opacity duration-200 ${hover ? 'opacity-50' : 'opacity-0'}`} />
-          {children}
+      <div className={`relative`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
+
+        {/* Overlay */}
+
+        <div className={`absolute rounded-lg inset-0 bg-black z-10 pointer-events-none transition-opacity duration-200 ${hover ? 'opacity-20' : 'opacity-0'}`} />
+
+        {children}
+        <div className={`text-esrs-gray z-20 absolute mx-1 my-1 bottom-0 inset-x-0 transition-opacity duration-200 ${hover ? 'bg-opacity-100' : 'bg-opacity-0'}`}>
+          <div className='flex justify-between gap-1'>
+            <HintTitle slide={slide} project={project} hover={isMd ? hover : true} />
+            {!slide.hideMore &&
+              <LinkToProject hover={isMd ? hover : true} hideText={hideText} />
+            }
+          </div>
         </div>
-
-        <div className={`z-20 absolute mx-1 my-1 bottom-0 inset-x-0 flex justify-between gap-2 transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}>
-          <HintTitle slide={slide} project={project} />
-          {!slide.hideMore && <MoreExpandIcon collapsed={toggle} />}
-        </div>
-
-        {/* {!slide.hideMore &&
-          <div className={`absolute inset-x-0 bottom-0 z-20 translate-y-full ${showMore ? 'block' : 'hidden'}`}>
-            <MoreCard collapsed={toggle} project={project} />
-          </div>
-        } */}
-        {/* //draw random background color from a list of colors */}
-        {index === debugIndex && <>
-          <div
-            style={{ left: `${lateralProgress.left * bounds.width}px`, backgroundColor: color }}
-            className='absolute'
-          >
-            {"LEFT"}
-          </div>
-          <div
-            style={{ right: `${lateralProgress.right * bounds.width}px`, backgroundColor: color }}
-            className='absolute'
-          >
-            {"RIGHT"}
-          </div>
-        </>}
       </div>
     </div>
   )
@@ -151,14 +51,35 @@ const Slide = ({ children, slide, onClickSlide, index, collapsed, emblaApi }: Sl
 
 export default Slide
 
-interface MoreProps {
+function HintTitle({ slide, project, hover }: { slide: IGalleryItem, project?: IProject, hover: boolean }) {
+  return (
+    <span className={`bg-black bg-opacity-50 px-1.5 py-0.5 rounded flex transition-opacity duration-200 mix-blend-difference ${hover ? 'opacity-100' : 'opacity-0'}`}>
+      <span>
+        {slide.projectTypeOverride || project?.type}
+      </span>
+    </span>
+  )
+}
+
+const LinkToProject = ({ hover, hideText }: { hover: boolean, hideText: boolean }) => {
+  return (
+    <div className={`flex gap-1 bg-black bg-opacity-50 px-1.5 py-0.5 rounded cursor-pointer mix-blend-difference transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}>
+      {/* {!hideText && <span>{"to project"}</span>} */}
+      <ArrowElbowRightUp color="#EFEFEF" size={16} weight='bold' />
+    </div>
+  )
+}
+
+
+
+interface MoreOldProps {
   project: IProject
   collapsed: boolean
 }
 
-const MoreCard = ({ collapsed, project }: MoreProps) => {
+const MoreCardOld = ({ collapsed, project }: MoreOldProps) => {
   return (
-    <div className={`text-[#414141] flex flex-col gap-1.5 pt-3 p-2 cursor-default`}>
+    <div className={`flex flex-col gap-1.5 pt-3 p-2 cursor-default`}>
       {project?.fields && project.fields.map((field, index) => (
         <MoreRow key={index} collapsed={collapsed} index={index} length={project.fields?.length || 0} date={index === 0 ? project.date : undefined}>
           <div >
@@ -192,7 +113,7 @@ const FieldCTALinkTitleAndSubtitle = ({ field }: MoreLinkProps) => {
         onMouseLeave={() => setHovered(false)}
       >
         <span>{field.value}</span>
-        <ArrowElbowRightUp color={hover ? '#686868' : ''} size={16} weight='bold' />
+        <ArrowElbowRightUp color={hover ? '#686868' : '#dddddd'} size={16} weight='bold' />
       </Link>
     </div>
   )
@@ -208,7 +129,7 @@ const FieldCTALinkTitle = ({ field }: MoreLinkProps) => {
     <Link rel="noopener noreferrer" target="_blank" href={field.url || ''}>
       <div className='flex' onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <span className={`font-bold ${hover ? 'text-esrs-hover' : ''}`} >{field.title}</span>
-        <ArrowElbowRightUp color={hover ? '#686868' : ''} size={16} weight='bold' />
+        <ArrowElbowRightUp color={hover ? '#686868' : '#dddddd'} size={16} weight='bold' />
       </div>
     </Link>
   )
@@ -252,15 +173,7 @@ const MoreRow = ({ collapsed, index, children, length, date }: MoreRowProps) => 
   )
 }
 
-function HintTitle({ slide, project }: { slide: IGalleryItem, project?: IProject }) {
-  return (
-    <span className='bg-white bg-opacity-50 px-1.5 py-0.5 rounded flex'>
-      <span>
-        {slide.projectTypeOverride || project?.type}
-      </span>
-    </span>
-  )
-}
+
 
 const MoreExpandIcon = ({ collapsed }: { collapsed: boolean }) => {
   return (

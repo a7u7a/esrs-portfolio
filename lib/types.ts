@@ -27,12 +27,22 @@ export interface IProject {
   collapsed?: boolean
   fields?: IProjectField[]
   what?: string
+  tags?: IProjectTag[]
 }
 
 export interface IProjectField {
   title: string // Client, Category, Stack, Visit, etc
   value?: string // If value empty, the title will act as link, otherwise the value will act as link
   url?: string // https://beigepill.com, etc
+}
+
+interface IProjectTag {
+  label: string
+  url?: string
+}
+export interface IProjectFieldNew {
+  title: string
+  value: { label: string, url?: string }
 }
 
 export interface ICollaborator {

@@ -12,6 +12,7 @@ import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/fade-in'
 import { ICollaborator } from '@/lib/types'
 import Link from 'next/link'
+import { ArrowRight } from '@phosphor-icons/react'
 
 const Main = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
@@ -43,19 +44,20 @@ const Main = () => {
       </TextWrapper>
 
       <FadeIn threshold={0.1}>
-        <div className='mt-16 md:mt-24 mb-2'>
+        <div className='flex flex-col my-16 md:mt-24 md:mb-18'  >
           <FreeLoopingCarousel slides={slides} />
+          <ArrowRightHover />
         </div>
       </FadeIn>
 
       <TextWrapper>
-        <div>
-          <FadeIn threshold={0.3}>
-            <div>
-              <span>{"Mixing code and design to craft unique digital products."}</span>
-            </div>
-          </FadeIn>
-        </div>
+
+        <FadeIn threshold={0.3}>
+          <div>
+            <span>{"Mixing code and design to craft unique digital products."}</span>
+          </div>
+        </FadeIn>
+
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
@@ -79,14 +81,7 @@ const Main = () => {
         </div>
 
         <div className='pt-20'>
-          <ul className='list-none flex flex-col gap-3 md:gap-6'>
-          <FadeIn threshold={0.3}>
-              <li>
-                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
-                  {"esteban@esrs.co"}
-                </a>
-              </li>
-            </FadeIn>
+          <ul className='list-none flex gap-3 md:gap-6'>
             {socials.map((social, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <li>
@@ -94,6 +89,13 @@ const Main = () => {
                 </li>
               </FadeIn>
             ))}
+            <FadeIn threshold={0.3}>
+              <li>
+                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
+                  {"esteban@esrs.co"}
+                </a>
+              </li>
+            </FadeIn>
           </ul>
         </div>
 
@@ -131,5 +133,20 @@ const Collaborator = ({ collab }: { collab: ICollaborator }) => {
         <span>{collab.name}</span>
       </Link>
     </li>
+  )
+}
+
+
+const ArrowRightHover = () => {
+  const [hover, setHovered] = useState(false);
+  return (
+    <div className='flex justify-end mt-3 px-4 text-esrs-dark-gray text-[1.2rem]'>
+      <Link href="/projects" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <div className='flex gap-1 items-center'>
+          <span className='hover:text-esrs-hover'>{"See all"}</span>
+          <ArrowRight color={hover ? "#848484" : "#686868"} size={16} weight='bold' />
+        </div>
+      </Link>
+    </div>
   )
 }

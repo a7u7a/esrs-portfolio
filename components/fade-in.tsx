@@ -36,7 +36,7 @@ const FadeIn = ({ children, threshold, duration = 500 }: FadeInProps) => {
   return (
     <div
       ref={domRef}
-      className={`transition-all ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}
+      className={`transition-opacity ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}
       style={{ transitionDuration: `${duration}ms` }}
     >
       {children}
