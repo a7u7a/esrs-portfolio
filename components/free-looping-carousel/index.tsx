@@ -41,7 +41,7 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
                 slide={slide}
               >
                 {!slide.hideMore ?
-                  <Link href={`/projects`}>
+                  <Link href={`/work`}>
                     {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}
                   </Link> :
                   <>

@@ -5,12 +5,13 @@ const project: IProject = {
   type: "Display controller",
   title: "Scroller Series",
   collapsed: true,
+  what: "Display controller",
   fields: [
     {
       title: "Stack",
       value: "Python, Pandas, RPi",
     },
-    { title: "What?",value:"More info", url: "https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/" },
+    { title: "What?", value: "More info", url: "https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/" },
     {
       title: "Comissioned by",
       value: "Ignacio Gatica",

@@ -141,7 +141,7 @@ const ArrowRightHover = () => {
   const [hover, setHovered] = useState(false);
   return (
     <div className='flex justify-end mt-3 px-4 text-esrs-dark-gray text-[1.2rem]'>
-      <Link href="/projects" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <Link href="/work" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <div className='flex gap-1 items-center'>
           <span className='hover:text-esrs-hover'>{"See all"}</span>
           <ArrowRight color={hover ? "#848484" : "#686868"} size={16} weight='bold' />

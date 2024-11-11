@@ -2,7 +2,7 @@ import { IProject } from "@/lib/types";
 
 export const project: IProject = {
   id: "boids",
-  title: "Plasma birds",
+  title: "Particle simulation",
   type: "Experiment",
   what: "Geeking out with Three.js, GLSL and Observable notebooks",
   fields: [

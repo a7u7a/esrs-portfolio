@@ -31,7 +31,7 @@ const FadeIn = ({ children, threshold, duration = 500 }: FadeInProps) => {
 
     observer.observe(domRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
 
   return (
     <div

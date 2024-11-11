@@ -1,61 +1,16 @@
 "use client"
 import React, { useRef, useEffect, useState } from 'react'
-import Project from "@/components/project";
+import Project from "./project";
 import { selectedProjects, experimentalProjects } from '@/content/projects'
-import CV from "@/components/cv"
-import Divider from "@/components/divider"
+import CV from "./cv"
+import Divider from "./divider"
 import SpinningLogo from "@/components/spinning-logo";
-import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useGSAP } from "@gsap/react";
-
-const desiredSegmentLength = 2000
+import { useRotationSpeed, useScrollProgress } from '@/lib/hooks';
 
 const Main = () => {
-
-  useEffect(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
-  }, [])
-  const container = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
-
-  useGSAP(() => {
-
-    function getTurns() {
-      // Calculate the number of turns the icon must make from scrollstart to end
-      const bodyHeight = document.documentElement.scrollHeight - window.innerHeight
-      const segments = Math.round(bodyHeight / desiredSegmentLength)
-      return Math.max(1, segments);
-    }
-
-    const setupScrollTrigger = () => {
-      const turns = getTurns();
-      if (!container.current) return;
-      const proxy = { progress: 0 };
-      gsap.to(proxy, {
-        ease: "none",
-        progress: 1,
-        onUpdate: () => {
-          // lower the floating point precision
-          const p = (proxy.progress * turns * 100) / 100
-          console.log('p',p)
-          setScrollProgress(p)
-        },
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.7,
-          invalidateOnRefresh: true, // Recalculate on resize/refresh
-          onUpdate: (self) => {
-            scrollTriggerRef.current = self;
-          },
-        }
-      });
-    }
-    setTimeout(setupScrollTrigger, 1000);
-  }, { scope: container })
+  const { container, scrollProgress } = useScrollProgress();
+  const rotationSpeed = useRotationSpeed(scrollProgress)
 
   const handleAccordionChange = () => {
     // Wait for the transition to complete
@@ -67,12 +22,11 @@ const Main = () => {
   return (
     <main ref={container} className="flex flex-col items-center bg-white">
 
-      <SpinningLogo scrollProgress={scrollProgress} />
-      <Header />
-
+      <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
+      
       <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8'>
         <div className="h-[10px] md:h-[25px] w-full" />
-        <NavMenu />
+      
 
         <section className="pt-12" id="selected">
           <ul className="pt-12 list-none flex flex-col gap-1 sm:gap-3">
