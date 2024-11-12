@@ -5,6 +5,10 @@ export const project: IProject = {
   title: "BeigePill",
   date: "2024",
   type: "BeigePill Website",
+  what: "Website",
+  tags: [
+    { label: "Website", url: "https://beigepill.com" },
+  ],
   fields: [
     { title: "Design", value: "FutureCorp", url: "https://futurecorp.paris/" },
     { title: "Stack", value: "WebGL, GSAP, Next.js" },

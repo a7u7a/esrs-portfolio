@@ -6,13 +6,12 @@ interface VideoSlideProps {
 }
 
 const VideoSlide = ({ slide }: VideoSlideProps) => {
+  const [mounted, setMounted] = useState(false);
   const aspectRatio = slide.dims?.width! / slide.dims?.height!
   if (!aspectRatio) throw new Error(`Missing aspect ratio in: ${slide.src}`)
   const videoRef = useRef<HTMLVideoElement>(null);
   const [play, setPlay] = useState(false);
   const threshold = 0.05;
-  const [loaded, setLoaded] = useState(false)
-  const [ticToc, setTicToc] = useState(false);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -41,33 +40,21 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
   }, [play])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!loaded) {
-        setTicToc(prev => !prev);
-      } else {
-        setTicToc(true);
-      }
-    }, 700);
+    setMounted(true);
+  }, [])
 
-    return () => clearInterval(interval);
-  }, [loaded]);
-
-  const handleCanPlay = () => {
-    setLoaded(true)
-  }
+  if (!mounted) return null;
 
   return (
     <div
       className={`
-        h-[250px] sm:h-[300px] md:h-[450px] bg-[#ebebeb] rounded-lg
-        transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}
-        `}
-      style={{ aspectRatio: aspectRatio }}
+      h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] 
+      `}
+    // style={{ aspectRatio: aspectRatio }}
     >
       <video
-        onCanPlay={handleCanPlay}
         ref={videoRef}
-        className={`h-full rounded-lg drop-shadow-5`}
+        className={`h-full object-contain`}
         playsInline
         muted
         loop

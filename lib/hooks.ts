@@ -49,7 +49,7 @@ export const useMouseAngle = () => {
 
 export const useScrollProgress = () => {
   const isMd = useMediaQuery("(min-width: 768px)");
-  const desiredSegmentLength = isMd ? 2500 : 1000;
+  const desiredSegmentLength = isMd ? 2500 : 2000;
   const container = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
@@ -138,7 +138,7 @@ export function useMediaQuery(query: string) {
     };
     media.addEventListener("change", listener);
     return () => media.removeEventListener("change", listener);
-  }, [query]);
+  }, [query, matches]);
 
   return matches;
 }

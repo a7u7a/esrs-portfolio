@@ -4,8 +4,9 @@ const project: IProject = {
   id: "elemental",
   title: "Elemental Chile",
   type: "Elemental Website",
+  what: "Web App",
   date: "2024",
-  collapsed: false,
+  collapsed: true,
   link: {
     title: "Go",
     url: "https://elemental-web-prod.vercel.app/"

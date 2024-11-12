@@ -3,7 +3,7 @@ import { IProject } from "@/lib/types";
 export const project: IProject = {
   id: "cata",
   title: "Catalina Andonie Portfolio",
-  type: "Catalina Andonie",
+  type: "Artist website",
   collapsed: true,
   what: "Fullscreen fragment shaders for a portfolio site",
   fields: [

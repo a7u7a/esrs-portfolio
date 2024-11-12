@@ -1,6 +1,7 @@
 "use client"
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useMediaQuery } from '@/lib/hooks'
+import Link from 'next/link'
 interface Dims {
   h: number
   w: number
@@ -36,6 +37,7 @@ interface SpinningLogoProps {
 }
 
 const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
+  const [mounted, setMounted] = useState(false);
   const isMd = useMediaQuery('(min-width: 768px)')
   const dims = isMd ? vbDimsMd : vbDims
   const maxSquareH = isMd ? maxSquareHeightMd : maxSquareHeight
@@ -82,6 +84,12 @@ const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
     )
   }, [scrollProgress, maxSquareH, dims])
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
   return (
     <div
       style={{ width: `${dims.w}px` }}
@@ -93,25 +101,27 @@ const SpinningLogo = ({ rotationSpeed, scrollProgress }: SpinningLogoProps) => {
         z-50
       `}
     >
-      <svg
-        className='stroke-black stroke-[3px] md:stroke-[4px]'
-        viewBox={`0 0 ${dims.w} ${dims.h}`}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        strokeLinecap="round"
-      >
-        <defs>
-          <filter id="blurFilter">
-            <feGaussianBlur in="SourceGraphic" stdDeviation={`0 ${rotationSpeed}`} result="blur" />
-          </filter>
-        </defs>
-        <g
-          filter="url(#blurFilter)"
+      <Link href="/">
+        <svg
+          className='stroke-black hover:stroke-esrs-dark-gray stroke-[3px] md:stroke-[4px]'
+          viewBox={`0 0 ${dims.w} ${dims.h}`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          strokeLinecap="round"
         >
-          {ellipses}
-          {lines}
-        </g>
-      </svg>
+          <defs>
+            <filter id="blurFilter">
+              <feGaussianBlur in="SourceGraphic" stdDeviation={`0 ${rotationSpeed}`} result="blur" />
+            </filter>
+          </defs>
+          <g
+            filter="url(#blurFilter)"
+          >
+            {ellipses}
+            {lines}
+          </g>
+        </svg>
+      </Link>
     </div>
   )
 }

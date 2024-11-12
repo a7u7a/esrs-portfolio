@@ -5,8 +5,8 @@ import localFont from 'next/font/local'
 export const metadata: Metadata = {
   metadataBase: new URL('https://esrs.co'),
   title: "Esteban Serrano",
-  description: "Portfolio",
-  keywords: ["design engineering", "portfolio", "creative development", "front-end developer", "full-stack developer", "interaction design", "data visualization", "creative coder", "hci"],
+  description: "Design Technologist",
+  keywords: ["design engineering", "portfolio", "creative development", "front-end developer", "full-stack developer", "interaction design", "data visualization", "creative coder", "hci", "design technologist"],
   creator: "Esteban Serrano",
   openGraph: {
     images: '/esrs-og.jpg',
@@ -40,7 +40,7 @@ export default function RootLayout({
         className={`
         ${mediumFont.variable}
         font-sans 
-        selection:bg-gray-200 selection:text-esrs-hover 
+        selection:bg-[#7F9DFF] selection:text-white
         text-[2rem] md:text-[3.5rem] 
         leading-[1.20] 
         text-[#303030]
