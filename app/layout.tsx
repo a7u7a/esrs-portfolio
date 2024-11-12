@@ -5,8 +5,8 @@ import localFont from 'next/font/local'
 export const metadata: Metadata = {
   metadataBase: new URL('https://esrs.co'),
   title: "Esteban Serrano",
-  description: "Portfolio",
-  keywords: ["design engineering", "portfolio", "creative development", "front-end developer", "full-stack developer", "interaction design", "data visualization", "creative coder", "hci"],
+  description: "Design Technologist",
+  keywords: ["design engineering", "portfolio", "creative development", "front-end developer", "full-stack developer", "interaction design", "data visualization", "creative coder", "hci", "design technologist"],
   creator: "Esteban Serrano",
   openGraph: {
     images: '/esrs-og.jpg',

@@ -23,12 +23,12 @@ const Main = () => {
     <main ref={container} className="flex flex-col items-center bg-white">
 
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
-      
+
       <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8'>
         <div className="h-[10px] md:h-[25px] w-full" />
-      
 
         <section className="pt-12" id="selected">
+          <Divider title="Esteban Serrano - Selected Work" />
           <ul className="pt-12 list-none flex flex-col gap-1 sm:gap-3">
             {selectedProjects.map((project, i) => (
               <li key={i} className=''>
