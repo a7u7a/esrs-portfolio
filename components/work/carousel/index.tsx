@@ -31,9 +31,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
     }
   }, [])
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi)
-
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
   const { onNextButtonClick } = usePrevNextButtons(emblaApi)
 
   return (

@@ -7,7 +7,8 @@ import ArrowUpRight from './arrow-up-right';
 interface AccordionItemProps {
   children: any
   project: IProject
-  onStateChange?: () => void;
+  onToggle?: () => void;
+  isExpanded: boolean
 }
 
 function LinkRenderer(props: any) {
@@ -18,18 +19,11 @@ function LinkRenderer(props: any) {
   );
 }
 
-const AccordionWrapper = ({ children, project, onStateChange }: AccordionItemProps) => {
-  const startsCollapsed = project.collapsed ?? false;
+const AccordionWrapper = ({ children, project, onToggle ,isExpanded}: AccordionItemProps) => {
   const [animate, setAnimate] = useState(false);
   const [hover, setHover] = useState(false);
-  const [collapsed, setCollapsed] = useState(startsCollapsed);
   const [childrenRef, childrenBounds] = useMeasure()
   const [headerRef, headerBounds] = useMeasure();
-
-  const onClick = () => {
-    setCollapsed((prev) => !prev);
-    onStateChange?.();
-  }
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimate(true), 300)
@@ -41,12 +35,12 @@ const AccordionWrapper = ({ children, project, onStateChange }: AccordionItemPro
   return (
     <div className="relative">
       <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
-        style={{ height: !collapsed ? totalHeight + 'px' : '22px' }}
+        style={{ height: isExpanded ? totalHeight + 'px' : '22px' }}
       >
         {/* Click title to expand */}
 
         <button
-          onClick={onClick}
+          onClick={onToggle}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className={`

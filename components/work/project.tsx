@@ -5,12 +5,13 @@ import AccordionWrapper from './accordion-wrapper'
 
 interface RenderProjectProps {
   project: IProject
-  onStateChange?: () => void;
+  onToggle?: () => void;
+  isExpanded: boolean
 }
 
-const Project = ({ project, onStateChange }: RenderProjectProps) => {
+const Project = ({ project, onToggle, isExpanded }: RenderProjectProps) => {
   return (
-    <AccordionWrapper onStateChange={onStateChange} project={project}>
+    <AccordionWrapper isExpanded={isExpanded} onToggle={onToggle} project={project}>
       <ProjectCarousel slides={project.gallery} />
     </AccordionWrapper>
   )
