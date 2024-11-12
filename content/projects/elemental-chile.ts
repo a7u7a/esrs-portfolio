@@ -6,7 +6,7 @@ const project: IProject = {
   type: "Elemental Website",
   what: "Web App",
   date: "2024",
-  collapsed: false,
+  collapsed: true,
   link: {
     title: "Go",
     url: "https://elemental-web-prod.vercel.app/"

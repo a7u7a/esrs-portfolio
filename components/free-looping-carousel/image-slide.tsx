@@ -30,7 +30,7 @@ const ImageSlide = ({ slide }: ImageSlideProps) => {
   return (
     <div
       className={`
-        h-[300px] sm:h-[300px] md:h-[450px] bg-[#ebebeb] rounded-lg
+        h-[250px] sm:h-[300px] md:h-[450px] bg-[#ebebeb] rounded-lg
         transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}
       `}
       style={{ aspectRatio: aspectRatio }}

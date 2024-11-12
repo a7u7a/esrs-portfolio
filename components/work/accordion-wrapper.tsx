@@ -47,7 +47,7 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
           onMouseLeave={() => setHover(false)}
           className={`
               relative z-10 flex justify-between sm:grid sm:grid-cols-4 w-full mb-8
-              ${hover ? 'text-esrs-blue' : ''}
+              ${hover ? 'text-gray-400' : ''}
             `}
         >
           <div className={`text-left w-1/2 sm:w-full`}>

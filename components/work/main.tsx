@@ -88,7 +88,7 @@ const Main = () => {
 
       <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8 relative'>
         <section className="" id="selected">
-          <h1 className='font-semibold pb-12'>Esteban Serrano</h1>
+          <h1 className='font-semibold pb-20'>{"Esteban Serrano - Portfolio"}</h1>
           <Divider title="Selected Work" />
           <ProjectList>
             {selectedProjects.map((project, i) => (
@@ -103,7 +103,7 @@ const Main = () => {
           </ProjectList>
         </section>
 
-        <section className="pt-12 sm:pt-36" id="experimental">
+        <section className="pt-12 sm:pt-20" id="experimental">
           <Divider title="Experimental Work" subtitle="What" />
           <ProjectList>
             {experimentalProjects.map((project, i) => (
