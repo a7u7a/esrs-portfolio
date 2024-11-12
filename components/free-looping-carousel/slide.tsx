@@ -5,6 +5,7 @@ import { ArrowRight } from '@phosphor-icons/react';
 import { useMediaQuery } from '@/lib/hooks';
 import useMeasure from 'react-use-measure';
 import Link from 'next/link';
+
 interface SlideProps {
   children: React.ReactNode
   slide: IGalleryItem
@@ -16,16 +17,31 @@ const Slide = ({ children, slide }: SlideProps) => {
   const projects = [...selectedProjects, ...experimentalProjects]
   const project = projects.find(p => p.id === slide.id)
   const [ref, bounds] = useMeasure()
+  const [linkActive, setLinkActive] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   if (!project) throw new Error("Project not found in slide")
 
+  useEffect(() => {
+    if (isMd) {
+      setLinkActive(true)
+    } else {
+      if (clicked) setLinkActive(true)
+      else setLinkActive(false)
+    }
+  }, [isMd, clicked])
+
   return (
-    <LinkWrapper projectId={project.id} isLink={true}>
+    <LinkWrapper projectId={project.id} isLink={linkActive}>
       {/* // Embla Slide */}
       <div ref={ref} className="shrink-0 flex flex-col pl-4 text-[0.8rem] md:text-[0.9rem] text-esrs-dark-gray">
 
-        <div className={`relative`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-
+        <div
+          className={`relative`}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          onClick={() => setClicked(!clicked)}
+        >
           {/* Overlay */}
           <div className={`absolute rounded-lg inset-0 bg-black z-10 pointer-events-none transition-opacity duration-200 ${hover ? 'opacity-20' : 'opacity-0'}`} />
 
@@ -45,9 +61,9 @@ const Slide = ({ children, slide }: SlideProps) => {
 export default Slide
 
 function LinkWrapper({ children, projectId, isLink }: { children: React.ReactNode, projectId: string, isLink: boolean }) {
-  if (!isLink) return <>{children}</>
+  // if (!isLink) return <>{children}</>
   return (
-    <Link href={`/work?p=${projectId}`}>
+    <Link href={isLink ? `/work?p=${projectId}` : ``} scroll={false}>
       {children}
     </Link>
   )
