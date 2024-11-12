@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Main from '@/components/work/main'
 const WorkPage = () => {
   return (
-    <div>
-      <Main />
-    </div>
+    <Suspense fallback={<div></div>}>
+      <div>
+        <Main />
+      </div>
+    </Suspense>
   )
 }
 
