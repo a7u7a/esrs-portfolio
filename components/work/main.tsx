@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useEffect, useState, useCallback } from 'react'
+import React, { useRef, useEffect, useState, useCallback, Suspense } from 'react'
 import Project from "./project";
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import CV from "./cv"
@@ -26,12 +26,11 @@ const Main = () => {
     }
     setExpandedIds(initialIds);
 
-    // smooth scroll to the first id in initialIds
+    // Smooth scroll to the first id in initialIds
     const firstId = initialIds[0];
     if (firstId) {
       // Wait for the DOM to update with expanded accordions
       setTimeout(() => {
-        console.log("Scrolling to", firstId);
         const element = document.getElementById(firstId);
         if (element) {
           element.scrollIntoView({
@@ -84,49 +83,49 @@ const Main = () => {
   }, [searchParams]);
 
   return (
-    <main ref={container} className="flex flex-col items-center bg-white">
+    <Suspense fallback={<div></div>}>
+      <main ref={container} className="flex flex-col items-center">
 
-      <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
+        <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
 
-      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8'>
-        <div className="h-[10px] md:h-[25px] w-full" />
+        <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8'>
+          <section className="pt-12" id="selected">
+            <Divider title="Esteban Serrano - Selected Work" />
+            <ul className="pt-12 list-none flex flex-col gap-1 sm:gap-3">
+              {selectedProjects.map((project, i) => (
+                <li key={i} id={project.id}>
+                  <Project
+                    onToggle={() => handleAccordionToggle(project.id)}
+                    isExpanded={expandedIds.includes(project.id)}
+                    project={project}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <section className="pt-12" id="selected">
-          <Divider title="Esteban Serrano - Selected Work" />
-          <ul className="pt-12 list-none flex flex-col gap-1 sm:gap-3">
-            {selectedProjects.map((project, i) => (
-              <li key={i} id={project.id}>
-                <Project
-                  onToggle={() => handleAccordionToggle(project.id)}
-                  isExpanded={expandedIds.includes(project.id)}
-                  project={project}
-                />
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section className="pt-12 sm:pt-36" id="experimental">
+            <Divider title="Experimental Work" subtitle="What" />
+            <ul className="pt-6 sm:pt-12 list-none flex flex-col gap-1 sm:gap-3">
+              {experimentalProjects.map((project, i) => (
+                <li key={i} id={project.id}>
+                  <Project
+                    onToggle={() => handleAccordionToggle(project.id)}
+                    isExpanded={expandedIds.includes(project.id)}
+                    project={project}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <section className="pt-12 sm:pt-36" id="experimental">
-          <Divider title="Experimental Work" subtitle="What" />
-          <ul className="pt-6 sm:pt-12 list-none flex flex-col gap-1 sm:gap-3">
-            {experimentalProjects.map((project, i) => (
-              <li key={i} id={project.id}>
-                <Project
-                  onToggle={() => handleAccordionToggle(project.id)}
-                  isExpanded={expandedIds.includes(project.id)}
-                  project={project}
-                />
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section className="pt-12 sm:pt-36">
+            <CV />
+          </section>
 
-        <section className="pt-12 sm:pt-36">
-          <CV />
-        </section>
-
-      </div >
-    </main>
+        </div >
+      </main>
+    </Suspense>
   );
 }
 
