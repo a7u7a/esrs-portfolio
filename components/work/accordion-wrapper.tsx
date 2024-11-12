@@ -4,6 +4,8 @@ import useMeasure from 'react-use-measure'
 import { IProject } from '@/lib/types';
 import Markdown from 'react-markdown'
 import ArrowUpRight from './arrow-up-right';
+import AccordionFields from './accordion-fields';
+
 interface AccordionItemProps {
   children: any
   project: IProject
@@ -19,7 +21,7 @@ function LinkRenderer(props: any) {
   );
 }
 
-const AccordionWrapper = ({ children, project, onToggle ,isExpanded}: AccordionItemProps) => {
+const AccordionWrapper = ({ children, project, onToggle, isExpanded }: AccordionItemProps) => {
   const [animate, setAnimate] = useState(false);
   const [hover, setHover] = useState(false);
   const [childrenRef, childrenBounds] = useMeasure()
@@ -62,39 +64,18 @@ const AccordionWrapper = ({ children, project, onToggle ,isExpanded}: AccordionI
         {/* project details */}
         <div ref={headerRef} className='flex flex-col sm:flex-row gap-3 justify-between'>
 
-          <div className='w-1/2 flex flex-col'>
-            {project.fields && project.fields.map((field, index) => (
-              <div key={index}>
-                {/* Different field variations */}
-                {field.url && field.value ? (
-                  <div>
-                    <span className='font-bold pr-1.5'>{field.title}</span>
-                    <a className='hover:underline hover:text-esrs-blue' href={field.url} target="_blank" rel="noopener noreferrer">{field.value}</a>
-                  </div>
-                ) : (null)}
-                {field.url && !field.value ? (
-                  <div className='flex gap-0'>
-                    <a className='font-bold hover:underline hover:text-esrs-blue' href={field.url} target="_blank" rel="noopener noreferrer">{field.title}</a>
-                    <ArrowUpRight size={19} />
-                  </div>
-                ) : null}
-                {!field.url && field.value ? (
-                  <div>
-                    <span className='font-bold pr-1.5'>{field.title}</span>
-                    <span>{field.value}</span>
-                  </div>
-                ) : null}
-              </div>
-            ))}
-          </div>
+          <AccordionFields project={project} />
 
           <CopyTwoCols project={project} />
 
         </div>
 
         <div ref={childrenRef}>
-          <div className={'pb-28'}>
-            {children} {/* project carousel */}
+          <div className={'pt-2 pb-28'}>
+
+            {/* project carousel */}
+            {children}
+
             <CopyOneCol project={project} />
           </div>
         </div>

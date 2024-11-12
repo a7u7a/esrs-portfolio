@@ -3,9 +3,7 @@ import Main from '@/components/work/main'
 const WorkPage = () => {
   return (
     <Suspense fallback={<div></div>}>
-      <div>
-        <Main />
-      </div>
+      <Main />
     </Suspense>
   )
 }

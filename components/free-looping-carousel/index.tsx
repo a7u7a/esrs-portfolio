@@ -34,7 +34,7 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
           className={`overflow-hidden`}
         >
           {/* Embla Container */}
-          <div className="flex h-full my-4">
+          <div id="embla-container" className="flex h-full my-4">
             {slides.map((slide, index) => (
               <Slide
                 key={index}

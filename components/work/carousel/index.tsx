@@ -39,19 +39,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
       {slides.length > 1 ? (
         <div className="w-full flex justify-start pb-1 ">
 
-          {/* <div className="grid grid-cols-2 gap-1 items-center">
-            <PrevButton
-              onClick={onPrevButtonClick}
-              disabled={prevBtnDisabled}
-              className='p-0.5 cursor-pointer rounded hover:bg-gray-200'
-            />
-            <NextButton
-              onClick={onNextButtonClick}
-              disabled={nextBtnDisabled}
-              className='p-0.5 cursor-pointer rounded hover:bg-gray-200'
-            />
-          </div> */}
-
+          {/* Dashes navigation */}
           <div className="flex items-center space-x-1">
             {scrollSnaps.map((_, index) => (
               <DotButton
@@ -69,20 +57,21 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
         </div>
       ) : (null)}
 
+      {/* Embla Carousel */}
       <div
-        className='h-[400px]] flex flex-col items-center justify-between overflow-hidden bg-white'
+        className={`w-full m-auto`}
         onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? true : false)}
         onMouseLeave={() => setShowCustomCursor(false)}
       >
         <div
           ref={emblaRef}
-          className={`overflow-hidden h-full ${showCustomCursor ? 'cursor-none' : ''}`}
+          className={`overflow-hidden ${showCustomCursor ? 'cursor-none' : ''}`}
         >
-          <div className="flex h-full -ml-2">
+          <div className="flex h-full w-full -ml-2">
             {slides.map((slide, index) => (
               <div key={index}
                 onClick={onNextButtonClick}
-                className="shrink-0 basis-full max-w-full flex items-center justify-center pl-2"
+                className="shrink-0 flex items-center justify-center pl-2"
               >
                 {slide.type === "video" ? (
                   <VideoSlide slide={slide} />

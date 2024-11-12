@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useEffect, useState, useCallback, Suspense } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Project from "./project";
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import CV from "./cv"
@@ -26,9 +26,9 @@ const Main = () => {
     }
     setExpandedIds(initialIds);
 
-    // Smooth scroll to the first id in initialIds
     const firstId = initialIds[0];
-    if (firstId) {
+    // Smooth scroll to the first id in initialIds, when url param is present
+    if (firstId && expanded) {
       // Wait for the DOM to update with expanded accordions
       setTimeout(() => {
         const element = document.getElementById(firstId);
@@ -83,15 +83,14 @@ const Main = () => {
   }, [searchParams]);
 
   return (
-
-    <main ref={container} className="flex flex-col items-center">
-
+    <main ref={container} className="flex flex-col items-center pt-32">
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
-
       <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8'>
+
         <section className="pt-12" id="selected">
-          <Divider title="Esteban Serrano - Selected Work" />
-          <ul className="pt-12 list-none flex flex-col gap-1 sm:gap-3">
+          <h1 className='font-semibold pb-12'>Esteban Serrano</h1>
+          <Divider title="Selected Work" />
+          <ProjectList>
             {selectedProjects.map((project, i) => (
               <li key={i} id={project.id}>
                 <Project
@@ -101,12 +100,12 @@ const Main = () => {
                 />
               </li>
             ))}
-          </ul>
+          </ProjectList>
         </section>
 
         <section className="pt-12 sm:pt-36" id="experimental">
           <Divider title="Experimental Work" subtitle="What" />
-          <ul className="pt-6 sm:pt-12 list-none flex flex-col gap-1 sm:gap-3">
+          <ProjectList>
             {experimentalProjects.map((project, i) => (
               <li key={i} id={project.id}>
                 <Project
@@ -116,18 +115,24 @@ const Main = () => {
                 />
               </li>
             ))}
-          </ul>
+          </ProjectList>
         </section>
 
-        <section className="pt-12 sm:pt-36">
+        {/* <section className="pt-12 sm:pt-36">
           <CV />
-        </section>
-
+        </section> */}
+        
       </div >
     </main>
-
   );
 }
 
-
 export default Main
+
+const ProjectList = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <ul className="flex flex-col gap-1 sm:gap-3 pt-12 list-none">
+      {children}
+    </ul>
+  )
+}

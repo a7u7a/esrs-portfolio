@@ -22,7 +22,7 @@ const Main = () => {
     setSlides(shuffledSlides())
   }, [])
   return (
-    <div ref={container} className='pt-40 md:pt-44 m-auto'>
+    <main ref={container} className='pt-40 md:pt-44 m-auto'>
 
       <FadeIn threshold={0.3}>
         <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
@@ -46,7 +46,7 @@ const Main = () => {
       <FadeIn threshold={0.1}>
         <div className='flex flex-col my-16 md:mt-24 md:mb-18'  >
           <FreeLoopingCarousel slides={slides} />
-          <ArrowRightHover />
+          <ToPortfolioButton />
         </div>
       </FadeIn>
 
@@ -111,7 +111,7 @@ const Main = () => {
 
       </TextWrapper>
 
-    </div>
+    </main>
   )
 }
 
@@ -137,7 +137,7 @@ const Collaborator = ({ collab }: { collab: ICollaborator }) => {
 }
 
 
-const ArrowRightHover = () => {
+const ToPortfolioButton = () => {
   const [hover, setHovered] = useState(false);
   return (
     <div className='flex justify-end mt-3 px-4 text-esrs-dark-gray text-[1.2rem]'>
