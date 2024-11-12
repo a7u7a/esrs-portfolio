@@ -6,6 +6,7 @@ interface VideoSlideProps {
 }
 
 const VideoSlide = ({ slide }: VideoSlideProps) => {
+  const [mounted, setMounted] = useState(false);
   const aspectRatio = slide.dims?.width! / slide.dims?.height!
   if (!aspectRatio) throw new Error(`Missing aspect ratio in: ${slide.src}`)
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -38,11 +39,16 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
     }
   }, [play])
 
+  useEffect(() => {
+    setMounted(true);
+  }, [])
+
+  if (!mounted) return null;
+
   return (
     <div
       className={`
-      h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-[#ebebeb] 
-      transition-opacity duration-300
+      h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] 
       `}
     // style={{ aspectRatio: aspectRatio }}
     >

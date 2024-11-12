@@ -17,7 +17,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
   const { slides } = props
   const [options, setOptions] = useState<EmblaOptionsType>({ loop: true, watchDrag: (slides.length - 1) != 0 })
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
-  const [showCustomCursor, setShowCustomCursor] = useState(false)
+  const [showCustomCursor, setShowCustomCursor] = useState<"left" | "right" | false>(false)
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
   }, [])
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-  const { onNextButtonClick } = usePrevNextButtons(emblaApi)
+  const { onNextButtonClick, onPrevButtonClick } = usePrevNextButtons(emblaApi)
 
   return (
     <section>
@@ -60,24 +60,35 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
       {/* Embla Carousel */}
       <div
         className={`w-full m-auto`}
-        onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? true : false)}
+
         onMouseLeave={() => setShowCustomCursor(false)}
       >
+
         <div
           ref={emblaRef}
           className={`overflow-hidden ${showCustomCursor ? 'cursor-none' : ''}`}
         >
-          <div className="flex h-full w-full -ml-2">
+          <div className="flex h-full -ml-2">
             {slides.map((slide, index) => (
               <div key={index}
-                onClick={onNextButtonClick}
-                className="shrink-0 flex items-center justify-center pl-2"
+                onClick={showCustomCursor === "right" ? onNextButtonClick : onPrevButtonClick}
+                className="shrink-0 flex items-center justify-center relative pl-2 w-full"
               >
                 {slide.type === "video" ? (
                   <VideoSlide slide={slide} />
                 ) : (
                   <ImageSlide slide={slide} />
                 )}
+
+                <div
+                  onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "left" : false)}
+                  className='absolute inset-y-0 left-0 w-1/2 z-50'
+                />
+                <div
+                  onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "right" : false)}
+                  className='absolute inset-y-0 right-0 w-1/2 z-50'
+                />
+
               </div>
             ))}
           </div>
@@ -91,7 +102,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
               transform: 'translate(-50%, -50%)'
             }}
           >
-            <ArrowRight size={32} color="white" />
+            {showCustomCursor === "left" ? <ArrowLeft size={32} color="white" /> : <ArrowRight size={32} color="white" />}
           </div>
         )}
       </div>

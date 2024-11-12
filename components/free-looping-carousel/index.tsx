@@ -40,20 +40,13 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
                 key={index}
                 slide={slide}
               >
-                {!slide.hideMore ?
-                  <Link href={`/work`}>
-                    {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}
-                  </Link> :
-                  <>
-                    {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}
-                  </>
-                }
+                {slide.type === "video" ? <VideoSlide slide={slide} /> : <ImageSlide slide={slide} />}
               </Slide>
             ))}
           </div>
         </div>
       </div>
-      
+
     </section>
   )
 }

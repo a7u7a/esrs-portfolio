@@ -39,7 +39,7 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
       <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
         style={{ height: isExpanded ? totalHeight + 'px' : '22px' }}
       >
-        {/* Click title to expand */}
+        {/* Click row title to expand */}
 
         <button
           onClick={onToggle}

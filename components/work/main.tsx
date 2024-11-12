@@ -17,7 +17,7 @@ const Main = () => {
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
 
   useEffect(() => {
-    const expanded = searchParams.get('expanded');
+    const expanded = searchParams.get('p');
     let initialIds = []
     if (expanded) {
       initialIds = expanded.split(',')
@@ -47,9 +47,9 @@ const Main = () => {
     const params = new URLSearchParams(searchParams.toString());
 
     if (ids.length > 0) {
-      params.set('expanded', ids.join(','));
+      params.set('p', ids.join(','));
     } else {
-      params.delete('expanded');
+      params.delete('p');
     }
 
     setTimeout(() => {
@@ -72,7 +72,7 @@ const Main = () => {
 
   useEffect(() => {
     // Sync with URL changes (for back/forward navigation)
-    const expanded = searchParams.get('expanded');
+    const expanded = searchParams.get('p');
     const urlIds = expanded ? expanded.split(',') : [];
 
     // Only update if the IDs are different to avoid loops
@@ -83,11 +83,11 @@ const Main = () => {
   }, [searchParams]);
 
   return (
-    <main ref={container} className="flex flex-col items-center pt-32">
+    <main ref={container} className="flex flex-col items-center pt-40">
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
-      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8'>
 
-        <section className="pt-12" id="selected">
+      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8 relative'>
+        <section className="" id="selected">
           <h1 className='font-semibold pb-12'>Esteban Serrano</h1>
           <Divider title="Selected Work" />
           <ProjectList>
@@ -118,10 +118,10 @@ const Main = () => {
           </ProjectList>
         </section>
 
-        {/* <section className="pt-12 sm:pt-36">
+        <section className="pt-12 sm:pt-36">
           <CV />
-        </section> */}
-        
+        </section>
+
       </div >
     </main>
   );

@@ -59,11 +59,11 @@ const CVMobile = () => {
 
         <div className='w-1/2'>
 
-          <CVCollaborators />
+          {/* <CVCollaborators /> */}
 
-          <div className='pt-12'>
+          {/* <div className='pt-12'> */}
             <CVContact />
-          </div>
+          {/* </div> */}
 
         </div>
       </div>
