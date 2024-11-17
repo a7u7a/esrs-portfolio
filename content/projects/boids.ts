@@ -8,7 +8,7 @@ export const project: IProject = {
   fields: [
     { title: "Stack", value: "Three.js, Observable" },
     { title: "What?", value: "Boids particle simulation" },
-    { title: "Go", url: "https://observablehq.com/@esrs/plasma-boids-may-2022-update?collection=@esrs/boids" }
+    { title: "Go", url: "https://observablehq.com/@esrs/plasma-boids-may-2022-update" }
   ],
   date: "2021",
   collapsed: true,
@@ -19,13 +19,22 @@ export const project: IProject = {
       type: "video",
       alt: "alt",
       src: "/assets/boids/boids-sim.mp4",
-      dims: { width: 1920, height: 1080 }
+      dims: { width: 1920, height: 1080 },
+      bgColor: "#D9D9D9"
     },
     {
       type: "video",
       alt: "alt",
       src: "/assets/boids/boids-controls.mp4",
-      dims: { width: 1920, height: 1080 }
+      dims: { width: 1920, height: 1080 },
+      bgColor: "#D9D9D9"
+    },
+    {
+      type: "video",
+      alt: "alt",
+      src: "/assets/boids/boids-pro.mp4",
+      dims: { width: 1920, height: 1080 },
+      bgColor: "#D9D9D9"
     },
   ]
 };

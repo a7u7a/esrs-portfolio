@@ -12,7 +12,7 @@ const project: IProject = {
     url: "https://elemental-web-prod.vercel.app/"
   },
   fields: [
-    { title: "Stack", value: "Next.js, TypeScript, Sanity" },
+    { title: "Stack", value: "Next.js, TypeScript, Sanity CMS" },
     { title: "What?", value: "Web App" },
     { title: "Go", url: "https://elemental-web-prod.vercel.app/" }
   ],
@@ -21,15 +21,17 @@ const project: IProject = {
   gallery: [
     {
       type: "video",
-      alt: "alt",
-      src: "/assets/elemental/elemental-desktop.mp4",
-      dims: { width: 1920, height: 1080 }
+      alt: "Desktop nav",
+      src: "/assets/elemental/elemental_desktop_nav_no_browser_handbrake_optimized.mp4",
+      dims: { width: 706, height: 720 },
+      bgColor:"#7C76A1"
     },
     {
       type: "video",
-      alt: "alt",
-      src: "/assets/elemental/elemental-mobile.mp4",
-      dims: { width: 1920, height: 1080 }
+      alt: "Mobile nav",
+      src: "/assets/elemental/elemental_mobile_no_browser_handbrake_optimized.mp4",
+      dims: { width: 338, height: 720 },
+      bgColor:"#7C76A1"
     }
   ]
 };

@@ -14,7 +14,7 @@ interface SlideProps {
 const Slide = ({ children, slide }: SlideProps) => {
   const isMd = useMediaQuery('(min-width: 768px)')
   const [hover, setHovered] = useState(false);
-  const projects = [...selectedProjects, ...experimentalProjects]
+  const [projects, setProjects] = useState([...selectedProjects, ...experimentalProjects])
   const project = projects.find(p => p.id === slide.id)
   const [ref, bounds] = useMeasure()
   const [linkActive, setLinkActive] = useState(false);
@@ -32,7 +32,7 @@ const Slide = ({ children, slide }: SlideProps) => {
   }, [isMd, clicked])
 
   return (
-    <LinkWrapper projectId={project.id} isLink={linkActive}>
+    <LinkWrapper projectId={project.id} isLink={slide.hideCaption ? false : linkActive}>
       {/* // Embla Slide */}
       <div ref={ref} className="shrink-0 flex flex-col pl-4 text-[0.8rem] md:text-[0.9rem] text-esrs-dark-gray">
 
@@ -49,7 +49,7 @@ const Slide = ({ children, slide }: SlideProps) => {
           <div className={`text-esrs-gray p-1 z-20 absolute bottom-0 inset-x-0 w-full justify-center transition-opacity duration-200 ${hover ? 'opacity-100' : 'opacity-0'}`}>
             <div className='flex flex-wrap gap-1'>
               <HintTitle text={project.type} />
-              <HintTitle arrow={true} />
+              {slide.hideCaption ? null : <HintTitle arrow={true} />}
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default Slide
 function LinkWrapper({ children, projectId, isLink }: { children: React.ReactNode, projectId: string, isLink: boolean }) {
   // if (!isLink) return <>{children}</>
   return (
-    <Link href={isLink ? `/work?p=${projectId}` : ``} scroll={false}>
+    <Link className={`${isLink ? 'cursor-pointer' : 'cursor-default'}`} href={isLink ? `/work?p=${projectId}` : ``} scroll={false}>
       {children}
     </Link>
   )

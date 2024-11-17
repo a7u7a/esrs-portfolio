@@ -24,6 +24,7 @@ const ImageSlide = ({ slide }: ImageSlideProps) => {
       h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]
       transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}
     `}
+    style={{ backgroundColor: slide.bgColor }}
     // style={{ aspectRatio: aspectRatio }}
     >
       <Image

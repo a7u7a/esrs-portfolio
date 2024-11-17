@@ -19,7 +19,15 @@ const project: IProject = {
       type: "video",
       alt: "alt",
       src: "/assets/peseworks/peseworks.mp4",
-      dims: { width: 1920, height: 1080 }
+      dims: { width: 1920, height: 1080 },
+      bgColor: "black"
+    },
+    {
+      type: "video",
+      alt: "alt",
+      src: "/assets/peseworks/pese-easteregg-desktop.mp4",
+      dims: { width: 1152, height: 720 },
+      bgColor: "black"
     }
   ]
 };

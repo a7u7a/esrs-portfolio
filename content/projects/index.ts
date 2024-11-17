@@ -8,6 +8,7 @@ import boids from './boids'
 import floatingPoint from './floating-point'
 import energyInterface from './energy-interface'
 import fringeless from './fringeless'
+import onditasensible from './onditasensible'
 
 export const selectedProjects: IProject[] = [
   beigePill,
@@ -22,4 +23,5 @@ export const experimentalProjects: IProject[] = [
   energyInterface,
   fringeless,
   floatingPoint,
+  onditasensible
 ]

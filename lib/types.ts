@@ -8,6 +8,7 @@ export interface IGalleryItem {
   src: string
   dims?: { height: number, width: number }
   poster?: string
+  bgColor?: string
 }
 
 interface ILink {
@@ -16,6 +17,7 @@ interface ILink {
 }
 
 export interface IProject {
+  hidden?: boolean
   type: string
   link?: ILink
   id: string;

@@ -16,18 +16,11 @@ const slides: IGalleryItem[] = [
     dims: { width: 1280, height: 1920 }
   },
   {
-    id: "fringeless",
+    id: "bp",
     type: "image",
     alt: "alt",
-    src: `${slidesPath}/fl.jpg`,
-    dims: { width: 3500, height: 1968 }
-  },
-  {
-    id: "bp",
-    type: "video",
-    alt: "alt",
-    src: `${slidesPath}/bp_desk.mp4`,
-    dims: { width: 1728, height: 1080 }
+    src: `${slidesPath}/covernew_opt.png`,
+    dims: { width: 3200, height: 1677 }
   },
   {
     id: "bp",
@@ -69,22 +62,22 @@ const slides: IGalleryItem[] = [
     id: "cata",
     type: "video",
     alt: "alt",
-    src: `${slidesPath}/cataandonie-desktop.mp4`,
-    dims: { width: 1920, height: 1080 }
+    src: `${slidesPath}/catalinaandonie_no_browser_handbrake_optimized.mp4`,
+    dims: { width: 1152, height: 720 }
   },
   {
     id: "elemental",
     type: "video",
     alt: "alt",
-    src: `${slidesPath}/elemental_desk.mp4`,
-    dims: { width: 1000, height: 1080 }
+    src: `${slidesPath}/elemental_desktop_nav_no_browser_handbrake_optimized.mp4`,
+    dims: { width: 706, height: 720 }
   },
   {
     id: "elemental",
     type: "video",
     alt: "alt",
-    src: `${slidesPath}/elemental_mob.mp4`,
-    dims: { width: 500, height: 1000 }
+    src: `${slidesPath}/elemental_mobile_no_browser_handbrake_optimized.mp4`,
+    dims: { width: 338, height: 720 }
   },
   {
     id: "pf",
@@ -139,8 +132,8 @@ const slides: IGalleryItem[] = [
     id: "pf",
     type: "image",
     alt: "alt",
-    src: `${slidesPath}/tecnica.jpg`,
-    dims: { width: 1920, height: 1280 }
+    src: `${slidesPath}/TECHNICS-02.jpg`,
+    dims: { width: 2000, height: 1645 }
   },
   {
     id: "bloko",
@@ -148,6 +141,14 @@ const slides: IGalleryItem[] = [
     alt: "alt",
     src: `${slidesPath}/ticker2.mp4`,
     dims: { width: 1920, height: 1080 }
+  },
+  {
+    id: "onditasensible",
+    type: "video",
+    alt: "Ondita Sensible",
+    src: `${slidesPath}/seleccion_handbrake_optimized.mp4`,
+    dims: { width: 636, height: 720 },
+    hideCaption: true
   },
 ];
 

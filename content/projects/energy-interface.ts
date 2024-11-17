@@ -7,7 +7,7 @@ const project: IProject = {
   collapsed: true,
   what: "Can buildings even persuade you?",
   fields: [
-    { title: "Tools", value: "E-paper display, Raspberry Pi, Python" },
+    { title: "Tools", value: "E-paper display, Raspberry Pi, Python, P5.js" },
     { title: "What?", value: "Alternative interfaces for energy efficiency" }
   ],
   date: "2019",
@@ -18,19 +18,22 @@ const project: IProject = {
       type: "image",
       alt: "alt",
       src: "/assets/comfortable-interactions/ci-cover.jpg",
-      dims: { width: 3500, height: 1968 }
+      dims: { width: 3500, height: 1968 },
+      bgColor: "#D9D9D9"
     },
     {
       type: "image",
       alt: "alt",
       src: "/assets/comfortable-interactions/ci-render.jpg",
-      dims: { width: 3500, height: 1968 }
+      dims: { width: 3500, height: 1968 },
+      bgColor: "black"
     },
     {
       type: "image",
       alt: "alt",
       src: "/assets/comfortable-interactions/ci-perspective.jpg",
-      dims: { width: 3500, height: 1968 }
+      dims: { width: 3500, height: 1968 },
+      bgColor: "#D9D9D9"
     },
   ]
 };

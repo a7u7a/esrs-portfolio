@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import useMeasure from 'react-use-measure'
 import { IProject } from '@/lib/types';
 import Markdown from 'react-markdown'
-import ArrowUpRight from './arrow-up-right';
 import AccordionFields from './accordion-fields';
 
 interface AccordionItemProps {
@@ -37,7 +36,7 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
   return (
     <div className="relative">
       <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
-        style={{ height: isExpanded ? totalHeight + 'px' : '22px' }}
+        style={{ height: isExpanded ? totalHeight + 'px' : '31px' }}
       >
         {/* Click row title to expand */}
 
@@ -46,12 +45,12 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className={`
-              relative z-10 flex justify-between sm:grid sm:grid-cols-4 w-full mb-8
+              relative z-10 flex justify-between sm:grid sm:grid-cols-4 w-full mb-8 mt-[4px]
               ${hover ? 'text-gray-400' : ''}
             `}
         >
           <div className={`text-left w-1/2 sm:w-full`}>
-            {project.title}
+            <span className={`bg-esrs-hover text-white px-1.5 py-0.5 rounded-md ${hover ? 'bg-[#686868]' : ''}`}>{project.title}</span>
           </div>
           <div className='hidden sm:block text-left col-span-2'>
             <h3><span>{project.what}</span></h3>
@@ -71,7 +70,7 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
         </div>
 
         <div ref={childrenRef}>
-          <div className={'pt-2 pb-28'}>
+          <div className={'pt-4 pb-28'}>
 
             {/* project carousel */}
             {children}

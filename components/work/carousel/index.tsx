@@ -34,6 +34,10 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
   const { onNextButtonClick, onPrevButtonClick } = usePrevNextButtons(emblaApi)
 
+  useEffect(() => {
+    console.log('selectedIndex', selectedIndex)
+  }, [selectedIndex])
+
   return (
     <section>
       {slides.length > 1 ? (
@@ -73,9 +77,10 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
               <div key={index}
                 onClick={showCustomCursor === "right" ? onNextButtonClick : onPrevButtonClick}
                 className="shrink-0 flex items-center justify-center relative pl-2 w-full"
+                style={{ backgroundColor: slide.bgColor }}
               >
                 {slide.type === "video" ? (
-                  <VideoSlide slide={slide} />
+                  <VideoSlide selectedIndex={selectedIndex} index={index} slide={slide} />
                 ) : (
                   <ImageSlide slide={slide} />
                 )}

@@ -14,7 +14,7 @@ import { ICollaborator } from '@/lib/types'
 import Link from 'next/link'
 import { ArrowRight } from '@phosphor-icons/react'
 
-const Main = () => {
+const MainHomePage = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress)
@@ -115,7 +115,7 @@ const Main = () => {
   )
 }
 
-export default Main
+export default MainHomePage
 
 function TextWrapper({ children }: { children: React.ReactNode }) {
   return <div className='px-4 flex flex-col max-w-[1000px]'>{children}</div>
