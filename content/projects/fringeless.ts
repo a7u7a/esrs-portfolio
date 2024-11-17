@@ -18,14 +18,16 @@ const project: IProject = {
       type: "image",
       alt: "alt",
       src: "/assets/fringeless/fl-1.jpg",
-      dims: { width: 3500, height: 1968 }
+      dims: { width: 3500, height: 1968 },
+      bgColor: "#D9D9D9"
     },
-    {
-      type: "image",
-      alt: "alt",
-      src: "/assets/fringeless/fl-2.jpg",
-      dims: { width: 3500, height: 1968 }
-    }
+    // {
+    //   type: "image",
+    //   alt: "alt",
+    //   src: "/assets/fringeless/fl-2.jpg",
+    //   dims: { width: 3500, height: 1968 },
+    //   bgColor: "#D9D9D9"
+    // }
   ]
 };
 

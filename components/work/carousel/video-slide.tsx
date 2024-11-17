@@ -3,33 +3,24 @@ import { IGalleryItem } from '@/lib/types'
 
 interface VideoSlideProps {
   slide: IGalleryItem
+  selectedIndex: number
+  index: number
 }
 
-const VideoSlide = ({ slide }: VideoSlideProps) => {
+const VideoSlide = ({ slide, selectedIndex, index }: VideoSlideProps) => {
   const [mounted, setMounted] = useState(false);
   const aspectRatio = slide.dims?.width! / slide.dims?.height!
   if (!aspectRatio) throw new Error(`Missing aspect ratio in: ${slide.src}`)
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const [play, setPlay] = useState(false);
-  const threshold = 0.05;
-
   useEffect(() => {
-    if (!videoRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setPlay(true);
-        } else {
-          setPlay(false);
-        }
-      },
-      { threshold: threshold }
-    );
-
-    observer.observe(videoRef.current);
-    return () => observer.disconnect();
-  }, []);
+    if (selectedIndex === index) {
+      setPlay(true)
+    } else {
+      setPlay(false)
+    }
+  }, [selectedIndex, index])
 
   useEffect(() => {
     if (play) {

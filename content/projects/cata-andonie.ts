@@ -18,8 +18,9 @@ export const project: IProject = {
     {
       type: "video",
       alt: "alt",
-      src: "/assets/catalinaandonie/cataandonie-desktop.mp4",
-      dims: { width: 1920, height: 1080 }
+      src: "/assets/catalinaandonie/catalinaandonie_no_browser_handbrake_optimized.mp4",
+      dims: { width: 1920, height: 1080 },
+      bgColor: "black"
     },
   ]
 };

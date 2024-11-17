@@ -8,10 +8,12 @@ import SpinningLogo from "@/components/spinning-logo";
 import { useRotationSpeed, useScrollProgress } from '@/lib/hooks';
 import { useSearchParams, useRouter } from 'next/navigation';
 
-const Main = () => {
+const MainWorkPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [allProjects, setAllProjects] = useState([...experimentalProjects, ...selectedProjects]);
+  const [allProjects, setAllProjects] = useState([...experimentalProjects, ...selectedProjects].filter(project => !project.hidden));
+  const [selected, setSelected] = useState(selectedProjects.filter(project => !project.hidden));
+  const [experimental, setExperimental] = useState(experimentalProjects.filter(project => !project.hidden));
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress)
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
@@ -83,15 +85,15 @@ const Main = () => {
   }, [searchParams]);
 
   return (
-    <main ref={container} className="flex flex-col items-center pt-40">
+    <main ref={container} className="flex flex-col items-start pt-40">
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
 
-      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-8 relative'>
+      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-4 relative'>
         <section className="" id="selected">
           <h1 className='font-semibold pb-20'>{"Esteban Serrano - Portfolio"}</h1>
           <Divider title="Selected Work" />
           <ProjectList>
-            {selectedProjects.map((project, i) => (
+            {selected.map((project, i) => (
               <li key={i} id={project.id}>
                 <Project
                   onToggle={() => handleAccordionToggle(project.id)}
@@ -106,7 +108,7 @@ const Main = () => {
         <section className="pt-12 sm:pt-20" id="experimental">
           <Divider title="Experimental Work" subtitle="What" />
           <ProjectList>
-            {experimentalProjects.map((project, i) => (
+            {experimental.map((project, i) => (
               <li key={i} id={project.id}>
                 <Project
                   onToggle={() => handleAccordionToggle(project.id)}
@@ -127,7 +129,7 @@ const Main = () => {
   );
 }
 
-export default Main
+export default MainWorkPage
 
 const ProjectList = ({ children }: { children: React.ReactNode }) => {
   return (

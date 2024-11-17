@@ -36,23 +36,31 @@ const project: IProject = {
     {
       type: "image",
       alt: "alt",
-      src: "/assets/floatingpoint/fp-cad.jpg",
-      dims: { width: 3500, height: 1968 }
+      src: "/assets/floatingpoint/TECHNICS-02.jpg",
+      dims: { width: 2000, height: 1645 },
+      bgColor: "black"
     },
     {
       type: "image",
       alt: "alt",
-      src: "/assets/floatingpoint/fp-double1.jpg",
-      dims: { width: 3500, height: 1968 }
+      src: "/assets/floatingpoint/TECHNICS-01.jpg",
+      dims: { width: 1900, height: 1645 },
+      bgColor: "black"
     },
     {
       type: "image",
       alt: "alt",
-      src: "/assets/floatingpoint/fp-double2.jpg",
-      dims: { width: 3500, height: 1968 }
+      src: "/assets/floatingpoint/maquina1.jpg",
+      dims: { width: 1920, height: 1280 },
+      bgColor: "#D9D9D9"
     },
-
-
+    {
+      type: "image",
+      alt: "alt",
+      src: "/assets/floatingpoint/controller.jpg",
+      dims: { width: 1280, height: 853 },
+      bgColor: "#D9D9D9"
+    },
   ]
 };
 

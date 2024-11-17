@@ -9,7 +9,7 @@ const project: IProject = {
   fields: [
     {
       title: "Stack",
-      value: "Python, Pandas, RPi",
+      value: "Python, Pandas, RPi, World Bank API, Yahoo Finance",
     },
     { title: "What?", value: "More info", url: "https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/" },
     {
@@ -26,25 +26,29 @@ const project: IProject = {
       type: "image",
       alt: "alt",
       src: "/assets/bloko/perspective.jpg",
-      dims: { width: 3500, height: 1968 }
+      dims: { width: 3500, height: 1968 },
+      bgColor: "#D9D9D9"
     },
     {
       type: "video",
       alt: "alt",
       src: "/assets/bloko/ticker2.mp4",
-      dims: { width: 1920, height: 1080 }
+      dims: { width: 1920, height: 1080 },
+      bgColor: "#D9D9D9"
     },
     {
       type: "video",
       alt: "alt",
       src: "/assets/bloko/debt.mp4",
-      dims: { width: 1920, height: 1080 }
+      dims: { width: 1920, height: 1080 },
+      bgColor: "#D9D9D9"
     },
     {
       type: "image",
       alt: "alt",
       src: "/assets/bloko/interrupt.png",
-      dims: { width: 3500, height: 1968 }
+      dims: { width: 3500, height: 1968 },
+      bgColor: "#D9D9D9"
     },
   ]
 };
