@@ -79,7 +79,7 @@ const HomePageMain = () => {
         </div>
 
         <div className='pt-20'>
-          <ul className='list-none flex gap-3 md:gap-6'>
+          <ul className='list-none flex flex-wrap gap-3 md:gap-6'>
             {socials.map((social, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <li>

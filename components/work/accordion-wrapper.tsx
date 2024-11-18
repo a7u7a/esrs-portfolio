@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import useMeasure from 'react-use-measure'
 import { IProject } from '@/lib/types';
 import Markdown from 'react-markdown'
@@ -35,25 +35,25 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
 
   return (
     <div className="relative">
-       <div className={`
+      <div className={`
             mt-[3px]
             absolute -z-10 
-            h-[24px]
+            inset-0 sm:h-[24px]
             -left-[4px]
             -right-[4px]
-            top-0
             rounded-md
-            transition-colors duration-100 ease-in-out
-            ${hover ? 'bg-esrs-gray' : 'bg-white'}
-            `}
-        />
+            transition-colors duration-1000 sm:duration-100 ease-in-out
+            ${isExpanded ? 'bg-esrs-gray' : "bg-white"}
+            sm:${hover ? 'bg-esrs-gray' : "bg-white"}
+          `}
+      />
       <div className={`
       relative
       overflow-hidden
       duration-1000 ease-in-out 
       ${animate ? 'transition-all' : 'transition-none'} 
        `}
-        style={{ height: isExpanded ? totalHeight + 'px' : '31px' }}
+        style={{ height: isExpanded ? totalHeight + 'px' : '25px' }}
       >
         {/* Click row title to expand */}
 
@@ -82,15 +82,10 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
 
         </button>
 
-       
-
         {/* project details */}
         <div ref={headerRef} className='flex flex-col sm:flex-row gap-3 justify-between'>
-
           <AccordionFields project={project} />
-
           <CopyTwoCols project={project} />
-
         </div>
 
         <div ref={childrenRef}>

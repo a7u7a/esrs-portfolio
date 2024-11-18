@@ -97,12 +97,22 @@ const WorkPageMain = () => {
     }
   }
 
+  const handleCloseAll = () => {
+    setExpandedIds([]);
+    updateURL([]);
+  }
+
+  const handleOpenAll = () => {
+    const allIds = allProjects.map(project => project.id);
+    setExpandedIds(allIds);
+    updateURL(allIds);
+  }
+
   return (
     <main ref={container} className="flex flex-col items-start pt-40 md:pt-48">
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
 
       <div className='pb-24 md:pb-52 max-w-6xl mx-3 md:mx-4 relative'>
-
         <div>
           <h1 className='font-semibold'>{"Esteban Serrano"}</h1>
           <div className='pt-20 max-w-prose'>
@@ -115,9 +125,9 @@ const WorkPageMain = () => {
             </nav>
             <div className='relative flex '>
               {expandedIds.length > 0 ?
-                <button aria-label="Close all" onClick={() => setExpandedIds([])} ><Minus size={24} /></button>
+                <button aria-label="Close all" onClick={handleCloseAll} ><Minus size={24} /></button>
                 :
-                <button aria-label="Open all" onClick={() => setExpandedIds(allProjects.map(project => project.id))} ><Plus size={24} /></button>}
+                <button aria-label="Open all" onClick={handleOpenAll} ><Plus size={24} /></button>}
             </div>
           </div>
         </div>
@@ -165,7 +175,7 @@ export default WorkPageMain
 
 const ProjectList = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ul className="flex flex-col gap-1 sm:gap-3 pt-12 list-none">
+    <ul className="flex flex-col gap-1 sm:gap-2 pt-12 list-none">
       {children}
     </ul>
   )
