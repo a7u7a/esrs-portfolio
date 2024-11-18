@@ -8,7 +8,7 @@ import SpinningLogo from "@/components/spinning-logo";
 import { useRotationSpeed, useScrollProgress } from '@/lib/hooks';
 import { useSearchParams, useRouter } from 'next/navigation';
 
-const MainWorkPage = () => {
+const WorkPageMain = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [allProjects, setAllProjects] = useState([...experimentalProjects, ...selectedProjects].filter(project => !project.hidden));
@@ -85,10 +85,10 @@ const MainWorkPage = () => {
   }, [searchParams]);
 
   return (
-    <main ref={container} className="flex flex-col items-start pt-40">
+    <main ref={container} className="flex flex-col items-start pt-40 md:pt-48">
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
 
-      <div className='pb-[100px] md:pb-[200px] max-w-5xl mx-3 md:mx-4 relative'>
+      <div className='pb-24 md:pb-52 max-w-5xl mx-3 md:mx-4 relative'>
         <section className="" id="selected">
           <h1 className='font-semibold pb-20'>{"Esteban Serrano - Portfolio"}</h1>
           <Divider title="Selected Work" />
@@ -129,7 +129,7 @@ const MainWorkPage = () => {
   );
 }
 
-export default MainWorkPage
+export default WorkPageMain
 
 const ProjectList = ({ children }: { children: React.ReactNode }) => {
   return (

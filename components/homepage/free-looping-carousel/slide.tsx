@@ -34,7 +34,7 @@ const Slide = ({ children, slide }: SlideProps) => {
   return (
     <LinkWrapper projectId={project.id} isLink={slide.hideCaption ? false : linkActive}>
       {/* // Embla Slide */}
-      <div ref={ref} className="shrink-0 flex flex-col pl-4 text-[0.8rem] md:text-[0.9rem] text-esrs-dark-gray">
+      <div ref={ref} className="shrink-0 flex flex-col pl-4 text-hp-card-m md:text-hp-card text-esrs-dark-gray">
 
         <div
           className={`relative`}

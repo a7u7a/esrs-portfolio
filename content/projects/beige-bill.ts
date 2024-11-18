@@ -23,7 +23,6 @@ export const project: IProject = {
       alt: "BeigePill website",
       src: "/assets/beigepill/covernew_opt.png",
       dims: { width: 3200, height: 1677 },
-      bgColor:"#D9D9D9"
     },
     {
       type: "video",

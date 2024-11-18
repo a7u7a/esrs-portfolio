@@ -3,7 +3,7 @@ const services = [
     title: "Design Engineering",
   },
   {
-    title: "Fullstack Development",
+    title: "App prototyping & development",
   },
   {
     title: "Creative Coding",
@@ -13,6 +13,9 @@ const services = [
   },
   {
     title: "Data Visualization",
+  },
+  {
+    title: "Usability consulting",
   }
 ]
 

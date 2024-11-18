@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react'
-import MainWorkPage from '@/components/work/main'
+import WorkPageMain from '@/components/work/main'
 
 const WorkPage = () => {
   return (
     <Suspense fallback={<div></div>}>
-      <MainWorkPage />
+      <WorkPageMain />
     </Suspense>
   )
 }

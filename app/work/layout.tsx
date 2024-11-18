@@ -9,7 +9,7 @@ export default function PageLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`text-[14px] sm:text-[16px] leading-[1.4]`}>
+    <div className={`text-hp-card sm:text-base leading-loose`}>
       {children}
     </div>
   );

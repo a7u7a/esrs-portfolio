@@ -35,7 +35,24 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
 
   return (
     <div className="relative">
-      <div className={`${animate ? 'transition-all' : 'transition-none'} relative duration-1000 ease-in-out overflow-hidden`}
+       <div className={`
+            mt-[4px]
+            absolute -z-10 
+            h-[23px]
+            -left-[4px]
+            -right-[4px]
+            top-0
+            rounded-md
+            transition-colors duration-100 ease-in-out
+            ${hover ? 'bg-esrs-gray' : 'bg-white'}
+            `}
+        />
+      <div className={`
+      relative
+      overflow-hidden
+      duration-1000 ease-in-out 
+      ${animate ? 'transition-all' : 'transition-none'} 
+       `}
         style={{ height: isExpanded ? totalHeight + 'px' : '31px' }}
       >
         {/* Click row title to expand */}
@@ -45,12 +62,16 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className={`
-              relative z-10 flex justify-between sm:grid sm:grid-cols-4 w-full mb-8 mt-[4px]
-              ${hover ? 'text-gray-400' : ''}
+              flex justify-between sm:grid sm:grid-cols-4 
+              mb-8 mt-[4px] 
+              w-full 
+              transition-colors duration-100 ease-in-out
             `}
         >
           <div className={`text-left w-1/2 sm:w-full`}>
-            <span className={`bg-esrs-hover text-white px-1.5 py-0.5 rounded-md ${hover ? 'bg-[#686868]' : ''}`}>{project.title}</span>
+            <span className={`
+              text-esrs-text 
+              ${hover ? ' text-purple' : ''}`}>{project.title}</span>
           </div>
           <div className='hidden sm:block text-left col-span-2'>
             <h3><span>{project.what}</span></h3>
@@ -58,7 +79,10 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
           <div className='text-right'>
             <h3><span>{project.date}</span></h3>
           </div>
+
         </button>
+
+       
 
         {/* project details */}
         <div ref={headerRef} className='flex flex-col sm:flex-row gap-3 justify-between'>

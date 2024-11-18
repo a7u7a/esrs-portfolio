@@ -4,16 +4,16 @@ import { Leva } from 'leva'
 import { useRotationSpeed } from '@/lib/hooks'
 import { useScrollProgress } from '@/lib/hooks'
 import SpinningLogo from '@/components/spinning-logo'
-import FreeLoopingCarousel from '@/components/free-looping-carousel'
+import FreeLoopingCarousel from '@/components/homepage/free-looping-carousel'
 import collaborators from '@/content/collaborators'
 import socials from "@/content/socials"
 import { shuffledSlides } from '@/content/slides'
 import { IGalleryItem } from '@/lib/types'
-import FadeIn from '@/components/fade-in'
+import FadeIn from '@/components/homepage/fade-in'
 import { ICollaborator } from '@/lib/types'
 import Link from 'next/link'
 
-const MainHomePage = () => {
+const HomePageMain = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress)
@@ -44,8 +44,8 @@ const MainHomePage = () => {
 
       <FadeIn threshold={0.1}>
         <div className='flex flex-col my-16 md:mt-24 md:mb-18'  >
-          <FreeLoopingCarousel slides={slides} />
           <ToPortfolioButton />
+          <FreeLoopingCarousel slides={slides} />
         </div>
       </FadeIn>
 
@@ -83,13 +83,13 @@ const MainHomePage = () => {
             {socials.map((social, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <li>
-                  <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>
+                  <a className='transition-colors ease-in-out duration-100 hover:text-hover-socials' href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>
                 </li>
               </FadeIn>
             ))}
             <FadeIn threshold={0.3}>
               <li>
-                <a className='transition-colors ease-in-out duration-100 hover:text-[#8e8e8e]' href="mailto:esteban@esrs.co">
+                <a className='transition-colors ease-in-out duration-100 hover:text-hover-socials' href="mailto:esteban@esrs.co">
                   {"esteban@esrs.co"}
                 </a>
               </li>
@@ -98,7 +98,7 @@ const MainHomePage = () => {
         </div>
 
         <FadeIn threshold={0.3}>
-          <footer className="pt-20 max-w-[600px] pb-32 text-[1.2rem] text-[#414141] leading-[1.4]">
+          <footer className="pt-20 pb-32 text-hp-sm text-footer-text leading-loose">
             <p>{"© 2024"}</p>
             <p>{"All rights reserved."}</p>
             <p>{"This website shows a selected view of my work."}</p>
@@ -113,7 +113,7 @@ const MainHomePage = () => {
   )
 }
 
-export default MainHomePage
+export default HomePageMain
 
 function TextWrapper({ children }: { children: React.ReactNode }) {
   return <div className='px-4 flex flex-col max-w-[1000px]'>{children}</div>
@@ -137,11 +137,11 @@ const Collaborator = ({ collab }: { collab: ICollaborator }) => {
 
 const ToPortfolioButton = () => {
   return (
-    <div className='mt-3 px-4 text-esrs-dark-gray text-[1.2rem]'>
+    <div className='px-4 text-esrs-dark-gray text-hp-sm'>
       <Link href="/work">
-        <div className='flex gap-1 items-center'>
+      
           <span className='hover:text-esrs-hover'>{"See all projects"}</span>
-        </div>
+      
       </Link>
     </div>
   )

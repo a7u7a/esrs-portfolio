@@ -149,13 +149,6 @@ const slides: IGalleryItem[] = [
     src: `${slidesPath}/seleccion_handbrake_optimized.mp4`,
     dims: { width: 636, height: 720 },
     hideCaption: true
-  },
-  {
-    id: "energy",
-    type: "image",
-    alt: "alt",
-    src: `${slidesPath}/test.jpg`,
-    dims: { width: 2800, height: 1000 }
-  },
+  }
 ];
 

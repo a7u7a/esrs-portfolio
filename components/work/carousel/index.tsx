@@ -34,10 +34,6 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
   const { onNextButtonClick, onPrevButtonClick } = usePrevNextButtons(emblaApi)
 
-  useEffect(() => {
-    console.log('selectedIndex', selectedIndex)
-  }, [selectedIndex])
-
   return (
     <section>
       {slides.length > 1 ? (
@@ -64,10 +60,8 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
       {/* Embla Carousel */}
       <div
         className={`w-full m-auto`}
-
         onMouseLeave={() => setShowCustomCursor(false)}
       >
-
         <div
           ref={emblaRef}
           className={`overflow-hidden ${showCustomCursor ? 'cursor-none' : ''}`}
@@ -82,7 +76,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
                 {slide.type === "video" ? (
                   <VideoSlide selectedIndex={selectedIndex} index={index} slide={slide} />
                 ) : (
-                  <ImageSlide slide={slide} />
+                  <ImageSlide index={index} slide={slide} />
                 )}
 
                 <div
