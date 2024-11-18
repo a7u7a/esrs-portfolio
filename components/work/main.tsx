@@ -7,13 +7,19 @@ import Divider from "./divider"
 import SpinningLogo from "@/components/spinning-logo";
 import { useRotationSpeed, useScrollProgress } from '@/lib/hooks';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { IProject } from '@/lib/types';
+import { Plus, Minus } from '@phosphor-icons/react';
+
+function removeHiddenProjects(projects: IProject[]) {
+  return projects.filter(project => !project.hidden)
+}
 
 const WorkPageMain = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [allProjects, setAllProjects] = useState([...experimentalProjects, ...selectedProjects].filter(project => !project.hidden));
-  const [selected, setSelected] = useState(selectedProjects.filter(project => !project.hidden));
-  const [experimental, setExperimental] = useState(experimentalProjects.filter(project => !project.hidden));
+  const [allProjects, setAllProjects] = useState(removeHiddenProjects([...experimentalProjects, ...selectedProjects]));
+  const [selected, setSelected] = useState(removeHiddenProjects(selectedProjects));
+  const [experimental, setExperimental] = useState(removeHiddenProjects(experimentalProjects));
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress)
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
@@ -40,7 +46,7 @@ const WorkPageMain = () => {
             block: 'start'
           });
         }
-      }, 100); // Small delay to ensure accordion has expanded
+      }, 100); // Ensure accordion has expanded
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -84,13 +90,39 @@ const WorkPageMain = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
+  const scrollToCV = () => {
+    const element = document.getElementById('cv');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   return (
     <main ref={container} className="flex flex-col items-start pt-40 md:pt-48">
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
 
-      <div className='pb-24 md:pb-52 max-w-5xl mx-3 md:mx-4 relative'>
-        <section className="" id="selected">
-          <h1 className='font-semibold pb-20'>{"Esteban Serrano - Portfolio"}</h1>
+      <div className='pb-24 md:pb-52 max-w-6xl mx-3 md:mx-4 relative'>
+
+        <div>
+          <h1 className='font-semibold'>{"Esteban Serrano"}</h1>
+          <div className='pt-12 max-w-prose'>
+            <p>{"I'm a creative technologist and full-stack developer based in Berlin, bridging the gap between design and code to craft exceptional digital experiences. I help brands, cultural institutions, and agencies develop custom solutions that push beyond default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
+          </div>
+          <div className='flex justify-between items-center pt-4 pb-12'>
+            <nav className='flex gap-4'>
+              <NavButton>{"Portfolio"}</NavButton>
+              <NavButton className='text-esrs-hover hover:text-esrs-black' onClick={scrollToCV}>{"CV"}</NavButton>
+            </nav>
+            <div className='relative flex '>
+              {expandedIds.length > 0 ?
+                <button aria-label="Close all" onClick={() => setExpandedIds([])} ><Minus size={24} /></button>
+                :
+                <button aria-label="Open all" onClick={() => setExpandedIds(allProjects.map(project => project.id))} ><Plus size={24} /></button>}
+            </div>
+          </div>
+        </div>
+
+        <section id="selected">
           <Divider title="Selected Work" />
           <ProjectList>
             {selected.map((project, i) => (
@@ -105,7 +137,7 @@ const WorkPageMain = () => {
           </ProjectList>
         </section>
 
-        <section className="pt-12 sm:pt-20" id="experimental">
+        <section className="pt-12 sm:pt-20 pb-12 sm:pb-36" id="experimental">
           <Divider title="Experimental Work" subtitle="What" />
           <ProjectList>
             {experimental.map((project, i) => (
@@ -120,7 +152,7 @@ const WorkPageMain = () => {
           </ProjectList>
         </section>
 
-        <section className="pt-12 sm:pt-36">
+        <section className="" id="cv">
           <CV />
         </section>
 
@@ -136,5 +168,15 @@ const ProjectList = ({ children }: { children: React.ReactNode }) => {
     <ul className="flex flex-col gap-1 sm:gap-3 pt-12 list-none">
       {children}
     </ul>
+  )
+}
+
+const NavButton = ({ children, onClick, className }: { children: React.ReactNode, onClick?: () => void, className?: string }) => {
+  return (
+    <button onClick={onClick} className={className} >
+      <h2 className='font-semibold '>
+        {children}
+      </h2>
+    </button>
   )
 }

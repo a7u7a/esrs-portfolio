@@ -36,9 +36,9 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
   return (
     <div className="relative">
        <div className={`
-            mt-[4px]
+            mt-[3px]
             absolute -z-10 
-            h-[23px]
+            h-[24px]
             -left-[4px]
             -right-[4px]
             top-0
@@ -71,7 +71,7 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
           <div className={`text-left w-1/2 sm:w-full`}>
             <span className={`
               text-esrs-text 
-              ${hover ? ' text-purple' : ''}`}>{project.title}</span>
+              ${hover ? ' ' : ''}`}>{project.title}</span>
           </div>
           <div className='hidden sm:block text-left col-span-2'>
             <h3><span>{project.what}</span></h3>

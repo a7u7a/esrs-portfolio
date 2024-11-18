@@ -26,8 +26,7 @@ const project: IProject = {
       type: "image",
       alt: "alt",
       src: "/assets/bloko/perspective.jpg",
-      dims: { width: 3500, height: 1968 },
-      bgColor: "#D9D9D9"
+      dims: { width: 3500, height: 1968 }
     },
     {
       type: "video",

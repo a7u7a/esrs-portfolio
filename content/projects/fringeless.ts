@@ -19,7 +19,7 @@ const project: IProject = {
       alt: "alt",
       src: "/assets/fringeless/fl-1.jpg",
       dims: { width: 3500, height: 1968 },
-      bgColor: "#D9D9D9"
+      // bgColor: "#D9D9D9"
     },
     // {
     //   type: "image",
