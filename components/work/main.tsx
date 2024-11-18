@@ -106,7 +106,7 @@ const WorkPageMain = () => {
         <div>
           <h1 className='font-semibold'>{"Esteban Serrano"}</h1>
           <div className='pt-12 max-w-prose'>
-            <p>{"I'm a creative technologist and full-stack developer based in Berlin, bridging the gap between design and code to craft exceptional digital experiences. I help brands, cultural institutions, and agencies develop custom solutions that push beyond default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
+            <p>{"I'm a design technologist and web developer based in Berlin, bridging the gap between design and code to craft exceptional digital experiences. I help brands, cultural institutions, and agencies develop custom solutions to create non-default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
           </div>
           <div className='flex justify-between items-center pt-4 pb-12'>
             <nav className='flex gap-4'>

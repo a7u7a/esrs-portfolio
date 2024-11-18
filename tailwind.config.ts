@@ -8,18 +8,11 @@ const config: Config = {
   ],
   theme: {
     fontSize: {
-      'hp-sm': '1.2rem',
+      sm: '0.9rem',
+      base: '1rem',
+      'hp-sm': '1.1rem',
       'hp-lg': '2rem',
       'hp-xl': '3.5rem',
-      'hp-card-m': '0.8rem',
-      'hp-card': '0.9rem',
-      sm: '0.8rem',
-      base: '1rem',
-      xl: '1.25rem',
-      '2xl': '1.563rem',
-      '3xl': '1.953rem',
-      '4xl': '2.441rem',
-      '5xl': '3.052rem',
     },
     extend: {
       dropShadow: {

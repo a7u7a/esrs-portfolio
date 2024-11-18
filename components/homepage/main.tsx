@@ -60,7 +60,7 @@ const HomePageMain = () => {
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
             <div>
-              <span>{"Specialized in front-end development and interaction design."}</span>
+              <span>{"Specialized in web development and interaction design."}</span>
             </div>
           </FadeIn>
         </div>
@@ -140,7 +140,7 @@ const ToPortfolioButton = () => {
     <div className='px-4 text-esrs-dark-gray text-hp-sm'>
       <Link href="/work">
       
-          <span className='hover:text-esrs-hover'>{"See all projects"}</span>
+          <span className='hover:text-esrs-hover hover:underline'>{"See all projects"}</span>
       
       </Link>
     </div>
