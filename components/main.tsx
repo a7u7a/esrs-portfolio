@@ -12,7 +12,6 @@ import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/fade-in'
 import { ICollaborator } from '@/lib/types'
 import Link from 'next/link'
-import { ArrowRight } from '@phosphor-icons/react'
 
 const MainHomePage = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
@@ -57,7 +56,6 @@ const MainHomePage = () => {
             <span>{"Mixing code and design to craft unique digital products."}</span>
           </div>
         </FadeIn>
-
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>

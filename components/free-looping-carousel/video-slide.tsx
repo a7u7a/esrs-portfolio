@@ -60,6 +60,7 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
     <div
       className={`
         h-[250px] sm:h-[300px] md:h-[450px] bg-[#ebebeb] rounded-lg
+        max-w-[450px] sm:max-w-[530px] md:max-w-[800px]
         transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}
         `}
       style={{ aspectRatio: aspectRatio }}

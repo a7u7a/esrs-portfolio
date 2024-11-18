@@ -53,7 +53,7 @@ const slides: IGalleryItem[] = [
   {
     id: "cata",
     type: "video",
-    
+
     alt: "alt",
     src: `${slidesPath}/cata_pro2.mp4`,
     dims: { width: 748, height: 1080 }
@@ -133,7 +133,7 @@ const slides: IGalleryItem[] = [
     type: "image",
     alt: "alt",
     src: `${slidesPath}/TECHNICS-02.jpg`,
-    dims: { width: 2000, height: 1645 }
+    dims: { width: 1362, height: 1200 }
   },
   {
     id: "bloko",
@@ -149,6 +149,13 @@ const slides: IGalleryItem[] = [
     src: `${slidesPath}/seleccion_handbrake_optimized.mp4`,
     dims: { width: 636, height: 720 },
     hideCaption: true
+  },
+  {
+    id: "energy",
+    type: "image",
+    alt: "alt",
+    src: `${slidesPath}/test.jpg`,
+    dims: { width: 2800, height: 1000 }
   },
 ];
 
