@@ -15,7 +15,7 @@ const services = [
     title: "Data Visualization",
   },
   {
-    title: "Usability consulting",
+    title: "Usability Consulting",
   }
 ]
 

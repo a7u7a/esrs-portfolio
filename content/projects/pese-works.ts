@@ -9,7 +9,7 @@ const project: IProject = {
   collapsed: true,
   fields: [
     { title: "Stack", value: "R3F, TypeScript, Next.js." },
-    { title: "What?", value: "Portfolio site" },
+    { title: "Type", value: "Portfolio site" },
     { title: "Go", url: "https://pese.works/" }
   ],
   descriptionOne: `For this site we repurposed a model Pedro created for an exhibition project in Berlin. There was something interesting between the sterile view of the simulation and the photos of the real world objects he wanted to show.`,

@@ -11,7 +11,6 @@ const project: IProject = {
       title: "Stack",
       value: "Python, Pandas, RPi, World Bank API, Yahoo Finance",
     },
-    { title: "What?", value: "More info", url: "https://www.washingtonpost.com/arts-entertainment/2023/04/21/art-gallery-shows-dc-area/" },
     {
       title: "Comissioned by",
       value: "Ignacio Gatica",

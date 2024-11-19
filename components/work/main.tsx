@@ -133,7 +133,7 @@ const WorkPageMain = () => {
         </div>
 
         <section id="selected">
-          <Divider title="Selected Work" />
+          <Divider title="Selected Work" subtitle="Info" showDate />
           <ProjectList>
             {selected.map((project, i) => (
               <li key={i} id={project.id}>
@@ -148,7 +148,7 @@ const WorkPageMain = () => {
         </section>
 
         <section className="pt-20 pb-20" id="experimental">
-          <Divider title="Experimental Work" subtitle="What" />
+          <Divider title="Experimental Work" />
           <ProjectList>
             {experimental.map((project, i) => (
               <li key={i} id={project.id}>

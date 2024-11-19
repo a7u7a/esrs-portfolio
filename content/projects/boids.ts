@@ -20,6 +20,7 @@ export const project: IProject = {
       alt: "alt",
       src: "/assets/boids/boids-sim.mp4",
       dims: { width: 1920, height: 1080 },
+      bgColor: "#D9D9D9"
     },
     {
       type: "video",

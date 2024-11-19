@@ -8,7 +8,7 @@ export const project: IProject = {
   what: "Fullscreen fragment shaders for a portfolio site",
   fields: [
     { title: "Stack", value: "Next.js, TypeScript, WebGL" },
-    { title: "What?", value: "Portfolio site" },
+    { title: "Type", value: "Portfolio site" },
     { title: "Go", url: "https://catalinaandonie.com/" },
   ],
   date: "2022",
