@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import { useGSAP } from "@gsap/react";
 
 export const linearMap = (val: number, fromA: number, fromB: number, toA: number, toB: number) => {
@@ -12,22 +13,17 @@ export const useMouseAngle = () => {
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      // Get viewport dimensions
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
 
-      // Calculate viewport center
       const centerX = viewportWidth / 2;
       const centerY = viewportHeight;
 
-      // Get mouse position relative to center
       const mouseX = event.clientX - centerX;
       const mouseY = centerY - event.clientY; // Invert Y for standard math coordinates
 
-      // Calculate angle in radians
       let angleRad = Math.atan2(mouseY, mouseX);
 
-      // Convert to degrees and normalize to 0-360 range
       let angleDeg = (angleRad * 180) / Math.PI;
       if (angleDeg < 0) {
         angleDeg += 360;
@@ -55,10 +51,10 @@ export const useScrollProgress = () => {
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
+    gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
   }, []);
 
-  useGSAP(() => {
+  const { contextSafe } = useGSAP(() => {
     function getTurns() {
       const bodyHeight = document.documentElement.scrollHeight - window.innerHeight;
       const segments = Math.round(bodyHeight / desiredSegmentLength);
@@ -91,7 +87,15 @@ export const useScrollProgress = () => {
     setTimeout(setupScrollTrigger, 1000);
   }, { scope: container });
 
-  return { container, scrollProgress, scrollTriggerRef };
+  const scrollToElement = contextSafe((id: string) => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: id,
+      ease: "power2.inOut"
+    });
+  });
+
+  return { container, scrollProgress, scrollTriggerRef, scrollToElement };
 };
 
 
@@ -99,30 +103,42 @@ export const useRotationSpeed = (currentAngle: number) => {
   const [rotationSpeed, setRotationSpeed] = useState<number>(0);
   const lastAngle = useRef<number>(currentAngle);
   const lastTimestamp = useRef<number>(performance.now());
+  const frameRef = useRef<number>();
 
   useEffect(() => {
-    const currentTime = performance.now();
-    const deltaTime = (currentTime - lastTimestamp.current) / 1000;
-
-    let deltaAngle = currentAngle - lastAngle.current;
-
-    if (deltaAngle > 180) {
-      deltaAngle -= 360;
-    } else if (deltaAngle < -180) {
-      deltaAngle += 360;
+    if (frameRef.current) {
+      cancelAnimationFrame(frameRef.current);
     }
 
-    const scale = 1.1
-    const newRotationSpeed = Math.abs((deltaAngle / deltaTime) * scale);
+    // Use requestAnimationFrame to limit updates
+    frameRef.current = requestAnimationFrame(() => {
+      const currentTime = performance.now();
+      const deltaTime = (currentTime - lastTimestamp.current) / 1000;
+      let deltaAngle = currentAngle - lastAngle.current;
+      if (deltaAngle > 180) {
+        deltaAngle -= 360;
+      } else if (deltaAngle < -180) {
+        deltaAngle += 360;
+      }
 
-    lastAngle.current = currentAngle;
-    lastTimestamp.current = currentTime;
+      const scale = 1.1;
+      const newRotationSpeed = Math.abs((deltaAngle / deltaTime) * scale);
 
-    setRotationSpeed(newRotationSpeed);
+      lastAngle.current = currentAngle;
+      lastTimestamp.current = currentTime;
+
+      setRotationSpeed(newRotationSpeed);
+    });
+
+    return () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
   }, [currentAngle]);
 
   return rotationSpeed;
-}
+};
 
 // from https://www.netlify.com/blog/2020/12/05/building-a-custom-react-media-query-hook-for-more-responsive-apps/
 export function useMediaQuery(query: string) {

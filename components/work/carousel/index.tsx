@@ -78,7 +78,6 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
                 ) : (
                   <ImageSlide index={index} slide={slide} />
                 )}
-
                 <div
                   onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "left" : false)}
                   className='absolute inset-y-0 left-0 w-1/2 z-50'
@@ -87,14 +86,13 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
                   onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "right" : false)}
                   className='absolute inset-y-0 right-0 w-1/2 z-50'
                 />
-
               </div>
             ))}
           </div>
         </div>
         {showCustomCursor && (
           <div
-            className="fixed pointer-events-none z-50 mix-blend-difference"
+            className="hidden sm:flex fixed pointer-events-none z-50 mix-blend-difference"
             style={{
               left: `${cursorPosition.x}px`,
               top: `${cursorPosition.y}px`,

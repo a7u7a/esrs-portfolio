@@ -35,16 +35,18 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
 
   return (
     <div className="relative">
-      <div className={`
+      <div
+        className={`
             mt-[3px]
             absolute -z-10 
             inset-0 sm:h-[24px]
             -left-[4px]
             -right-[4px]
             rounded-md
-            transition-colors duration-1000 sm:duration-100 ease-in-out
-            ${isExpanded ? 'bg-esrs-gray' : "bg-white"}
-            sm:${hover ? 'bg-esrs-gray' : "bg-white"}
+            transition-opacity duration-1000 sm:duration-100 ease-in-out
+            bg-esrs-gray
+            ${isExpanded ? 'opacity-100' : "opacity-0"}
+            ${hover ? 'opacity-100' : "opacity-0"}
           `}
       />
       <div className={`

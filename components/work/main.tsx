@@ -1,5 +1,7 @@
 "use client"
 import React, { useEffect, useState, useCallback } from 'react'
+import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
 import Project from "./project";
 import { selectedProjects, experimentalProjects } from '@/content/projects'
 import CV from "./cv"
@@ -8,7 +10,6 @@ import SpinningLogo from "@/components/spinning-logo";
 import { useRotationSpeed, useScrollProgress } from '@/lib/hooks';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IProject } from '@/lib/types';
-import { Plus, Minus } from '@phosphor-icons/react';
 
 function removeHiddenProjects(projects: IProject[]) {
   return projects.filter(project => !project.hidden)
@@ -20,9 +21,11 @@ const WorkPageMain = () => {
   const [allProjects, setAllProjects] = useState(removeHiddenProjects([...experimentalProjects, ...selectedProjects]));
   const [selected, setSelected] = useState(removeHiddenProjects(selectedProjects));
   const [experimental, setExperimental] = useState(removeHiddenProjects(experimentalProjects));
-  const { container, scrollProgress } = useScrollProgress();
+  const { container, scrollProgress, scrollToElement } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress)
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const [selectedOpen, setSelectedOpen] = useState(false);
+  const [experimentalOpen, setExperimentalOpen] = useState(false);
 
   useEffect(() => {
     const expanded = searchParams.get('p');
@@ -91,49 +94,69 @@ const WorkPageMain = () => {
   }, [searchParams]);
 
   const scrollToCV = () => {
-    const element = document.getElementById('cv');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    scrollToElement('#cv');
   }
 
-  const handleCloseAll = () => {
-    setExpandedIds([]);
-    updateURL([]);
+  const handleExpandSelected = () => {
+    // Get current experimental IDs that are expanded
+    const currentExperimentalIds = expandedIds.filter(id =>
+      experimental.map(project => project.id).includes(id)
+    );
+    // Add all selected IDs while preserving experimental ones
+    const selectedIds = selected.map(project => project.id);
+    const newIds = [...new Set([...currentExperimentalIds, ...selectedIds])];
+    setExpandedIds(newIds);
+    updateURL(newIds);
   }
 
-  const handleOpenAll = () => {
-    const allIds = allProjects.map(project => project.id);
-    setExpandedIds(allIds);
-    updateURL(allIds);
+  const handleCollapseSelected = () => {
+    setExpandedIds(prevIds => prevIds.filter(id => !selected.map(project => project.id).includes(id)));
+    updateURL(expandedIds.filter(id => !selected.map(project => project.id).includes(id)));
   }
+
+  const handleExpandExperimental = () => {
+    const currentSelectedIds = expandedIds.filter(id =>
+      selected.map(project => project.id).includes(id)
+    );
+    const experimentalIds = experimental.map(project => project.id);
+    const newIds = [...new Set([...currentSelectedIds, ...experimentalIds])];
+    setExpandedIds(newIds);
+    updateURL(newIds);
+  }
+
+  const handleCollapseExperimental = () => {
+    setExpandedIds(prevIds => prevIds.filter(id => !experimental.map(project => project.id).includes(id)));
+    updateURL(expandedIds.filter(id => !experimental.map(project => project.id).includes(id)));
+  }
+
+  useEffect(() => {
+    const expandedExperimental = expandedIds.filter(id => experimental.map(project => project.id).includes(id));
+    setExperimentalOpen(expandedExperimental.length > 0);
+  }, [expandedIds, experimental])
+
+  useEffect(() => {
+    const expandedSelected = expandedIds.filter(id => selected.map(project => project.id).includes(id));
+    setSelectedOpen(expandedSelected.length > 0);
+  }, [expandedIds, selected])
 
   return (
     <main ref={container} className="flex flex-col items-start pt-40 md:pt-48">
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
 
       <div className='pb-24 md:pb-52 max-w-6xl mx-3 md:mx-4 relative'>
-        <div>
-          <h1 className='font-semibold'>{"Esteban Serrano"}</h1>
-          <div className='pt-20 max-w-prose'>
-            <p>{"I'm a design technologist and web developer bridging the gap between design and code to craft exceptional digital experiences. I help brands, cultural institutions, and agencies develop custom solutions and non-default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
-          </div>
-          <div className='flex justify-between items-center pt-4 pb-20'>
-            <nav className='flex gap-4'>
-              <NavButton>{"Portfolio"}</NavButton>
-              <NavButton className='text-esrs-hover hover:text-esrs-black' onClick={scrollToCV}>{"CV"}</NavButton>
-            </nav>
-            <div className='relative flex '>
-              {expandedIds.length > 0 ?
-                <button aria-label="Close all" onClick={handleCloseAll} ><Minus size={24} /></button>
-                :
-                <button aria-label="Open all" onClick={handleOpenAll} ><Plus size={24} /></button>}
-            </div>
-          </div>
+        <h1 className='font-semibold'>{"Esteban Serrano"}</h1>
+        <div className='pt-20 w-full sm:w-2/3 text-balance'>
+          <p>{"I'm a design technologist and web developer bridging the gap between design and code to craft exceptional digital experiences. I help brands, cultural institutions, and agencies develop custom solutions and non-default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
+        </div>
+        <div className='flex justify-between items-center pt-20 pb-20'>
+          <nav className='flex gap-4'>
+            <NavButton>{"Portfolio"}</NavButton>
+            <NavButton className='text-esrs-hover hover:text-esrs-black' onClick={scrollToCV}>{"CV"}</NavButton>
+          </nav>
         </div>
 
         <section id="selected">
-          <Divider title="Selected Work" subtitle="Info" showDate />
+          <Divider title="Selected Work" subtitle="Info" handleOpen={handleExpandSelected} handleClose={handleCollapseSelected} expanded={selectedOpen} />
           <ProjectList>
             {selected.map((project, i) => (
               <li key={i} id={project.id}>
@@ -148,7 +171,7 @@ const WorkPageMain = () => {
         </section>
 
         <section className="pt-20 pb-20" id="experimental">
-          <Divider title="Experimental Work" />
+          <Divider title="Experimental Work" handleOpen={handleExpandExperimental} handleClose={handleCollapseExperimental} expanded={experimentalOpen} />
           <ProjectList>
             {experimental.map((project, i) => (
               <li key={i} id={project.id}>
