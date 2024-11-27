@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { IProject, IProjectField } from '@/lib/types'
-import { ArrowElbowRightUp, ArrowUpRight } from '@phosphor-icons/react'
+import { ArrowElbowRightUp } from '@phosphor-icons/react'
 import Link from 'next/link'
 
 const AccordionFields = ({ project }: { project: IProject }) => {
@@ -39,9 +39,11 @@ function LinkField({ field }: { field: IProjectField }) {
   return (
     <div className='max-w-min'>
       <Link className='max-w-min' href={field.url!} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <div className='flex gap-1'>
+        <div className='flex gap-[2px]'>
           <span className={`font-bold ${hovered ? 'underline' : ''}`}>{field.title}</span>
-          <ArrowElbowRightUp color={hovered ? 'esrs-blue' : 'currentColor'} size={19} />
+          <div className='pt-[2px]'>
+            <ArrowElbowRightUp weight={"bold"} color={hovered ? 'esrs-blue' : 'currentColor'} size={19} />
+          </div>
         </div>
       </Link>
     </div>
