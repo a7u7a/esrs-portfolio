@@ -4,7 +4,7 @@ export const project: IProject = {
   id: "boids",
   title: "Particle simulation",
   type: "Experiment",
-  what: "Geeking out with Three.js, GLSL and Observable notebooks",
+  what: "Three.js, GLSL and Observable notebooks",
   fields: [
     { title: "Stack", value: "Three.js, Observable" },
     { title: "What?", value: "Boids particle simulation" },

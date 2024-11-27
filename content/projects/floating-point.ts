@@ -5,7 +5,7 @@ const project: IProject = {
   title: "Punto Flotante",
   type: "Installation",
   collapsed: true,
-  what: "A summer working with mirrors and stepper motors",
+  what: "Arduino, Grasshopper3D for Rhino + Ladybug",
   date: "2017",
   fields: [
     { title: "Tools", value: "Grasshopper3D, Arduino" },

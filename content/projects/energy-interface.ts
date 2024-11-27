@@ -5,7 +5,7 @@ const project: IProject = {
   type: "Research",
   title: "Comfortable Interactions",
   collapsed: true,
-  what: "Can buildings even persuade you?",
+  what: "Python, User Research",
   fields: [
     { title: "Tools", value: "E-paper display, Raspberry Pi, Python, P5.js" },
     { title: "What?", value: "Alternative interfaces for energy efficiency" }

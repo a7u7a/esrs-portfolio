@@ -5,7 +5,7 @@ const project: IProject = {
   type: "Display controller",
   title: "Scroller Series",
   collapsed: true,
-  what: "Display controller",
+  what: "Python-based display controller for Raspberry Pi",
   fields: [
     {
       title: "Stack",

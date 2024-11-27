@@ -5,7 +5,7 @@ export const project: IProject = {
   title: "Catalina Andonie Portfolio",
   type: "Artist website",
   collapsed: true,
-  what: "Fullscreen fragment shaders for a portfolio site",
+  what: "Fullscreen WebGL on React",
   fields: [
     { title: "Stack", value: "Next.js, TypeScript, WebGL" },
     { title: "Type", value: "Portfolio site" },

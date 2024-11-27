@@ -4,7 +4,7 @@ const project: IProject = {
   id: "elemental",
   title: "Elemental Chile",
   type: "Elemental Website",
-  what: "Web App",
+  what: "Next.js Web App",
   date: "2024",
   collapsed: true,
   link: {

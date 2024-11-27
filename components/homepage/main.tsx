@@ -51,15 +51,15 @@ const HomePageMain = () => {
       <TextWrapper>
 
         <FadeIn threshold={0.3}>
-          <div>
-            <span>{"Mixing code and design to craft unique digital products."}</span>
+          <div className='text-balance'>
+            <span>{"Specialized in web development and interaction design."}</span>
           </div>
         </FadeIn>
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
-            <div>
-              <span>{"Specialized in web development and interaction design."}</span>
+            <div className='text-balance'>
+              <span>{"Proficient in Typescript, React and Python."}</span>
             </div>
           </FadeIn>
         </div>

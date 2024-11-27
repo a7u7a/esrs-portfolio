@@ -3,7 +3,7 @@ import { IProject } from "@/lib/types";
 const project: IProject = {
   id: "pese",
   title: "PESE.works",
-  what: "Scroll-based 3D interactions",
+  what: "Three.js + React Site",
   type: "Portfolio website",
   date: "2022",
   collapsed: true,

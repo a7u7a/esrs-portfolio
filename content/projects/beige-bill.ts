@@ -6,7 +6,7 @@ export const project: IProject = {
   title: "BeigePill Productions",
   date: "2024",
   type: "BeigePill Website",
-  what: "Website",
+  what: "Next.js Site",
   tags: [
     { label: "Website", url: "https://beigepill.com" },
   ],
