@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     fontSize: {
-      sm: '0.9rem',
-      base: '1rem',
+      sm: '1rem',
+      base: '1.1rem',
       'hp-sm': '1.1rem',
       'hp-lg': '2rem',
       'hp-xl': '3.5rem',
