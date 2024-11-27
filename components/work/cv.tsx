@@ -2,7 +2,7 @@ import CVPublications from './cv-publications'
 import CVCollaborators from './cv-collaborators'
 import CVContact from './cv-contact'
 import CVEducation from './cv-education'
-import Footer from './footer'
+import Footer from '../footer'
 import CVServices from "./cv-services"
 
 const CV = () => {

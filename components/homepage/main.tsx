@@ -11,7 +11,7 @@ import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/homepage/fade-in'
 import { ICollaborator } from '@/lib/types'
 import Link from 'next/link'
-import Footer from '../work/footer'
+import Footer from '../footer'
 
 const HomePageMain = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
