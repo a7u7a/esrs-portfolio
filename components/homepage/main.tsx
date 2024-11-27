@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Leva } from 'leva'
 import { useRotationSpeed } from '@/lib/hooks'
 import { useScrollProgress } from '@/lib/hooks'
 import SpinningLogo from '@/components/spinning-logo'
@@ -12,6 +11,7 @@ import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/homepage/fade-in'
 import { ICollaborator } from '@/lib/types'
 import Link from 'next/link'
+import Footer from '../work/footer'
 
 const HomePageMain = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
@@ -26,7 +26,6 @@ const HomePageMain = () => {
       <FadeIn threshold={0.3}>
         <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
       </FadeIn>
-      <Leva hidden={true} />
 
       <TextWrapper>
         <div className=''>
@@ -98,13 +97,7 @@ const HomePageMain = () => {
         </div>
 
         <FadeIn threshold={0.3}>
-          <footer className="pt-20 pb-32 text-hp-sm text-footer-text leading-loose">
-            <p>{"© 2024"}</p>
-            <p>{"All rights reserved."}</p>
-            <p>{"This website shows a selected view of my work."}</p>
-            <p>{"Licensed under CC BY-NC-SA 4.0."}</p>
-            <p className="pt-2">{"Last update: "}{process.env.NEXT_PUBLIC_BUILD_DATE}</p>
-          </footer>
+          <Footer className='pt-20 pb-32 text-hp-sm text-footer-text leading-loose' />
         </FadeIn>
 
       </TextWrapper>
@@ -139,9 +132,9 @@ const ToPortfolioButton = () => {
   return (
     <div className='px-4 text-esrs-dark-gray text-hp-sm'>
       <Link href="/work">
-      
-          <span className='hover:text-esrs-hover hover:underline'>{"See all projects"}</span>
-      
+
+        <span className='hover:text-esrs-hover hover:underline'>{"See all projects"}</span>
+
       </Link>
     </div>
   )

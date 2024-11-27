@@ -148,6 +148,9 @@ const WorkPageMain = () => {
         <div className='pt-20 w-full sm:w-2/3 text-balance'>
           <p>{"I'm a design technologist and web developer bridging the gap between design and code to craft exceptional digital experiences. I help brands, cultural institutions, and agencies develop custom solutions and non-default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
         </div>
+        <div className='pt-6'>
+          <p>{"Proficient in Typescript, React and Python development."}</p>
+        </div>
         <div className='flex justify-between items-center pt-20 pb-20'>
           <nav className='flex gap-4'>
             <NavButton>{"Portfolio"}</NavButton>

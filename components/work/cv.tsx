@@ -32,7 +32,7 @@ const CVDesktop = () => {
         <div className='pt-16'>
           <CVContact />
         </div>
-        <Footer />
+        <Footer className="pt-12 max-w-[600px]" />
       </div>
 
       <div className="col-span-1">
@@ -54,7 +54,7 @@ const CVMobile = () => {
           <div className='pt-12'>
             <CVServices />
           </div>
-          <Footer />
+          <Footer className="pt-12 max-w-[600px]" />
         </div>
 
         <div className='w-1/2'>
