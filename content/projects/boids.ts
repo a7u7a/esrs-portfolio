@@ -13,7 +13,7 @@ export const project: IProject = {
   date: "2021",
   collapsed: true,
   descriptionOne: `I implemented this [boids simulation](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) as part of my journey of learning graphics programming for the web. I was kind of obsessed with code notebooks at the time and ended up using Observable.`,
-  descriptionTwo: `As bonus, I added my take on wind effect using 3D perlin noise vector fields. During the process I also made a lot of [smaller notebooks](https://observablehq.com/@esrs/plasma-boids-may-2022-update?tab=collections&collection=@esrs/boids) with tests, adapted mostly from [The Nature of Code](https://natureofcode.com/) book.`,
+  descriptionTwo: `As a bonus, I added my take on wind effect using 3D perlin noise vector fields. During the process I also made a lot of [smaller notebooks](https://observablehq.com/@esrs/plasma-boids-may-2022-update?tab=collections&collection=@esrs/boids) with tests, adapted mostly from [The Nature of Code](https://natureofcode.com/) book.`,
   gallery: [
     {
       type: "video",

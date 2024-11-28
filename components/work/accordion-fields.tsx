@@ -44,7 +44,7 @@ function LinkField({ field }: { field: IProjectField }) {
       <Link className='max-w-min' href={field.url!} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <div className='flex gap-[2px]'>
           <span className={`font-bold ${hovered ? 'underline' : ''}`}>{field.title}</span>
-          <div className='pt-[2px]'>
+          <div className='pt-[2.5px]'>
             <ArrowElbowRightUp weight={"bold"} size={19} />
           </div>
         </div>

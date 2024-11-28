@@ -11,7 +11,7 @@ const project: IProject = {
     { title: "What?", value: "Alternative interfaces for energy efficiency" }
   ],
   date: "2019",
-  descriptionOne: `Can a building use natural language to explain what it's doing to keep you warm during winter? Can it tell you what kind of strategies you have to make yourself comfortable without increasing energy use?`,
+  descriptionOne: `Can buildings use natural language to explain what it's doing to keep you warm during winter? Can it give you strategies to make yourself comfortable?`,
   descriptionTwo: `In this project I used [HCI research methods](https://www.interaction-design.org/literature/topics/human-computer-interaction) to develop and evaluate an interface which lets users communicate with buildings with the goal of improving comfort and lowering energy use. Referencing the interesting work of Stewart Brand, Adrian Clear and Elizabeth Shove.`,
   gallery: [
     {
