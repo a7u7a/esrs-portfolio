@@ -28,15 +28,18 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
   const [headerRef, headerBounds] = useMeasure();
 
   useEffect(() => {
-    setIsAnimating(true);
-    const timer = setTimeout(() => setIsAnimating(false), 1000)
-    return () => clearTimeout(timer)
-  }, [isExpanded])
-
-  useEffect(() => {
     const timer = setTimeout(() => setAnimate(true), 300)
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (animate) {
+      setIsAnimating(true);
+      const timer = setTimeout(() => setIsAnimating(false), 1000)
+      return () => clearTimeout(timer)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isExpanded])
 
   const totalHeight = headerBounds.height + childrenBounds.height
 
@@ -53,8 +56,7 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
             transition-opacity duration-1000 sm:duration-100 ease-in-out
             bg-esrs-gray
             ${isExpanded || isAnimating ? 'opacity-100' : "opacity-0"}
-            ${hover ? 'opacity-100' : "opacity-0"}
-          `}
+            ${hover ? 'opacity-100' : "opacity-0"}`}
       />
       <div className={`
       relative
