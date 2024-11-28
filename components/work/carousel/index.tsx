@@ -70,8 +70,10 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
             {slides.map((slide, index) => (
               <div key={index}
                 onClick={showCustomCursor === "right" ? onNextButtonClick : onPrevButtonClick}
-                className="shrink-0 flex items-center justify-center relative pl-2 w-full"
-                style={{ backgroundColor: slide.bgColor }}
+                className={`
+                  shrink-0 flex items-center 
+                  ${slide.dims?.width! > slide.dims?.height! ? 'justify-start' : 'justify-center'} 
+                  relative pl-2 w-full`}
               >
                 {slide.type === "video" ? (
                   <VideoSlide selectedIndex={selectedIndex} index={index} slide={slide} />

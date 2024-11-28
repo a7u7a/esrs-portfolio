@@ -18,7 +18,7 @@ const project: IProject = {
       type: "image",
       alt: "alt",
       src: "/assets/comfortable-interactions/ci-cover.jpg",
-      dims: { width: 3500, height: 1968 },
+      dims: { width: 1493, height: 1968 },
       bgColor: "#D9D9D9"
     },
     {
