@@ -58,10 +58,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
       ) : (null)}
 
       {/* Embla Carousel */}
-      <div
-        className={`w-full m-auto`}
-        onMouseLeave={() => setShowCustomCursor(false)}
-      >
+      <div className={`w-full m-auto`} >
         <div
           ref={emblaRef}
           className={`overflow-hidden ${showCustomCursor ? 'cursor-none' : ''}`}
@@ -69,25 +66,30 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
           <div className="flex h-full -ml-2">
             {slides.map((slide, index) => (
               <div key={index}
-                onClick={showCustomCursor === "right" ? onNextButtonClick : onPrevButtonClick}
                 className={`
                   shrink-0 flex items-center 
                   ${slide.dims?.width! > slide.dims?.height! ? 'justify-start' : 'justify-center'} 
-                  relative pl-2 w-full`}
+                  pl-2 w-full`}
               >
-                {slide.type === "video" ? (
-                  <VideoSlide selectedIndex={selectedIndex} index={index} slide={slide} />
-                ) : (
-                  <ImageSlide index={index} slide={slide} />
-                )}
                 <div
-                  onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "left" : false)}
-                  className='absolute inset-y-0 left-0 w-1/2 z-50'
-                />
-                <div
-                  onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "right" : false)}
-                  className='absolute inset-y-0 right-0 w-1/2 z-50'
-                />
+                  className='relative w-fit min-w-[800px] flex items-center justify-center'
+                  onClick={showCustomCursor === "right" ? onNextButtonClick : onPrevButtonClick}
+                  onMouseLeave={() => setShowCustomCursor(false)}
+                >
+                  {slide.type === "video" ? (
+                    <VideoSlide selectedIndex={selectedIndex} index={index} slide={slide} />
+                  ) : (
+                    <ImageSlide index={index} slide={slide} />
+                  )}
+                  <div
+                    onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "left" : false)}
+                    className='absolute inset-y-0 left-0 w-1/2 z-50'
+                  />
+                  <div
+                    onMouseEnter={() => setShowCustomCursor(slides.length > 1 ? "right" : false)}
+                    className='absolute inset-y-0 right-0 w-1/2 z-50'
+                  />
+                </div>
               </div>
             ))}
           </div>
