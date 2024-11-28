@@ -27,7 +27,7 @@ export interface IProject {
   descriptionTwo: string;
   gallery: IGalleryItem[];
   collapsed?: boolean
-  fields?: IProjectField[]
+  fields: IProjectField[]
   what?: string
   tags?: IProjectTag[]
 }

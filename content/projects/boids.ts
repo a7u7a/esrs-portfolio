@@ -8,7 +8,7 @@ export const project: IProject = {
   fields: [
     { title: "Stack", value: "Three.js, Observable" },
     { title: "What?", value: "Boids particle simulation" },
-    { title: "Go", url: "https://observablehq.com/@esrs/plasma-boids-may-2022-update" }
+    { title: "Visit", url: "https://observablehq.com/@esrs/plasma-boids-may-2022-update" }
   ],
   date: "2021",
   collapsed: true,
