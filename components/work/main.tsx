@@ -10,6 +10,7 @@ import SpinningLogo from "@/components/spinning-logo";
 import { useRotationSpeed, useScrollProgress } from '@/lib/hooks';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IProject } from '@/lib/types';
+import Link from 'next/link';
 
 function removeHiddenProjects(projects: IProject[]) {
   return projects.filter(project => !project.hidden)
@@ -148,7 +149,11 @@ const WorkPageMain = () => {
       <SpinningLogo rotationSpeed={rotationSpeed} scrollProgress={scrollProgress} />
 
       <div className='pb-24 md:pb-52 max-w-6xl mx-3 md:mx-4 relative'>
-        <h1 className='font-semibold'>{"Esteban Serrano"}</h1>
+        <div className='w-fit'>
+          <Link href="/">
+            <h1 className='font-semibold text-esrs-black hover:text-esrs-hover'>{"Esteban Serrano"}</h1>
+          </Link>
+        </div>
         <div className='pt-20 w-full sm:w-2/3 text-balance'>
           <p>{"I'm a design technologist and web developer bridging the gap between design and code to craft exceptional digital experiences. I help brands, cultural institutions, and agencies develop custom solutions and non-default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
           <div className='pt-6'>
