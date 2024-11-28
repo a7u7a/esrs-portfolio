@@ -42,7 +42,7 @@ const VideoSlide = ({ slide, selectedIndex, index }: VideoSlideProps) => {
     >
       <video
         ref={videoRef}
-        className={`h-full object-cover`}
+        className={`h-full object-contain lg:object-cover`}
         playsInline
         muted
         loop

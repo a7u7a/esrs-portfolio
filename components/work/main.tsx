@@ -111,7 +111,7 @@ const WorkPageMain = () => {
     const selectedIds = selected.map(project => project.id);
     const newIds = [...new Set([...currentExperimentalIds, ...selectedIds])];
     setExpandedIds(newIds);
-    updateURL(newIds);
+    // updateURL(newIds);
   }
 
   const handleCollapseSelected = () => {
@@ -126,7 +126,7 @@ const WorkPageMain = () => {
     const experimentalIds = experimental.map(project => project.id);
     const newIds = [...new Set([...currentSelectedIds, ...experimentalIds])];
     setExpandedIds(newIds);
-    updateURL(newIds);
+    // updateURL(newIds);
   }
 
   const handleCollapseExperimental = () => {
@@ -199,7 +199,7 @@ const WorkPageMain = () => {
           </ProjectList>
         </section>
 
-        <section className="" id="cv">
+        <section id="cv">
           <CV />
         </section>
 

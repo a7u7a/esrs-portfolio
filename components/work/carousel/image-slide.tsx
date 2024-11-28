@@ -27,7 +27,7 @@ const ImageSlide = ({ slide, index }: ImageSlideProps) => {
       <Image
         priority={index === 0}
         onLoad={handleLoad}
-        className='h-full object-cover'
+        className='h-full object-contain lg:object-cover'
         src={slide.src}
         alt={slide.alt}
         height={slide.dims?.height}

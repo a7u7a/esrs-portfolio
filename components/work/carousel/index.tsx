@@ -72,7 +72,7 @@ const ProjectCarousel: React.FC<PropType> = (props) => {
                   pl-2 w-full`}
               >
                 <div
-                  className='relative w-fit min-w-[800px] flex items-center justify-center'
+                  className='relative w-full lg:w-fit lg:min-w-lg flex items-center justify-center'
                   onClick={showCustomCursor === "right" ? onNextButtonClick : onPrevButtonClick}
                   onMouseLeave={() => setShowCustomCursor(false)}
                 >

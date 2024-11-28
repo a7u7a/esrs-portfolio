@@ -53,7 +53,7 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
             -left-[4px]
             -right-[4px]
             rounded-[3px]
-            transition-opacity duration-1000 sm:duration-100 ease-in-out
+            transition-opacity duration-200 ease-in-out
             bg-esrs-gray
             ${isExpanded || isAnimating ? 'opacity-100' : "opacity-0"}
             ${hover ? 'opacity-100' : "opacity-0"}`}

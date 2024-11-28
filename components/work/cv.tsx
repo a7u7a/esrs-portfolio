@@ -1,19 +1,16 @@
 import CVPublications from './cv-publications'
-import CVCollaborators from './cv-collaborators'
 import CVContact from './cv-contact'
 import CVEducation from './cv-education'
 import Footer from '../footer'
 import CVServices from "./cv-services"
+import { useMediaQuery } from '@/lib/hooks'
 
 const CV = () => {
+  const isMd = useMediaQuery("(min-width: 768px)");
   return (
     <>
-      <div className='hidden md:block'>
-        <CVDesktop />
-      </div>
-      <div className='block md:hidden'>
-        <CVMobile />
-      </div>
+      {isMd && <CVDesktop />}
+      {!isMd && <CVMobile />}
     </>
   )
 }
@@ -36,7 +33,6 @@ const CVDesktop = () => {
       </div>
 
       <div className="col-span-1">
-        {/* <CVCollaborators /> */}
         <CVServices />
       </div>
     </div>
@@ -58,13 +54,7 @@ const CVMobile = () => {
         </div>
 
         <div className='w-1/2'>
-
-          {/* <CVCollaborators /> */}
-
-          {/* <div className='pt-12'> */}
-            <CVContact />
-          {/* </div> */}
-
+          <CVContact />
         </div>
       </div>
     </div>
