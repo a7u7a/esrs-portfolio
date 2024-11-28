@@ -97,6 +97,10 @@ const WorkPageMain = () => {
     scrollToElement('#cv');
   }
 
+  const scrollToContact = () => {
+    scrollToElement('#contact');
+  }
+
   const handleExpandSelected = () => {
     // Get current experimental IDs that are expanded
     const currentExperimentalIds = expandedIds.filter(id =>
@@ -156,6 +160,7 @@ const WorkPageMain = () => {
           <nav className='flex gap-4'>
             <NavButton>{"Portfolio"}</NavButton>
             <NavButton className='text-esrs-hover hover:text-esrs-black' onClick={scrollToCV}>{"CV"}</NavButton>
+            <NavButton className='text-esrs-hover hover:text-esrs-black' onClick={scrollToContact}>{"Contact"}</NavButton>
           </nav>
         </div>
 

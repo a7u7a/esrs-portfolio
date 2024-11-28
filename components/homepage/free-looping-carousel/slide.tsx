@@ -71,11 +71,11 @@ function LinkWrapper({ children, projectId, isLink }: { children: React.ReactNod
 
 function HintTitle({ text, arrow = false }: { text?: string, arrow?: boolean }) {
   return (
-    <div className={`bg-black bg-opacity-50 px-1.5 py-0.5 rounded flex items-center gap-1 mix-blend-difference`}>
+    <div className={`bg-black bg-opacity-50 px-1.5 py-0.5 rounded-[3px] flex items-center gap-1 mix-blend-difference`}>
       {text && <span className='text-white'>
         {text}
       </span>}
-      {arrow && <ArrowRight color={"white"} size={16} weight='bold' />}
+      {arrow && <ArrowRight color={"white"} size={19} weight='bold' />}
     </div>
   )
 }

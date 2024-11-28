@@ -1,8 +1,12 @@
-# ESRS 2024
+# ESRS Website 2024
+
+Work in progress.
 
 ## To-do
 
+- /work: Logo overlaps with project title when loading the page with url param
 - Limit hp slides on slow connections
+- Cleanup unused content
 
 ## License
 

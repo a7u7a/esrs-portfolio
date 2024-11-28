@@ -42,7 +42,7 @@ function LinkField({ field }: { field: IProjectField }) {
         <div className='flex gap-[2px]'>
           <span className={`font-bold ${hovered ? 'underline' : ''}`}>{field.title}</span>
           <div className='pt-[2px]'>
-            <ArrowElbowRightUp weight={"bold"} color={hovered ? 'esrs-blue' : 'currentColor'} size={19} />
+            <ArrowElbowRightUp weight={"bold"} size={19} />
           </div>
         </div>
       </Link>

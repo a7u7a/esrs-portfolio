@@ -22,9 +22,16 @@ function LinkRenderer(props: any) {
 
 const AccordionWrapper = ({ children, project, onToggle, isExpanded }: AccordionItemProps) => {
   const [animate, setAnimate] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [hover, setHover] = useState(false);
   const [childrenRef, childrenBounds] = useMeasure()
   const [headerRef, headerBounds] = useMeasure();
+
+  useEffect(() => {
+    setIsAnimating(true);
+    const timer = setTimeout(() => setIsAnimating(false), 1000)
+    return () => clearTimeout(timer)
+  }, [isExpanded])
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimate(true), 300)
@@ -39,13 +46,13 @@ const AccordionWrapper = ({ children, project, onToggle, isExpanded }: Accordion
         className={`
             mt-[3px]
             absolute -z-10 
-            inset-0 sm:h-[24px]
+            inset-0 sm:h-[25px]
             -left-[4px]
             -right-[4px]
-            rounded-md
+            rounded-[3px]
             transition-opacity duration-1000 sm:duration-100 ease-in-out
             bg-esrs-gray
-            ${isExpanded ? 'opacity-100' : "opacity-0"}
+            ${isExpanded || isAnimating ? 'opacity-100' : "opacity-0"}
             ${hover ? 'opacity-100' : "opacity-0"}
           `}
       />

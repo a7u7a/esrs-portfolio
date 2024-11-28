@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRotationSpeed } from '@/lib/hooks'
 import { useScrollProgress } from '@/lib/hooks'
+import Link from 'next/link'
 import SpinningLogo from '@/components/spinning-logo'
 import FreeLoopingCarousel from '@/components/homepage/free-looping-carousel'
 import collaborators from '@/content/collaborators'
@@ -10,7 +11,6 @@ import { shuffledSlides } from '@/content/slides'
 import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/homepage/fade-in'
 import { ICollaborator } from '@/lib/types'
-import Link from 'next/link'
 import Footer from '../footer'
 
 const HomePageMain = () => {
@@ -66,7 +66,7 @@ const HomePageMain = () => {
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
-            <span className=''>{"People I've worked with:"}</span>
+            <span className=''>{"He's worked with:"}</span>
           </FadeIn>
           <ul className='list-none flex flex-col gap-3 pt-3 ml-3 md:ml-6 '>
             {collaborators.map((collab, i) => (
@@ -79,18 +79,19 @@ const HomePageMain = () => {
 
         <div className='pt-20'>
           <ul className='list-none flex flex-wrap gap-3 md:gap-6'>
-            {socials.map((social, i) => (
+            {/* {socials.map((social, i) => (
               <FadeIn key={i} threshold={0.3}>
                 <li>
                   <a className='transition-colors ease-in-out duration-100 hover:text-hover-socials' href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>
                 </li>
               </FadeIn>
-            ))}
+            ))} */}
             <FadeIn threshold={0.3}>
               <li>
-                <a className='transition-colors ease-in-out duration-100 hover:text-hover-socials' href="mailto:esteban@esrs.co">
+                {/* <a className='transition-colors ease-in-out duration-100 hover:text-hover-socials' href="mailto:esteban@esrs.co">
                   {"esteban@esrs.co"}
-                </a>
+                </a> */}
+                <MoreInfoButton />
               </li>
             </FadeIn>
           </ul>
@@ -130,12 +131,20 @@ const Collaborator = ({ collab }: { collab: ICollaborator }) => {
 
 const ToPortfolioButton = () => {
   return (
-    <div className='px-4 text-esrs-dark-gray text-hp-sm'>
+    <div className='px-4 text-footer-text text-hp-sm w-fit'>
       <Link href="/work">
-
-        <span className='hover:text-esrs-hover hover:underline'>{"See all projects"}</span>
-
+        <div><span className='hover:text-esrs-hover'>{"See all projects"}</span></div>
       </Link>
     </div>
+  )
+}
+
+const MoreInfoButton = () => {
+  return (
+    <Link href="/work">
+      <div className='transition-colors ease-in-out duration-150 hover:text-esrs-hover'>
+        <span>{"Projects, About.."}</span>
+      </div>
+    </Link>
   )
 }
