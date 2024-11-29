@@ -9,7 +9,7 @@ const project: IProject = {
   fields: [
     {
       title: "Stack",
-      value: "Python, Pandas, RPi, World Bank API, Yahoo Finance",
+      value: "Python, Pandas, RPi, World Bank API, Yahoo Finance, Supabase",
     },
     {
       title: "Comissioned by",
