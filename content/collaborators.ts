@@ -42,7 +42,7 @@ const collaborators: ICollaborator[] = [
     url: "https://informatics.ed.ac.uk/"
   },
   {
-    name: "Escuela de Ingeniería PUC",
+    name: "School of Engineering, PUC",
     url: "https://www.ing.uc.cl/"
   }
 ]
