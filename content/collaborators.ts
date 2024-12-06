@@ -31,7 +31,7 @@ const collaborators: ICollaborator[] = [
   },
   {
     name: "The Egg Assembly",
-    url: "https://x.com/assemblyegg?lang=gu"
+    url: "https://x.com/assemblyegg"
   },
   {
     name: "TrainFES",
@@ -42,8 +42,8 @@ const collaborators: ICollaborator[] = [
     url: "https://informatics.ed.ac.uk/"
   },
   {
-    name: "School of Engineering, PUC",
-    url: "https://www.ing.uc.cl/"
+    name: "Innovation Center, PUC",
+    url: "https://centrodeinnovacion.uc.cl/"
   }
 ]
 

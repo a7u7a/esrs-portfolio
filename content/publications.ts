@@ -19,10 +19,6 @@ const publications = [
     text: 'Book: Bienal de Artes Mediales, Catalogue, 2017',
     url: 'https://www.dropbox.com/scl/fi/d6zl4wa43xf2ybtok1f18/catalogo_bienal_12.pdf?rlkey=2fnm7euy0hmx2fwkpqhymwbao&st=uaz8glj4&dl=0'
   },
-  {
-    text: 'Press: Punto Flotante: Lenguaje del tiempo en el espacio físico urbano, Archdaily México, 2016',
-    url: 'https://www.archdaily.cl/cl/782392/punto-flotante'
-  },
 ]
 
 export default publications
