@@ -30,13 +30,13 @@ const HomePageMain = () => {
       <TextWrapper>
         <div className=''>
           <FadeIn threshold={0.3}>
-            <span>{"Esteban Serrano is a design technologist based in Berlin."}</span>
+            <span>{"Esteban Serrano is a design technologist and frontend engineer based in Berlin."}</span>
           </FadeIn>
         </div>
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
-            <span className=''>{"He collaborates with brands, studios and startups since 2014."}</span>
+            <span className=''>{"He works for brands, studios and research since 2014."}</span>
           </FadeIn>
         </div>
       </TextWrapper>
@@ -50,11 +50,11 @@ const HomePageMain = () => {
 
       <TextWrapper>
 
-        <FadeIn threshold={0.3}>
+        {/* <FadeIn threshold={0.3}>
           <div className='text-balance'>
             <span>{"Specialized in web development and interaction design."}</span>
           </div>
-        </FadeIn>
+        </FadeIn> */}
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
