@@ -2,6 +2,10 @@ import { ICollaborator } from "@/lib/types"
 
 const collaborators: ICollaborator[] = [
   {
+    name: "Design Systems International",
+    url: "https://designsystems.international/"
+  },
+  {
     name: "FutureCorp",
     url: "https://futurecorp.paris/"
   },
