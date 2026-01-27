@@ -17,7 +17,7 @@
     "embla-carousel-react": "^8.1.7",
     "embla-carousel-wheel-gestures": "^8.0.1",
     "gsap": "^3.12.5",
-    "next": "^14.2.18",
+    "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^9.0.1",
