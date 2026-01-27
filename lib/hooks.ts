@@ -103,7 +103,7 @@ export const useRotationSpeed = (currentAngle: number) => {
   const [rotationSpeed, setRotationSpeed] = useState<number>(0);
   const lastAngle = useRef<number>(currentAngle);
   const lastTimestamp = useRef<number>(performance.now());
-  const frameRef = useRef<number>();
+  const frameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (frameRef.current) {
