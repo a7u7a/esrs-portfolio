@@ -2,7 +2,7 @@ import { IProject } from "@/lib/types";
 
 export const project: IProject = {
   id: "bp",
-  collapsed: true,
+  collapsed: false,
   title: "BeigePill Productions",
   date: "2024",
   type: "BeigePill Website",

@@ -6,7 +6,7 @@ const project: IProject = {
   what: "Three.js + React Site",
   type: "Portfolio website",
   date: "2022",
-  collapsed: true,
+  collapsed: false,
   fields: [
     { title: "Stack", value: "R3F, TypeScript, Next.js." },
     { title: "Type", value: "Portfolio site" },
