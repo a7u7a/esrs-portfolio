@@ -56,6 +56,7 @@ import { PortableTextBlock } from "@portabletext/types";
 
 export interface IPost {
   _id: string;
+  slug: string;
   title: string;
   date: string;
   content: PortableTextBlock[];
