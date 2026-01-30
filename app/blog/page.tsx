@@ -4,7 +4,18 @@ import Post from "@/components/blog/post";
 
 async function getPosts(): Promise<IPost[]> {
   return client.fetch(
-    `*[_type == "post"] | order(date desc) { _id, title, date, content }`,
+    `*[_type == "post"] | order(date desc) {
+      _id,
+      title,
+      date,
+      content[]{
+        ...,
+        _type == "image" => {
+          ...,
+          asset->
+        }
+      }
+    }`,
   );
 }
 

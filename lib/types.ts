@@ -52,9 +52,11 @@ export interface ICollaborator {
   url: string;
 }
 
+import { PortableTextBlock } from "@portabletext/types";
+
 export interface IPost {
   _id: string;
   title: string;
   date: string;
-  content: string;
+  content: PortableTextBlock[];
 }
