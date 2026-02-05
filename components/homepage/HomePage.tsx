@@ -14,7 +14,7 @@ interface HomePageMainProps {
   initialSlides: ISanitySlide[];
 }
 
-const HomePageMain = ({ collaborators, initialSlides }: HomePageMainProps) => {
+const HomePage = ({ collaborators, initialSlides }: HomePageMainProps) => {
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress);
   return (
@@ -113,7 +113,7 @@ const HomePageMain = ({ collaborators, initialSlides }: HomePageMainProps) => {
   );
 };
 
-export default HomePageMain;
+export default HomePage;
 
 function TextWrapper({ children }: { children: React.ReactNode }) {
   return <div className="px-4 flex flex-col max-w-[1000px]">{children}</div>;

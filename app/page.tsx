@@ -1,4 +1,4 @@
-import HomePageMain from "@/components/homepage/main";
+import HomePage from "@/components/homepage/HomePage";
 import { getCollaborators, getShuffledSlides } from "@/sanity/lib/queries";
 
 export default async function Home() {
@@ -7,5 +7,5 @@ export default async function Home() {
     getShuffledSlides(),
   ]);
 
-  return <HomePageMain collaborators={collaborators} initialSlides={slides} />;
+  return <HomePage collaborators={collaborators} initialSlides={slides} />;
 }
