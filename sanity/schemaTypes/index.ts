@@ -3,7 +3,6 @@ import post from "./post";
 import project from "./project";
 import galleryItem from "./galleryItem";
 import projectField from "./projectField";
-import projectTag from "./projectTag";
 import collaborator from "./collaborator";
 import education from "./education";
 import publication from "./publication";
@@ -25,6 +24,5 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Object types
     galleryItem,
     projectField,
-    projectTag,
   ],
 };

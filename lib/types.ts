@@ -114,12 +114,6 @@ export interface ISanityProjectField {
   url?: string;
 }
 
-export interface ISanityProjectTag {
-  _key?: string;
-  label: string;
-  url?: string;
-}
-
 export interface ISanityProject {
   _id: string;
   id: string; // projectId
@@ -134,7 +128,6 @@ export interface ISanityProject {
     title?: string;
     url?: string;
   };
-  tags?: ISanityProjectTag[];
   fields?: ISanityProjectField[];
   gallery?: ISanityGalleryItem[];
   hidden?: boolean;

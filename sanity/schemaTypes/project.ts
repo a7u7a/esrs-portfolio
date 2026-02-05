@@ -82,12 +82,6 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "tags",
-      title: "Tags",
-      type: "array",
-      of: [{ type: "projectTag" }],
-    }),
-    defineField({
       name: "fields",
       title: "Fields",
       type: "array",

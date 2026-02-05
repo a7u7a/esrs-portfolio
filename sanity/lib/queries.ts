@@ -24,7 +24,6 @@ const projectFields = `
   descriptionOne,
   descriptionTwo,
   link,
-  tags,
   fields,
   hidden,
   collapsed,
