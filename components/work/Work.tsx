@@ -51,6 +51,7 @@ const Work = ({
             <h3 className="text-xl mx-3 md:mx-4 mb-2">{project.title}</h3>
             {project.gallery && project.gallery.length > 0 && (
               <Carousel
+                autoScroll={false}
                 slides={project.gallery as ICarouselItem[]}
               />
             )}
@@ -68,6 +69,7 @@ const Work = ({
             <h3 className="text-xl mx-3 md:mx-4 mb-2">{project.title}</h3>
             {project.gallery && project.gallery.length > 0 && (
               <Carousel
+                autoScroll={false}
                 slides={project.gallery as ICarouselItem[]}
               />
             )}
