@@ -1,41 +1,50 @@
-import React, { useState, useEffect } from 'react'
-import { IGalleryItem } from '@/lib/types'
-import Image from 'next/image'
+import React, { useState, useEffect } from "react";
+import { ISanityGalleryItem } from "@/lib/types";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface ImageSlideProps {
-  slide: IGalleryItem
-  index: number
+  slide: ISanityGalleryItem;
+  index: number;
 }
 
 const ImageSlide = ({ slide, index }: ImageSlideProps) => {
   const [mounted, setMounted] = useState(false);
   const [loaded, setLoaded] = useState(false);
+
+  const imageUrl = slide.image ? urlFor(slide.image).url() : "";
+  const width = slide.width || slide.image?.metadata?.dimensions?.width || 800;
+  const height =
+    slide.height || slide.image?.metadata?.dimensions?.height || 600;
+
   const handleLoad = () => {
-    setLoaded(true)
-  }
+    setLoaded(true);
+  };
   useEffect(() => {
     setMounted(true);
-  }, [])
-  if (!mounted) return null;
+  }, []);
+
+  if (!mounted || !imageUrl) return null;
+
   return (
     <div
       className={`
       h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]
-      transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}
+      transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}
     `}
     >
       <Image
         priority={index === 0}
         onLoad={handleLoad}
-        className='h-full object-contain lg:object-cover'
-        src={slide.src}
+        className="h-full object-contain lg:object-cover"
+        src={imageUrl}
         alt={slide.alt}
-        height={slide.dims?.height}
-        width={slide.dims?.width}
+        height={height}
+        width={width}
         sizes="(max-width: 1024px) 100vw, 1024px"
       />
     </div>
-  )
-}
+  );
+};
 
-export default ImageSlide
+export default ImageSlide;

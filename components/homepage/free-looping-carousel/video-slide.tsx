@@ -1,18 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { IGalleryItem } from '@/lib/types'
+import React, { useEffect, useRef, useState } from "react";
+import { ISanitySlide } from "@/lib/types";
+import { fileUrl } from "@/sanity/lib/image";
 
 interface VideoSlideProps {
-  slide: IGalleryItem
+  slide: ISanitySlide;
 }
 
 const VideoSlide = ({ slide }: VideoSlideProps) => {
-  const aspectRatio = slide.dims?.width! / slide.dims?.height!
-  if (!aspectRatio) throw new Error(`Missing aspect ratio in: ${slide.src}`)
+  const width = slide.width || 800;
+  const height = slide.height || 600;
+  const aspectRatio = width / height;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [play, setPlay] = useState(false);
   const threshold = 0.05;
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
   const [ticToc, setTicToc] = useState(false);
+
+  const videoUrl = fileUrl(slide.video);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -38,12 +42,12 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
     } else {
       videoRef.current?.pause();
     }
-  }, [play])
+  }, [play]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (!loaded) {
-        setTicToc(prev => !prev);
+        setTicToc((prev) => !prev);
       } else {
         setTicToc(true);
       }
@@ -53,15 +57,17 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
   }, [loaded]);
 
   const handleCanPlay = () => {
-    setLoaded(true)
-  }
+    setLoaded(true);
+  };
+
+  if (!videoUrl) return null;
 
   return (
     <div
       className={`
         h-[250px] sm:h-[300px] md:h-[450px] bg-hp-slide-bg rounded-lg
         max-w-[450px] sm:max-w-[530px] md:max-w-[800px]
-        transition-opacity duration-700 ${ticToc ? 'opacity-100' : 'opacity-80'}
+        transition-opacity duration-700 ${ticToc ? "opacity-100" : "opacity-80"}
         `}
       style={{ aspectRatio: aspectRatio }}
     >
@@ -73,11 +79,10 @@ const VideoSlide = ({ slide }: VideoSlideProps) => {
         muted
         loop
         preload="false"
-        src={slide.src}
-      >
-      </video>
+        src={videoUrl}
+      ></video>
     </div>
-  )
-}
+  );
+};
 
-export default VideoSlide
+export default VideoSlide;

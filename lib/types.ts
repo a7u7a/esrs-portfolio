@@ -1,3 +1,9 @@
+import { PortableTextBlock } from "@portabletext/types";
+
+// ============================================================================
+// Legacy types (for local content - can be removed after migration)
+// ============================================================================
+
 export interface IGalleryItem {
   hideCaption?: boolean;
   projectTypeOverride?: string;
@@ -52,7 +58,144 @@ export interface ICollaborator {
   url: string;
 }
 
-import { PortableTextBlock } from "@portabletext/types";
+// ============================================================================
+// Sanity Asset Types
+// ============================================================================
+
+export interface ISanityImageAsset {
+  _id: string;
+  _type: "sanity.imageAsset";
+  url: string;
+  path: string;
+  assetId: string;
+  extension: string;
+  mimeType: string;
+  metadata?: {
+    dimensions?: {
+      width: number;
+      height: number;
+      aspectRatio: number;
+    };
+    lqip?: string;
+  };
+}
+
+export interface ISanityFileAsset {
+  _id: string;
+  _type: "sanity.fileAsset";
+  url: string;
+  path: string;
+  assetId: string;
+  extension: string;
+  mimeType: string;
+}
+
+// ============================================================================
+// Sanity Content Types
+// ============================================================================
+
+export interface ISanityGalleryItem {
+  mediaType: "image" | "video";
+  image?: ISanityImageAsset;
+  video?: ISanityFileAsset;
+  alt: string;
+  width?: number;
+  height?: number;
+  bgColor?: string;
+  hideCaption?: boolean;
+  projectTypeOverride?: string;
+  hideMore?: boolean;
+}
+
+export interface ISanityProjectField {
+  _key?: string;
+  title: string;
+  value?: string;
+  url?: string;
+}
+
+export interface ISanityProjectTag {
+  _key?: string;
+  label: string;
+  url?: string;
+}
+
+export interface ISanityProject {
+  _id: string;
+  id: string; // projectId
+  title: string;
+  date: string;
+  type: string; // projectType
+  category: "selected" | "experimental";
+  what?: string;
+  descriptionOne?: string;
+  descriptionTwo: string;
+  link?: {
+    title?: string;
+    url?: string;
+  };
+  tags?: ISanityProjectTag[];
+  fields?: ISanityProjectField[];
+  gallery?: ISanityGalleryItem[];
+  hidden?: boolean;
+  collapsed?: boolean;
+  order?: number;
+}
+
+export interface ISanityCollaborator {
+  _id: string;
+  name: string;
+  url: string;
+  order?: number;
+}
+
+export interface ISanityEducation {
+  _id: string;
+  title: string;
+  order?: number;
+}
+
+export interface ISanityPublication {
+  _id: string;
+  text: string;
+  url: string;
+  order?: number;
+}
+
+export interface ISanityService {
+  _id: string;
+  title: string;
+  order?: number;
+}
+
+export interface ISanitySocial {
+  _id: string;
+  name: string;
+  url: string;
+  order?: number;
+}
+
+export interface ISanitySlide {
+  _id: string;
+  mediaType: "image" | "video";
+  image?: ISanityImageAsset;
+  video?: ISanityFileAsset;
+  alt: string;
+  width?: number;
+  height?: number;
+  bgColor?: string;
+  hideCaption?: boolean;
+  order?: number;
+  projectRef?: {
+    _id: string;
+    id: string;
+    title: string;
+  };
+}
+
+// ============================================================================
+// Blog Types
+// ============================================================================
 
 export interface IPost {
   _id: string;
