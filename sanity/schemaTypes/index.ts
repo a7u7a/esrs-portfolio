@@ -9,6 +9,7 @@ import publication from "./publication";
 import service from "./service";
 import social from "./social";
 import slide from "./slide";
+import homepageParagraph from "./homepageParagraph";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -21,6 +22,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     service,
     social,
     slide,
+    homepageParagraph,
     // Object types
     galleryItem,
     projectField,

@@ -1,7 +1,7 @@
 import CVPublications from "./cv-publications";
 import CVContact from "./cv-contact";
 import CVEducation from "./cv-education";
-import Footer from "../footer";
+import Footer from "../Footer";
 import CVServices from "./cv-services";
 import { useMediaQuery } from "@/lib/hooks";
 import {

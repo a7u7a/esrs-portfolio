@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CV from "./cv";
-import SpinningLogo from "@/components/spinning-logo";
+import SpinningLogo from "@/components/SpinningLogo";
 import { useRotationSpeed, useScrollProgress } from "@/lib/hooks";
 import {
   ISanityProject,
@@ -12,7 +12,7 @@ import {
   ISanitySocial,
   ICarouselItem,
 } from "@/lib/types";
-import Carousel from "@/components/free-looping-carousel";
+import Carousel from "@/components/Carousel";
 
 interface WorkPageMainProps {
   selectedProjects: ISanityProject[];

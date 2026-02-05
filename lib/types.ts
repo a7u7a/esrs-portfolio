@@ -204,6 +204,13 @@ export interface ISanitySlide {
   };
 }
 
+export interface ISanityHomepageParagraph {
+  _id: string;
+  text: string;
+  position: "before" | "after";
+  order?: number;
+}
+
 // ============================================================================
 // Blog Types
 // ============================================================================

@@ -7,6 +7,7 @@ import type {
   ISanityService,
   ISanitySocial,
   ISanitySlide,
+  ISanityHomepageParagraph,
 } from "@/lib/types";
 
 // ============================================================================
@@ -196,4 +197,27 @@ export async function getShuffledSlides(): Promise<ISanitySlide[]> {
   const slides = await getSlides();
   // Shuffle the slides client-side
   return slides.sort(() => 0.5 - Math.random());
+}
+
+// ============================================================================
+// Homepage Paragraphs
+// ============================================================================
+
+export async function getHomepageParagraphs(): Promise<{
+  before: ISanityHomepageParagraph[];
+  after: ISanityHomepageParagraph[];
+}> {
+  const paragraphs: ISanityHomepageParagraph[] = await client.fetch(
+    `*[_type == "homepageParagraph"] | order(order asc) {
+      _id,
+      text,
+      position,
+      order
+    }`
+  );
+
+  return {
+    before: paragraphs.filter((p) => p.position === "before"),
+    after: paragraphs.filter((p) => p.position === "after"),
+  };
 }

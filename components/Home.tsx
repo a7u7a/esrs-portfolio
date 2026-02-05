@@ -3,18 +3,29 @@ import React, { useState } from "react";
 import { useRotationSpeed } from "@/lib/hooks";
 import { useScrollProgress } from "@/lib/hooks";
 import Link from "next/link";
-import SpinningLogo from "@/components/spinning-logo";
-import Carousel from "@/components/free-looping-carousel";
-import FadeIn from "@/components/homepage/fade-in";
-import { ISanityCollaborator, ISanitySlide } from "@/lib/types";
-import Footer from "../footer";
+import SpinningLogo from "@/components/SpinningLogo";
+import Carousel from "@/components/Carousel";
+import FadeIn from "@/components/FadeIn";
+import {
+  ISanityCollaborator,
+  ISanitySlide,
+  ISanityHomepageParagraph,
+} from "@/lib/types";
+import Footer from "@/components/Footer";
 
 interface HomeProps {
   collaborators: ISanityCollaborator[];
   initialSlides: ISanitySlide[];
+  beforeParagraphs: ISanityHomepageParagraph[];
+  afterParagraphs: ISanityHomepageParagraph[];
 }
 
-const Home = ({ collaborators, initialSlides }: HomeProps) => {
+const Home = ({
+  collaborators,
+  initialSlides,
+  beforeParagraphs,
+  afterParagraphs,
+}: HomeProps) => {
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress);
   return (
@@ -26,27 +37,17 @@ const Home = ({ collaborators, initialSlides }: HomeProps) => {
         />
       </FadeIn>
 
-      <TextWrapper>
-        <div className="">
-          <FadeIn threshold={0.3}>
-            <span>
-              {
-                "Esteban Serrano is a design technologist and frontend engineer based in Berlin."
-              }
-            </span>
-          </FadeIn>
-        </div>
-
-        <div className="mt-16 md:mt-24">
-          <FadeIn threshold={0.3}>
-            <span className="">
-              {
-                "Developing solutions for brands, studios and research since 2014."
-              }
-            </span>
-          </FadeIn>
-        </div>
-      </TextWrapper>
+      {beforeParagraphs.length > 0 && (
+        <TextWrapper>
+          {beforeParagraphs.map((p, i) => (
+            <div key={p._id} className={i > 0 ? "mt-16 md:mt-24" : ""}>
+              <FadeIn threshold={0.3}>
+                <span>{p.text}</span>
+              </FadeIn>
+            </div>
+          ))}
+        </TextWrapper>
+      )}
 
       <FadeIn threshold={0.1}>
         <div className="flex flex-col my-16 md:mt-24 md:mb-18">
@@ -56,29 +57,23 @@ const Home = ({ collaborators, initialSlides }: HomeProps) => {
       </FadeIn>
 
       <TextWrapper>
-        <FadeIn threshold={0.3}>
-          <div className="text-balance">
-            <span>
-              {"Specialized in web development and interaction design."}
-            </span>
+        {afterParagraphs.map((p, i) => (
+          <div key={p._id} className={i > 0 ? "mt-16 md:mt-24" : ""}>
+            <FadeIn threshold={0.3}>
+              <div className="text-balance">
+                <span>{p.text}</span>
+              </div>
+            </FadeIn>
           </div>
-        </FadeIn>
+        ))}
 
-        <div className="mt-16 md:mt-24">
-          <FadeIn threshold={0.3}>
-            <div className="text-balance">
-              <span>{"Proficient in Typescript, React and Python."}</span>
-            </div>
-          </FadeIn>
-        </div>
-
-        <div className="mt-16 md:mt-24">
+        <div className={afterParagraphs.length > 0 ? "mt-16 md:mt-24" : ""}>
           <FadeIn threshold={0.3}>
             <span className="">{"People he's worked with:"}</span>
           </FadeIn>
           <ul className="list-none flex flex-col gap-3 pt-3 ml-3 md:ml-6 ">
             {collaborators.map((collab, i) => (
-              <FadeIn key={i} threshold={0.3}>
+              <FadeIn key={collab._id} threshold={0.3}>
                 <Collaborator collab={collab} />
               </FadeIn>
             ))}
@@ -87,18 +82,8 @@ const Home = ({ collaborators, initialSlides }: HomeProps) => {
 
         <div className="pt-20">
           <ul className="list-none flex flex-wrap gap-3 md:gap-6">
-            {/* {socials.map((social, i) => (
-              <FadeIn key={i} threshold={0.3}>
-                <li>
-                  <a className='transition-colors ease-in-out duration-100 hover:text-hover-socials' href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>
-                </li>
-              </FadeIn>
-            ))} */}
             <FadeIn threshold={0.3}>
               <li>
-                {/* <a className='transition-colors ease-in-out duration-100 hover:text-hover-socials' href="mailto:esteban@esrs.co">
-                  {"esteban@esrs.co"}
-                </a> */}
                 <MoreInfoButton />
               </li>
             </FadeIn>
