@@ -9,12 +9,12 @@ import FadeIn from "@/components/homepage/fade-in";
 import { ISanityCollaborator, ISanitySlide } from "@/lib/types";
 import Footer from "../footer";
 
-interface HomePageMainProps {
+interface HomeProps {
   collaborators: ISanityCollaborator[];
   initialSlides: ISanitySlide[];
 }
 
-const HomePage = ({ collaborators, initialSlides }: HomePageMainProps) => {
+const Home = ({ collaborators, initialSlides }: HomeProps) => {
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress);
   return (
@@ -113,7 +113,7 @@ const HomePage = ({ collaborators, initialSlides }: HomePageMainProps) => {
   );
 };
 
-export default HomePage;
+export default Home;
 
 function TextWrapper({ children }: { children: React.ReactNode }) {
   return <div className="px-4 flex flex-col max-w-[1000px]">{children}</div>;

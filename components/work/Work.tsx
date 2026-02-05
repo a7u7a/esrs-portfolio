@@ -26,7 +26,7 @@ interface WorkPageMainProps {
   socials: ISanitySocial[];
 }
 
-const WorkPageMain = ({
+const Work = ({
   selectedProjects,
   experimentalProjects,
   collaborators,
@@ -302,7 +302,7 @@ const WorkPageMain = ({
   );
 };
 
-export default WorkPageMain;
+export default Work;
 
 const ProjectList = ({ children }: { children: React.ReactNode }) => {
   return (

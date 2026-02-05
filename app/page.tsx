@@ -1,11 +1,11 @@
-import HomePage from "@/components/homepage/HomePage";
+import Home from "@/components/homepage/Home";
 import { getCollaborators, getShuffledSlides } from "@/sanity/lib/queries";
 
-export default async function Home() {
+export default async function HomePage() {
   const [collaborators, slides] = await Promise.all([
     getCollaborators(),
     getShuffledSlides(),
   ]);
 
-  return <HomePage collaborators={collaborators} initialSlides={slides} />;
+  return <Home collaborators={collaborators} initialSlides={slides} />;
 }

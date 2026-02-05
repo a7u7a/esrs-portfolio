@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import WorkPageMain from "@/components/work/main";
+import Work from "@/components/work/Work";
 import {
   getSelectedProjects,
   getExperimentalProjects,
@@ -30,17 +30,15 @@ const WorkPage = async () => {
   ]);
 
   return (
-    <Suspense fallback={<div></div>}>
-      <WorkPageMain
-        selectedProjects={selectedProjects}
-        experimentalProjects={experimentalProjects}
-        collaborators={collaborators}
-        education={education}
-        publications={publications}
-        services={services}
-        socials={socials}
-      />
-    </Suspense>
+    <Work
+      selectedProjects={selectedProjects}
+      experimentalProjects={experimentalProjects}
+      collaborators={collaborators}
+      education={education}
+      publications={publications}
+      services={services}
+      socials={socials}
+    />
   );
 };
 
