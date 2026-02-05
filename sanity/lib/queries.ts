@@ -26,7 +26,6 @@ const projectFields = `
   link,
   fields,
   hidden,
-  collapsed,
   order,
   gallery[] {
     _key,

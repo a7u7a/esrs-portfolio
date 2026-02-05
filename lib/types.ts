@@ -32,7 +32,6 @@ export interface IProject {
   descriptionOne?: string;
   descriptionTwo: string;
   gallery: IGalleryItem[];
-  collapsed?: boolean;
   fields: IProjectField[];
   what?: string;
   tags?: IProjectTag[];
@@ -151,7 +150,6 @@ export interface ISanityProject {
   fields?: ISanityProjectField[];
   gallery?: ISanityGalleryItem[];
   hidden?: boolean;
-  collapsed?: boolean;
   order?: number;
 }
 

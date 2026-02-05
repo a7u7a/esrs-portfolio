@@ -102,13 +102,6 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
-      name: "collapsed",
-      title: "Collapsed",
-      type: "boolean",
-      description: "Start with project collapsed",
-      initialValue: true,
-    }),
-    defineField({
       name: "order",
       title: "Order",
       type: "number",
