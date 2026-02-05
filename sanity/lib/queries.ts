@@ -29,8 +29,15 @@ const projectFields = `
   collapsed,
   order,
   gallery[] {
+    _key,
     mediaType,
-    "image": image.asset->,
+    "image": image.asset-> {
+      _id,
+      url,
+      metadata {
+        dimensions
+      }
+    },
     "video": video.asset->,
     alt,
     width,
@@ -163,7 +170,13 @@ export async function getSlides(): Promise<ISanitySlide[]> {
     `*[_type == "slide"] | order(order asc) {
       _id,
       mediaType,
-      "image": image.asset->,
+      "image": image.asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      },
       "video": video.asset->,
       alt,
       width,

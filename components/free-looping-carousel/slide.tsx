@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ISanitySlide } from "@/lib/types";
+import { ICarouselItem } from "@/lib/types";
 import { ArrowRight } from "@phosphor-icons/react";
 import { useMediaQuery } from "@/lib/hooks";
 import useMeasure from "react-use-measure";
@@ -7,7 +7,7 @@ import Link from "next/link";
 
 interface SlideProps {
   children: React.ReactNode;
-  slide: ISanitySlide;
+  slide: ICarouselItem;
 }
 
 const Slide = ({ children, slide }: SlideProps) => {

@@ -7,10 +7,10 @@ import VideoSlide from "./video-slide";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import Slide from "./slide";
-import { ISanitySlide } from "@/lib/types";
+import { ICarouselItem } from "@/lib/types";
 
 type PropType = {
-  slides: ISanitySlide[];
+  slides: ICarouselItem[];
 };
 
 const FreeLoopingCarousel: React.FC<PropType> = (props) => {
@@ -33,7 +33,7 @@ const FreeLoopingCarousel: React.FC<PropType> = (props) => {
           {/* Embla Container */}
           <div id="embla-container" className="flex h-full my-4">
             {slides.map((slide, index) => (
-              <Slide key={slide._id || index} slide={slide}>
+              <Slide key={slide._key || slide._id || index} slide={slide}>
                 {slide.mediaType === "video" ? (
                   <VideoSlide slide={slide} />
                 ) : (

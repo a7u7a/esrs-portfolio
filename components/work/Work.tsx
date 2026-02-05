@@ -10,8 +10,9 @@ import {
   ISanityPublication,
   ISanityService,
   ISanitySocial,
+  ICarouselItem,
 } from "@/lib/types";
-import Link from "next/link";
+import FreeLoopingCarousel from "@/components/free-looping-carousel";
 
 interface WorkPageMainProps {
   selectedProjects: ISanityProject[];
@@ -24,6 +25,8 @@ interface WorkPageMainProps {
 }
 
 const Work = ({
+  selectedProjects,
+  experimentalProjects,
   collaborators,
   education,
   publications,
@@ -39,6 +42,38 @@ const Work = ({
         rotationSpeed={rotationSpeed}
         scrollProgress={scrollProgress}
       />
+
+      {/* Selected Projects */}
+      <section className="w-full">
+        <h2 className="text-2xl font-bold mx-3 md:mx-4 mb-4">Selected Work</h2>
+        {selectedProjects.map((project) => (
+          <div key={project._id} className="mb-12">
+            <h3 className="text-xl mx-3 md:mx-4 mb-2">{project.title}</h3>
+            {project.gallery && project.gallery.length > 0 && (
+              <FreeLoopingCarousel
+                slides={project.gallery as ICarouselItem[]}
+              />
+            )}
+          </div>
+        ))}
+      </section>
+
+      {/* Experimental Projects */}
+      <section className="w-full mt-12">
+        <h2 className="text-2xl font-bold mx-3 md:mx-4 mb-4">
+          Experimental Work
+        </h2>
+        {experimentalProjects.map((project) => (
+          <div key={project._id} className="mb-12">
+            <h3 className="text-xl mx-3 md:mx-4 mb-2">{project.title}</h3>
+            {project.gallery && project.gallery.length > 0 && (
+              <FreeLoopingCarousel
+                slides={project.gallery as ICarouselItem[]}
+              />
+            )}
+          </div>
+        ))}
+      </section>
 
       <div className="pb-24 md:pb-52 max-w-6xl mx-3 md:mx-4 relative">
         <section id="cv">

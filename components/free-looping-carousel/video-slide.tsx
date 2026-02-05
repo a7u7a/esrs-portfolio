@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ISanitySlide } from "@/lib/types";
+import { ICarouselItem } from "@/lib/types";
 import { fileUrl } from "@/sanity/lib/image";
 
 interface VideoSlideProps {
-  slide: ISanitySlide;
+  slide: ICarouselItem;
 }
 
 const VideoSlide = ({ slide }: VideoSlideProps) => {
+  // For videos, dimensions are required in schema
   const width = slide.width || 800;
   const height = slide.height || 600;
   const aspectRatio = width / height;

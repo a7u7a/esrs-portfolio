@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { ISanitySlide } from "@/lib/types";
+import { ICarouselItem } from "@/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 
 interface ImageSlideProps {
-  slide: ISanitySlide;
+  slide: ICarouselItem;
 }
 
 const ImageSlide = ({ slide }: ImageSlideProps) => {
-  const width = slide.width || slide.image?.metadata?.dimensions?.width || 800;
-  const height =
-    slide.height || slide.image?.metadata?.dimensions?.height || 600;
+  // For images, dimensions come from Sanity metadata
+  const width = slide.image?.metadata?.dimensions?.width || 800;
+  const height = slide.image?.metadata?.dimensions?.height || 600;
   const aspectRatio = width / height;
   const [loaded, setLoaded] = useState(false);
   const [ticToc, setTicToc] = useState(false);

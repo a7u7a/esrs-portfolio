@@ -46,13 +46,31 @@ export default defineType({
       name: "width",
       title: "Width",
       type: "number",
-      description: "Original width in pixels",
+      description: "Original width in pixels (required for videos)",
+      hidden: ({ parent }) => parent?.mediaType === "image",
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { mediaType?: string };
+          if (parent?.mediaType === "video" && !value) {
+            return "Width is required for videos";
+          }
+          return true;
+        }),
     }),
     defineField({
       name: "height",
       title: "Height",
       type: "number",
-      description: "Original height in pixels",
+      description: "Original height in pixels (required for videos)",
+      hidden: ({ parent }) => parent?.mediaType === "image",
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { mediaType?: string };
+          if (parent?.mediaType === "video" && !value) {
+            return "Height is required for videos";
+          }
+          return true;
+        }),
     }),
     defineField({
       name: "bgColor",

@@ -95,16 +95,36 @@ export interface ISanityFileAsset {
 // ============================================================================
 
 export interface ISanityGalleryItem {
+  _key?: string;
   mediaType: "image" | "video";
   image?: ISanityImageAsset;
   video?: ISanityFileAsset;
   alt: string;
-  width?: number;
-  height?: number;
+  width?: number; // Only for videos
+  height?: number; // Only for videos
   bgColor?: string;
   hideCaption?: boolean;
   projectTypeOverride?: string;
   hideMore?: boolean;
+}
+
+// Common type for carousel items (used by both slides and gallery items)
+export interface ICarouselItem {
+  _id?: string;
+  _key?: string;
+  mediaType: "image" | "video";
+  image?: ISanityImageAsset;
+  video?: ISanityFileAsset;
+  alt: string;
+  width?: number; // Only present for videos
+  height?: number; // Only present for videos
+  bgColor?: string;
+  hideCaption?: boolean;
+  projectRef?: {
+    _id: string;
+    id: string;
+    title: string;
+  };
 }
 
 export interface ISanityProjectField {

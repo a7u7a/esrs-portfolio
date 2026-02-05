@@ -4,7 +4,7 @@ import { useRotationSpeed } from "@/lib/hooks";
 import { useScrollProgress } from "@/lib/hooks";
 import Link from "next/link";
 import SpinningLogo from "@/components/spinning-logo";
-import FreeLoopingCarousel from "@/components/homepage/free-looping-carousel";
+import FreeLoopingCarousel from "@/components/free-looping-carousel";
 import FadeIn from "@/components/homepage/fade-in";
 import { ISanityCollaborator, ISanitySlide } from "@/lib/types";
 import Footer from "../footer";
