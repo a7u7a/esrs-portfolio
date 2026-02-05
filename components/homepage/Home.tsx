@@ -4,7 +4,7 @@ import { useRotationSpeed } from "@/lib/hooks";
 import { useScrollProgress } from "@/lib/hooks";
 import Link from "next/link";
 import SpinningLogo from "@/components/spinning-logo";
-import FreeLoopingCarousel from "@/components/free-looping-carousel";
+import Carousel from "@/components/free-looping-carousel";
 import FadeIn from "@/components/homepage/fade-in";
 import { ISanityCollaborator, ISanitySlide } from "@/lib/types";
 import Footer from "../footer";
@@ -51,7 +51,7 @@ const Home = ({ collaborators, initialSlides }: HomeProps) => {
       <FadeIn threshold={0.1}>
         <div className="flex flex-col my-16 md:mt-24 md:mb-18">
           <ToPortfolioButton />
-          <FreeLoopingCarousel slides={initialSlides} />
+          <Carousel slides={initialSlides} />
         </div>
       </FadeIn>
 

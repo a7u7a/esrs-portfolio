@@ -12,7 +12,7 @@ import {
   ISanitySocial,
   ICarouselItem,
 } from "@/lib/types";
-import FreeLoopingCarousel from "@/components/free-looping-carousel";
+import Carousel from "@/components/free-looping-carousel";
 
 interface WorkPageMainProps {
   selectedProjects: ISanityProject[];
@@ -50,7 +50,7 @@ const Work = ({
           <div key={project._id} className="mb-12">
             <h3 className="text-xl mx-3 md:mx-4 mb-2">{project.title}</h3>
             {project.gallery && project.gallery.length > 0 && (
-              <FreeLoopingCarousel
+              <Carousel
                 slides={project.gallery as ICarouselItem[]}
               />
             )}
@@ -67,7 +67,7 @@ const Work = ({
           <div key={project._id} className="mb-12">
             <h3 className="text-xl mx-3 md:mx-4 mb-2">{project.title}</h3>
             {project.gallery && project.gallery.length > 0 && (
-              <FreeLoopingCarousel
+              <Carousel
                 slides={project.gallery as ICarouselItem[]}
               />
             )}
