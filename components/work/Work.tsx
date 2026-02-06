@@ -5,7 +5,6 @@ import SpinningLogo from "@/components/SpinningLogo";
 import { useRotationSpeed, useScrollProgress } from "@/lib/hooks";
 import {
   ISanityProject,
-  ISanityCollaborator,
   ISanityEducation,
   ISanityPublication,
   ISanityService,
@@ -17,7 +16,6 @@ import Carousel from "@/components/Carousel";
 interface WorkPageMainProps {
   selectedProjects: ISanityProject[];
   experimentalProjects: ISanityProject[];
-  collaborators: ISanityCollaborator[];
   education: ISanityEducation[];
   publications: ISanityPublication[];
   services: ISanityService[];
@@ -27,7 +25,6 @@ interface WorkPageMainProps {
 const Work = ({
   selectedProjects,
   experimentalProjects,
-  collaborators,
   education,
   publications,
   services,
@@ -80,7 +77,6 @@ const Work = ({
       <div className="pb-24 md:pb-52 max-w-6xl mx-3 md:mx-4 relative">
         <section id="cv">
           <CV
-            collaborators={collaborators}
             education={education}
             publications={publications}
             services={services}

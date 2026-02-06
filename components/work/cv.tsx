@@ -5,7 +5,6 @@ import Footer from "../Footer";
 import CVServices from "./cv-services";
 import { useMediaQuery } from "@/lib/hooks";
 import {
-  ISanityCollaborator,
   ISanityEducation,
   ISanityPublication,
   ISanityService,
@@ -13,26 +12,18 @@ import {
 } from "@/lib/types";
 
 interface CVProps {
-  collaborators: ISanityCollaborator[];
   education: ISanityEducation[];
   publications: ISanityPublication[];
   services: ISanityService[];
   socials: ISanitySocial[];
 }
 
-const CV = ({
-  collaborators,
-  education,
-  publications,
-  services,
-  socials,
-}: CVProps) => {
+const CV = ({ education, publications, services, socials }: CVProps) => {
   const isMd = useMediaQuery("(min-width: 768px)");
   return (
     <>
       {isMd && (
         <CVDesktop
-          collaborators={collaborators}
           education={education}
           publications={publications}
           services={services}
@@ -41,7 +32,6 @@ const CV = ({
       )}
       {!isMd && (
         <CVMobile
-          collaborators={collaborators}
           education={education}
           publications={publications}
           services={services}
@@ -54,13 +44,7 @@ const CV = ({
 
 export default CV;
 
-const CVDesktop = ({
-  collaborators,
-  education,
-  publications,
-  services,
-  socials,
-}: CVProps) => {
+const CVDesktop = ({ education, publications, services, socials }: CVProps) => {
   return (
     <div className="grid grid-cols-4">
       <div className="col-span-3">
@@ -69,11 +53,10 @@ const CVDesktop = ({
           <CVEducation education={education} />
         </div>
         <div className="pt-16">
-          <CVContact socials={socials} collaborators={collaborators} />
+          <CVContact socials={socials} />
         </div>
         <Footer className="pt-12 max-w-[600px]" />
       </div>
-
       <div className="col-span-1">
         <CVServices services={services} />
       </div>
@@ -81,13 +64,7 @@ const CVDesktop = ({
   );
 };
 
-const CVMobile = ({
-  collaborators,
-  education,
-  publications,
-  services,
-  socials,
-}: CVProps) => {
+const CVMobile = ({ education, publications, services, socials }: CVProps) => {
   return (
     <div>
       <CVPublications publications={publications} />
@@ -99,9 +76,8 @@ const CVMobile = ({
           </div>
           <Footer className="pt-12 max-w-[600px]" />
         </div>
-
         <div className="w-1/2">
-          <CVContact socials={socials} collaborators={collaborators} />
+          <CVContact socials={socials} />
         </div>
       </div>
     </div>

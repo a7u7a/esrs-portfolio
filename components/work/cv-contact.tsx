@@ -1,12 +1,11 @@
 import React from "react";
-import { ISanitySocial, ISanityCollaborator } from "@/lib/types";
+import { ISanitySocial } from "@/lib/types";
 
 interface CVContactProps {
   socials: ISanitySocial[];
-  collaborators: ISanityCollaborator[];
 }
 
-const CVContact = ({ socials, collaborators }: CVContactProps) => {
+const CVContact = ({ socials }: CVContactProps) => {
   return (
     <section id="contact">
       <h2 className="font-bold">{"Contact"}</h2>

@@ -3,7 +3,6 @@ import Work from "@/components/work/Work";
 import {
   getSelectedProjects,
   getExperimentalProjects,
-  getCollaborators,
   getEducation,
   getPublications,
   getServices,
@@ -14,7 +13,6 @@ const WorkPage = async () => {
   const [
     selectedProjects,
     experimentalProjects,
-    collaborators,
     education,
     publications,
     services,
@@ -22,7 +20,6 @@ const WorkPage = async () => {
   ] = await Promise.all([
     getSelectedProjects(),
     getExperimentalProjects(),
-    getCollaborators(),
     getEducation(),
     getPublications(),
     getServices(),
@@ -33,7 +30,6 @@ const WorkPage = async () => {
     <Work
       selectedProjects={selectedProjects}
       experimentalProjects={experimentalProjects}
-      collaborators={collaborators}
       education={education}
       publications={publications}
       services={services}
