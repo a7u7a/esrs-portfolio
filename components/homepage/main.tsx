@@ -11,7 +11,7 @@ import { shuffledSlides } from '@/content/slides'
 import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/homepage/fade-in'
 import { ICollaborator } from '@/lib/types'
-import Footer from '../footer'
+import Footer from '../Footer'
 
 const HomePageMain = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
