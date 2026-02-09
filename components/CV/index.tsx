@@ -1,8 +1,7 @@
-import CVPublications from "./cv-publications";
-import CVContact from "./cv-contact";
-import CVEducation from "./cv-education";
-import Footer from "../Footer";
-import CVServices from "./cv-services";
+import CVPublications from "./Publications";
+import CVContact from "./Contact";
+import CVEducation from "./Education";
+import CVServices from "./Services";
 import { useMediaQuery } from "@/lib/hooks";
 import {
   ISanityEducation,
@@ -55,7 +54,6 @@ const CVDesktop = ({ education, publications, services, socials }: CVProps) => {
         <div className="pt-16">
           <CVContact socials={socials} />
         </div>
-        <Footer className="pt-12 max-w-[600px]" />
       </div>
       <div className="col-span-1">
         <CVServices services={services} />
@@ -74,7 +72,6 @@ const CVMobile = ({ education, publications, services, socials }: CVProps) => {
           <div className="pt-12">
             <CVServices services={services} />
           </div>
-          <Footer className="pt-12 max-w-[600px]" />
         </div>
         <div className="w-1/2">
           <CVContact socials={socials} />

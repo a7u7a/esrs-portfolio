@@ -1,35 +1,16 @@
 "use client";
 import React from "react";
-import CV from "./cv";
 import SpinningLogo from "@/components/SpinningLogo";
 import { useRotationSpeed, useScrollProgress } from "@/lib/hooks";
-import {
-  ISanityProject,
-  ISanityEducation,
-  ISanityPublication,
-  ISanityService,
-  ISanitySocial,
-  ICarouselItem,
-} from "@/lib/types";
+import { ISanityProject, ICarouselItem } from "@/lib/types";
 import Carousel from "@/components/Carousel";
 
-interface WorkPageMainProps {
+interface WorkPageProps {
   selectedProjects: ISanityProject[];
   experimentalProjects: ISanityProject[];
-  education: ISanityEducation[];
-  publications: ISanityPublication[];
-  services: ISanityService[];
-  socials: ISanitySocial[];
 }
 
-const Work = ({
-  selectedProjects,
-  experimentalProjects,
-  education,
-  publications,
-  services,
-  socials,
-}: WorkPageMainProps) => {
+const Work = ({ selectedProjects, experimentalProjects }: WorkPageProps) => {
   const { container, scrollProgress } = useScrollProgress();
   const rotationSpeed = useRotationSpeed(scrollProgress);
 
@@ -73,17 +54,6 @@ const Work = ({
           </div>
         ))}
       </section>
-
-      <div className="pb-24 md:pb-52 max-w-6xl mx-3 md:mx-4 relative">
-        <section id="cv">
-          <CV
-            education={education}
-            publications={publications}
-            services={services}
-            socials={socials}
-          />
-        </section>
-      </div>
     </main>
   );
 };

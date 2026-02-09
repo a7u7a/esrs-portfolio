@@ -8,8 +8,7 @@ interface CVContactProps {
 const CVContact = ({ socials }: CVContactProps) => {
   return (
     <section id="contact">
-      <h2 className="font-bold">{"Contact"}</h2>
-      <div className="pt-6 sm:pt-12">
+      <div className="pt-6 sm:pt-12 text-sm sm:text-base leading-loose">
         <ul className="list-none flex flex-col max-w-[600px]">
           <li key={1}>
             <a
