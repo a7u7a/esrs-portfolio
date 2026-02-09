@@ -30,7 +30,7 @@ const HomePageMain = () => {
       <TextWrapper>
         <div className=''>
           <FadeIn threshold={0.3}>
-            <span>{"Esteban Serrano is a design technologist and frontend engineer based in Berlin."}</span>
+            <span>{"Esteban Serrano is a design engineer and software developer based in Berlin."}</span>
           </FadeIn>
         </div>
 
@@ -52,21 +52,13 @@ const HomePageMain = () => {
 
         <FadeIn threshold={0.3}>
           <div className='text-balance'>
-            <span>{"Specialized in web development and interaction design."}</span>
+            <span>{"Specialized in web development UX/UI and interaction design."}</span>
           </div>
         </FadeIn>
 
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
-            <div className='text-balance'>
-              <span>{"Proficient in Typescript, React and Python."}</span>
-            </div>
-          </FadeIn>
-        </div>
-
-        <div className='mt-16 md:mt-24'>
-          <FadeIn threshold={0.3}>
-            <span className=''>{"People he's worked with:"}</span>
+            <span className=''>{"People I've worked with:"}</span>
           </FadeIn>
           <ul className='list-none flex flex-col gap-3 pt-3 ml-3 md:ml-6 '>
             {collaborators.map((collab, i) => (
