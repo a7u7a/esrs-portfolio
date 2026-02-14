@@ -155,9 +155,12 @@ const WorkPageMain = () => {
           </Link>
         </div>
         <div className='pt-20 w-full sm:w-2/3 text-balance'>
-          <p>{"I'm a design engineer and web developer bridging the gap between design and code to craft exceptional digital experiences. I've helped startups, brands, cultural institutions, and agencies develop custom solutions and non-default interfaces, from interactive installations to data visualizations and cloud-based applications. Through close collaboration and strategic technology choices, I transform complex technical challenges into elegant, user-centered solutions that deliver immediate value."}</p>
+          <p>{"I'm a design engineer and web developer who builds at the edge of design and engineering — from highly interactive data visualizations to carefully crafted design systems, always with an eye on what makes something both elegant and fast."}</p>
           <div className='pt-6'>
-            <p>{"Here you'll find samples of client work and experiments that showcase some of the problems I've worked on and the tools I typically use."}</p>
+            <p>{"I've worked with startups, brands, cultural institutions, and agencies across Europe, the UK, and Latin America."}</p>
+          </div>
+          <div className='pt-6'>
+            <p>{"The work below spans client projects and experiments. It shows the problems I've worked on, the tools I reach for, and the kind of collaborator I am."}</p>
           </div>
         </div>
 
