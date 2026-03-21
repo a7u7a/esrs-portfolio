@@ -11,7 +11,7 @@ import { shuffledSlides } from '@/content/slides'
 import { IGalleryItem } from '@/lib/types'
 import FadeIn from '@/components/homepage/fade-in'
 import { ICollaborator } from '@/lib/types'
-import Footer from '../footer'
+import Footer from '@/components/Footer'
 
 const HomePageMain = () => {
   const [slides, setSlides] = useState<IGalleryItem[]>([]);
@@ -30,43 +30,34 @@ const HomePageMain = () => {
       <TextWrapper>
         <div className=''>
           <FadeIn threshold={0.3}>
-            <span>{"Esteban Serrano is a design technologist and frontend engineer based in Berlin."}</span>
+            <span>{"Esteban Serrano is a design engineer based in Berlin."}</span>
           </FadeIn>
         </div>
 
-        <div className='mt-16 md:mt-24'>
+        <div className='mt-16 md:mt-24 text-balance'>
           <FadeIn threshold={0.3}>
-            <span className=''>{"Developing solutions for brands, studios and research since 2014."}</span>
+            <span className=''>{"I prototype with code, design with data, and build systems that hold up."}</span>
           </FadeIn>
         </div>
+
+        <FadeIn threshold={0.3}>
+        <div className='mt-16 md:mt-24 text-balance'>
+            <span>{"Building interfaces for brands, studios, and research since 2014."}</span>
+          </div>
+        </FadeIn>
       </TextWrapper>
 
       <FadeIn threshold={0.1}>
-        <div className='flex flex-col my-16 md:mt-24 md:mb-18'  >
+        <div className='flex flex-col my-16 md:mt-24 md:mb-18'>
           <ToPortfolioButton />
           <FreeLoopingCarousel slides={slides} />
         </div>
       </FadeIn>
 
       <TextWrapper>
-
-        <FadeIn threshold={0.3}>
-          <div className='text-balance'>
-            <span>{"Specialized in web development and interaction design."}</span>
-          </div>
-        </FadeIn>
-
         <div className='mt-16 md:mt-24'>
           <FadeIn threshold={0.3}>
-            <div className='text-balance'>
-              <span>{"Proficient in Typescript, React and Python."}</span>
-            </div>
-          </FadeIn>
-        </div>
-
-        <div className='mt-16 md:mt-24'>
-          <FadeIn threshold={0.3}>
-            <span className=''>{"People he's worked with:"}</span>
+            <span className=''>{"Clients & collaborators:"}</span>
           </FadeIn>
           <ul className='list-none flex flex-col gap-3 pt-3 ml-3 md:ml-6 '>
             {collaborators.map((collab, i) => (

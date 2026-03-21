@@ -1,54 +1,54 @@
-import { ICollaborator } from "@/lib/types"
+import { ICollaborator } from "@/lib/types";
 
 const collaborators: ICollaborator[] = [
   {
     name: "Design Systems International",
-    url: "https://designsystems.international/"
-  },
-  {
-    name: "FutureCorp",
-    url: "https://futurecorp.paris/"
+    url: "https://designsystems.international/",
   },
   {
     name: "Saatchi & Saatchi",
-    url: "https://saatchi.co.uk/"
+    url: "https://saatchi.co.uk/",
   },
   {
     name: "Dolce & Gabbana",
-    url: "https://www.dolcegabbana.com/"
+    url: "https://www.dolcegabbana.com/",
+  },
+  {
+    name: "University of Edinburgh",
+    url: "https://informatics.ed.ac.uk/",
+  },
+  {
+    name: "ELEMENTAL Architects",
+    url: "https://elementalchile.cl/",
+  },
+  {
+    name: "FutureCorp",
+    url: "https://futurecorp.paris/",
   },
   {
     name: "JDS Development Group",
-    url: "https://jdsdevelopment.com/"
-  },
-  {
-    name: "Elemental Chile",
-    url: "https://elemental-chile.cl/"
+    url: "https://jdsdevelopment.com/",
   },
   {
     name: "Asimov Consulting",
-    url: "https://www.asimov.cl/"
+    url: "https://www.asimov.cl/",
   },
   {
     name: "Viapontica AI",
-    url: "https://viapontica.ai/"
+    url: "https://viapontica.ai/",
   },
   {
     name: "The Egg Assembly",
-    url: "https://x.com/assemblyegg"
+    url: "https://x.com/assemblyegg",
   },
   {
     name: "TrainFES",
-    url: "https://trainfes.com/"
-  },
-  {
-    name: "School of Informatics, U. of Edinburgh",
-    url: "https://informatics.ed.ac.uk/"
+    url: "https://trainfes.com/",
   },
   {
     name: "Innovation Center, PUC",
-    url: "https://centrodeinnovacion.uc.cl/"
-  }
-]
+    url: "https://centrodeinnovacion.uc.cl/",
+  },
+];
 
-export default collaborators
+export default collaborators;
