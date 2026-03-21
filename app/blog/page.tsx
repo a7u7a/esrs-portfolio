@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import { IPost } from "@/lib/types";
-import PostPreview from "@/components/blog/post-preview";
+import PostList from "@/components/blog/post-list";
 
 async function getPosts(): Promise<IPost[]> {
   return client.fetch(
@@ -9,7 +9,13 @@ async function getPosts(): Promise<IPost[]> {
       "slug": slug.current,
       title,
       date,
-      content
+      content[]{
+        ...,
+        _type == "image" => {
+          ...,
+          asset->
+        }
+      }
     }`,
   );
 }
@@ -23,11 +29,7 @@ export default async function BlogPage() {
       {posts.length === 0 ? (
         <p className="text-esrs-dark-gray">No posts yet.</p>
       ) : (
-        <div>
-          {posts.map((post) => (
-            <PostPreview key={post._id} post={post} />
-          ))}
-        </div>
+        <PostList posts={posts} />
       )}
     </main>
   );
