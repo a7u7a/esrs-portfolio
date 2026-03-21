@@ -36,7 +36,7 @@ const HomePageMain = () => {
 
         <div className='mt-16 md:mt-24 text-balance'>
           <FadeIn threshold={0.3}>
-            <span className=''>{"I prototype with code, design with data, and build systems that hold up — the gap between a Figma file and something real is where I work best."}</span>
+            <span className=''>{"I prototype with code, design with data, and build systems that hold up."}</span>
           </FadeIn>
         </div>
 
